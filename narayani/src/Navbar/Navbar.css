@@ -105,9 +105,10 @@
         
       }
 }
-@media screen and (max-width: 699px) and (min-width: 651px){
+@media screen and (max-width: 900px) and (min-width: 651px){
     .sec-Nav{
         top: 25px;
+        width: 100%;
     }
     .sec-Nav > div h2{
         font-size: 1.4vw;
@@ -380,7 +381,7 @@ button {
     opacity: 0;
   }
 }
-@media only screen and (max-width: 699px) {
+@media only screen and (max-width: 900px) {
   .h2 {
     display: flex;
     animation: show 1s;
