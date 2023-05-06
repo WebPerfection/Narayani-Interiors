@@ -30,11 +30,11 @@ export default function Navbar() {
       console.log("cheak");
     }, 800);
   };
-const up=()=>{
-     setTimeout(()=>{
+  const up = () => {
+    setTimeout(() => {
       setDrop(true)
-     },1000)
-}
+    }, 1000)
+  }
   console.log(scroll);
   const handleScroll = () => {
     if (window.scrollY > 0) {
@@ -101,8 +101,10 @@ const up=()=>{
                 setDropDown(true);
                 setDrop(false);
               }}
-              onMouseLeave={() => {setDropDown(false)
-              up()}}
+              onMouseLeave={() => {
+                setDropDown(false)
+                up()
+              }}
             >
               <Link to="/">Home</Link>
               <ul
@@ -118,13 +120,23 @@ const up=()=>{
             <Link to="/">Contect</Link>
           </div>
         </div>
-      {/* Contact Navbar */}
-       <div className="sec-Nav Flex">
-        <div><h1><IoEarthOutline/></h1><div><h2>+9188888888</h2><h5>Flat 201, Reynolds Neck Str</h5></div></div>
-        <div><h1><TbPhoneCall/></h1><div><h2>+9188888888</h2><h5>Mon - Friday: 9.00 to 18.00</h5></div></div>
-        <div><h1><GoMail/></h1><div><h2>+9188888888</h2><h5>Mon - Friday: 9.00 to 18.00</h5></div></div>
-        <div><h1><ImWhatsapp/></h1><div><h2>+9188888888</h2><h5>Get a Free Quote</h5></div></div>
-       </div>
+        {/* Contact Navbar */}
+        <div className="sec-Nav Flex">
+          <div><h1><IoEarthOutline /></h1><div className="Flex"><h2> +91 88888888</h2><h5>Flat 201, Reynolds Neck Str</h5></div></div>
+          <div onClick={() => {
+            const phoneNumber = '+918604846089'; // replace with your desired phone number
+            window.location.href = `tel:${phoneNumber}`;
+
+          }}><h1><TbPhoneCall /></h1><div className="Flex"><h2> +91 88888888</h2><h5>Mon - Friday: 9.00 to 18.00</h5></div></div>
+          <div onClick={() => {
+            const emailAddress = 'moa16259@gmail.com'; // replace with your email address
+            window.open(`mailto:${emailAddress}`, '_blank');
+          }}><h1><GoMail /></h1><div className="Flex"><h2> +91 88888888 </h2><h5>Mon - Friday: 9.00 to 18.00</h5></div></div>
+          <div onClick={() => {
+            const phoneNumber = '+918604846089'; // replace with your WhatsApp contact's phone number
+            window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}`, '_blank');
+          }}><h1><ImWhatsapp /></h1><div className="Flex"><h2> +91 88888888 </h2><h5>Get a Free Quote</h5></div></div>
+        </div>
       </div>
       {start && (
         <div

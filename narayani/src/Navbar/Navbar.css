@@ -38,7 +38,7 @@
 /* Contact Nav */
 .sec-Nav{
 position: relative;
-top:80px;
+top:60px;
 width: 80%;
 }
 
@@ -48,17 +48,31 @@ width: 80%;
     width: 25%;
     height:fit-content;
     padding: 0px 15px;
-    border: 1px solid var(--text-black-700);
+    padding-left: 25px;
+}
+.sec-Nav>div:not(:last-child){
+    border-right: 1px solid var(--text-black-700);
+    padding-right: 25px;
+    border-width: 60%;
     
 }
 .sec-Nav >div h1{
     color: var(--text-black-600);
+    display: flex;
+    font-size: 40px;
     font-weight: 300;
     
 }
+.sec-Nav h1,h2,h5{
+    margin: 0px;
+    
+    padding: 0px;
+
+}
 .sec-Nav >div>div{
     width: 100%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    flex-direction: column;
 }
 .sec-Nav >div h2{
     color: var(--text-black-900);
