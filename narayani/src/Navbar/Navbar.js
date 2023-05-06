@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import { IoEarthOutline } from "react-icons/io5";
 import { GoMail } from "react-icons/go";
 import { ImWhatsapp } from "react-icons/im";
+import { SlSocialInstagram,SlSocialTwitter,SlNote } from "react-icons/sl";
+
 export default function Navbar() {
   const [ham, setHam] = useState(false);
   const [hid, setHid] = useState(false);
@@ -17,6 +19,8 @@ export default function Navbar() {
   const [start, setStart] = useState(false);
   const [drop, setDrop] = useState(true);
   const [dropDown, setDropDown] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
 
   if (refrence) {
     setTimeout(() => {
@@ -24,6 +28,18 @@ export default function Navbar() {
       setRefrence(false);
     }, 800);
   }
+  const handleMouseEnter = () => {
+    setIsDropdownOpen(true);
+  };
+  const AbouthandleMouseEnter = () => {
+    setAboutDropdownOpen(true);
+  };
+  const AbouthandleMouseLeave = () => {
+    setAboutDropdownOpen(false);
+  };
+  const handleMouseLeave = () => {
+    setIsDropdownOpen(false);
+  };
   const move = () => {
     setTimeout(() => {
       setScroll(!scroll);
@@ -97,26 +113,37 @@ export default function Navbar() {
 
           <div className="Button-div">
             <div
-              onMouseEnter={() => {
-                setDropDown(true);
-                setDrop(false);
-              }}
-              onMouseLeave={() => {
-                setDropDown(false);
-                up();
-              }}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
               <Link to="/">Home</Link>
+              
               <ul
-                className={dropDown ? "ul" : "hideUl"}
-                style={{ display: drop ? "none" : "" }}
+                className={`dropdown-container ${isDropdownOpen ? 'open' : ''} ul`}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                
+              >
+                <li>Servecess</li>
+                <li>Awresh</li>
+                <li>Roohi</li>
+              </ul>
+              </div>
+            
+            <div onMouseEnter={AbouthandleMouseEnter}
+              onMouseLeave={AbouthandleMouseLeave}>
+            <Link to="/">About us</Link>
+            <ul
+                className={`dropdown-container ${aboutDropdownOpen ? 'open' : ''} ul`}
+                onMouseEnter={AbouthandleMouseEnter}
+                onMouseLeave={AbouthandleMouseLeave}
+                
               >
                 <li>Servecess</li>
                 <li>Awresh</li>
                 <li>Roohi</li>
               </ul>
             </div>
-            <Link to="/">About us</Link>
             <Link to="/">Contect</Link>
           </div>
         </div>
@@ -161,7 +188,7 @@ export default function Navbar() {
             </div>
           </div>
           <div className="Flex" id="icon-div">
-            <h1
+            {/* <h1
               id="icon-style"
               onClick={() => {
                 const phoneNumber = "+918604846089"; // replace with your WhatsApp contact's phone number
@@ -172,7 +199,8 @@ export default function Navbar() {
               }}
             >
               <ImWhatsapp />
-            </h1>
+            </h1> */}
+            <button className="estimate-bt">Get Free Estimate</button>
           </div>
         </div>
       </div>

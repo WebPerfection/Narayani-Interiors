@@ -1,20 +1,9 @@
 import React from 'react'
-
+import ScrolImg1 from "../../ImageData/v1-1.jpg"
 export default function Content() {
   return (
     <div>
-        <div><img style={{width:"100%"}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHpKJi0HXMugsPavxPAEiUXTRf5EpHAMgdMQ&usqp=CAU"/></div>
-        <div><img style={{width:"100%"}}src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHpKJi0HXMugsPavxPAEiUXTRf5EpHAMgdMQ&usqp=CAU"/></div>
-        <div><img style={{width:"100%"}}src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHpKJi0HXMugsPavxPAEiUXTRf5EpHAMgdMQ&usqp=CAU"/></div>
-        <div><img style={{width:"100%"}}src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHpKJi0HXMugsPavxPAEiUXTRf5EpHAMgdMQ&usqp=CAU"/></div>
-        <div><img style={{width:"100%"}}src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHpKJi0HXMugsPavxPAEiUXTRf5EpHAMgdMQ&usqp=CAU"/></div>
-        <div><img style={{width:"100%"}}src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHpKJi0HXMugsPavxPAEiUXTRf5EpHAMgdMQ&usqp=CAU"/></div>
-        <div><img style={{width:"100%"}}src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHpKJi0HXMugsPavxPAEiUXTRf5EpHAMgdMQ&usqp=CAU"/></div>
-        <div><img style={{width:"100%"}}src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHpKJi0HXMugsPavxPAEiUXTRf5EpHAMgdMQ&usqp=CAU"/></div>
-        <div><img style={{width:"100%"}}src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHpKJi0HXMugsPavxPAEiUXTRf5EpHAMgdMQ&usqp=CAU"/></div>
-        <div><img style={{width:"100%"}}src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHpKJi0HXMugsPavxPAEiUXTRf5EpHAMgdMQ&usqp=CAU"/></div>
-        <div><img style={{width:"100%"}}src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHpKJi0HXMugsPavxPAEiUXTRf5EpHAMgdMQ&usqp=CAU"/></div>
-    
+       <img src={ScrolImg1} style={{width:"100%"}} alt=""/>
     </div>
   )
 }
