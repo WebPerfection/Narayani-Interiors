@@ -25,8 +25,8 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  border: 1px solid red;
-  height: 200px;
+  height: 230px;
+  transition: 1s;
   background-color: var(--skin-color);
 }
 .Img-div {
@@ -39,6 +39,7 @@
   position: relative;
   top: 60px;
   width: 80%;
+  transition: 1s;
 }
 
 .sec-Nav > div {
@@ -58,12 +59,63 @@
 .sec-Nav > div h1 {
   color: var(--text-black-600);
   display: flex;
-  font-size: 40px;
+  font-size: 5vh;
   font-weight: 300;
+  transition: 0.8s;
 }
 .sec-Nav > div:hover h1 {
   color: var(--text-gold);
   transition: 0.8s;
+}
+#icon-style{
+    font-size: 20px;
+}
+.email-div{
+    
+    gap: 10px;
+}
+@media only screen and (max-width: 1100px){
+    #icon-div{
+        display: none;
+    }
+}
+.sec-Nav > div h2 {
+    color: var(--text-black-900);
+    font-weight: 500;
+    font-size: 1.2vw;
+    height: fit-content;
+    width: fit-content;
+  }
+@media only screen and (max-width: 650px){
+    .sec-Nav{
+        flex-direction: column;
+        top: 22px;
+        transition: 1s;
+    }
+    .sec-Nav > div h2 {
+        color: var(--text-black-900);
+        font-weight: 500;
+        font-size: 2.5vw;
+        text-align: left;
+        height: fit-content;
+        width: fit-content;
+      }
+      .sec-Nav > div{
+        width: 100%;
+        
+      }
+}
+@media screen and (max-width: 699px) and (min-width: 651px){
+    .sec-Nav{
+        top: 25px;
+    }
+    .sec-Nav > div h2{
+        font-size: 1.4vw;
+    }
+    .main{
+        height: 150px;
+        transition: 1s;
+    }
 }
 .sec-Nav h1,
 h2,
@@ -77,16 +129,11 @@ h5 {
   /* border: 1px solid black; */
   flex-direction: column;
 }
-.sec-Nav > div h2 {
-  color: var(--text-black-900);
-  font-weight: 500;
-  font-size: 100%;
-  height: fit-content;
-  width: fit-content;
-}
+
 .sec-Nav > div h5 {
   color: var(--text-black-600);
   font-weight: 500;
+  font-size: 1vw;
   height: fit-content;
 }
 

@@ -33,7 +33,7 @@ export default function Navbar() {
   const up = () => {
     setTimeout(() => {
       setDrop(true)
-    }, 1000)
+    }, 800)
   }
   console.log(scroll);
   const handleScroll = () => {
@@ -122,20 +122,20 @@ export default function Navbar() {
         </div>
         {/* Contact Navbar */}
         <div className="sec-Nav Flex">
-          <div><h1><IoEarthOutline /></h1><div className="Flex"><h2> +91 88888888</h2><h5>Flat 201, Reynolds Neck Str</h5></div></div>
+          <div><h1><IoEarthOutline /></h1><div className="Flex"><h2>U.P (Fatehpur 212601)</h2><h5>Flat 201, Reynolds Neck Str</h5></div></div>
           <div onClick={() => {
             const phoneNumber = '+918604846089'; // replace with your desired phone number
             window.location.href = `tel:${phoneNumber}`;
 
           }}><h1><TbPhoneCall /></h1><div className="Flex"><h2> +91 88888888</h2><h5>Mon - Friday: 9.00 to 18.00</h5></div></div>
-          <div onClick={() => {
+          <div className="email-div" onClick={() => {
             const emailAddress = 'moa16259@gmail.com'; // replace with your email address
             window.open(`mailto:${emailAddress}`, '_blank');
-          }}><h1><GoMail /></h1><div className="Flex"><h2> +91 88888888 </h2><h5>Mon - Friday: 9.00 to 18.00</h5></div></div>
-          <div onClick={() => {
+          }}><h1><GoMail /></h1><div className="Flex"><h2>perfectionweb5@gmail.com</h2><h5>Mon - Friday: 9.00 to 18.00</h5></div></div>
+          <div className="Flex" id="icon-div"><h1 id="icon-style" onClick={() => {
             const phoneNumber = '+918604846089'; // replace with your WhatsApp contact's phone number
             window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}`, '_blank');
-          }}><h1><ImWhatsapp /></h1><div className="Flex"><h2> +91 88888888 </h2><h5>Get a Free Quote</h5></div></div>
+          }}><ImWhatsapp /></h1></div> 
         </div>
       </div>
       {start && (
