@@ -70,13 +70,21 @@
 #icon-style{
     font-size: 20px;
 }
-.email-div{
-    
+#email-div{
     gap: 10px;
 }
+.sec-Nav > div h5 {
+    color: var(--text-black-600);
+    font-weight: 500;
+    font-size: 1vw;
+    height: fit-content;
+  }
 @media only screen and (max-width: 1100px){
     #icon-div{
         display: none;
+    }
+    #email-div{
+        border: none;
     }
 }
 .sec-Nav > div h2 {
@@ -86,12 +94,27 @@
     height: fit-content;
     width: fit-content;
   }
+  .sec-Nav > div{
+    gap: 15px;
+}
 @media only screen and (max-width: 650px){
     .sec-Nav{
         flex-direction: column;
-        top: 22px;
+        top: 30px;
         transition: 1s;
+        justify-content: center;
+        /* gap: 20px; */
     }
+    .sec-Nav > div{
+        gap: 20px;
+    }
+    #email-div{
+        gap: 20px;
+    }
+    .sec-Nav > div:not(:last-child) {
+        border-bottom: 1px solid var(--text-black-700);
+        border-right: none;
+      }
     .sec-Nav > div h2 {
         color: var(--text-black-900);
         font-weight: 500;
@@ -99,6 +122,9 @@
         text-align: left;
         height: fit-content;
         width: fit-content;
+      }
+      .sec-Nav > div h5 {
+        font-size: 1.8vw;
       }
       .sec-Nav > div{
         width: 100%;
@@ -110,6 +136,7 @@
         top: 25px;
         width: 100%;
     }
+  
     .sec-Nav > div h2{
         font-size: 1.4vw;
     }
@@ -126,17 +153,12 @@ h5 {
   padding: 0px;
 }
 .sec-Nav > div > div {
-  width: 100%;
+  /* width: 100%; */
   /* border: 1px solid black; */
   flex-direction: column;
 }
 
-.sec-Nav > div h5 {
-  color: var(--text-black-600);
-  font-weight: 500;
-  font-size: 1vw;
-  height: fit-content;
-}
+
 
 span {
   display: flex;
@@ -421,9 +443,7 @@ button {
     display: flex;
     animation: fade_in_show 1s;
   }
-  /* .smallscreen{
-        display: block;
-    } */
+  
 }
 @media only screen and (max-width: 319px) {
   .Img-div > div {
@@ -434,7 +454,7 @@ button {
   }
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 901px) {
   .vis {
     display: none;
   }
