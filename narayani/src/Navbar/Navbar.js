@@ -72,16 +72,19 @@ export default function Navbar() {
         <div className={isScrolled ? "blur" : "Container"}>
           <div className="Img-div">
             <img src={web} />
-            <div>
+            <div className="Flex">
               <h3>
                 <em>Web </em>
-                <span>
-                  <em>Perfection.</em>
-                </span>
+                <em>Perfection.</em>
+                
               </h3>
               {/* <p>Perfection is in our code.</p> */}
             </div>
           </div>
+          
+          <div className="Flex">
+          <button className="estimate-bt small-screen">Get Estimate</button>
+       
           {ham ? (
             <div className="h21">
               <button
@@ -110,8 +113,10 @@ export default function Navbar() {
               </button>
             </div>
           )}
+          </div>
 
           <div className="Button-div">
+          <button className="estimate-bt mid-screen">Get Estimate</button>
             <div
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
@@ -200,7 +205,7 @@ export default function Navbar() {
             >
               <ImWhatsapp />
             </h1> */}
-            <button className="estimate-bt">Get Free Estimate</button>
+            <button className="estimate-bt">Get Estimate</button>
           </div>
         </div>
       </div>
