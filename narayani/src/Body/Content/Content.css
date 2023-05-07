@@ -1,0 +1,10 @@
+.content-main-div>img{
+    width: 100%;
+}
+
+@media only screen and (max-width: 530px){
+    .content-main-div{
+        margin-top: 60px;
+    }
+
+}

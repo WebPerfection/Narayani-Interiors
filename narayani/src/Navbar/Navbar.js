@@ -16,6 +16,7 @@ export default function Navbar() {
   const [refrence, setRefrence] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [scroll, setScroll] = useState(false);
+  const [eStimate,setEStimate]=useState(false);
   const [start, setStart] = useState(false);
   const [drop, setDrop] = useState(true);
   const [dropDown, setDropDown] = useState(false);
@@ -58,7 +59,14 @@ export default function Navbar() {
     } else {
       setIsScrolled(false);
     }
+    if(window.scrollY>140){
+      setEStimate(true);
+    }else{
+      setEStimate(false);
+    }
   };
+
+ 
 
   // attach scroll event listener
   useEffect(() => {
@@ -72,7 +80,7 @@ export default function Navbar() {
         <div className={isScrolled ? "blur" : "Container"}>
           <div className="Img-div">
             <img src={web} />
-            <div className="Flex">
+            <div className="Flex name">
               <h3>
                 <em>Web </em>
                 <em>Perfection.</em>
@@ -82,7 +90,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          <div className="Flex">
+          <div className="Flex" id="hamburger">
             <button className="estimate-bt small-screen">Get Estimate</button>
 
             {ham ? (
@@ -116,7 +124,7 @@ export default function Navbar() {
           </div>
 
           <div className="Button-div">
-            <button className="estimate-bt mid-screen">Get Estimate</button>
+            <button className="estimate-bt mid-screen" style={{display:eStimate?"block":"none"}}>Get Estimate</button>
             <div
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
