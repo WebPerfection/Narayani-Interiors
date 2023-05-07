@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { IoEarthOutline } from "react-icons/io5";
 import { GoMail } from "react-icons/go";
 import { ImWhatsapp } from "react-icons/im";
-import { SlSocialInstagram,SlSocialTwitter,SlNote } from "react-icons/sl";
+import { SlSocialInstagram, SlSocialTwitter, SlNote } from "react-icons/sl";
 
 export default function Navbar() {
   const [ham, setHam] = useState(false);
@@ -76,80 +76,82 @@ export default function Navbar() {
               <h3>
                 <em>Web </em>
                 <em>Perfection.</em>
-                
+
               </h3>
               {/* <p>Perfection is in our code.</p> */}
             </div>
           </div>
-          
+
           <div className="Flex">
-          <button className="estimate-bt small-screen">Get Estimate</button>
-       
-          {ham ? (
-            <div className="h21">
-              <button
-                disabled={scroll ? false : true}
-                onClick={() => {
-                  setHam(!ham);
-                  setRefrence(true);
-                  move();
-                }}
-              >
-                <FaArrowRight className="bg" />
-              </button>
-            </div>
-          ) : (
-            <div className="h2">
-              <button
-                disabled={scroll ? true : false}
-                onClick={() => {
-                  setHam(!ham);
-                  setHid(!hid);
-                  setStart(true);
-                  move();
-                }}
-              >
-                <GiHamburgerMenu className="bg" />
-              </button>
-            </div>
-          )}
+            <button className="estimate-bt small-screen">Get Estimate</button>
+
+            {ham ? (
+              <div className="h21">
+                <button
+                  disabled={scroll ? false : true}
+                  onClick={() => {
+                    setHam(!ham);
+                    setRefrence(true);
+                    move();
+                  }}
+                >
+                  <FaArrowRight className="bg" />
+                </button>
+              </div>
+            ) : (
+              <div className="h2">
+                <button
+                  disabled={scroll ? true : false}
+                  onClick={() => {
+                    setHam(!ham);
+                    setHid(!hid);
+                    setStart(true);
+                    move();
+                  }}
+                >
+                  <GiHamburgerMenu className="bg" />
+                </button>
+              </div>
+            )}
           </div>
 
           <div className="Button-div">
-          <button className="estimate-bt mid-screen">Get Estimate</button>
+            <button className="estimate-bt mid-screen">Get Estimate</button>
             <div
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
               <Link to="/">Home</Link>
-              
+
               <ul
                 className={`dropdown-container ${isDropdownOpen ? 'open' : ''} ul`}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                
-              >
-                <li>Servecess</li>
-                <li>Awresh</li>
-                <li>Roohi</li>
-              </ul>
-              </div>
-            
-            <div onMouseEnter={AbouthandleMouseEnter}
-              onMouseLeave={AbouthandleMouseLeave}>
-            <Link to="/">About us</Link>
-            <ul
-                className={`dropdown-container ${aboutDropdownOpen ? 'open' : ''} ul`}
-                onMouseEnter={AbouthandleMouseEnter}
-                onMouseLeave={AbouthandleMouseLeave}
-                
+
               >
                 <li>Servecess</li>
                 <li>Awresh</li>
                 <li>Roohi</li>
               </ul>
             </div>
-            <Link to="/">Contect</Link>
+
+            <div onMouseEnter={AbouthandleMouseEnter}
+              onMouseLeave={AbouthandleMouseLeave}>
+              <Link to="/">About us</Link>
+              <ul
+                className={`dropdown-container ${aboutDropdownOpen ? 'open' : ''} ul`}
+                onMouseEnter={AbouthandleMouseEnter}
+                onMouseLeave={AbouthandleMouseLeave}
+
+              >
+                <li>Servecess</li>
+                <li>Awresh</li>
+                <li>Roohi</li>
+              </ul>
+            </div>
+            <div>
+              <Link to="/">Contect</Link>
+            </div>
           </div>
         </div>
         {/* Contact Navbar */}
