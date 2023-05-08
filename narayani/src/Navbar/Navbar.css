@@ -26,12 +26,15 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 230px;
+  height: 180px;
   position: absolute;
   width: 100%;
   transition: 1s;
   background-color: rgba(203, 197, 197, 0.781);
   -webkit-backdrop-filter: blur(8px);
+}
+.name{
+    font-size: 5vw;
 }
 .estimate-bt{
     padding: 13px 30px;
@@ -63,12 +66,15 @@
   color: rgb(242, 236, 236);
   display: flex;
   justify-content: flex-start;
-  width: 25%;
+  /* width: 25%; */
   height: fit-content;
   padding: 10px 0px;
   padding-left: 25px;
   cursor: pointer;
   opacity: 0.8;
+}
+#hamburger{
+    gap: 20px;
 }
 .sec-Nav > div:not(:last-child) {
   border-right: 1px solid var(--text-black-700);
@@ -104,11 +110,39 @@
   gap: 10px;
 }
 .sec-Nav > div h5 {
-  color: var(--text-black-600);
+  color: var(--text-black-700);
   font-weight: 500;
   font-size: 1vw;
   height: fit-content;
 }
+.main{
+    overflow: hidden;
+}
+@media only screen and (max-width: 530px){
+    .sec-Nav > div {
+        padding-left: 2px;
+        padding-right: 0px;
+        justify-content: center;
+      }
+      .sec-Nav {
+        top: -2px;
+        width: 100%;
+      }
+      .main{
+        height: 50px;
+      }
+      #email-div {
+        margin-left: 10px;
+      }
+      .sec-Nav > div h2{
+        font-size: 2.1px;
+        color: #000000;
+      }
+      .sec-Nav > div h5{
+        font-size: 1.8px;
+        color: #151414fc;
+      }
+    }
 @media only screen and (max-width: 1100px) {
   #icon-div {
     display: none;
@@ -129,52 +163,45 @@
 }
 @media only screen and (max-width: 650px) {
   .sec-Nav {
-    /* flex-direction: column; */
-    /* top: 30px; */
     transition: 1s;
     justify-content: center;
-    /* gap: 20px; */
+
   }
-  /* .sec-Nav > div {
-    gap: 20px;
-  } */
-  /* #email-div {
-    gap: 20px;
-  } */
-  /* .sec-Nav > div:not(:last-child) {
-    border-bottom: 1px solid var(--text-black-700);
-    border-right: none;
-  } */
+  
   .sec-Nav > div h1{
-    font-size: 4.1vw;
+    font-size: 5vw;
   }
-  .sec-Nav {
-    top: 28px;
-    width: 100%;
-  }
+  
   .sec-Nav > div h2 {
     color: var(--text-black-900);
     font-weight: 500;
-    font-size: 1vw;
+    font-size: 1.5vw;
     text-align: left;
     height: fit-content;
     width: fit-content;
   }
   .sec-Nav > div h5 {
-    font-size: .8vw;
+    font-size: 1vw;
   }
   .sec-Nav > div {
     width: 100%;
   }
-  .main {
-    height: 100px;
-    transition: 1s;
-  }
+  
+}
+@media screen and (max-width: 650px) and (min-width: 531px){
+    .main {
+        height: 100px;
+        transition: 1s;
+      }
+      .sec-Nav {
+        top: 28px;
+        width: 100%;
+      }
 }
 @media screen and (max-width: 900px) and (min-width: 651px) {
     
   .sec-Nav {
-    top: 25px;
+    top: 32px;
     width: 100%;
   }
 
@@ -182,7 +209,7 @@
     font-size: 1.4vw;
   }
   .main {
-    height: 150px;
+    height: 120px;
     transition: 1s;
   }
 }
