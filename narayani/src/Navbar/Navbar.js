@@ -78,16 +78,13 @@ export default function Navbar() {
       <div className="main">
         {/* NavBar */}
         <div className={isScrolled ? "blur" : "Container"}>
-          <div className="Img-div">
+          <div className="Img-div Flex">
             <img src={web} />
-            <div className="Flex name">
-              <h3>
-                <em>Web </em>
-                <em>Perfection.</em>
+            <h4>
+                <em>Narayni-</em>
+                <em>Interior</em>
 
-              </h3>
-              {/* <p>Perfection is in our code.</p> */}
-            </div>
+              </h4>
           </div>
 
           <div className="Flex" id="hamburger">

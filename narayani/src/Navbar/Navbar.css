@@ -124,12 +124,26 @@
         padding-right: 0px;
         justify-content: center;
       }
+      .small-screen{
+        font-size: 10px;
+        /* font-weight: bold; */
+        padding: 10px;
+      }
+      #hamburger {
+        gap: 8px;
+    }
+      .Img-div{
+        margin-left: 5px;
+      }
+      
       .sec-Nav {
         top: -2px;
         width: 100%;
+        display: none;
       }
       .main{
-        height: 50px;
+        height: 0px;
+        /* display: none; */
       }
       #email-div {
         margin-left: 10px;
