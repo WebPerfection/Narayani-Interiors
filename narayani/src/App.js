@@ -11,6 +11,7 @@ function App() {
       <Content />
       <Footer />
       <Designed_by />
+      
     </div>
   );
 }
