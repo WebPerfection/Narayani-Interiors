@@ -52,8 +52,8 @@ export default function Footer() {
               <li className='toggle'id='Hover'><a>Concept Design</a></li>
               <li className='toggle'id='Hover'><a>Concept Design</a></li>
               <li className='toggle'id='Hover'><a>Concept Design</a></li>
-              <li className='toggle'><a>Concept Design</a></li>
-              <li className='toggle'><a>Concept Design</a></li>
+              <li className='toggle'id='Hover'><a>Concept Design</a></li>
+              <li className='toggle'id='Hover'><a>Concept Design</a></li>
             </ul>
           </div>
         </div>
