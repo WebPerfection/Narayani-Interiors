@@ -88,7 +88,6 @@ export default function Navbar() {
           </div>
 
           <div className="Flex" id="hamburger">
-            <button className="estimate-bt small-screen">Get Estimate</button>
 
             {ham ? (
               <div className="h21">
@@ -121,7 +120,6 @@ export default function Navbar() {
           </div>
 
           <div className="Button-div">
-            <button className="estimate-bt mid-screen" style={{display:eStimate?"block":"none"}}>Get Estimate</button>
             <div
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}

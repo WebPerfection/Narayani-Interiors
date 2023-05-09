@@ -38,10 +38,10 @@
     font-size: 5vw;
 }
 .estimate-bt{
-    padding: 13px 30px;
+    padding: 7px 13px;
     background-color: var(--text-gold);
     margin-left: 30px;
-    font-size: 1.35vw;
+    font-size: 1.2vw;
     transition: 1s;
     border-radius: 5px;
 }
@@ -76,6 +76,7 @@
 }
 #hamburger{
     gap: 20px;
+    display: flex;
 }
 .sec-Nav > div:not(:last-child) {
   border-right: 1px solid var(--text-black-700);
@@ -119,48 +120,7 @@
 .main{
     overflow: hidden;
 }
-@media only screen and (max-width: 530px){
-    .sec-Nav > div {
-        padding-left: 2px;
-        padding-right: 0px;
-        justify-content: center;
-      }
-      .small-screen{
-        font-size: 10px;
-        /* font-weight: bold; */
-        padding: 10px;
-      }
-      #hamburger {
-        gap: 8px;
-    }
-      .Img-div{
-        margin-left: 5px;
-      }
-      
-      .sec-Nav {
-        top: -2px;
-        width: 100%;
-        display: none;
-      }
-      .main{
-        height: 0px;
-        /* display: none; */
-      }
-      #email-div {
-        margin-left: 10px;
-      }
-      .sec-Nav > div h2{
-        font-size: 2.1px;
-        color: #000000;
-      }
-      .sec-Nav > div h5{
-        font-size: 1.8px;
-        color: #151414fc;
-      }
-      .Container{
-        width: 102%;
-      }
-    }
+
 @media only screen and (max-width: 1100px) {
   #icon-div {
     display: none;
@@ -305,7 +265,7 @@ h5 {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   position: fixed;
   width: 100%;
-  padding: 0px 30px;
+  padding: 12px 30px;
   /* border-radius: 10px; */
   top: 0px;
   background-color: #ffffffd6;
