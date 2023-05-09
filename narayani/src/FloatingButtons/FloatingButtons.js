@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import './FloatingButtons.css'
 import '../Footer/Footer.css'
-import { FaPhoneAlt, FaWhatsapp, FaChevronUp } from "react-icons/fa";
+import { FaWhatsapp, FaChevronUp } from "react-icons/fa";
+import { TbPhoneCall } from "react-icons/tb";
 
 function FloatingButtons() {
     useEffect(() => {
@@ -28,7 +29,7 @@ function FloatingButtons() {
             <div className="element-container">
                 <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">
                     <span className="float-element tooltip-left">
-                        <FaPhoneAlt />
+                        <TbPhoneCall />
                     </span>
                 </a>
                 <span className="float-element">

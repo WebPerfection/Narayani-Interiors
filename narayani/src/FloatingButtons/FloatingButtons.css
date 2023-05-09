@@ -69,12 +69,15 @@ html, body {
   }
 
 .floating-container {
+  display: none;
   position: fixed;
   width: 100px;
   height: 100px;
   bottom: 0;
   right: 0;
   margin: 35px 25px;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 .floating-container:hover {
   height: 300px;
@@ -86,6 +89,7 @@ html, body {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
+
 .floating-container:hover .element-container .float-element:nth-child(1) {
   -webkit-animation: come-in 0.4s forwards 0.2s;
           animation: come-in 0.4s forwards 0.2s;
@@ -139,16 +143,16 @@ html, body {
   font-size: 16px;
 }
 .floating-container .float-element:nth-child(1) {
-  background: #42a4f5be;
-  box-shadow: 0 20px 20px -10px rgba(66, 165, 245, 0.5);
+  background: #42a4f58c;
+  box-shadow: 0 20px 20px -10px rgba(66, 164, 245, 0.26);
 }
 .floating-container .float-element:nth-child(2) {
-  background: #4CAF50;
-  box-shadow: 0 20px 20px -10px rgba(76, 175, 80, 0.5);
+  background: #4caf4fce;
+  box-shadow: 0 20px 20px -10px rgba(76, 175, 79, 0.26);
 }
 .floating-container .float-element:nth-child(3) {
-  background: #FF9800;
-  box-shadow: 0 20px 20px -10px rgba(255, 152, 0, 0.5);
+  background: #ff9900c0;
+  box-shadow: 0 20px 20px -10px rgba(255, 153, 0, 0.404);
 }
 
 .floating-container .element-container span{
