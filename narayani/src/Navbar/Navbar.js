@@ -3,12 +3,13 @@ import web from "./web.png";
 import "./Navbar.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { TbPhoneCall } from "react-icons/tb";
-import { FaArrowRight } from "react-icons/fa";
+import {FaExclamationCircle,FaHandsHelping,FaHouseUser, FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IoEarthOutline } from "react-icons/io5";
 import { GoMail } from "react-icons/go";
-import { ImWhatsapp } from "react-icons/im";
-import { SlSocialInstagram, SlSocialTwitter, SlNote } from "react-icons/sl";
+// import { FaHouseUser } from "react-icons/fa";
+// import { ImWhatsapp } from "react-icons/im";
+// import { SlSocialInstagram, SlSocialTwitter, SlNote } from "react-icons/sl";
 
 export default function Navbar() {
   const [ham, setHam] = useState(false);
@@ -125,8 +126,8 @@ export default function Navbar() {
             <div
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-            >
-              <Link to="/">Home</Link>
+            > 
+              <Link to="/"><FaHouseUser/>Home</Link>
 
               <ul
                 className={`dropdown-container ${isDropdownOpen ? 'open' : ''} ul`}
@@ -142,7 +143,7 @@ export default function Navbar() {
 
             <div onMouseEnter={AbouthandleMouseEnter}
               onMouseLeave={AbouthandleMouseLeave}>
-              <Link to="/">About us</Link>
+              <Link to="/"><FaHandsHelping/>Get in touch</Link>
               <ul
                 className={`dropdown-container ${aboutDropdownOpen ? 'open' : ''} ul`}
                 onMouseEnter={AbouthandleMouseEnter}
@@ -155,7 +156,7 @@ export default function Navbar() {
               </ul>
             </div>
             <div>
-              <Link to="/">Contect</Link>
+              <Link to="/"><FaExclamationCircle/>About us</Link>
             </div>
           </div>
         </div>
@@ -222,13 +223,14 @@ export default function Navbar() {
           style={{ display: hid ? "none" : "" }}
         >
           <div>
-            <Link to="/">Home</Link>
+            <Link to="/"><FaHouseUser/>Home</Link>
           </div>
           <div>
-            <Link to="/">About us</Link>
+            <Link to="/"><FaExclamationCircle/>About us</Link>
           </div>
           <div>
-            <Link to="/">Contect</Link>
+            <Link to="/"><FaHandsHelping/>Get in touch</Link>
+            
           </div>
         </div>
       )}

@@ -265,6 +265,9 @@ h5 {
   font-weight: 500;
   text-decoration: none;
   color: black;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 .vis > div,
 .smallscreen > div {
@@ -424,6 +427,12 @@ h5 {
   margin-left: -27px;
   list-style-type: none;
   animation: hide_ul 1s;
+}
+.Button-div>div a{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
 }
 .Button-div>div:hover a{
   cursor: pointer;
