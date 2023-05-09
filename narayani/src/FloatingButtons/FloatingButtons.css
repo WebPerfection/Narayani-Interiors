@@ -89,6 +89,9 @@ html, body {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
+.element-container{
+  bottom: 30px;
+}
 
 .floating-container:hover .element-container .float-element:nth-child(1) {
   -webkit-animation: come-in 0.4s forwards 0.2s;

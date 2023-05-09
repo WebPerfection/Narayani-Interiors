@@ -42,13 +42,18 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  justify-content: center;
+  justify-content: start;
 }
 .logo-container > div > div {
   display: flex;
   width: 100%;
   flex-direction: column;
   align-items: start;
+}
+.footer-container > div > div:first-child{
+  border-style: solid;
+  border-width: 0 0 2px 0;
+  border-image: linear-gradient( to right, var(--text-gold) 10%, rgb(180, 179, 179) 90% ) 1 0;
 }
 .logo-container p {
   text-align: start;
@@ -72,12 +77,26 @@
   font-size: 14px;
 }
 
-.contact-container {
+/* .logo-container {
   width: 100%;
   max-width: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
+} */
+
+.logo-container>div:first-child{
+display: flex;
+flex-direction: row;
+align-items: center;
+padding-bottom: 10px;
+}
+.News{
+  display: flex;
+  flex-direction: column;
+}
+.logo-container h3{
+  text-align: start;
 }
 
 .phone,
@@ -101,14 +120,14 @@
   font-weight: bold;
 }
 .footer-container > div > div h1 {
-  border-style: solid;
+  /* border-style: solid;
   border-width: 0 0 2px 0;
   border-image: linear-gradient(
       to right,
       var(--text-gold) 10%,
       rgb(180, 179, 179) 90%
     )
-    1 0;
+    1 0; */
   text-align: start;
 }
 
@@ -123,13 +142,15 @@
 .services-container li {
   margin: 10px 0;
   font-size: 15px;
-  padding: 10px 0px 20px 20px;
+  padding: 10px 0px 33px 20px;
   font-weight: lighter;
   text-align: start;
   width: 200px;
   cursor: pointer;
   transition: all 0.4s ease-in-out;
-  border-bottom: 1px solid #968f8f;
+  border-style: solid;
+  border-width: 0 0 2px 0;
+  border-image: linear-gradient( to right, var(--text-gold) 10%, rgb(180, 179, 179) 90% ) 1 0;
   color: rgb(180, 179, 179);
 }
 
@@ -245,7 +266,7 @@
     max-width: none;
   }
 
-  .contact-container {
+  .logo-container {
     max-width: none;
   }
 
