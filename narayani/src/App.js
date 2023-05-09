@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <Navbar />
       <Content />
-      <Footer />
+      {/* <Footer /> */}
       <Designed_by />
       <FloatingButtons />
 

@@ -1,7 +1,24 @@
 .content-main-div>img{
     width: 100%;
 }
-
+.concept-card{
+    width: 100%;
+    justify-content: center;
+    gap: 30px;
+}
+.concept-card>div{
+    border: 1px solid black;
+    width: 30%;
+    /* padding: 20px; */
+}
+.concept-card>div>div:first-child{
+    padding: 15px;
+}
+.concept-card>div>div{
+    border: 1px solid black;
+    margin: 0px;
+    width: 100%;
+}
 @media only screen and (max-width: 530px){
     .content-main-div{
         margin-top: 60px;
