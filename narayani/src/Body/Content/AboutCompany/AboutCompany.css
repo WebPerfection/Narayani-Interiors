@@ -34,6 +34,7 @@
 .company-text{
     padding-left: 60px;
     text-align: left;
+    padding-bottom: 20px;
 }
 .company-text>h4{
     margin-top: 15px;
@@ -81,7 +82,7 @@
 }
 .about-main-div{
     gap: 50px;
-    margin-left: 25px;
+    margin-left: 5px;
 }
 }
 @media screen and (max-width: 1000px) and (min-width: 650px){
