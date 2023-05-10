@@ -1,7 +1,7 @@
 import React from 'react'
-import SrcImage1 from "../../ImageData/v1-1.jpg"
-import SrcImage2 from "../../ImageData/v1-2.jpg"
-import SrcImage3 from "../../ImageData/v1-3.jpg"
+import SrcImage1 from "../../../ImageData/v1-1.jpg"
+import SrcImage2 from "../../../ImageData/v1-2.jpg"
+import SrcImage3 from "../../../ImageData/v1-3.jpg"
 import Carousel from 'react-bootstrap/Carousel';
 import { RiProjectorLine } from "react-icons/ri";
 import { AiOutlineAntDesign } from "react-icons/ai";
@@ -10,7 +10,7 @@ import { FaPaintRoller } from "react-icons/fa";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Content.css"
 import { Link } from 'react-router-dom';
-import { GrNotes } from "react-icons/gr";
+import AbotCompany from '../AboutCompany/AbotCompany';
 export default function Content() {
   const data=[SrcImage1,SrcImage2,SrcImage3]
   return (
@@ -45,7 +45,9 @@ export default function Content() {
       <div><Link>Read More <BsArrowRight className='arrow'/></Link></div>
       </div>
     </div>
+  
     </div>
+    <AbotCompany/>
     </>
   )
 }

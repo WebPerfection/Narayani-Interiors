@@ -1,0 +1,100 @@
+.about-main-div{
+    margin-top: 80px;
+    width: 80%;
+    gap: 200px;
+}
+.about-main{
+    width: 100%;
+
+}
+.companyTitel{
+    text-align: left;
+    width: 50%;
+}
+
+.span,.companyTitel>h6{
+    color: red;
+}
+.companyTitel>h1{
+    font-size: 2vw;
+}
+.companyTitel>p{
+    font-size: 1.2vw;
+}
+.about-main-div>div:first-child{
+   
+    
+    /* width:50%; */
+
+}
+
+.about-main-div>div:first-child{
+    background-color: #ededed;
+}
+.company-text{
+    padding-left: 60px;
+    text-align: left;
+}
+.company-text>h4{
+    margin-top: 15px;
+}
+.company-text>h5{
+    color: var(--text-black-700);
+}
+
+.companyImag{
+    padding: 60px 0px 0px 0px;
+    display: block;
+    background-color: #ededed;
+    max-width: 400px;
+    width: 100%;
+
+}
+
+
+
+.companyImag >img{
+    position: relative;
+    left: 60px;
+   width: 100%;
+}
+@media only screen and (max-width: 650px){
+.about-main-div{
+    flex-direction: column;
+}
+.companyTitel{
+    align-items: center;
+}
+.companyTitel>h1{
+    font-size: 3vw;
+}
+.companyTitel>p{
+    font-size: 2.5vw;
+}
+.companyTitel{
+    width: 80%;
+    /* border: 1px solid black; */
+}
+.about-main{
+    justify-content: left;
+    
+}
+.about-main-div{
+    gap: 50px;
+    margin-left: 25px;
+}
+}
+@media screen and (max-width: 1000px) and (min-width: 650px){
+    .companyTitel>h1{
+        font-size: 1.9vw;
+    }
+    .companyTitel>p{
+        font-size: 1.6vw;
+    }
+    .companyTitel{
+        width: 60%;
+    }
+    .about-main-div{
+        gap: 120px;
+    }
+}
