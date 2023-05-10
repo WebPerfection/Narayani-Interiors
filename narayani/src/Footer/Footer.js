@@ -11,16 +11,14 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer-container">
         <div className="logo-container ">
-          <div className='Flex'>
-            <img src={logo} alt="Awesome Logo" className="logo" />
-            <h2>
-              <em>Web </em>
-              <em>Perfection.</em>
+          <div >
+              <img src={logo} alt="Awesome Logo" className="logo" />
+              <h2>
+                <em>Web </em>
+                <em>Perfection.</em>
 
-            </h2>
-          </div>
-
-          <div className="contact-container">
+              </h2>
+            </div>
             <div>
               <h3>Address</h3>
               <p className="address">Flat 20, Reynolds Neck, North Helenaville, FV77 8WS</p>
@@ -31,36 +29,35 @@ export default function Footer() {
               <p className="phone"> +324 123 45 978 & 01</p>
               <p className="hours">Mon - Friday: 9.00am to 6.00pm</p>
             </div>
-
-
-
             <div>
 
               <h3>EMAIL</h3>
               <p className="email">abc@yourdomain.com</p>
               <p className="email">crystalocareer@gmail.com</p>
             </div>
-
-          </div>
         </div>
 
         <div>
           <div className="services-container">
             <h1>Services</h1>
+          </div >
+          <div className="services-container">
             <ul>
-              <li className='toggle'id='Hover'><a >Concept Design</a></li>
-              <li className='toggle'id='Hover'><a>Concept Design</a></li>
-              <li className='toggle'id='Hover'><a>Concept Design</a></li>
-              <li className='toggle'id='Hover'><a>Concept Design</a></li>
-              <li className='toggle'id='Hover'><a>Concept Design</a></li>
-              <li className='toggle'id='Hover'><a>Concept Design</a></li>
+              <li className='toggle' id='Hover'><a >Concept Design</a></li>
+              <li className='toggle' id='Hover'><a>Concept Design</a></li>
+              <li className='toggle' id='Hover'><a>Concept Design</a></li>
+              <li className='toggle' id='Hover'><a>Concept Design</a></li>
+              <li className='toggle' id='Hover'><a>Concept Design</a></li>
+              <li className='toggle' id='Hover'><a>Concept Design</a></li>
             </ul>
           </div>
         </div>
 
-        <div className='Flex'>
-          <div className="news-container">
+        <div className='News'>
+          <div>
             <h1>Recent News</h1>
+          </div>
+          <div className="news-container">
             <div className="news-item">
               <img src={Image1} alt="Awesome Image" />
               <p>March 10, 2019</p>

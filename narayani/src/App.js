@@ -5,14 +5,16 @@ import Content from './Body/Content/Slider/Content';
 import Footer from './Footer/Footer';
 import Designed_by from './Designed_by/Designe_by';
 import FloatingButtons from './FloatingButtons/FloatingButtons';
+import CustomImages from './Pages/CustomImages';
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      {/* <Navbar />
       <Content />
       <Footer />
       <Designed_by />
-      <FloatingButtons />
+      <FloatingButtons /> */}
+      <CustomImages/>
 
     </div>
   );
