@@ -73,6 +73,7 @@ html, body {
   position: fixed;
   width: 100px;
   height: 100px;
+  z-index: 1000;
   bottom: 0;
   right: 0;
   margin: 35px 25px;

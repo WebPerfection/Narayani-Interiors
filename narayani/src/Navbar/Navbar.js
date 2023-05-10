@@ -133,9 +133,9 @@ export default function Navbar() {
                 onMouseLeave={handleMouseLeave}
 
               >
-                <li>Servecess</li>
-                <li>Awresh</li>
-                <li>Roohi</li>
+                <li>Services</li>
+                <li>Projects</li>
+                <li>Works</li>
               </ul>
             </div>
 
@@ -148,9 +148,9 @@ export default function Navbar() {
                 onMouseLeave={AbouthandleMouseLeave}
 
               >
-                <li>Servecess</li>
-                <li>Awresh</li>
-                <li>Roohi</li>
+                <li>Services</li>
+                <li>Projects</li>
+                <li>Works</li>
               </ul>
             </div>
             <div>
@@ -165,8 +165,8 @@ export default function Navbar() {
               <IoEarthOutline />
             </h1>
             <div className="Flex">
-              <h2>U.P (Fatehpur 212601)</h2>
-              <h5>Flat 201, Reynolds Neck Str</h5>
+              <h2>Ranch (834001)</h2>
+              <h5>4A, Virdavan Apartment</h5>
             </div>
           </div>
           <div
@@ -186,7 +186,7 @@ export default function Navbar() {
           <div
             id="email-div"
             onClick={() => {
-              const emailAddress = "moa16259@gmail.com"; // replace with your email address
+              const emailAddress = "ankitjewrajka1234@gmail.com"; // replace with your email address
               window.open(`mailto:${emailAddress}`, "_blank");
             }}
           >
@@ -194,7 +194,7 @@ export default function Navbar() {
               <GoMail />
             </h1>
             <div className="Flex">
-              <h2>perfectionweb5@gmail.com</h2>
+              <h2>ankitjewrajka1234@gmail.com</h2>
               <h5>Mon - Friday: 9.00 to 18.00</h5>
             </div>
           </div>
