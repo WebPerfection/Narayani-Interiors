@@ -1,11 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import './PopupForm.css'; // import the CSS file
+import { CloseModel } from '../Redux/Action';
+export  const PopupForm = () => {
+  const {ModelCheck}=useSelector(store=>store)
+  const [show, setShow] = useState(false);
 
-const PopupForm = () => {
-  const [show, setShow] = useState(true);
-
-  const handleClose = () => setShow(false);
+  useEffect(()=>{
+    setShow(ModelCheck)
+  },[ModelCheck])
+const dispatch=useDispatch()
+  const handleClose = () => dispatch(CloseModel());
 
   return (
     <Modal show={show} onHide={handleClose} size="lg">
@@ -67,19 +73,4 @@ const PopupForm = () => {
 };
 
 // To show the popup form after 3 seconds
-setTimeout(() => {
-  ReactDOM.render(<PopupForm />, document.getElementById('popup'));
-}, 3000);
 
-// To show the popup form on button click
-const handleButtonClick = () => {
-  ReactDOM.render(<PopupForm />, document.getElementById('popup'));
-};
-
-// To render the button that triggers the popup form
-ReactDOM.render(
-  <div className="button-container">
-    <Button variant="primary" onClick={handleButtonClick}>Get Estimate</Button>
-  </div>,
-  document.getElementById('button')
-);
