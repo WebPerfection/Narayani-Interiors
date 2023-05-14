@@ -12,6 +12,7 @@ import "./Content.css"
 import { Link } from 'react-router-dom';
 import AbotCompany from '../AboutCompany/AbotCompany';
 import Work from '../Work/Work';
+import WorkHome from '../../WoekHome/WorkHome';
 export default function Content() {
   const data=[SrcImage1,SrcImage2,SrcImage3]
   return (
@@ -50,6 +51,7 @@ export default function Content() {
     </div>
     <AbotCompany/>
     <Work/>
+    <WorkHome/>
     </>
   )
 }
