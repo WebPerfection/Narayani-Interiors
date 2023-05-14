@@ -57,7 +57,7 @@ html, body {
     --bg-black-900: #000000;
     --bg-black-100: #dddddd;
     --bg-black-50: #eff0f4;
-    --text-gold: #d2c776;
+    --text-gold: #ff9900c0;;
     --text-black-900: #000000;
     --text-black-700: #555555;
     --text-black-600: #666666;
@@ -110,7 +110,7 @@ html, body {
   position: absolute;
   width: 60px;
   height: 60px;
-  background: var(--text-gold);
+  background: #ff9900c0;;
   bottom: 0;
   border-radius: 50%;
   left: 0;
@@ -147,11 +147,11 @@ html, body {
   font-size: 16px;
 }
 .floating-container .float-element:nth-child(1) {
-  background: #42a4f58c;
+  background: #ff9900c0;
   box-shadow: 0 20px 20px -10px rgba(66, 164, 245, 0.26);
 }
 .floating-container .float-element:nth-child(2) {
-  background: #4caf4fce;
+  background: #ff9900c0;
   box-shadow: 0 20px 20px -10px rgba(76, 175, 79, 0.26);
 }
 .floating-container .float-element:nth-child(3) {

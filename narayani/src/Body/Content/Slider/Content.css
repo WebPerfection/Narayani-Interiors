@@ -7,7 +7,8 @@
     --bg-black-900: #000000;
     --bg-black-100: #dddddd;
     --bg-black-50: #eff0f4;
-    --text-gold: #d2c776;
+    /* --text-gold: #d2c776; */
+    --text-gold: #ff9900c0;
     --text-black-900: #000000;
     --text-black-700: #555555;
     --text-black-600: #666666;
@@ -36,7 +37,7 @@
     margin-top: -50px;
     background-color: white;
 }
-.concept-icon:hover{
+.concept-card>div:hover .concept-icon{
     cursor: pointer;
     rotate: 360deg;
     color: rgb(151, 147, 147);
