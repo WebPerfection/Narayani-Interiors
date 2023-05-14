@@ -31,7 +31,7 @@ export default function Content() {
         <h3>Concept Designs</h3>
         <p>Indignation dislike who are beguile works & demoralized the charms.</p>
         </div>
-        <div><Link>Read More <BsArrowRight className='arrow'/> </Link></div>
+        <div><Link to="/concept-designed">Read More <BsArrowRight className='arrow'/> </Link></div>
       </div>
       <div>
       <div className='Flex'><h1 className='concept-icon'><RiProjectorLine/></h1></div>
