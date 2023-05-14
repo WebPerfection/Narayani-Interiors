@@ -9,12 +9,12 @@ import CustomImages from './Pages/CustomImages';
 function App() {
   return (
     <div className="App">
-      {/* <Navbar />
+      <Navbar />
       <Content />
       <Footer />
       <Designed_by />
-      <FloatingButtons /> */}
-      <CustomImages/>
+      <FloatingButtons />
+      {/* <CustomImages/> */}
 
     </div>
   );
