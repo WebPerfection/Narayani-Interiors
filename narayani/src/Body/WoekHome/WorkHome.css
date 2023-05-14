@@ -1,6 +1,6 @@
 .img-work{
-    width: 350px;
-    height: 400px;
+    width: 330px;
+    height: 380px;
     margin: auto;
     margin-top: 40px;
 }
@@ -9,5 +9,5 @@
 }
 .workHome-main-div{
     margin-top: 80px;
-    padding: 20px 0px;
+    padding: 20px 0px 10px 0px;
 } 
