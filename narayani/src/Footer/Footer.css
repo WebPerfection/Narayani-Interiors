@@ -36,24 +36,29 @@
   padding: 0px 20px;
 }
 
-.logo-container {
+/* .logo-container {
   width: 100%;
   max-width: 200px;
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: start;
-}
+} */
 .logo-container > div > div {
   display: flex;
   width: 100%;
   flex-direction: column;
   align-items: start;
 }
-.footer-container > div > div:first-child{
+.footer-container > div > div:first-child {
   border-style: solid;
   border-width: 0 0 2px 0;
-  border-image: linear-gradient( to right, var(--text-gold) 10%, rgb(180, 179, 179) 90% ) 1 0;
+  border-image: linear-gradient(
+      to right,
+      var(--text-gold) 10%,
+      rgb(180, 179, 179) 90%
+    )
+    1 0;
 }
 .logo-container p {
   text-align: start;
@@ -65,6 +70,9 @@
   max-width: 70px;
   height: auto;
   margin-right: 15px;
+}
+.footer-container > div {
+  width: 33%;
 }
 
 .footer-container > div:nth-child(2) {
@@ -85,17 +93,17 @@
   align-items: center;
 } */
 
-.logo-container>div:first-child{
-display: flex;
-flex-direction: row;
-align-items: center;
-padding-bottom: 10px;
+.logo-container > div:first-child {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 10px;
 }
-.News{
+.News {
   display: flex;
   flex-direction: column;
 }
-.logo-container h3{
+.logo-container h3 {
   text-align: start;
 }
 
@@ -109,7 +117,6 @@ padding-bottom: 10px;
 
 .services-container {
   width: 100%;
-  max-width: 200px;
   display: flex;
   flex-direction: column;
 }
@@ -145,12 +152,17 @@ padding-bottom: 10px;
   padding: 10px 0px 33px 20px;
   font-weight: lighter;
   text-align: start;
-  width: 200px;
+  width: 80%;
   cursor: pointer;
   transition: all 0.4s ease-in-out;
   border-style: solid;
   border-width: 0 0 2px 0;
-  border-image: linear-gradient( to right, var(--text-gold) 10%, rgb(180, 179, 179) 90% ) 1 0;
+  border-image: linear-gradient(
+      to right,
+      var(--text-gold) 10%,
+      rgb(180, 179, 179) 90%
+    )
+    1 0;
   color: rgb(180, 179, 179);
 }
 
@@ -200,7 +212,6 @@ padding-bottom: 10px;
 
 .news-container {
   width: 100%;
-  max-width: 200px;
   display: flex;
   flex-direction: column;
 }
@@ -210,7 +221,13 @@ padding-bottom: 10px;
   font-size: 24px;
   font-weight: bold;
 }
-
+.news-container p{
+  display: flex;
+  word-wrap: normal;
+  justify-content: center;
+  align-items: center
+  ;
+}
 .news-item {
   display: flex;
   align-items: center;
@@ -241,7 +258,7 @@ padding-bottom: 10px;
 
 .news-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); */
   transition: all 0.5s ease-in-out;
 }
 
@@ -254,35 +271,78 @@ padding-bottom: 10px;
   }
 }
 
-@media screen and (min-width: 768px) {
+/* Media queries for tablets */
+@media only screen and (max-width: 1024px) {
   .footer-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 30px;
+    max-width: 768px;
+    padding: 0 10px;
   }
 
-  .logo-container {
-    width: auto;
-    max-width: none;
+  .logo-container > div > div {
+    align-items: center;
+    text-align: center;
   }
 
-  .logo-container {
-    max-width: none;
+  .logo-container > div:first-child {
+    padding-bottom: 20px;
   }
 
-  .services-container,
-  .news-container {
-    max-width: none;
+  .logo {
+    max-width: 50px;
+  }
+
+  .footer-container > div {
+    width: 50%;
+  }
+
+  .address {
+    margin-top: 30px;
+  }
+
+  .services-container {
+    margin-top: 30px;
   }
 }
 
-@media screen and (min-width: 1024px) {
+/* Media queries for mobile */
+@media only screen and (max-width: 767px) {
   .footer-container {
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 50px;
+    max-width: 100%;
+    padding: 0 10px;
+    flex-direction: column;
+    gap: 30px;
   }
-}
-.news-item:hover img {
-  transform: rotate(360deg);
-  transition: all 0.5s ease-in-out;
+
+  .logo-container > div > div {
+    align-items: center;
+    text-align: center;
+  }
+
+  .logo-container > div:first-child {
+    padding-bottom: 20px;
+  }
+
+  .logo {
+    max-width: 50px;
+  }
+
+  .footer-container > div {
+    width: 100%;
+  }
+
+  .address {
+    margin-top: 30px;
+  }
+
+  .services-container {
+    margin-top: 30px;
+  }
+
+  .services-container h3 {
+    text-align: center;
+  }
+
+  /* .services-container li {
+    text-align: center;
+  } */
 }
