@@ -2,40 +2,40 @@
 @-webkit-keyframes come-in {
   0% {
     -webkit-transform: translatey(100px);
-            transform: translatey(100px);
+    transform: translatey(100px);
     opacity: 0;
   }
   30% {
     -webkit-transform: translateX(-50px) scale(0.4);
-            transform: translateX(-50px) scale(0.4);
+    transform: translateX(-50px) scale(0.4);
   }
   70% {
     -webkit-transform: translateX(0px) scale(1.2);
-            transform: translateX(0px) scale(1.2);
+    transform: translateX(0px) scale(1.2);
   }
   100% {
     -webkit-transform: translatey(0px) scale(1);
-            transform: translatey(0px) scale(1);
+    transform: translatey(0px) scale(1);
     opacity: 1;
   }
 }
 @keyframes come-in {
   0% {
     -webkit-transform: translatey(100px);
-            transform: translatey(100px);
+    transform: translatey(100px);
     opacity: 0;
   }
   30% {
     -webkit-transform: translateX(-50px) scale(0.4);
-            transform: translateX(-50px) scale(0.4);
+    transform: translateX(-50px) scale(0.4);
   }
   70% {
     -webkit-transform: translateX(0px) scale(1.2);
-            transform: translateX(0px) scale(1.2);
+    transform: translateX(0px) scale(1.2);
   }
   100% {
     -webkit-transform: translatey(0px) scale(1);
-            transform: translatey(0px) scale(1);
+    transform: translatey(0px) scale(1);
     opacity: 1;
   }
 }
@@ -44,29 +44,30 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   background: #eaedf2;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 :root {
-    --skin-color: #dcdadaef;
-    --skin-color1: #ffffffd6;
-    --skin-color2: #1fc586;
-    --skin-color3: #2eb1ed;
-    --skin-color4: #cc3a3b;
-    --bg-black-900: #000000;
-    --bg-black-100: #dddddd;
-    --bg-black-50: #eff0f4;
-    --text-gold: #ff9900c0;;
-    --text-black-900: #000000;
-    --text-black-700: #555555;
-    --text-black-600: #666666;
-    --text-black-300: #bbbbbb;
-    --outer-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
-    --outer-shadow-0: 0 0 0 #d0d0d0, 0 0 0 #f8f8f8;
-    --inner-shadow: inset 3px 3px 3px #d0d0d0, inset -3px -3px 3px #f8f8f8;
-    --inner-shadow-gold: inset 3px 3px 3px #beb35b, inset -3px -3px 3px #c2b44d;
-  }
+  --skin-color: #dcdadaef;
+  --skin-color1: #ffffffd6;
+  --skin-color2: #1fc586;
+  --skin-color3: #2eb1ed;
+  --skin-color4: #cc3a3b;
+  --bg-black-900: #000000;
+  --bg-black-100: #dddddd;
+  --bg-black-50: #eff0f4;
+  --text-gold: #ff9900c0;
+  --text-black-900: #000000;
+  --text-black-700: #555555;
+  --text-black-600: #666666;
+  --text-black-300: #bbbbbb;
+  --outer-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
+  --outer-shadow-0: 0 0 0 #d0d0d0, 0 0 0 #f8f8f8;
+  --inner-shadow: inset 3px 3px 3px #d0d0d0, inset -3px -3px 3px #f8f8f8;
+  --inner-shadow-gold: inset 3px 3px 3px #beb35b, inset -3px -3px 3px #c2b44d;
+}
 
 .floating-container {
   display: none;
@@ -75,7 +76,7 @@ html, body {
   height: 100px;
   z-index: 1000;
   bottom: 0;
-  right: 0;
+  right: -30px;
   margin: 35px 25px;
   -webkit-transition: all 1s;
   transition: all 1s;
@@ -84,33 +85,33 @@ html, body {
   height: 300px;
 }
 .floating-container:hover .floating-button {
-  box-shadow: 0 10px 25px  #d2c77671;;
+  box-shadow: 0 10px 25px #d2c77671;
   -webkit-transform: translatey(5px);
-          transform: translatey(5px);
+  transform: translatey(5px);
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-.element-container{
+.element-container {
   bottom: 30px;
 }
 
 .floating-container:hover .element-container .float-element:nth-child(1) {
   -webkit-animation: come-in 0.4s forwards 0.2s;
-          animation: come-in 0.4s forwards 0.2s;
+  animation: come-in 0.4s forwards 0.2s;
 }
 .floating-container:hover .element-container .float-element:nth-child(2) {
   -webkit-animation: come-in 0.4s forwards 0.4s;
-          animation: come-in 0.4s forwards 0.4s;
+  animation: come-in 0.4s forwards 0.4s;
 }
 .floating-container:hover .element-container .float-element:nth-child(3) {
   -webkit-animation: come-in 0.4s forwards 0.6s;
-          animation: come-in 0.4s forwards 0.6s;
+  animation: come-in 0.4s forwards 0.6s;
 }
 .floating-container .floating-button {
   position: absolute;
   width: 60px;
   height: 60px;
-  background: #ff9900c0;;
+  background: #ff9900c0;
   bottom: 0;
   border-radius: 50%;
   left: 0;
@@ -140,7 +141,7 @@ html, body {
   z-index: 0;
   opacity: 0;
   -webkit-transform: translateY(100px);
-          transform: translateY(100px);
+  transform: translateY(100px);
 }
 .floating-container .float-element .material-icons {
   vertical-align: middle;
@@ -159,13 +160,13 @@ html, body {
   box-shadow: 0 20px 20px -10px rgba(255, 153, 0, 0.404);
 }
 
-.floating-container .element-container span{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
+.floating-container .element-container span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
 }
-#return-to-top{
-    color: white;
-    font-size: 20px;
+#return-to-top {
+  color: white;
+  font-size: 20px;
 }
