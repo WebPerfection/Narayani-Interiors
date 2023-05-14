@@ -7,11 +7,13 @@ import {FaExclamationCircle,FaHandsHelping,FaHouseUser, FaArrowRight } from "rea
 import { Link } from "react-router-dom";
 import { IoEarthOutline } from "react-icons/io5";
 import { GoMail } from "react-icons/go";
-// import { FaHouseUser } from "react-icons/fa";
-// import { ImWhatsapp } from "react-icons/im";
-// import { SlSocialInstagram, SlSocialTwitter, SlNote } from "react-icons/sl";
+import { useDispatch, useSelector } from "react-redux";
+import { toggelModel } from "../Redux/Action";
 
 export default function Navbar() {
+  const model=useSelector(store=>store)
+  const dispatch=useDispatch()
+  console.log(model)
   const [ham, setHam] = useState(false);
   const [hid, setHid] = useState(false);
   const [refrence, setRefrence] = useState(true);
@@ -67,6 +69,10 @@ export default function Navbar() {
     }
   };
 
+
+  const openModel=()=>{
+    dispatch(toggelModel())
+  }
  
 
   // attach scroll event listener
@@ -211,7 +217,7 @@ export default function Navbar() {
             >
               <ImWhatsapp />
             </h1> */}
-            <button className="estimate-bt">Get Estimate</button>
+            <button onClick={openModel} className="estimate-bt">Get Estimate</button>
           </div>
         </div>
       </div>
