@@ -1,19 +1,66 @@
-.img-work{
-    width: 330px;
-    height: 380px;
-    margin: auto;
-    margin-top: 40px;
-    transition: all 700ms ease;
-    transform: scale(1.01);
+@import url("../../Root/Color.css");
+
+/* Parent container for each project image */
+.project-img-parent {
+  position: relative;
 }
-.img-work:hover{
-    cursor: pointer;
-    transform: scale(1.2) rotate(2deg);
+
+/* Styling for the project image */
+.img-work {
+  width: 330px;
+  height: 380px;
+  margin: auto;
+  margin-top: 40px;
+  transition: all 700ms ease;
+  transform: scale(1.01);
+  transition: all 700ms ease;
 }
-.workHome-main-div>h5{
- color: red;
+
+/* Hover effect for the project image */
+.img-work:hover {
+  cursor: pointer;
+  /* transform: scale(1.2) rotate(2deg); */
+  filter: blur(4px); /* Apply blur effect */
+  filter: blur(4px); /* Apply blur effect */
+  transform: scale(0.9); /* Shrink the image */
 }
-.workHome-main-div{
-    margin-top: 80px;
-    padding: 20px 0px 10px 0px;
-} 
+
+/* Overlay on the project image when hovered */
+.img-work:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--text-gold); /* Black background with 0.7 opacity */
+  z-index: 1; /* Ensure the overlay is above the image */
+  transition: opacity 0.5s ease; /* Add transition for opacity */
+  opacity: 0; /* Hide the overlay on hover */
+}
+
+/* Styling for the "Get Consult" button */
+.get-consult {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2; /* Ensure the button is above the overlay */
+  display: none; /* Hide the button by default */
+  color: white; /* Adjust button text color */
+  background-color: var(--text-gold); /* Adjust button background color */
+  padding: 10px 20px; /* Adjust button padding */
+  border: none; /* Remove button border */
+  pointer-events: none;
+}
+
+/* Hover effect for the "Get Consult" button */
+.get-consult:hover {
+  pointer-events: initial; /* Enable pointer events on hover */
+  transform: scale(1.2); /* Scale up the button */
+}
+
+/* Show the "Get Consult" button when the image is hovered */
+.img-work:hover + .get-consult {
+  display: block; /* Show the button on hover */
+}
