@@ -56,7 +56,7 @@ const WorkHome = () => {
       >
         {data.map((item, index) => (
           <div className='project-img-parent' key={index}>
-            <img className='img-work flex' src={item} alt={`Image ${index + 1}`} /> {/*// Display the image with alt text*/}
+            <img className='img-work flex' src={item} alt={`Image ${index + 1}`} draggable="false" /> {/*// Display the image with alt text*/}
             <button className='get-consult'>Get Consult</button> {/*// Display a button for consultation*/}
           </div>
         ))}
