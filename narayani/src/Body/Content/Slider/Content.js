@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import { RiProjectorLine } from 'react-icons/ri';
 import { AiOutlineAntDesign } from 'react-icons/ai';
@@ -18,13 +18,28 @@ import mobileImage2 from '../../../ImageData/mobile-v1-2.jpg';
 import mobileImage3 from '../../../ImageData/mobile-v1-3.jpg';
 
 export default function Content() {
-  const isMobile = window.innerWidth < 768;
-
-  const data = [
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [data, setData] = useState([
     isMobile ? mobileImage1 : desktopImage1,
     isMobile ? mobileImage2 : desktopImage2,
     isMobile ? mobileImage3 : desktopImage3,
-  ];
+  ]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    setData([
+      isMobile ? mobileImage1 : desktopImage1,
+      isMobile ? mobileImage2 : desktopImage2,
+      isMobile ? mobileImage3 : desktopImage3,
+    ]);
+  }, [isMobile]);
 
   return (
     <>
