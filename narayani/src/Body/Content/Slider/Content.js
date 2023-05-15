@@ -17,7 +17,6 @@ import desktopImage3 from '../../../ImageData/v1-3.jpg';
 import mobileImage1 from '../../../ImageData/mobile-v1-1.jpg';
 import mobileImage2 from '../../../ImageData/mobile-v1-2.jpg';
 import mobileImage3 from '../../../ImageData/mobile-v1-3.jpg';
-import MakeApoiment from '../../MakeApoiment/MakeApoiment';
 export default function Content() {const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [data, setData] = useState([
     isMobile ? mobileImage1 : desktopImage1,
@@ -79,7 +78,6 @@ export default function Content() {const [isMobile, setIsMobile] = useState(wind
     <Work/>
     <WorkHome/>
     <WorkingProcess/>
-    <MakeApoiment/>
     </>
   )
 }
