@@ -19,9 +19,7 @@
 /* Hover effect for the project image */
 .img-work:hover {
   cursor: pointer;
-  /* transform: scale(1.2) rotate(2deg); */
-  filter: blur(4px); /* Apply blur effect */
-  filter: blur(4px); /* Apply blur effect */
+  filter: blur(2px); /* Apply blur effect */
   transform: scale(0.9); /* Shrink the image */
 }
 
