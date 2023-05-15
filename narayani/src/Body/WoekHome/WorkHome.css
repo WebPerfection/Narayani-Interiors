@@ -3,6 +3,12 @@
     height: 380px;
     margin: auto;
     margin-top: 40px;
+    transition: all 700ms ease;
+    transform: scale(1.01);
+}
+.img-work:hover{
+    cursor: pointer;
+    transform: scale(1.2) rotate(2deg);
 }
 .workHome-main-div>h5{
  color: red;
