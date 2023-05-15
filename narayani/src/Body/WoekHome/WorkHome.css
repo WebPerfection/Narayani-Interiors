@@ -25,6 +25,10 @@
   transform: scale(0.9); /* Shrink the image */
 }
 
+.workHome-main-div{
+    margin-top: 80px;
+}
+
 /* Overlay on the project image when hovered */
 .img-work:hover::before {
   content: "";
@@ -56,7 +60,7 @@
 
 /* Hover effect for the "Get Consult" button */
 .get-consult:hover {
-  pointer-events: initial; /* Enable pointer events on hover */
+  /* pointer-events: initial; Enable pointer events on hover */
   transform: scale(1.2); /* Scale up the button */
 }
 

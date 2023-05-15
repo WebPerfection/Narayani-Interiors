@@ -9,6 +9,8 @@ import Src5 from './HomePicData/12cba461df45c94a46be11ce96d3d438.jpg';
 
 import Carousel from 'react-multi-carousel'; // Importing Carousel component
 import 'react-multi-carousel/lib/styles.css'; // Importing Carousel styles
+import { useDispatch, useSelector } from 'react-redux';
+import { toggelModel } from '../../Redux/Action';
 
 // Define responsive configuration for the Carousel component
 const responsive = {
@@ -32,7 +34,13 @@ const responsive = {
 
 const WorkHome = () => {
   const data = [Src1, Src2, Src3, Src4, Src5, Src1, Src2, Src3, Src4, Src5]; // Array of image sources
+  const model=useSelector(store=>store)
+  const dispatch=useDispatch()
 
+  const openModel=()=>{
+    dispatch(toggelModel())
+    console.log("ch")
+  }
   return (
     <div className='workHome-main-div'>
       <h5>Project Showcase</h5>
@@ -55,9 +63,9 @@ const WorkHome = () => {
         itemClass='carousel-item-padding-40-px' // Set CSS class for Carousel items
       >
         {data.map((item, index) => (
-          <div className='project-img-parent' key={index}>
+          <div onClick={openModel} className='project-img-parent' key={index}>
             <img className='img-work flex' src={item} alt={`Image ${index + 1}`} draggable="false" /> {/*// Display the image with alt text*/}
-            <button className='get-consult'>Get Consult</button> {/*// Display a button for consultation*/}
+            <button  className='get-consult'>Get Consult</button> {/*// Display a button for consultation*/}
           </div>
         ))}
       </Carousel>
