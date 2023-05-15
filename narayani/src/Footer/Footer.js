@@ -8,74 +8,81 @@ import '../Navbar/Navbar.css'
 
 export default function Footer() {
   return (
-    <footer className="footer">
-      <div className="footer-container">
-        <div className="logo-container ">
-          <div >
-              <img src={logo} alt="Awesome Logo" className="logo" />
-              <h2>
-                <em>Web </em>
-                <em>Perfection.</em>
-
-              </h2>
-            </div>
-            <div>
-              <h3>Address</h3>
-              <p className="address">Flat 20, Reynolds Neck, North Helenaville, FV77 8WS</p>
-            </div>
-            <div>
-
-              <h3>PHONE</h3>
-              <p className="phone"> +324 123 45 978 & 01</p>
-              <p className="hours">Mon - Friday: 9.00am to 6.00pm</p>
-            </div>
-            <div>
-
-              <h3>EMAIL</h3>
-              <p className="email">abc@yourdomain.com</p>
-              <p className="email">crystalocareer@gmail.com</p>
-            </div>
-        </div>
-
-        <div>
-          <div className="services-container">
-            <h1>Services</h1>
-          </div >
-          <div className="services-container">
-            <ul>
-              <li className='toggle' id='Hover'><a >Concept Design</a></li>
-              <li className='toggle' id='Hover'><a>Concept Design</a></li>
-              <li className='toggle' id='Hover'><a>Concept Design</a></li>
-              <li className='toggle' id='Hover'><a>Concept Design</a></li>
-              <li className='toggle' id='Hover'><a>Concept Design</a></li>
-              <li className='toggle' id='Hover'><a>Concept Design</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div className='News'>
-          <div>
-            <h1>Recent News</h1>
-          </div>
-          <div className="news-container">
-            <div className="news-item">
-              <img src={Image1} alt="Awesome Image" />
-              <p>March 10, 2019</p>
-              <p>Creating drama and feeling with...</p>
-            </div>
-            <div className="news-item">
-              <img src={Image2} alt="Awesome Image" />
-              <p>March 02, 2019</p>
-              <p>Wondering if interior design is dying...</p>
-            </div>
-            <div className="news-item">
-              <img src={Image3} alt="Awesome Image" />
-              <p>February 27, 2019</p>
-              <p>Enjoy monsoon in comfort of your...</p>
-            </div>
-          </div>
-        </div>
+    <footer>
+    <div class="row primary">
+      <div class="column about">
+        <h3 class="footer_h3">Foolish Developer</h3>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae,
+          voluptatem corporis error non,
+        </p>
+                  <div class="social">
+                    <i class="fa-brands fa-facebook-square"></i>
+                    <i class="fa-brands fa-instagram-square"></i>
+                    <i class="fa-brands fa-twitter-square"></i>
+        <i class="fa-brands fa-youtube-square"></i>
+          <i class="fa-brands fa-whatsapp-square"></i>
+                  </div>
       </div>
-    </footer>
+      <div class="column links">
+        <h3 class="footer_h3">Some Links</h3>
+        <ul className='footer_ul'>
+          <li>
+            <a href="#faq">F.A.Q</a>
+          </li>
+          <li>
+            <a href="#cookies-policy">Cookies Policy</a>
+          </li>
+          <li>
+            <a href="#terms-of-services">Terms Of Service</a>
+          </li>
+          <li>
+            <a href="#support">Support</a>
+          </li>
+
+        </ul>
+      </div>
+        <div class="column links">
+          <h3 class="footer_h3">Some Links</h3>
+          <ul className='footer_ul'>
+            <li>
+              <a href="#faq">F.A.Q</a>
+            </li>
+            <li>
+              <a href="#cookies-policy">Cookies Policy</a>
+            </li>
+            <li>
+              <a href="#terms-of-services">Terms Of Service</a>
+            </li>
+            <li>
+              <a href="#support">Support</a>
+            </li>
+
+          </ul>
+        </div>
+      <div class="column subscribe">
+        <h3 class="footer_h3">Newsletter</h3>
+        <div>
+          <input className='footer_input' type="email" placeholder="Your email id here" />
+          <button className='footer_bt'>Subscribe</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row copyright">
+       <div class="footer-menu">
+
+                     <a href="">Home</a>
+                     <a href="">About</a>
+                     <a href="">Contact</a>
+                     <a href="">Blog</a>
+   <a href="">Social</a>
+
+
+                  </div>
+      <p>Copyright &copy; 2021 Foolish Developer</p>
+    </div>
+  </footer>
   );
 }
