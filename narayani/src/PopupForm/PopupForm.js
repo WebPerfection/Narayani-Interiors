@@ -14,7 +14,7 @@ const dispatch=useDispatch()
   const handleClose = () => dispatch(CloseModel());
 
   return (
-    <Modal show={show} onHide={handleClose} size="lg">
+    <Modal  show={show} onHide={handleClose} size="lg" className="popup-modal">
       <Modal.Header closeButton>
         <Modal.Title>Get A Free Consultation</Modal.Title>
       </Modal.Header>
@@ -22,7 +22,7 @@ const dispatch=useDispatch()
         <Form>
           <Form.Group controlId="formHomeType">
             <Form.Label>Tell us about your home</Form.Label>
-            <Form.Control as="select">
+            <Form.Control as="select" className="custom-select">
               <option>1 BHK</option>
               <option>2 BHK</option>
               <option>3 BHK</option>
