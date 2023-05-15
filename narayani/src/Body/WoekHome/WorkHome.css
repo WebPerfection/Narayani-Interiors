@@ -5,6 +5,9 @@
   position: relative;
 }
 
+.workHome-main-div>h5{
+    color: red;
+}
 /* Styling for the project image */
 .img-work {
   width: 330px;
