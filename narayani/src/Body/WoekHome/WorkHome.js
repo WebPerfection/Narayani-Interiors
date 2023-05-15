@@ -16,7 +16,7 @@ const responsive = {
     items: 4
   },
   desktop: {
-    breakpoint: {  max: 1199, min: 900 },
+    breakpoint: { max: 1199, min: 900 },
     items: 3
   },
   tablet: {
@@ -30,33 +30,34 @@ const responsive = {
 };
 // Usage example
 const WorkHome = () => {
-  const data=[Src1,Src2,Src3,Src4,Src5,Src1,Src2,Src3,Src4,Src5]
+  const data = [Src1, Src2, Src3, Src4, Src5, Src1, Src2, Src3, Src4, Src5]
   return (
-    
-    
-      <div className='workHome-main-div'>
-        <h5>Project</h5>
-        <h1>RECENTLY COMPLETED WORKS</h1>
-        <Carousel  swipeable={false}
-      draggable={true}
-      showDots={true}
-      responsive={responsive}
-      ssr={true} // means to render carousel on server-side.
-      infinite={true}
-      autoPlay={true}
-      autoPlaySpeed={3000}
-      keyBoardControl={true}
-      customTransition="all 2s"
-      transitionDuration={2000}
-      containerClass="carousel-container"
-      removeArrowOnDeviceType={["tablet", "mobile"]}
-      dotListClass="custom-dot-list-style"
-      itemClass="carousel-item-padding-40-px" >
-      {data.map((item)=><img className='img-work Flex' src={item}/>)}
+
+
+    <div className='workHome-main-div'>
+      <h5>
+        Project Showcase</h5>
+      <h1>Discover Our Latest Interior Design Masterpieces</h1>
+      <Carousel swipeable={false}
+        draggable={true}
+        showDots={true}
+        responsive={responsive}
+        ssr={true} // means to render carousel on server-side.
+        infinite={true}
+        autoPlay={true}
+        autoPlaySpeed={3000}
+        keyBoardControl={true}
+        customTransition="all 2s"
+        transitionDuration={2000}
+        containerClass="carousel-container"
+        removeArrowOnDeviceType={["tablet", "mobile"]}
+        dotListClass="custom-dot-list-style"
+        itemClass="carousel-item-padding-40-px" >
+        {data.map((item) => <img className='img-work Flex' src={item} />)}
       </Carousel>
-      </div>
-    
-    
+    </div>
+
+
   );
 };
 
