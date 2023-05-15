@@ -1,0 +1,29 @@
+.appointment-div{
+    width: 80%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.appointment-main-div{
+    background-color: #f2b259;
+    padding: 30px 0px;
+    align-items: center;
+    color: white;
+}
+.appointment-bt{
+  background-color: white;
+  padding: 10px 30px;
+  transition: 1s;
+}
+.appointment-bt:hover{
+    background-color: #f2b259;
+    color: white;
+    transition: 1s;
+    border: 1px solid #de9c40;
+}
+@media screen and (max-width: 1000px) and (min-width: 0px){
+    .appointment-div{
+        width: 80%;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

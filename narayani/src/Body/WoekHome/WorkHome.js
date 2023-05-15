@@ -39,7 +39,7 @@ const WorkHome = () => {
         Project Showcase</h5>
       <h1>Discover Our Latest Interior Design Masterpieces</h1>
       <Carousel swipeable={false}
-        draggable={true}
+        
         showDots={true}
         responsive={responsive}
         ssr={true} // means to render carousel on server-side.
@@ -53,7 +53,7 @@ const WorkHome = () => {
         removeArrowOnDeviceType={["tablet", "mobile"]}
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px" >
-        {data.map((item) => <img className='img-work Flex' src={item} />)}
+        {data.map((item) => <div><img className='img-work Flex' src={item} /></div>)}
       </Carousel>
     </div>
 
