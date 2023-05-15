@@ -1,14 +1,14 @@
-.modal-content {
+.popup-modal .modal-content {
   background-color: #f8f9fa;
   border-radius: 20px;
   padding: 20px;
 }
 
-.modal-header {
+.popup-modal .modal-header {
   border-bottom: none;
 }
 
-.modal-title {
+.popup-modal .modal-title {
   font-size: 24px;
   font-weight: bold;
   text-align: center;
@@ -16,52 +16,52 @@
   margin-bottom: 20px;
 }
 
-.form-group {
+.popup-modal .form-group {
   margin-bottom: 20px;
 }
 
-.form-control {
+.popup-modal .form-control {
   border-radius: 10px;
 }
 
-.form-label {
+.popup-modal .form-label {
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-.form-check-label {
+.popup-modal .form-check-label {
   font-weight: normal;
 }
 
-.checkbox-container {
+.popup-modal .checkbox-container {
   display: flex;
   align-items: center;
 }
 
-.checkbox-container label {
+.popup-modal .checkbox-container label {
   margin-bottom: 0;
   margin-left: 10px;
 }
 
-.button-container {
+.popup-modal .button-container {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
 
-.btn-primary {
+.popup-modal .btn-primary {
   background-color: #3f51b5;
   border-color: #3f51b5;
   border-radius: 20px;
   font-weight: bold;
 }
 
-.btn-primary:hover {
+.popup-modal .btn-primary:hover {
   background-color: #303f9f;
   border-color: #303f9f;
 }
 
-.btn-secondary {
+.popup-modal .btn-secondary {
   background-color: #e0e0e0;
   border-color: #e0e0e0;
   border-radius: 20px;
@@ -69,7 +69,7 @@
   font-weight: bold;
 }
 
-.btn-secondary:hover {
+.popup-modal .btn-secondary:hover {
   background-color: #bdbdbd;
   border-color: #bdbdbd;
   color: #212121;

@@ -9,21 +9,26 @@ export default function AbotCompany() {
           <img src={CompImag} />
           <br></br>
           <div className="company-text">
-            
-          <h5>Experiencd & Well knowledgeable Interior designers.</h5>
-          <div><h6>Ankit Agarwal, <span className="span">CEO & Founder</span></h6></div>
+
+            <h5>Experiencd & Well knowledgeable Interior designers.</h5>
+            <div><h6>Ankit Agarwal, <span className="span">CEO & Founder</span></h6></div>
           </div>
         </div>
         <div className="companyTitel">
-          <h6>ABOUT COMPANY</h6>
-          <h1>A SMALL EFFICIENT INTERIOR DESIGNING TEAM</h1>
+          <h6>About Us</h6>
+          <h1>Experience the Essence of Exceptional Interior Design</h1>
           <p>
-            We denounce with righteous indignation and dislike men who are so
-            beguiled and demoralized by the charms of pleasure of the moment, so
-            blinded by desire, that they cannot foresee the pain and trouble
-            that are bound. Indignation and dislike men who are so beguiled and
-            demoralized by the charms pleasure of the moment, so blinded by
-            desire, that they cannot foresee.
+            At our company, we are a dedicated and highly efficient team of interior designers. We take pride in creating captivating spaces that leave a lasting impression. Our passion for design knows no bounds, and we are committed to delivering extraordinary results.
+            <br/>
+            
+
+            With a deep understanding of our clients' needs, we embark on a journey to transform their spaces into personalized works of art. We believe that every detail matters, from the selection of colors and textures to the careful placement of furniture and accessories.
+            <br/>
+            We denounce the ordinary and embrace innovation and creativity in all aspects of our work. Our approach is driven by a desire to exceed expectations and create harmonious environments that evoke a sense of joy and tranquility.
+            <br/>
+            We understand that each project is unique, and we tailor our services to fit your specific vision and requirements. Our meticulous attention to detail ensures that every aspect of your project is handled with utmost care and precision.
+            <br/>
+            Join us on this extraordinary design adventure, and let us bring your interior design dreams to life. Together, we will create spaces that inspire, delight, and surpass your wildest imagination.
           </p>
         </div>
       </div>
