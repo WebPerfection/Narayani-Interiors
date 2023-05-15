@@ -11,7 +11,10 @@ export default function Footer() {
     <footer>
       <div class="row primary">
         <div class="column about">
-          <h3 class="footer_h3">Foolish Developer</h3>
+
+          <h3 class="footer_h3">
+            Narayni- Interior
+          </h3>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae,
             voluptatem corporis error non,
@@ -80,7 +83,7 @@ export default function Footer() {
           <a href="">Blog</a>
           <a href="">Social</a>
         </div>
-        <p>Copyright &copy; 2021 Foolish Developer</p>
+        {/* <p>Copyright &copy; 2021 Foolish Developer</p> */}
       </div>
     </footer>
   );
