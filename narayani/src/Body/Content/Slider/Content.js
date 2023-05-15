@@ -22,7 +22,7 @@ export default function Content() {const [isMobile, setIsMobile] = useState(wind
     isMobile ? mobileImage1 : desktopImage1,
     isMobile ? mobileImage2 : desktopImage2,
     isMobile ? mobileImage3 : desktopImage3,
-  ]);
+  ]); 
 
   useEffect(() => {
     const handleResize = () => {
