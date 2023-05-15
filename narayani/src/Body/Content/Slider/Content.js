@@ -45,7 +45,7 @@ export default function Content() {const [isMobile, setIsMobile] = useState(wind
     <Carousel fade>
         {data.map((el) => (
           <Carousel.Item interval={1500}>
-            <img src={el} className="d-block w-100" alt="" />
+            <img src={el} className="d-block w-100" alt=""  draggable="false"/>
           </Carousel.Item>
         ))}
       </Carousel>
