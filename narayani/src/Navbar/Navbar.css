@@ -47,9 +47,13 @@
     border-radius: 5px;
 }
 .estimate-bt:hover{
-    background-color: #d2c776;
-    color:rgb(102, 98, 98);
-    box-shadow: var(--inner-shadow-gold);
+  background: linear-gradient(
+    to right,
+    var(--text-gold) 10%,
+    rgb(218, 216, 216) 90%
+  );
+    /* color:rgb(102, 98, 98); */
+    /* box-shadow: var(--inner-shadow-gold); */
 }
 .Img-div {
   display: flex;
