@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const FooterContainer = styled.footer`
-  background-color: #1b1b1b;
+  background-color: rgb(27, 27, 27);
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -29,9 +29,6 @@ function Footer() {
     <FooterContainer>
       <FooterText>
         © 2023 Web Perfection. All rights reserved.
-      </FooterText>
-      <FooterText>
-        Designed by <FooterLink href="https://webperfection.io/">Web Perfection</FooterLink>
       </FooterText>
     </FooterContainer>
   );

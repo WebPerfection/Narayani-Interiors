@@ -67,13 +67,15 @@
     align-items: center;
 }
 .companyTitel>h1{
-    font-size: 3vw;
+    font-size: 4vw;
 }
 .companyTitel>p{
-    font-size: 2.5vw;
+    font-size: 3vw;
 }
 .companyTitel{
-    width: 80%;
+    width: 100%;
+    margin: auto;
+    margin-left: 12%;
     /* border: 1px solid black; */
 }
 .about-main{
@@ -83,6 +85,7 @@
 .about-main-div{
     gap: 50px;
     margin-left: 5px;
+    /* width: 100%; */
 }
 }
 @media screen and (max-width: 1000px) and (min-width: 650px){

@@ -12,8 +12,9 @@
 }
 .appointment-bt {
   background-color: white;
+  border: 1px solid white;
   padding: 10px 30px;
-  transition: 1s;
+  transition: 0.5s;
 }
 .appointment-bt:hover {
   background: linear-gradient(

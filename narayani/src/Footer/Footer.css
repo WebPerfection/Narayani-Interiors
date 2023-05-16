@@ -1,5 +1,5 @@
 footer {
-  background-color: #121315;
+  background-color: rgb(27, 27, 27);
   color: #a7a7a7;
   font-size: 16px;
 }
@@ -10,8 +10,9 @@ footer * {
   border: none;
   outline: none;
 }
-.row {
+footer > .row {
   padding: 1em 1em;
+  margin-left: 0;
 }
 .row.copyright {
   --bs-gutter-x: 0rem;

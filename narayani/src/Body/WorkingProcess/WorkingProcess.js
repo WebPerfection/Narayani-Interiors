@@ -9,7 +9,7 @@ import "./Working.css"
 export default function WorkingProcess() {
   return (
     <div className='working_main_div'>
-        <h5>TO DO GOOD DESIGN</h5>
+        <h6 className='h6'>TO DO GOOD DESIGN</h6>
         <h1>OUR WORKING PROCESS</h1>
     <div className='Flex working-card' id="working-card">
     
