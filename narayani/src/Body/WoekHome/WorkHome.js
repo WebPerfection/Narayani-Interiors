@@ -43,7 +43,7 @@ const WorkHome = () => {
   }
   return (
     <div className='workHome-main-div'>
-      <h5>Project Showcase</h5>
+      <h6 className='h6'>Project Showcase</h6>
       <h1>Discover Our Latest Interior Design Masterpieces</h1>
       <Carousel
         swipeable={false} // Disable swipe gestures for the Carousel

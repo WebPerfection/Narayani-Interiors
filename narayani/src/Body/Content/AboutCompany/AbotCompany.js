@@ -15,7 +15,7 @@ export default function AbotCompany() {
           </div>
         </div>
         <div className="companyTitel">
-          <h6>About Us</h6>
+          <h6 className="h6">About Us</h6>
           <h1>Experience the Essence of Exceptional Interior Design</h1>
           <p>
             {/* At our company, we are a dedicated and highly efficient team of interior designers. We take pride in creating captivating spaces that leave a lasting impression. Our passion for design knows no bounds, and we are committed to delivering extraordinary results.
