@@ -92,6 +92,26 @@
     margin-top: 60px;
   }
 }
+@media only screen and (max-width: 600px) {
+    .heading {
+      font-size: 1.5rem !important;
+    }
+  
+    .text {
+      font-size: 0.9rem !important;
+    }
+    .heading_container{
+        width: 80% !important;
+    }
+    .about_btn{
+    padding: 0.5rem 1rem !important;
+    transition: 0.5s !important;
+    }
+    .heading_container {
+        top: 50% !important;
+      }
+  }
+  
 @media only screen and (max-width: 900px) {
   #concept-card {
     flex-direction: column;
@@ -165,7 +185,7 @@
     align-items: center;
     gap: .630rem;
     border: 1px solid white;
-    padding: 10px 30px;
+    padding: .625rem 1.875rem;
     transition: 0.5s;
     color: white;
     font-weight: bold;
