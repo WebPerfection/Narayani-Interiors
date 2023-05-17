@@ -171,7 +171,7 @@ export default function Navbar() {
               <IoEarthOutline />
             </h1>
             <div className="Flex">
-              <h2>Ranch (834001)</h2>
+              <h2>Ranchi (834001)</h2>
               <h5>4A, Virdavan Apartment</h5>
             </div>
           </div>
