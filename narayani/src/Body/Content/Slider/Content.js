@@ -3,7 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import { RiProjectorLine } from "react-icons/ri";
 import { AiOutlineAntDesign } from "react-icons/ai";
 import { BsArrowRight } from "react-icons/bs";
-import { FaPaintRoller } from "react-icons/fa";
+import { FaPaintRoller,FaLongArrowAltRight } from "react-icons/fa";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Content.css"
 import { Link } from 'react-router-dom';
@@ -18,12 +18,14 @@ import mobileImage1 from '../../../ImageData/mobile-v1-1.jpg';
 import mobileImage2 from '../../../ImageData/mobile-v1-2.jpg';
 import mobileImage3 from '../../../ImageData/mobile-v1-3.jpg';
 import MakeApoiment from '../../MakeApoiment/MakeApoiment';
-export default function Content() {const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+export default function Content() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [data, setData] = useState([
     isMobile ? mobileImage1 : desktopImage1,
     isMobile ? mobileImage2 : desktopImage2,
     isMobile ? mobileImage3 : desktopImage3,
-  ]); 
+  ]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -40,46 +42,58 @@ export default function Content() {const [isMobile, setIsMobile] = useState(wind
       isMobile ? mobileImage3 : desktopImage3,
     ]);
   }, [isMobile]);
+
   return (
     <>
-    <Carousel fade>
+      <Carousel fade>
         {data.map((el) => (
-          <Carousel.Item interval={1500}>
-            <img src={el} className="d-block w-100" alt=""  draggable="false"/>
+          <Carousel.Item interval={1500} key={el}>
+            <div className='main_container'>
+              <div className='image_wrapper'>
+                <img src={el} className="d-block w-100" alt="" draggable="false" />
+              </div>
+              <div className='heading_container'>
+                <div className='heading_content'>
+                  <h2 className='heading'>Discover Inspiring Decor Ideas</h2>
+                  <p className="text">Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.</p>
+                  <button className='about_btn'>About Company <FaLongArrowAltRight/></button>
+                </div>
+              </div>
+            </div>
           </Carousel.Item>
         ))}
       </Carousel>
-    <div className='Flex'>
-    <div className='Flex concept-card' id="concept-card">
-      <div>
-      <div className='Flex'><h1 className='concept-icon'><AiOutlineAntDesign/></h1></div>
-        <div>
-          
-        <h3>Concept Designs</h3>
-        <p>Indignation dislike who are beguile works & demoralized the charms.</p>
+      <div className='Flex'>
+        <div className='Flex concept-card' id="concept-card">
+          <div>
+            <div className='Flex'><h1 className='concept-icon'><AiOutlineAntDesign /></h1></div>
+            <div>
+
+              <h3>Concept Designs</h3>
+              <p>Indignation dislike who are beguile works & demoralized the charms.</p>
+            </div>
+            <div><Link to="/concept-designed">Read More <BsArrowRight className='arrow' /> </Link></div>
+          </div>
+          <div>
+            <div className='Flex'><h1 className='concept-icon'><RiProjectorLine /></h1></div>
+            <div><h3>Project Designs</h3>
+              <p>Our power of choice is untrammelled and all nothing prevents best.</p></div>
+            <div><Link>Read More <BsArrowRight className='arrow' /></Link></div>
+          </div>
+          <div>
+            <div className='Flex'><h1 className='concept-icon'><FaPaintRoller /></h1></div>
+            <div><h3>Make Overs</h3>
+              <p>Every pleasure is to be welcomed & every circumstances & owing power.</p></div>
+            <div><Link>Read More <BsArrowRight className='arrow' /></Link></div>
+          </div>
         </div>
-        <div><Link to="/concept-designed">Read More <BsArrowRight className='arrow'/> </Link></div>
+
       </div>
-      <div>
-      <div className='Flex'><h1 className='concept-icon'><RiProjectorLine/></h1></div>
-        <div><h3>Project Designs</h3>
-        <p>Our power of choice is untrammelled and all nothing prevents best.</p></div>
-        <div><Link>Read More <BsArrowRight className='arrow'/></Link></div>
-      </div>
-      <div>
-      <div className='Flex'><h1 className='concept-icon'><FaPaintRoller/></h1></div>
-      <div><h3>Make Overs</h3>
-      <p>Every pleasure is to be welcomed & every circumstances & owing power.</p></div>
-      <div><Link>Read More <BsArrowRight className='arrow'/></Link></div>
-      </div>
-    </div>
-  
-    </div>
-    <AbotCompany/>
-    <Work/>
-    <WorkHome/>
-    <WorkingProcess/>
-    <MakeApoiment/>
+      <AbotCompany />
+      <Work />
+      <WorkHome />
+      <WorkingProcess />
+      <MakeApoiment />
     </>
   )
 }
