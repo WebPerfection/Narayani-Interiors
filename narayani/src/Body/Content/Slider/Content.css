@@ -1,23 +1,3 @@
-:root {
-  --skin-color: #dcdadaef;
-  --skin-color1: #ffffffd6;
-  --skin-color2: #1fc586;
-  --skin-color3: #2eb1ed;
-  --skin-color4: #cc3a3b;
-  --bg-black-900: #000000;
-  --bg-black-100: #dddddd;
-  --bg-black-50: #eff0f4;
-  /* --text-gold: #d2c776; */
-  --text-gold: #ff9900c0;
-  --text-black-900: #000000;
-  --text-black-700: #555555;
-  --text-black-600: #666666;
-  --text-black-300: #bbbbbb;
-  --outer-shadow: 3px 3px 3px #d0d0d0, -3px -3px 3px #f8f8f8;
-  --outer-shadow-0: 0 0 0 #d0d0d0, 0 0 0 #f8f8f8;
-  --inner-shadow: inset 3px 3px 3px #d0d0d0, inset -3px -3px 3px #f8f8f8;
-  --inner-shadow-gold: inset 3px 3px 3px #beb35b, inset -3px -3px 3px #c2b44d;
-}
 
 .content-main-div > img {
   width: 100%;
@@ -91,6 +71,10 @@
   .content-main-div {
     margin-top: 60px;
   }
+}
+.carousel-control-next, .carousel-control-prev{
+    top: 50%;
+    height: fit-content;
 }
 @media only screen and (max-width: 600px) {
     .heading {
@@ -172,13 +156,15 @@
   }
   .heading {
     font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.726);
+    color: white;
   }
   
   .text {
     font-size: 1.2rem;
-    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.726);
+    color: white;
   }
-  
   .about_btn {
     display: flex;
     background-color: var(--text-gold);
