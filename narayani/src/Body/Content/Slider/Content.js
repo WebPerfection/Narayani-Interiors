@@ -3,7 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import { RiProjectorLine } from "react-icons/ri";
 import { AiOutlineAntDesign } from "react-icons/ai";
 import { BsArrowRight } from "react-icons/bs";
-import { FaPaintRoller,FaLongArrowAltRight } from "react-icons/fa";
+import { FaPaintRoller, FaLongArrowAltRight } from "react-icons/fa";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Content.css"
 import { Link } from 'react-router-dom';
@@ -56,7 +56,7 @@ export default function Content() {
                 <div className='heading_content'>
                   <h2 className='heading'>Discover Inspiring Decor Ideas</h2>
                   <p className="text">Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.</p>
-                  <button className='about_btn'>About Company <FaLongArrowAltRight/></button>
+                  <button className='about_btn'>About Company <FaLongArrowAltRight /></button>
                 </div>
               </div>
             </div>
@@ -70,20 +70,21 @@ export default function Content() {
             <div>
 
               <h3>Concept Designs</h3>
-              <p>Indignation dislike who are beguile works & demoralized the charms.</p>
+              <p>"Unlock the Art of Innovation - Embrace Concepts that Inspire, Ignite, and Redefine the Boundaries of Design."</p>
             </div>
             <div><Link to="/concept-designed">Read More <BsArrowRight className='arrow' /> </Link></div>
           </div>
           <div>
             <div className='Flex'><h1 className='concept-icon'><RiProjectorLine /></h1></div>
             <div><h3>Project Designs</h3>
-              <p>Our power of choice is untrammelled and all nothing prevents best.</p></div>
+              <p>"Embark on a Journey of Limitless Possibilities - Unleash the Power of Choice to Create the Best Designs."</p>
+            </div>
             <div><Link>Read More <BsArrowRight className='arrow' /></Link></div>
           </div>
           <div>
             <div className='Flex'><h1 className='concept-icon'><FaPaintRoller /></h1></div>
             <div><h3>Make Overs</h3>
-              <p>Every pleasure is to be welcomed & every circumstances & owing power.</p></div>
+              <p>Transformation Begins Here - Rediscover the Beauty of Spaces with Captivating Makeovers that Transcend Imagination and Create Lasting Impressions."</p></div>
             <div><Link>Read More <BsArrowRight className='arrow' /></Link></div>
           </div>
         </div>
