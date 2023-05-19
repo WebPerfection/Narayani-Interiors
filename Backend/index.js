@@ -12,8 +12,9 @@ const upload = multer({
       cb(null, "uploads");
     },
     filename: function (req, file, cb) {
+        console.log("file",file)
       cb(null, file.fieldname + "-" + Date.now() + ".jpg");
-      
+       
     },
   }),
 }).array("user_photo",2);
@@ -39,7 +40,7 @@ const formattedDate = `${day}/${month}/${year}`;
 
     async function uploadImages() {
         const files = req.files; 
-      
+        // console.log(files)
         const uploadPromises = files.map((file) => {
           return cloudinary.uploader.upload(file.path);
         });
@@ -53,7 +54,7 @@ const formattedDate = `${day}/${month}/${year}`;
         console.log('Images uploaded:', imageUrls);
         const payload={
             title,
-            images:imageUrls,
+            images:imageUrls, 
             description,
             date:formattedDate
         }

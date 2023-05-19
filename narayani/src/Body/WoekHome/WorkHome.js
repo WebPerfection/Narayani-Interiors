@@ -11,6 +11,7 @@ import Carousel from 'react-multi-carousel'; // Importing Carousel component
 import 'react-multi-carousel/lib/styles.css'; // Importing Carousel styles
 import { useDispatch, useSelector } from 'react-redux';
 import { toggelModel } from '../../Redux/Action';
+import { Link } from 'react-router-dom';
 
 // Define responsive configuration for the Carousel component
 const responsive = {
@@ -63,10 +64,11 @@ const WorkHome = () => {
         itemClass='carousel-item-padding-40-px' // Set CSS class for Carousel items
       >
         {data.map((item, index) => (
+          <Link to="Images">
           <div onClick={openModel} className='project-img-parent' key={index}>
-            <img className='img-work flex' src={item} alt={`Image ${index + 1}`} draggable="false" /> {/*// Display the image with alt text*/}
-            <button  className='get-consult'>Get Consult</button> {/*// Display a button for consultation*/}
+            <img className='img-work flex' src={item} alt={`Image ${index + 1}`} draggable="false" /> 
           </div>
+          </Link>
         ))}
       </Carousel>
     </div>

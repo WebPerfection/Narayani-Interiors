@@ -4,4 +4,4 @@ const Connect = mongoose.connect(process.env.DB_url)
 
 module.exports={
     Connect
-} 
+}  
