@@ -22,9 +22,9 @@ import MakeApoiment from '../../MakeApoiment/MakeApoiment';
 export default function Content() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [data, setData] = useState([
-    isMobile ? mobileImage1 : desktopImage1,
-    isMobile ? mobileImage2 : desktopImage2,
-    isMobile ? mobileImage3 : desktopImage3,
+    isMobile ? mobileImage1 : {img:desktopImage1,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Discover Inspiring Decor Ideas"},
+    isMobile ? mobileImage2 : {img:desktopImage2,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Discover Inspiring Decor Ideas"},
+    isMobile ? mobileImage3 : {img:desktopImage3,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Discover Inspiring Decor Ideas"},
   ]);
 
   useEffect(() => {
@@ -37,9 +37,9 @@ export default function Content() {
 
   useEffect(() => {
     setData([
-      isMobile ? mobileImage1 : desktopImage1,
-      isMobile ? mobileImage2 : desktopImage2,
-      isMobile ? mobileImage3 : desktopImage3,
+      isMobile ? mobileImage1 : {img:desktopImage1,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Discover Inspiring "},
+      isMobile ? mobileImage2 : {img:desktopImage2,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Discover Inspiring Decor Ideas"},
+      isMobile ? mobileImage3 : {img:desktopImage3,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Discover "},
     ]);
   }, [isMobile]);
 
@@ -50,12 +50,12 @@ export default function Content() {
           <Carousel.Item interval={1500} key={el}>
             <div className='main_container'>
               <div className='image_wrapper'>
-                <img src={el} className="d-block w-100" alt="" draggable="false" />
+                <img src={el.img} className="d-block w-100" alt="" draggable="false" />
               </div>
               <div className='heading_container'>
                 <div className='heading_content'>
-                  <h2 className='heading'>Discover Inspiring Decor Ideas</h2>
-                  <p className="text">Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.</p>
+                  <h2 className='heading'>{el.heading}</h2>
+                  <p className="text">{el.text}</p>
                   <button className='about_btn'>About Company <FaLongArrowAltRight /></button>
                 </div>
               </div>

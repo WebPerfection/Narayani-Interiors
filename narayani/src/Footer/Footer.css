@@ -53,7 +53,7 @@ footer > .row {
 }
 .footer_ul li a:hover,
 .social i:hover {
-  color: var(--text-gold);
+  color: #f2b259;
 }
 .about p {
   text-align: justify;
@@ -69,7 +69,7 @@ footer > .row {
   margin-bottom: 5px;
 }
 .footer_bt {
-  background-color: var(--text-gold);
+  background-color: #f2b259;
   color: #121315;
 }
 
