@@ -4,9 +4,15 @@ import Navbar from '../Navbar/Navbar'
 import { TbPhoneCall,TbMap } from "react-icons/tb";
 import { GoMail } from "react-icons/go";
 import './ContactUs.css';
-
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export default function ContactUs() {
+    const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
     return (
         <>
             {/* <Navbar /> */}
