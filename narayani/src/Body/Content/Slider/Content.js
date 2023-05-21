@@ -55,7 +55,7 @@ useEffect(() => {
               </div>
               <div className='heading_container'>
                 <div className='heading_content'>
-                  <h2 className='heading'>{el.heading}</h2>
+                  <h2 className='heading'>{el.heading}</h2> 
                   <p className="text">{el.text}</p>
                   <button className='about_btn'>About Company <FaLongArrowAltRight /></button>
                 </div>
