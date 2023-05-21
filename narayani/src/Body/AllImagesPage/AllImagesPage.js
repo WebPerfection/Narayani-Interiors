@@ -50,7 +50,7 @@ const ProjectPage = () => {
     console.log("ch");
   };
 
-  const [heroImage, setHeroImage] = useState(1);
+  const [heroImage, setHeroImage] = useState(0);
   const [onImage,setOnaImage]=useState(false)
   const [projectImages, setProjectImages] = useState([
     "https://super.homelane.com/MRJIOM5524_main-1448357087_navarino-straight-wardrobe.jpg",
@@ -77,6 +77,7 @@ const ProjectPage = () => {
       <Navbar />
       <div>Hello world</div>
       <div className="pro-main">
+        <div className="Flex">
         <div className="HeroImages-main-div">
           <div className="HeroImage">
             <img className={onImage ? "showHeroImage":"hideHeroImage"} src={projectImages[heroImage]} />
@@ -98,7 +99,7 @@ const ProjectPage = () => {
               <button>Wishlist</button>
               <div>
                 <h5>Specification</h5>
-                <p>size|9'</p>
+                <p>size - 9'</p>
               </div>
               <div className="related-images Flex">
                 {projectImages.map((el, i) => (
@@ -108,6 +109,7 @@ const ProjectPage = () => {
             </div>
             <div className="HeroImage-related-div"></div>
           </div>
+        </div>
         </div>
         <div className="related-item">
           <div className="workHome-main-div">
