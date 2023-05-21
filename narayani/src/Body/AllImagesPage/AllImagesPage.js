@@ -77,6 +77,7 @@ const ProjectPage = () => {
           <div className="thumbnail-container">
             {projectImages.map((image, index) => (
               <img
+                draggable="false"
                 key={index}
                 className={`thumbnail-image ${activeIndex === index ? 'active' : ''}`} // Add 'active' class to the active thumbnail
                 src={image}
