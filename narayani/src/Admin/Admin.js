@@ -77,7 +77,7 @@ const AdminPanel = () => {
                     onEditorChange={(content) => setDescription(content)}
                     init={{
                         plugins: 'advlist autolink lists link image charmap print preview anchor',
-                        toolbar: 'bold italic underline | bullist numlist | link image',
+                        toolbar: 'bold italic underline | bullist numlist | link',
                         menubar: false
                     }}
                 />
