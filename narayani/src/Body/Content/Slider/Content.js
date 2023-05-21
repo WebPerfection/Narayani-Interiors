@@ -20,29 +20,28 @@ import mobileImage3 from '../../../ImageData/mobile-v1-3.jpg';
 import MakeApoiment from '../../MakeApoiment/MakeApoiment';
 
 export default function Content() {
- const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-const [data, setData] = useState([
-  isMobile ? mobileImage1 : { img: desktopImage1, text: "Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.", heading: "Transform Your Interior Spaces" },
-  isMobile ? mobileImage2 : { img: desktopImage2, text: "Discover the perfect blend of style and functionality for your home. Our expert interior designers will create a space that reflects your unique taste and enhances your daily living experience.", heading: "Elevate Your Home Design" },
-  isMobile ? mobileImage3 : { img: desktopImage3, text: "Experience the art of interior design like never before. Our team of professionals will curate a personalized space that showcases your individuality and creates a lasting impression.", heading: "Create Your Dream Space" },
-]);
-
-useEffect(() => {
-  const handleResize = () => {
-    setIsMobile(window.innerWidth < 768);
-  };
-  window.addEventListener('resize', handleResize);
-  return () => window.removeEventListener('resize', handleResize);
-}, []);
-
-useEffect(() => {
-  setData([
-    isMobile ? mobileImage1 : { img: desktopImage1, text: "Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.", heading: "Transform Your Interior Spaces" },
-    isMobile ? mobileImage2 : { img: desktopImage2, text: "Discover the perfect blend of style and functionality for your home. Our expert interior designers will create a space that reflects your unique taste and enhances your daily living experience.", heading: "Elevate Your Home Design" },
-    isMobile ? mobileImage3 : { img: desktopImage3, text: "Experience the art of interior design like never before. Our team of professionals will curate a personalized space that showcases your individuality and creates a lasting impression.", heading: "Create Your Dream Space" },
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [data, setData] = useState([
+    isMobile ? {img:mobileImage1,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Discover Inspiring Decor Ideas"} : {img:desktopImage1,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Discover Inspiring Decor Ideas"},
+    isMobile ? {img:mobileImage2,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Discover Inspiring Decor Ideas"} : {img:desktopImage2,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Discover Inspiring Decor Ideas"},
+    isMobile ? {img:mobileImage3,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Discover Inspiring Decor Ideas"} : {img:desktopImage3,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Discover Inspiring Decor Ideas"},
   ]);
-}, [isMobile]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    setData([
+      isMobile ? {img:mobileImage1,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Discover Inspiring Decor Ideas"} : {img:desktopImage1,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Discover Inspiring "},
+      isMobile ? {img:mobileImage2,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Discover Inspiring Decor Ideas"} : {img:desktopImage2,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Discover Inspiring Decor Ideas"},
+      isMobile ? {img:mobileImage3,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Discover Inspiring Decor Ideas"} : {img:desktopImage3,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Discover "},
+    ]);
+  }, [isMobile]);
 
   return (
     <>
@@ -55,7 +54,7 @@ useEffect(() => {
               </div>
               <div className='heading_container'>
                 <div className='heading_content'>
-                  <h2 className='heading'>{el.heading}</h2> 
+                  <h2 className='heading'>{el.heading}</h2>
                   <p className="text">{el.text}</p>
                   <button className='about_btn'>About Company <FaLongArrowAltRight /></button>
                 </div>
