@@ -22,7 +22,7 @@
 /* Hover effect for the project image */
 .img-work:hover {
   cursor: pointer;
-  filter: blur(2px); /* Apply blur effect */
+  /* filter: blur(2px); Apply blur effect */
   transform: scale(0.9); /* Shrink the image */
 }
 
