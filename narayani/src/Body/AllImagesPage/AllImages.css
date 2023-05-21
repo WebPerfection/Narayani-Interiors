@@ -4,6 +4,7 @@
   }
   .related-images{
     flex-wrap: wrap;
+    justify-content: left;
     gap: 10px;
   }
   .related-images>img{

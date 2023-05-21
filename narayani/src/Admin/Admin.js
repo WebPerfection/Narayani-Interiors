@@ -39,7 +39,7 @@ const AdminPanel = () => {
         console.log(payload);
 
         try {
-            const response = await axios.post('/upload', payload);
+            const response = await axios.post('http://localhost:8080/upload', payload);
             if (response.status === 200) {
                 console.log('Upload successful:', response.data);
                 // Reset the form after successful upload
