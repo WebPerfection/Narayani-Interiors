@@ -71,7 +71,7 @@ const ProjectPage = () => {
   }
  },[heroImage])
   console.log(localStorage.getItem("narayniUser"));
- localStorage.setItem("narayniUser", "ashiq");
+ // localStorage.setItem("narayniUser", "ashiq");
   return (
     <>
       <Navbar />
