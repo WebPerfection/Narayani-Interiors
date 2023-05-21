@@ -59,6 +59,7 @@ const ProjectPage = () => {
         ))}
       </div>
     </div>
+    <div>Reference Images</div>
     </div>
     <MakeApoiment/>
     <Footer/>
