@@ -79,7 +79,7 @@ export default function Content() {
             <div><h3>Project Designs</h3>
               <p>"Embark on a Journey of Limitless Possibilities - Unleash the Power of Choice to Create the Best Designs."</p>
             </div>
-            <div><Link>Read More <BsArrowRight className='arrow' /></Link></div>
+            <div><Link to="/admin-page">Read More <BsArrowRight className='arrow' /></Link></div>
           </div>
           <div>
             <div className='Flex'><h1 className='concept-icon'><FaPaintRoller /></h1></div>
