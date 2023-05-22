@@ -50,7 +50,7 @@ app.patch("/update/:id",async(req,res)=>{
      res.send("err Update section")
   }
 })
-app.post("/upload",async(req, res,next) => {
+app.post("/upload",async(req, res) => {
 const payload=req.body
 const currentDate = new Date();
 
@@ -64,8 +64,8 @@ try{
    await data.save()
    res.send(data)
 }
-catch{
-  res.send("Err")
+catch(error){
+  res.send(error)
 }
 });
 
