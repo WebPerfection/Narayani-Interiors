@@ -12,10 +12,11 @@ import Carousel from "react-multi-carousel"; // Importing Carousel component
 import "react-multi-carousel/lib/styles.css"; // Importing Carousel styles
 import { useDispatch, useSelector } from "react-redux";
 import { toggelModel } from "../../Redux/Action";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import MakeApoiment from "../MakeApoiment/MakeApoiment"; // Importing MakeApoiment component
-
+import axios from "axios"
 const responsive = {
+  
   superLargeDesktop: {
     breakpoint: { max: 3000, min: 1200 },
     items: 4,
@@ -34,6 +35,8 @@ const responsive = {
   },
 };
 
+  
+
 const ProjectPage = () => {
   const data = [Src1, Src2, Src3, Src4, Src5, Src1, Src2, Src3, Src4, Src5]; // Array of image sources
   const model = useSelector((store) => store);
@@ -49,19 +52,12 @@ const ProjectPage = () => {
     dispatch(toggelModel());
     console.log("ch");
   };
-
+  const {id}=useParams()
+  console.log(id)
   const [heroImage, setHeroImage] = useState(0);
   const [onImage,setOnaImage]=useState(false)
-  const [projectImages, setProjectImages] = useState([
-    "https://super.homelane.com/MRJIOM5524_main-1448357087_navarino-straight-wardrobe.jpg",
-    "https://super.homelane.com/MAVUWZ5233_main-1446729327_sicily-straight-wardrobe.jpg",
-    "https://super.homelane.com/MHCYUG5447_main-1448017011_larissa-straight-wardrobe.jpg",
-    "https://super.homelane.com/MGOPCR5356_srp-1447754346_title.jpg",
-    "https://super.homelane.com/MAVUWZ5233_srp-1446729327_sicily-straight-wardrobe.jpg",
-    "https://super.homelane.com/MIKRKX6066_srp-1451369844_severny-straight-wardrobe.jpg",
-    "https://super.homelane.com/MIKRKX6066_srp-1451369844_severny-straight-wardrobe.jpg",
-    // Add more image URLs as needed
-  ]);
+  const [projectImages, setProjectImages] = useState("");
+  const [allData,setAllData]=useState("")
  useEffect(()=>{
   if(localStorage.getItem("narayniUser") || heroImage===0){
     setOnaImage(true)
@@ -70,14 +66,24 @@ const ProjectPage = () => {
     setOnaImage(false)
   }
  },[heroImage])
+ useEffect(()=>{
+   axios.get(`http://localhost:8080/getdata/${id}`)
+   .then((res)=>{
+    setProjectImages(res.data.images)
+    setAllData(res.data)
+   })
+   .catch((err)=>console.log(err))
+ },[])
+
   console.log(localStorage.getItem("narayniUser"));
+  console.log("as",allData.length)
  // localStorage.setItem("narayniUser", "ashiq");
   return (
     <>
       <Navbar />
       <div>Hello world</div>
       <div className="pro-main">
-        <div className="Flex">
+        { projectImages && <div className="Flex">
         <div className="HeroImages-main-div">
           <div className="HeroImage">
             <img className={onImage ? "showHeroImage":"hideHeroImage"} src={projectImages[heroImage]} />
@@ -85,21 +91,14 @@ const ProjectPage = () => {
           </div>
           <div className="HeroImage-content-div">
             <div className="HeroImage-description">
-              <h5>Navarino Straight Hinged Door Wardrobe</h5>
-              <p>
-                Sleek and sophisticated, this bedroom decor is all about style
-                on a budget. Gorgeous grains of teak wood and ash wood add a
-                touch of nature to this straight 3 door wardrobe design. This is
-                a warm, cosy bedroom that you’ll love to call your own! Continue
-                the colour narrative all around the room for a cohesive look
-              </p>
+              <h5>{allData.title}</h5>
+              <span dangerouslySetInnerHTML={{__html: allData.description}} />
               <button className="HeroImage-button">
                 BOOK FREE DESIGN SESSION
               </button>
-              <button>Wishlist</button>
               <div>
                 <h5>Specification</h5>
-                <p>size - 9'</p>
+                <p>size - {allData.length}x{allData.width}</p>
               </div>
               <div className="related-images Flex">
                 {projectImages.map((el, i) => (
@@ -110,7 +109,7 @@ const ProjectPage = () => {
             <div className="HeroImage-related-div"></div>
           </div>
         </div>
-        </div>
+        </div>}
         <div className="related-item">
           <div className="workHome-main-div">
             <h6 className="h6">Related Designs</h6>

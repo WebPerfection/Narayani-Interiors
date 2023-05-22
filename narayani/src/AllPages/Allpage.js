@@ -9,7 +9,7 @@ export default function Allpage() {
     <Routes>
         <Route path='/' element={<Home/>}></Route>
         <Route path='/concept-designed' element={<ConceptPage/>}></Route>
-        <Route path='/Images' element={<AllImagesPage/>}></Route>
+        <Route path='/Images/:id' element={<AllImagesPage/>}></Route>
         <Route path='/admin-page' element={<AdminPanel/>}></Route>
     </Routes>
   )
