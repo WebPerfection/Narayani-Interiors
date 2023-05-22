@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './WorkHome.css'; // Importing CSS file for styling
 import Src1 from './HomePicData/05d1df601345c1f4cb568b2d73fd11fb.jpg'; // Importing image source files
@@ -6,7 +6,7 @@ import Src2 from './HomePicData/080b869d63bf3a9e43cbd100708d289c.jpg';
 import Src3 from './HomePicData/098e1e070536917c681d7fd559f954f3.jpg';
 import Src4 from './HomePicData/104f9416fc868523e4e63258402cd661.jpg';
 import Src5 from './HomePicData/12cba461df45c94a46be11ce96d3d438.jpg';
-
+import axios from "axios"
 import Carousel from 'react-multi-carousel'; // Importing Carousel component
 import 'react-multi-carousel/lib/styles.css'; // Importing Carousel styles
 import { useDispatch, useSelector } from 'react-redux';
@@ -34,7 +34,7 @@ const responsive = {
 };
 
 const WorkHome = () => {
-  const data = [Src1, Src2, Src3, Src4, Src5, Src1, Src2, Src3, Src4, Src5]; // Array of image sources
+  const [data,setData]=useState("") // Array of image sources
   const model=useSelector(store=>store)
   const dispatch=useDispatch()
 
@@ -42,14 +42,20 @@ const WorkHome = () => {
     dispatch(toggelModel())
     console.log("ch")
   }
+  useEffect(()=>{
+     axios.get("http://localhost:8080/getdata")
+     .then((res)=>setData(res.data))
+     .catch((err)=>console.log(err))
+  },[model])
   return (
     <div className='workHome-main-div'>
       <h6 className='h6'>Project Showcase</h6>
       <h1>Discover Our Latest Interior Design Masterpieces</h1>
-      <Carousel
+      {
+        data && <Carousel
         swipeable={false} // Disable swipe gestures for the Carousel
         draggable={true} // Enable dragging of Carousel items
-        showDots={true} // Show navigation dots
+        showDots={false} // Show navigation dots
         responsive={responsive} // Apply responsive configuration
         ssr={true} // Enable server-side rendering
         infinite={true} // Enable infinite looping of Carousel items
@@ -63,14 +69,15 @@ const WorkHome = () => {
         dotListClass='custom-dot-list-style' // Set CSS class for the navigation dots
         itemClass='carousel-item-padding-40-px' // Set CSS class for Carousel items
       >
-        {data.map((item, index) => (
-          <Link to="Images">
+        { data.map((item, index) => (
+          <Link to={`Images/${item._id}`}>
           <div onClick={openModel} className='project-img-parent' key={index}>
-            <img className='img-work flex' src={item} alt={`Image ${index + 1}`} draggable="false" /> 
+            <img className='img-work flex' src={item.images[0]} alt={`Image ${index + 1}`} draggable="false" /> 
           </div>
           </Link>
         ))}
       </Carousel>
+      }
     </div>
   );
 };

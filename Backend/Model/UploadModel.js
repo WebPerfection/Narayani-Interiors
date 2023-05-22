@@ -7,8 +7,8 @@ const uploadSchema = mongoose.Schema({
   date: { type: String, required: true },
   category: { type: String, required: true },
   size: {
-    length: { type: Number, required: true },
-    width: { type: Number, required: true },
+    _length: { type: Number, required: true },
+    _width: { type: Number, required: true },
   },
 });
 
