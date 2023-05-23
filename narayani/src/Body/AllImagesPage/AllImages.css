@@ -2,6 +2,26 @@
   .pro-main{
     margin-top: 180px;
   }
+  .description-div{
+    height: 50px;
+    /* border: 1px solid black; */
+    overflow: hidden;
+  }
+  .less{
+    color: rgb(0, 183, 255);
+  }
+  .more{
+    color: red;
+    top: -12px;
+    
+    position: relative;
+  }
+  .less:hover{
+    cursor: pointer;
+  }
+  .more:hover{
+    cursor: pointer;
+  }
   .related-images{
     flex-wrap: wrap;
     justify-content: left;
@@ -61,6 +81,7 @@
     color: white;
     font-weight: 500;
     margin-bottom: 5px;
+    margin-top: 20px;
   }
   /* Carousel css */
 /* Styling for the project image */
