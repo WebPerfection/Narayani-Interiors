@@ -11,7 +11,6 @@ app.use(
     origin: "*",
   })
 );
-
 app.use("/",DataRoute)
 app.use("/",RedirectUrl)
 app.listen(process.env.PORT,async(req,res)=>{
