@@ -3,16 +3,11 @@ import Footer from "../../Footer/Footer";
 import Navbar from "../../Navbar/Navbar";
 import "./AllImages.css";
 import "../WoekHome/WorkHome.css";
-import Src1 from "../WoekHome/HomePicData/05d1df601345c1f4cb568b2d73fd11fb.jpg";
-import Src2 from "../WoekHome/HomePicData/080b869d63bf3a9e43cbd100708d289c.jpg";
-import Src3 from "../WoekHome/HomePicData/098e1e070536917c681d7fd559f954f3.jpg";
-import Src4 from "../WoekHome/HomePicData/104f9416fc868523e4e63258402cd661.jpg";
-import Src5 from "../WoekHome/HomePicData/12cba461df45c94a46be11ce96d3d438.jpg";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { toggelModel } from "../../Redux/Action";
-import {Link, useLocation, useParams} from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import MakeApoiment from "../MakeApoiment/MakeApoiment";
 import axios from "axios";
 
@@ -37,22 +32,18 @@ const responsive = {
 
 const ProjectPage = () => {
   const { pathname } = useLocation();
-  const location = useLocation();
-  const [user, setUser] = useState(null);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
   const currentURL =
-  window.location.origin +
-  window.location.pathname +
-  window.location.search +
-  window.location.hash;
-console.log(currentURL)
- 
-  
+    window.location.origin +
+    window.location.pathname +
+    window.location.search +
+    window.location.hash;
+  console.log(currentURL);
+
   const [data, setData] = useState("");
   const [more, setMore] = useState(false);
-  const model = useSelector((store) => store);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -62,21 +53,28 @@ console.log(currentURL)
         setData(res.data);
       })
       .catch((err) => console.log(err));
-
-      axios.post("http://localhost:5000/posturl",{url:currentURL})
-      .then((res)=>console.log(res))
-      .catch((err)=>console.log(err))
+    const payload = {
+      url: currentURL,
+    };
+    axios
+      .post("http://localhost:5000/posturl", payload)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   }, []);
-const loginWithGoogle=()=>{
-  axios.patch("http://localhost:5000/update",{url:currentURL})
-  .then((res)=>{
-    window.location.href="http://localhost:5000/auth/google"
-    localStorage.setItem("narayniUser","Authenticate")
-  })
-  .catch((err)=>console.log(err))
-
   
-}
+
+  useEffect(()=>{
+
+  })
+  const loginWithGoogle = () => {
+    axios
+      .patch("http://localhost:5000/update", { url: currentURL })
+      .then((res) => {
+        window.location.href = "http://localhost:5000/auth/google";
+        localStorage.setItem("narayniUser", "Authenticate");
+      })
+      .catch((err) => console.log(err));
+  };
   const openModel = () => {
     dispatch(toggelModel());
     console.log("ch");
@@ -102,12 +100,10 @@ const loginWithGoogle=()=>{
       .then((res) => {
         setProjectImages(res.data.images);
         setAllData(res.data);
-        setHeroImage(0)
+        setHeroImage(0);
       })
       .catch((err) => console.log(err));
   }, [id]);
-
-
 
   return (
     <>
@@ -175,7 +171,6 @@ const loginWithGoogle=()=>{
               <Carousel
                 swipeable={false}
                 draggable={true}
-                showDots={true}
                 responsive={responsive}
                 ssr={true}
                 infinite={true}
@@ -190,8 +185,7 @@ const loginWithGoogle=()=>{
                 itemClass="carousel-item-padding-40-px"
               >
                 {data.map((item, index) => (
-                  <Link to={`/Images/${item._id}`}
-                  >
+                  <Link to={`/Images/${item._id}`}>
                     <img
                       className="img-work flex"
                       src={item.images[0]}
