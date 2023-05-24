@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Editor } from '@tinymce/tinymce-react';
-import './Admin.css';
 const AdminPanel = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './GetAllData.css';
+import AdminNav from './AdminNav/AdminNav';
 
-function YourComponent() {
+function GetAllData() {
   const [databus, setDatabus] = useState([]);
 
   useEffect(() => {
@@ -44,60 +45,63 @@ function YourComponent() {
   }
 
   return (
-    <div>
-      {databus.length > 0 ? (
-        databus.map((ele) => (
-          <div key={ele._id} className="wrapper">
-            <div className="product-img">
-              <img src={ele.images[0]} alt="Product" />
-            </div>
-            <div className="product-info">
-              <div className="product-text">
-                <span>
-                  <h3>Title :</h3>
-                  <p>{ele.title}</p>
-                </span>
-                <span>
-                  <h3>Category :</h3>
-                  <p>{ele.category}</p>
-                </span>
-                <span>
-                  <h3>Description:</h3>
-                  <span className='description' dangerouslySetInnerHTML={{ __html: ele.description }}></span>
-                </span>
-                <span>
-                  <h3>Size :</h3>
-                  <p>{`${ele.size._length}' X ${ele.size._width}'`}</p>
-                </span>
-                <span>
-                  <h3>Added Date :</h3>
-                  <p>{ele.date}</p>
-                </span>
+    <>
+    <AdminNav/>
+      <div className='items'>
+        {databus.length > 0 ? (
+          databus.map((ele) => (
+            <div key={ele._id} className="wrapper">
+              <div className="product-img">
+                <img src={ele.images[0]} alt="Product" />
               </div>
-              <div className="product-price-btn">
-                <button
-                  type="button"
-                  className="update-btn"
-                  onClick={() => updateItem(ele)}
-                >
-                  Update
-                </button>
-                <button
-                  type="button"
-                  className="delete-btn"
-                  onClick={() => deleteItem(ele._id)}
-                >
-                  Delete
-                </button>
+              <div className="product-info">
+                <div className="product-text">
+                  <span>
+                    <h3>Title :</h3>
+                    <p>{ele.title}</p>
+                  </span>
+                  <span>
+                    <h3>Category :</h3>
+                    <p>{ele.category}</p>
+                  </span>
+                  <span>
+                    <h3>Description:</h3>
+                    <span className='description' dangerouslySetInnerHTML={{ __html: ele.description }}></span>
+                  </span>
+                  <span>
+                    <h3>Size :</h3>
+                    <p>{`${ele.size._length}' X ${ele.size._width}'`}</p>
+                  </span>
+                  <span>
+                    <h3>Added Date :</h3>
+                    <p>{ele.date}</p>
+                  </span>
+                </div>
+                <div className="product-price-btn">
+                  <button
+                    type="button"
+                    className="update-btn"
+                    onClick={() => updateItem(ele)}
+                  >
+                    Update
+                  </button>
+                  <button
+                    type="button"
+                    className="delete-btn"
+                    onClick={() => deleteItem(ele._id)}
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        ))
-      ) : (
-        <p>No data available.</p>
-      )}
-    </div>
+          ))
+        ) : (
+          <p>No data available.</p>
+        )}
+      </div>
+    </>
   );
 }
 
-export default YourComponent;
+export default GetAllData;
