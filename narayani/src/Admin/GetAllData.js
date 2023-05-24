@@ -10,7 +10,7 @@ function GetAllData() {
   }, []);
 
   function getAll() {
-    fetch("http://localhost:8080/getdata")
+    fetch("http://localhost:5000/getdata")
       .then((res) => res.json())
       .then((resu) => {
         console.log(resu);
@@ -26,7 +26,7 @@ function GetAllData() {
   }
 
   function deleteItem(bId) {
-    fetch(`http://localhost:8080/delete/${bId}`, {
+    fetch(`http://localhost:5000/delete/${bId}`, {
       method: "DELETE",
     })
       .then((response) => {
