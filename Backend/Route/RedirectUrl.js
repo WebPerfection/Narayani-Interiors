@@ -34,17 +34,26 @@ passport.use(
     }
   )
 );
-// RedirectUrl.post("/posturl",async(req,res)=>{
-  
-//   try{
-//     const data=new UrlModel({"url":"/"})
-//     await data.save()
-//     res.send("success")
-//   }
-//   catch(err){
-//     console.log(err)
-//   }
-// })
+RedirectUrl.post("/posturl",async(req,res)=>{
+  const ip=req.ip
+  const payload=req.body
+  console.log(ip)
+  try{
+    const avl=await UrlModel.find({"ip":ip})
+    if(avl.length>0){
+      res.send("avl")
+    }
+    else{
+      const data=new UrlModel({...payload,ip})
+      await data.save()
+      res.send("success")
+    }
+    
+  }
+  catch(err){
+    res.send(err)
+  }
+})
 RedirectUrl.patch("/update",async(req,res)=>{
   const payload=req.body
   try{
@@ -64,11 +73,21 @@ RedirectUrl.get(
   "/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/login" }),
   async function (req, res) {
+
     try{
-      const {url}=await UrlModel.findOne({"_id":"646d183a4d8c99c26c3f5b23"})
-      res.redirect(url);
+      const {url,_id}=await UrlModel.findOne({"ip":req.ip})
+      
+      const stringData = _id.toString();
+      console.log(stringData)
+     const cheak= await UrlModel.findByIdAndDelete({"_id":stringData})
+     
+     console.log(cheak)
+      if(cheak){
+        res.redirect(url);
+      }
    }
-   catch{
+   catch(err){
+
      res.redirect("http://localhost:3000");
    }
   }

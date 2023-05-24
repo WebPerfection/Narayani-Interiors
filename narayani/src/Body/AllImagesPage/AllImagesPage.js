@@ -62,10 +62,17 @@ console.log(currentURL)
         setData(res.data);
       })
       .catch((err) => console.log(err));
+
+      axios.post("http://localhost:5000/posturl",{url:currentURL})
+      .then((res)=>console.log(res))
+      .catch((err)=>console.log(err))
   }, []);
 const loginWithGoogle=()=>{
   axios.patch("http://localhost:5000/update",{url:currentURL})
-  .then((res)=>window.location.href="http://localhost:5000/auth/google")
+  .then((res)=>{
+    window.location.href="http://localhost:5000/auth/google"
+    localStorage.setItem("narayniUser","Authenticate")
+  })
   .catch((err)=>console.log(err))
 
   
@@ -95,9 +102,10 @@ const loginWithGoogle=()=>{
       .then((res) => {
         setProjectImages(res.data.images);
         setAllData(res.data);
+        setHeroImage(0)
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [id]);
 
 
 
@@ -182,13 +190,7 @@ const loginWithGoogle=()=>{
                 itemClass="carousel-item-padding-40-px"
               >
                 {data.map((item, index) => (
-                  <div
-                    onClick={() => {
-                      setProjectImages(item.images);
-                      setAllData(item);
-                      window.scrollTo(0, 0);
-                    }}
-                    className="project-img-parent"
+                  <Link to={`/Images/${item._id}`}
                   >
                     <img
                       className="img-work flex"
@@ -196,7 +198,7 @@ const loginWithGoogle=()=>{
                       alt={`Image ${index + 1}`}
                       draggable="false"
                     />
-                  </div>
+                  </Link>
                 ))}
               </Carousel>
             )}

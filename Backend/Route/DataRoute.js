@@ -4,6 +4,7 @@ const DataRoute=express.Router()
 const {UploadModel} =require("../Model/UploadModel")
 
 DataRoute.get("/getdata",async(req,res)=>{
+  console.log(req.ip)
     try{
        const data = await UploadModel.find()
        res.send(data)
