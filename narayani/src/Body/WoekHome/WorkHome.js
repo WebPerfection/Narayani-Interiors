@@ -43,7 +43,7 @@ const WorkHome = () => {
     console.log("ch")
   }
   useEffect(()=>{
-     axios.get("http://localhost:8080/getdata")
+     axios.get("http://localhost:5000/getdata")
      .then((res)=>setData(res.data))
      .catch((err)=>console.log(err))
   },[model])
