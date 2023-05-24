@@ -46,7 +46,7 @@
     width: 60%;
   
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
   }
   .showHeroImage{
@@ -55,10 +55,11 @@
   }
   .hideHeroImage{
     width: 100%;
-    filter: blur(10px);
+    filter: blur(4px);
     border-radius: 10px;
   }
  .hide{
+  top: 25%;
     position: absolute;
     background-color: var(--text-gold);
     padding: 15px 80px;
