@@ -4,6 +4,7 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const session = require("express-session");
 const {UrlModel}=require("../Model/UrlModel")
+const axios = require('axios');
 RedirectUrl.use(
   session({
     secret: "narayni",
@@ -17,7 +18,6 @@ RedirectUrl.use(passport.session());
 passport.serializeUser(function (user, cb) {
   cb(null, user);
 });
-
 passport.deserializeUser(function (obj, cb) {
   cb(null, obj);
 });
@@ -34,17 +34,37 @@ passport.use(
     }
   )
 );
+let ipAdress;
+const getIpAddress = async () => {
+  try {
+    const response = await axios.get('https://api.ipify.org?format=json');
+    const data = response.data;
+    return data.ip;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+getIpAddress()
+  .then((ipAddress) => {
+    ipAdress=ipAddress;
+  })
+  .catch((error) => {
+    console.log('Error:', error);
+  });
+  console.log(ipAdress)
 RedirectUrl.post("/posturl",async(req,res)=>{
-  const ip=req.ip
+  
   const payload=req.body
-  console.log(ip)
+  console.log(payload)
   try{
-    const avl=await UrlModel.find({"ip":ip})
+    const avl=await UrlModel.find({"_ip":ipAdress})
     if(avl.length>0){
       res.send("avl")
     }
     else{
-      const data=new UrlModel({...payload,ip})
+      const data=new UrlModel({...payload,"_ip":ipAdress})
       await data.save()
       res.send("success")
     }
@@ -55,9 +75,12 @@ RedirectUrl.post("/posturl",async(req,res)=>{
   }
 })
 RedirectUrl.patch("/update",async(req,res)=>{
+console.log(ipAdress)
   const payload=req.body
   try{
-     const data=await UrlModel.findByIdAndUpdate({"_id":"646d183a4d8c99c26c3f5b23"},payload)
+    const avl=await UrlModel.findOne({"_ip":ipAdress})
+    console.log(avl._id.toString())
+     const data=await UrlModel.findByIdAndUpdate({"_id":avl._id.toString()},{url:payload.url})
      res.send(data)
   }
   catch{
@@ -73,14 +96,12 @@ RedirectUrl.get(
   "/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/login" }),
   async function (req, res) {
-
     try{
-      const {url,_id}=await UrlModel.findOne({"ip":req.ip})
+      const {url,_id}=await UrlModel.findOne({"_ip":ipAdress})
       
       const stringData = _id.toString();
       console.log(stringData)
-     const cheak= await UrlModel.findByIdAndDelete({"_id":stringData})
-     
+     const cheak= await UrlModel.findByIdAndDelete({"_id":_id.toString()})
      console.log(cheak)
       if(cheak){
         res.redirect(url);
