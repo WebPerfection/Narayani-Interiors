@@ -3,14 +3,34 @@ const DataRoute=express.Router()
 
 const {UploadModel} =require("../Model/UploadModel")
 
-DataRoute.get("/getdata",async(req,res)=>{
-  console.log(req.ip)
-    try{
-       const data = await UploadModel.find()
-       res.send(data)
-    }
-    catch{
-      res.send("Err Get Section")
+  DataRoute.get("/getdata",async(req,res)=>{
+    try {
+      const { category, length, width } = req.query;
+      const filterOptions = [];
+  
+      if (category) {
+        filterOptions.push({ category });
+      }
+  
+      if (length) {
+        filterOptions.push({ 'size._length': { $lte: Number(length) } });
+      }
+  
+      if (width) {
+        filterOptions.push({ 'size._width': { $lte: Number(width) } });
+      }
+  
+      let filter = {};
+  
+      if (filterOptions.length > 0) {
+        filter = { $and: filterOptions };
+      }
+  
+      const uploads = await UploadModel.find(filter);
+      res.status(200).json(uploads);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Internal server error' });
     }
   })
   DataRoute.get("/getdata/:id",async(req,res)=>{

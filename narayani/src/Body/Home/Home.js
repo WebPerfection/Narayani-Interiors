@@ -14,6 +14,7 @@ export default function Home() {
     <>
       <Navbar />
       <Content />
+      
       <Footer />
       <Designed_by />
       <FloatingButtons />

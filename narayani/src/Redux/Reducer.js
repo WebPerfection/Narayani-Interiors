@@ -1,7 +1,7 @@
 import React from 'react'
 import { openModel, closeModel } from './ActionType'
 const initialData = {
-    ModelCheck: true
+    ModelCheck: false
 }
 export default function Reducer(oldData = initialData, action) {
     switch (action.type) {
