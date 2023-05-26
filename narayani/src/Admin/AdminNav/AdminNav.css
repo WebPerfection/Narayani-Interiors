@@ -29,6 +29,7 @@
 .menu-items{
     order: 2;
     display: flex;
+    margin: auto;
 }
 .logo{
     order: 1;
@@ -51,7 +52,7 @@
     color: #f2b259;
 }
 
-@media (max-width: 768px){
+@media (max-width: 1000px){
     /* .navbar{
         opacity: 0.95;
     } */
@@ -123,7 +124,7 @@
         transform: translate(-150%);
         display: flex;
         flex-direction: column;
-        margin-left: -40px;
+        margin-left: -60px;
         padding-left: 40px;
         padding-right: 60px;
         transition: transform 0.5s ease-in-out;
@@ -139,7 +140,6 @@
 
     .logo{
         position: absolute;
-        top: 10px;
         right: 15px;
     }
 
@@ -163,6 +163,7 @@
 
 @media (max-width: 500px){
     .navbar-container input[type="checkbox"]:checked ~ .logo{
-        display: none;
+        z-index: -1;
+        margin: auto;
     }
 }

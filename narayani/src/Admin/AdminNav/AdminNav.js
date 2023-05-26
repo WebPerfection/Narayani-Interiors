@@ -19,7 +19,7 @@ function AdminNav() {
                     <li><Link to="">Testimonial</Link></li>
                     <li><Link to="">Contact</Link></li>
                 </ul>
-                <h1 className="logo">Narayni-Interior</h1>
+                <h3 className="logo">Narayni-Interior</h3>
             </div>
         </nav>
         </>
