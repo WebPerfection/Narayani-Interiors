@@ -5,7 +5,6 @@ import Content from "../Content/Slider/Content";
 import Designed_by from "../../Designed_by/Designe_by";
 import FloatingButtons from "../../FloatingButtons/FloatingButtons";
 import CustomImages from "../../Pages/CustomImages";
-import { PopupForm } from "../../PopupForm/PopupForm";
 import { useSelector } from "react-redux";
 import store from "../../Redux/store";
 export default function Home() {
@@ -19,7 +18,6 @@ export default function Home() {
       <Designed_by />
       <FloatingButtons />
       {/* <CustomImages /> */}
-      <PopupForm/>
     </>
   );
 }
