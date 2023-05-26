@@ -5,8 +5,6 @@ import "./AllImages.css";
 import "../WoekHome/WorkHome.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { useDispatch} from "react-redux";
-import { toggelModel } from "../../Redux/Action";
 import { Link, useLocation, useParams } from "react-router-dom";
 import MakeApoiment from "../MakeApoiment/MakeApoiment";
 import axios from "axios";
@@ -44,7 +42,6 @@ const ProjectPage = () => {
 
   const [data, setData] = useState("");
   const [more, setMore] = useState(false);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     axios
@@ -53,32 +50,13 @@ const ProjectPage = () => {
         setData(res.data);
       })
       .catch((err) => console.log(err));
-    const payload = {
-      url: currentURL,
-    };
-    axios
-      .post("http://localhost:5000/posturl", payload)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    
   }, []);
   
 
   useEffect(()=>{
 
   })
-  const loginWithGoogle = () => {
-    axios
-      .patch("http://localhost:5000/update", { url: currentURL })
-      .then((res) => {
-        window.location.href = "http://localhost:5000/auth/google";
-        localStorage.setItem("narayniUser", "Authenticate");
-      })
-      .catch((err) => console.log(err));
-  };
-  const openModel = () => {
-    dispatch(toggelModel());
-    console.log("ch");
-  };
 
   const { id } = useParams();
   const [heroImage, setHeroImage] = useState(0);
@@ -120,7 +98,6 @@ const ProjectPage = () => {
                 />
                 <button
                   className={onImage ? "showImage" : "hide"}
-                  onClick={loginWithGoogle}
                 >
                   Click
                 </button>

@@ -3,7 +3,7 @@ require('dotenv').config()
 const Connect=require("./Config/Config")
 const app = express();
 const {DataRoute} =require("./Route/DataRoute")
-const {RedirectUrl} =require("./Route/RedirectUrl")
+const {userRoute} =require("./Route/UserRout")
 const cors=require("cors")
 app.use(express.json());
 app.use(
@@ -12,7 +12,7 @@ app.use(
   })
 );
 app.use("/",DataRoute)
-app.use("/",RedirectUrl)
+app.use("/",userRoute)
 app.listen(process.env.PORT,async(req,res)=>{
     try{
       await Connect

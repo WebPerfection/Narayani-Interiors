@@ -1,76 +1,169 @@
-.popup-modal .modal-content {
-  background-color: #f8f9fa;
-  border-radius: 20px;
+CSS for the modal dialog
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  background-color: #fff;
+  border-radius: 8px;
   padding: 20px;
 }
 
-.popup-modal .modal-header {
-  border-bottom: none;
-}
-
-.popup-modal .modal-title {
-  font-size: 24px;
+.modal-title {
+  font-size: 20px;
   font-weight: bold;
+  margin-bottom: 20px;
   text-align: center;
-  width: 100%;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  color: #999;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.modal-body {
   margin-bottom: 20px;
 }
 
-.popup-modal .form-group {
-  margin-bottom: 20px;
-}
-
-.popup-modal .form-control {
-  border-radius: 10px;
-}
-
-.popup-modal .form-label {
+.modal-body label {
   font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.modal-body input[type="text"],
+.modal-body input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   margin-bottom: 10px;
 }
 
-.popup-modal .form-check-label {
-  font-weight: normal;
-}
-
-.popup-modal .checkbox-container {
+.modal-body .opt-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
-.popup-modal .checkbox-container label {
-  margin-bottom: 0;
-  margin-left: 10px;
+.modal-body .opt-container input {
+  width: 100%;
+  max-width: 200px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
-.popup-modal .button-container {
+.modal-body .opt-container button {
+  width: 100%;
+  max-width: 200px;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.modal-body .otp-loader {
   display: flex;
+  align-items: center;
   justify-content: center;
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   margin-top: 20px;
 }
 
-.popup-modal .btn-primary {
-  background-color: #3f51b5;
-  border-color: #3f51b5;
-  border-radius: 20px;
+.modal-footer button {
+  padding: 10px 20px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.modal-footer button.secondary {
+  background-color: #ccc;
+}
+
+/* Additional CSS for improved UI */
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.welcome-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.welcome-container h4 {
+  font-size: 18px;
   font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.popup-modal .btn-primary:hover {
-  background-color: #303f9f;
-  border-color: #303f9f;
+.welcome-container .otp-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
-.popup-modal .btn-secondary {
-  background-color: #e0e0e0;
-  border-color: #e0e0e0;
-  border-radius: 20px;
-  color: #212121;
-  font-weight: bold;
+.welcome-container .otp-icon svg {
+  font-size: 30px;
+  margin-right: 10px;
 }
 
-.popup-modal .btn-secondary:hover {
-  background-color: #bdbdbd;
-  border-color: #bdbdbd;
-  color: #212121;
+.welcome-container input[type="text"],
+.welcome-container input[type="tel"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.welcome-container .send-otp-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.welcome-container .send-otp-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
