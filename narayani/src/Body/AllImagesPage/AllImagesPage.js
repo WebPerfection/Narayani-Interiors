@@ -8,6 +8,8 @@ import "react-multi-carousel/lib/styles.css";
 import { Link, useLocation, useParams } from "react-router-dom";
 import MakeApoiment from "../MakeApoiment/MakeApoiment";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import {toggelModel} from "../../Redux/Action"
 
 const responsive = {
   superLargeDesktop: {
@@ -39,13 +41,13 @@ const ProjectPage = () => {
     window.location.search +
     window.location.hash;
   console.log(currentURL);
-
+  const dispatch=useDispatch()
   const [data, setData] = useState("");
   const [more, setMore] = useState(false);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/getdata`)
+      .get(`https://azure-hen-cap.cyclic.app//getdata`)
       .then((res) => {
         setData(res.data);
       })
@@ -74,7 +76,7 @@ const ProjectPage = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/getdata/${id}`)
+      .get(`https://azure-hen-cap.cyclic.app//getdata/${id}`)
       .then((res) => {
         setProjectImages(res.data.images);
         setAllData(res.data);
@@ -98,8 +100,9 @@ const ProjectPage = () => {
                 />
                 <button
                   className={onImage ? "showImage" : "hide"}
+                  onClick={()=>dispatch(toggelModel())}
                 >
-                  Click
+                  Unlock
                 </button>
               </div>
               <div className="HeroImage-content-div">
@@ -142,7 +145,7 @@ const ProjectPage = () => {
             <h6 className="h6">Related Designs</h6>
             <h1>Discover Our Stunning Design Creations</h1>
             <div className="see-all-link">
-              <a href="/your-page-url">See All</a>
+              <Link to="/allCategory">See All</Link>
             </div>
             {data && (
               <Carousel

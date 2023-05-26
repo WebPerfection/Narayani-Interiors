@@ -11,7 +11,7 @@ import { auth } from "./firebase.config";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { toast, Toaster } from "react-hot-toast";
 import "./PopupForm.css"; // import the CSS file
-import { CloseModel } from "../Redux/Action";
+import { CloseModel, toggelModel } from "../Redux/Action";
 export const PopupForm = () => {
   const [otp, setOtp] = useState("");
   const [ph, setPh] = useState("");
@@ -22,10 +22,16 @@ export const PopupForm = () => {
   const [show, setShow] = useState(false);
   const [email,setEmail]=useState("")
   const [name,setName]=useState("")
+  const dispatch = useDispatch();
   useEffect(() => {
     setShow(ModelCheck);
   }, [ModelCheck]);
-  const dispatch = useDispatch();
+  useEffect(()=>{
+    setTimeout(()=>{
+      dispatch(toggelModel())
+   },3000)
+  },[])
+
   const handleClose = () => dispatch(CloseModel());
   function onCaptchVerify() {
     if (!window.recaptchaVerifier) {

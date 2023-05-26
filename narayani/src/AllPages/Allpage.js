@@ -5,6 +5,7 @@ import Home from '../Body/Home/Home'
 import ConceptPage from '../ConceptPage/ConceptPage';
 import GetAllData from '../Admin/GetAllData'
 import Upload from '../Admin/Upload/Upload';
+import AllProduct from '../Body/AllCetegory/AllProduct';
 
 
 export default function Allpage() {
@@ -15,6 +16,7 @@ export default function Allpage() {
       <Route path='/Images/:id' element={<AllImagesPage />}></Route>
       <Route path='/Admin/Home' element={<Upload />}></Route>
       <Route path='/Admin/GetAllData' element={<GetAllData />}></Route>
+      <Route path='//allCategory' element={<AllProduct />}></Route>
     </Routes>
   )
 }

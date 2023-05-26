@@ -18,6 +18,7 @@ import mobileImage1 from '../../../ImageData/mobile-v1-1.jpg';
 import mobileImage2 from '../../../ImageData/mobile-v1-2.jpg';
 import mobileImage3 from '../../../ImageData/mobile-v1-3.jpg';
 import MakeApoiment from '../../MakeApoiment/MakeApoiment';
+import Testimonial from '../../Testimonial/Testimonial';
 
 export default function Content() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -94,6 +95,7 @@ export default function Content() {
       <Work />
       <WorkHome />
       <WorkingProcess />
+      <Testimonial/>
       <MakeApoiment />
     </>
   )
