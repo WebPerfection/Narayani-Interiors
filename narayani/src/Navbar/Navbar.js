@@ -22,9 +22,6 @@ export default function Navbar() {
   const [eStimate,setEStimate]=useState(false);
   const [start, setStart] = useState(false);
   const [drop, setDrop] = useState(true);
-  const [dropDown, setDropDown] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
 
   if (refrence) {
     setTimeout(() => {
@@ -32,27 +29,10 @@ export default function Navbar() {
       setRefrence(false);
     }, 800);
   }
-  const handleMouseEnter = () => {
-    setIsDropdownOpen(true);
-  };
-  const AbouthandleMouseEnter = () => {
-    setAboutDropdownOpen(true);
-  };
-  const AbouthandleMouseLeave = () => {
-    setAboutDropdownOpen(false);
-  };
-  const handleMouseLeave = () => {
-    setIsDropdownOpen(false);
-  };
   const move = () => {
     setTimeout(() => {
       setScroll(!scroll);
       console.log("cheak");
-    }, 800);
-  };
-  const up = () => {
-    setTimeout(() => {
-      setDrop(true);
     }, 800);
   };
   console.log(scroll);
@@ -128,39 +108,18 @@ export default function Navbar() {
 
           <div className="Button-div">
             <div
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
             > 
               <Link to="/"><FaHouseUser/>Home</Link>
 
-              <ul
-                className={`dropdown-container ${isDropdownOpen ? 'open' : ''} ul`}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-
-              >
-                <li>Services</li>
-                <li>Projects</li>
-                <li>Works</li>
-              </ul>
+             
             </div>
 
-            <div onMouseEnter={AbouthandleMouseEnter}
-              onMouseLeave={AbouthandleMouseLeave}>
-              <Link to="/"><FaHandsHelping/>Get in touch</Link>
-              <ul
-                className={`dropdown-container ${aboutDropdownOpen ? 'open' : ''} ul`}
-                onMouseEnter={AbouthandleMouseEnter}
-                onMouseLeave={AbouthandleMouseLeave}
-
-              >
-                <li>Services</li>
-                <li>Projects</li>
-                <li>Works</li>
-              </ul>
+            <div>
+              <Link to="/get-In-Touch"><FaHandsHelping/>Get in touch</Link>
+             
             </div>
             <div>
-              <Link to="/"><FaExclamationCircle/>About us</Link>
+              <Link to="/aboutUs"><FaExclamationCircle/>About us</Link>
             </div>
           </div>
         </div>
