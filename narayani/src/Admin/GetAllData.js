@@ -20,7 +20,7 @@ function GetAllData() {
   }, []);
 
   function getAll() {
-    fetch('http://localhost:5000/getdata')
+    fetch('https://azure-hen-cap.cyclic.app/getdata')
       .then((res) => res.json())
       .then((resu) => {
         console.log(resu);

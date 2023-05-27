@@ -4,7 +4,7 @@ import AllImagesPage from '../Body/AllImagesPage/AllImagesPage'
 import Home from '../Body/Home/Home'
 import ConceptPage from '../ConceptPage/ConceptPage';
 import GetAllData from '../Admin/GetAllData'
-import Upload from '../Admin/Upload/Upload';
+import Upload from '../Admin/Upload/AddItem/Upload';
 import AllProduct from '../Body/AllCetegory/AllProduct';
 import Dummy from '../Body/About/components/Dummy';
 
