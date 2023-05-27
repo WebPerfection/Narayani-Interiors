@@ -6,61 +6,89 @@ import AdminNav from '../AdminNav/AdminNav';
 
 const Upload = () => {
     const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [category, setCategory] = useState('');
-    const [images, setImages] = useState([]);
-    const [length, setLength] = useState(0);
-    const [width, setWidth] = useState(0);
-    const [uploadStatus, setUploadStatus] = useState('');
+  const [description, setDescription] = useState('');
+  const [category, setCategory] = useState('');
+  const [images, setImages] = useState([]);
+  const [length, setLength] = useState(0);
+  const [width, setWidth] = useState(0);
+  const [uploadStatus, setUploadStatus] = useState('');
 
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
+  const deleteImagesFromCloudinary = async (imageUrls) => {
+    try {
+      const deleteRequests = imageUrls.map((imageUrl) =>
+        axios.delete(`https://api.cloudinary.com/v1_1/dlcn4rghm/image/delete_by_token`, {
+          params: {
+            token: imageUrl.split('/').pop().split('.')[0],
+            api_key: '696786133473455',
+            api_secret: 'oeAH-v-AtAKKauLa38ueTdilgcA',
+          },
+        })
+      );
 
-        const imageUrls = [];
+      await Promise.all(deleteRequests);
+      console.log('Images deleted from Cloudinary');
+    } catch (error) {
+      console.error('Error deleting images:', error);
+    }
+  };
 
-        for (let i = 0; i < images.length; i++) {
-            const formData = new FormData();
-            formData.append('file', images[i]);
-            formData.append('upload_preset', 'klsr1tbt');
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
 
-            try {
-                const response = await axios.post('https://api.cloudinary.com/v1_1/dlcn4rghm/image/upload', formData);
-                imageUrls.push(response.data.secure_url);
-            } catch (error) {
-                console.error('Image upload failed:', error);
-            }
-        }
+    const imageUrls = [];
 
-        const payload = {
-            title,
-            images: imageUrls,
-            description,
-            size: {
-                _length: Number(length),
-                _width: Number(width)
-            },
-            category
-        };
+    for (let i = 0; i < images.length; i++) {
+      const formData = new FormData();
+      formData.append('file', images[i]);
+      formData.append('upload_preset', 'klsr1tbt');
 
-        try {
-            const response = await axios.post('http://localhost:8080/upload', payload);
-            if (response.status === 200) {
-                console.log('Response:', response.data);
-                setUploadStatus('Bus Added Successfully');
-                // Reset the form after successful upload
-                setTitle('');
-                setDescription('');
-                setCategory('');
-                setImages([]);
-                setLength(0);
-                setWidth(0);
-            } else {
-                console.error('Upload failed');
-            }
-        } catch (error) {
-            console.error('Upload request failed:', error);
-        }
+      try {
+        const response = await axios.post(
+          'https://api.cloudinary.com/v1_1/dlcn4rghm/image/upload',
+          formData
+        );
+        imageUrls.push(response.data.secure_url);
+        console.log("upload to cloudinary:");
+      } catch (error) {
+        console.error('Image upload failed:', error);
+        // Delete the uploaded images from Cloudinary
+        await deleteImagesFromCloudinary(imageUrls);
+        return; // Stop further processing
+      }
+    }
+
+    const payload = {
+      title,
+      images: imageUrls,
+      description,
+      size: {
+        _length: Number(length),
+        _width: Number(width),
+      },
+      category,
     };
+
+    try {
+      const response = await axios.post('https://azure-hen-cap.cyclic.app/upload', payload);
+      if (response.status === 200) {
+        console.log('Response:', response.data);
+        setUploadStatus('Bus Added Successfully');
+        // Reset the form after successful upload
+        setTitle('');
+        setDescription('');
+        setCategory('');
+        setImages([]);
+        setLength(0);
+        setWidth(0);
+      } else {
+        console.error('Upload failed');
+      }
+    } catch (error) {
+      console.error('Upload request failed:', error);
+      // Delete the uploaded images from Cloudinary
+      await deleteImagesFromCloudinary(imageUrls);
+    }
+  };
     return (
         <>
         <AdminNav/>

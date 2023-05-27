@@ -52,21 +52,21 @@ function GetAllData() {
     const selectedFiles = Array.from(event.target.files);
     setImages(selectedFiles);
   };
-  
 
-  const handleUpdateFormSubmit = async (e) =>  {
+
+  const handleUpdateFormSubmit = async (e) => {
     e.preventDefault();
     const itemId = selectedItem._id;
-  
+
     const imageUrls = [];
-  
+
     if (images.length > 0) {
       // If there are selected images, upload them to Cloudinary
       for (let i = 0; i < images.length; i++) {
         const formData = new FormData();
         formData.append('file', images[i]);
         formData.append('upload_preset', 'klsr1tbt');
-  
+
         try {
           const response = await axios.post(
             'https://api.cloudinary.com/v1_1/dlcn4rghm/image/upload',
@@ -81,7 +81,7 @@ function GetAllData() {
       // If no images are selected, assign the previous image links
       imageUrls.push(...selectedItem.images);
     }
-  
+
     const updatedItem = {
       title,
       category,
@@ -94,7 +94,7 @@ function GetAllData() {
     };
 
     // Send the updated item data to the API
-    fetch(`http://localhost:5000/update/${itemId}`, {
+    fetch(`https://azure-hen-cap.cyclic.app/update/${itemId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
