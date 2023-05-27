@@ -73,7 +73,7 @@ export default function Content() {
               <h3>Concept Designs</h3>
               <p>"Unlock the Art of Innovation - Embrace Concepts that Inspire, Ignite, and Redefine the Boundaries of Design."</p>
             </div>
-            <div><Link to="/concept-designed">Read More <BsArrowRight className='arrow' /> </Link></div>
+            <div><Link to="/">Read More <BsArrowRight className='arrow' /> </Link></div>
           </div>
           <div>
             <div className='Flex'><h1 className='concept-icon'><RiProjectorLine /></h1></div>
