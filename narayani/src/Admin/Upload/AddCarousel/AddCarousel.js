@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './UploadCarousel.css';
-import AdminNav from '../../AdminNav/AdminNav';
+import './AddCarousel.css';
+import '../../AdminNav/AdminNav.js';
+import AdminNav from '../../AdminNav/AdminNav.js';
 
-const UploadCarousel = () => {
+
+const AdddCarousel = () => {
     const [heading, setHeading] = useState('');
     const [text, setText] = useState('');
     const [imageMobile, setImageMobile] = useState(null);
@@ -30,14 +32,13 @@ const UploadCarousel = () => {
 
         let imageUrlMobile = null;
         let imageUrlPC = null;
-
-        const timestamp = Date.now().toString(); // Unique timestamp to create dynamic folder names
+        // Unique timestamp to create dynamic folder names
 
         if (imageMobile) {
             const formDataMobile = new FormData();
             formDataMobile.append('file', imageMobile);
             formDataMobile.append('upload_preset', 'klsr1tbt');
-            formDataMobile.append('folder', `mobile-carousel/${timestamp}`); // Folder path for mobile images
+            formDataMobile.append('folder', `mobile-carousel`); // Folder path for mobile images
 
             try {
                 const response = await axios.post(
@@ -55,7 +56,7 @@ const UploadCarousel = () => {
             const formDataPC = new FormData();
             formDataPC.append('file', imagePC);
             formDataPC.append('upload_preset', 'klsr1tbt');
-            formDataPC.append('folder', `pc-carousel/${timestamp}`); // Folder path for PC images
+            formDataPC.append('folder', `pc-carousel`); // Folder path for PC images
 
             try {
                 const response = await axios.post(
@@ -153,4 +154,4 @@ const UploadCarousel = () => {
     );
 };
 
-export default UploadCarousel;
+export default AdddCarousel;
