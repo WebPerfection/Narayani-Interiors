@@ -4,6 +4,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import './Upload.css';
 import AdminNav from '../../AdminNav/AdminNav';
 
+
 const Upload = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -41,6 +42,7 @@ const Upload = () => {
       const formData = new FormData();
       formData.append('file', images[i]);
       formData.append('upload_preset', 'klsr1tbt');
+      formData.append('folder',category); 
 
       try {
         const response = await axios.post(
