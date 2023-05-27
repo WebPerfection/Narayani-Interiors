@@ -66,6 +66,7 @@ function GetAllData() {
         const formData = new FormData();
         formData.append('file', images[i]);
         formData.append('upload_preset', 'klsr1tbt');
+        formData.append('folder', category);
 
         try {
           const response = await axios.post(

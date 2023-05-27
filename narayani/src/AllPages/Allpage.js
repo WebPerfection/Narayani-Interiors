@@ -8,6 +8,8 @@ import Upload from '../Admin/Upload/AddItem/Upload';
 import AllProduct from '../Body/AllCetegory/AllProduct';
 import AdddCarousel from '../Admin/Upload/AddCarousel/AddCarousel';
 import Dummy from '../Body/About/components/Dummy';
+import GetAllUser from '../Admin/GetAllUser/GetAllUser';
+
 export default function Allpage() {
   return (
     <Routes>
@@ -18,7 +20,8 @@ export default function Allpage() {
       <Route path='/Admin/GetAllData' element={<GetAllData />}></Route>
       <Route path='/allCategory' element={<AllProduct />}></Route>
       <Route path='/Admin/AddCarousel' element={<AdddCarousel />}></Route>
-      <Route path='/aboutUs' element={<Dummy/>}></Route>
+      <Route path='/aboutUs' element={<Dummy />}></Route>
+      <Route path='/Admin/Users' element={<GetAllUser />}></Route>
     </Routes>
   )
 }
