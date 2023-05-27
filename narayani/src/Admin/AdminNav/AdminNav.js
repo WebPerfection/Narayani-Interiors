@@ -14,7 +14,7 @@ function AdminNav() {
                 <ul className="menu-items">
                     <li><Link to="/admin/Home">Add Item</Link></li>
                     <li><Link to="/Admin/GetAllData">All items</Link></li>
-                    <li><Link to="">Category</Link></li>
+                    <li><Link to="/Admin/AddCarousel">Add Carousel</Link></li>
                     <li><Link to="">Menu</Link></li>
                     <li><Link to="">Testimonial</Link></li>
                     <li><Link to="">Contact</Link></li>
