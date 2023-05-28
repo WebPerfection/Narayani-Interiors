@@ -49,7 +49,7 @@ const ProjectPage = () => {
     axios
       .get(`https://azure-hen-cap.cyclic.app/data`)
       .then((res) => {
-        setData(res.data);
+        setData(res.data.uploads);
       })
       .catch((err) => console.log(err));
     
