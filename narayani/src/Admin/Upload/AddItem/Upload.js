@@ -42,7 +42,7 @@ const Upload = () => {
       const formData = new FormData();
       formData.append('file', images[i]);
       formData.append('upload_preset', 'klsr1tbt');
-      formData.append('folder',category); 
+      formData.append('folder', category);
 
       try {
         const response = await axios.post(
@@ -71,7 +71,7 @@ const Upload = () => {
     };
 
     try {
-      const response = await axios.post('https://azure-hen-cap.cyclic.app/upload', payload);
+      const response = await axios.post('https://azure-hen-cap.cyclic.app/users', payload);
       if (response.status === 200) {
         console.log('Response:', response.data);
         setUploadStatus('Added Successfully');
@@ -104,6 +104,7 @@ const Upload = () => {
             name="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            placeholder='Tital'
             required
           />
           <br />
@@ -113,6 +114,7 @@ const Upload = () => {
             id="category"
             name="category"
             value={category}
+            placeholder='Category'
             onChange={(e) => setCategory(e.target.value)}
             required
           />
@@ -133,6 +135,7 @@ const Upload = () => {
             id="length"
             name="length"
             value={length}
+            placeholder="Length"
             onChange={(e) => setLength(e.target.value)}
             required
           />
@@ -143,6 +146,7 @@ const Upload = () => {
             step="any"
             id="width"
             name="width"
+            placeholder="width"
             value={width}
             onChange={(e) => setWidth(e.target.value)}
             required
