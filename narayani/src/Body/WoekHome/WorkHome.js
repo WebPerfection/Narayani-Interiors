@@ -44,7 +44,7 @@ const WorkHome = () => {
   }
   useEffect(()=>{
      axios.get("https://azure-hen-cap.cyclic.app/data")
-     .then((res)=>setData(res.data))
+     .then((res)=>setData(res.data.uploads))
      .catch((err)=>console.log(err))
   },[model])
   return (

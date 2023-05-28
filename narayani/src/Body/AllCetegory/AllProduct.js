@@ -3,6 +3,9 @@ import ProductList from "./ProductList";
 import axios from "axios";
 import Footer from "../../Footer/Footer";
 import Navbar from "../../Navbar/Navbar";
+import ReactPaginate from 'react-paginate';
+
+import "./Allproduct.css"
 import {
   Select,
   useDisclosure,
@@ -28,7 +31,8 @@ export default function AllProduct() {
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+  const [totalPages, setTotalPages] = useState(0);
+  const [showsort,setShowsort]=useState("")
 
   useEffect(() => {
     fetchData();
@@ -36,33 +40,35 @@ export default function AllProduct() {
 
   const fetchData = () => {
     const apiUrl = filter
-      ? `https://azure-hen-cap.cyclic.app/data?category=${filter}`
-      : "https://azure-hen-cap.cyclic.app/data";
+      ? `https://azure-hen-cap.cyclic.app/data?category=${filter}&page=${currentPage}`
+      : `https://azure-hen-cap.cyclic.app/data?page=${currentPage}`;
     axios
       .get(apiUrl)
-      .then((res) => setProducts(res.data))
+      .then((res) => {
+        setProducts(res.data.uploads)
+        setTotalPages(res.data.totalPages)
+      })
       .catch((err) => console.log(err));
   };
 
   const sortFunction = () => {
     const apiUrl = filter
-      ? `https://azure-hen-cap.cyclic.app/data?category=${filter}&length=${_length}&width=${_width}`
-      : `https://azure-hen-cap.cyclic.app/data?length=${_length}&width=${_width}`;
+      ? `https://azure-hen-cap.cyclic.app/data?category=${filter}&length=${_length}&width=${_width}&page=${currentPage}`
+      : `https://azure-hen-cap.cyclic.app/data?length=${_length}&width=${_width}&page=${currentPage}`;
     axios
       .get(apiUrl)
-      .then((res) => setProducts(res.data))
+      .then((res) => setProducts(res.data.uploads))
       .catch((err) => console.log(err));
   };
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
+  const handlePageChange = ({ selected }) => {
+    setCurrentPage(selected + 1);
   };
-
-  const totalPages = Math.ceil(products.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentProducts = products.slice(startIndex, endIndex);
-
+useEffect(()=>{
+  if(_length && _width){
+  setShowsort(`size: ${_length} X ${_width}`)
+}
+},[_length,_width])
   return (
     <>
       <Navbar />
@@ -84,28 +90,27 @@ export default function AllProduct() {
               </Select>
             </div>
             <div className="sort-bt">
-              <Button onClick={onOpen}>Sort by size</Button>
+              <Button onClick={onOpen}>{showsort?showsort:"Sort by size"}</Button>
             </div>
           </div>
         </div>
-        {currentProducts.length > 0 ? (
-          <ProductList products={currentProducts} />
+        {products.length > 0 ? (
+          <ProductList products={products} />
         ) : (
           <div>No products found.</div>
         )}
 
        
-          <div className="pagination">
-            {Array.from({ length: totalPages }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => handlePageChange(index + 1)}
-                className={currentPage === index + 1 ? "active" : ""}
-              >
-                {index + 1}
-              </button>
-            ))}
-          </div>
+       <div className="Flex">
+       <ReactPaginate
+        pageCount={totalPages}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={2}
+        onPageChange={handlePageChange}
+        containerClassName="pagination"
+        activeClassName="active"
+      />
+       </div>
       </div>
 
       <Modal
