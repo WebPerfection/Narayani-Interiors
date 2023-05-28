@@ -3,6 +3,8 @@ import './GetAllData.css';
 import axios from 'axios';
 import { Editor } from '@tinymce/tinymce-react';
 import AdminNav from '../../AdminNav/AdminNav';
+import Swal from 'sweetalert2';
+
 
 
 function GetAllData() {
@@ -14,6 +16,7 @@ function GetAllData() {
   const [_length, setLength] = useState('');
   const [_width, setWidth] = useState('');
   const [images, setImages] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
 
   useEffect(() => {
@@ -25,7 +28,7 @@ function GetAllData() {
       .then((res) => res.json())
       .then((resu) => {
         console.log(resu);
-        setDatabus(resu);
+        setDatabus(resu.uploads);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
@@ -57,6 +60,7 @@ function GetAllData() {
 
   const handleUpdateFormSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const itemId = selectedItem._id;
 
     const imageUrls = [];
@@ -115,24 +119,40 @@ function GetAllData() {
         console.error(`Error while updating Item with ID ${itemId}:`, error);
         cancelUpdate();
         getAll();
+      })
+      .finally(() => {
+        setIsLoading(false); // Stop the loading state
       });
   }
 
   function deleteItem(itemId) {
-    fetch(`http://localhost:5000/data/${itemId}`, {
-      method: 'DELETE',
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        console.log(`Item with ID ${itemId} deleted successfully.`);
-        getAll();
-      })
-      .catch((error) => {
-        console.error(`Error while deleting Item with ID ${itemId}:`, error);
-        getAll();
-      });
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'This action cannot be undone.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#ff1403',
+      cancelButtonColor: '#6fe273',
+      confirmButtonText: 'Yes, delete it',
+      cancelButtonText: 'Cancel',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/data/${itemId}`, {
+          method: 'DELETE',
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            console.log(`Item with ID ${itemId} deleted successfully.`);
+            getAll();
+          })
+          .catch((error) => {
+            console.error(`Error while deleting Item with ID ${itemId}:`, error);
+            getAll();
+          });
+      }
+    });
   }
 
   return (
@@ -262,7 +282,23 @@ function GetAllData() {
                 <br />
                 <input type="file" multiple onChange={handleImageChange} />
                 <br />
-                <button type="submit">Update</button>
+                <button
+                  type="submit"
+                  className="btn3"
+                  disabled={isLoading || images.length === 0}
+                >
+                  {isLoading ? (
+                    <>
+                      <span className="loading-icon">
+                        {/* Add your custom spinner component here */}
+                        <div className="spinner"></div>
+                      </span>
+                      Updating...
+                    </>
+                  ) : (
+                    'Update'
+                  )}
+                </button>
               </form>
             </div>
           </div>

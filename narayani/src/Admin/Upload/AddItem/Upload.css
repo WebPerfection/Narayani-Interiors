@@ -55,4 +55,52 @@ body {
   input[type="submit"]:hover {
     background-color: #45a049;
   }
+  .loading-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+  
+  .btn3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn3:hover {
+    background-color: #45a049;
+  }
+  .loading-icon {
+    display: inline-block;
+  }
+  
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    border: 2px solid #fff;
+    border-top-color: transparent;
+    animation: spinner-animation 0.75s linear infinite;
+  }
+  
+  @keyframes spinner-animation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  
+  
+  
+  
+  
   

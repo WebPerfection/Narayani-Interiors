@@ -1,9 +1,10 @@
+
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Editor } from '@tinymce/tinymce-react';
-import './Upload.css';
+import Swal from 'sweetalert2';
 import AdminNav from '../../AdminNav/AdminNav';
-
+import './Upload.css';
 
 const Upload = () => {
   const [title, setTitle] = useState('');
@@ -13,6 +14,7 @@ const Upload = () => {
   const [length, setLength] = useState(0);
   const [width, setWidth] = useState(0);
   const [uploadStatus, setUploadStatus] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const deleteImagesFromCloudinary = async (imageUrls) => {
     try {
@@ -35,6 +37,7 @@ const Upload = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
 
     const imageUrls = [];
 
@@ -50,13 +53,20 @@ const Upload = () => {
           formData
         );
         imageUrls.push(response.data.secure_url);
-        console.log("upload to cloudinary:");
+        console.log('Upload to Cloudinary:', response.data.secure_url);
       } catch (error) {
         console.error('Image upload failed:', error);
-        // Delete the uploaded images from Cloudinary
         await deleteImagesFromCloudinary(imageUrls);
-        return; // Stop further processing
+        setIsLoading(false);
+        return;
       }
+    }
+
+    if (imageUrls.length === 0) {
+      // Handle the case when there are no uploaded images
+      console.log('No images uploaded');
+      setIsLoading(false);
+      return;
     }
 
     const payload = {
@@ -71,26 +81,44 @@ const Upload = () => {
     };
 
     try {
-      const response = await axios.post('https://azure-hen-cap.cyclic.app/users', payload);
+      const response = await axios.post('https://azure-hen-cap.cyclic.app/data', payload);
       if (response.status === 200) {
         console.log('Response:', response.data);
         setUploadStatus('Added Successfully');
-        // Reset the form after successful upload
         setTitle('');
         setDescription('');
         setCategory('');
         setImages([]);
         setLength(0);
         setWidth(0);
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Upload Successful',
+          timer: 2000,
+          showConfirmButton: false,
+        });
       } else {
         console.error('Upload failed');
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Upload Failed',
+        });
       }
     } catch (error) {
       console.error('Upload request failed:', error);
-      // Delete the uploaded images from Cloudinary
       await deleteImagesFromCloudinary(imageUrls);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Upload Failed',
+      });
     }
+
+    setIsLoading(false);
   };
+
   return (
     <>
       <AdminNav />
@@ -104,7 +132,7 @@ const Upload = () => {
             name="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder='Tital'
+            placeholder="Title"
             required
           />
           <br />
@@ -114,7 +142,7 @@ const Upload = () => {
             id="category"
             name="category"
             value={category}
-            placeholder='Category'
+            placeholder="Category"
             onChange={(e) => setCategory(e.target.value)}
             required
           />
@@ -146,7 +174,7 @@ const Upload = () => {
             step="any"
             id="width"
             name="width"
-            placeholder="width"
+            placeholder="Width"
             value={width}
             onChange={(e) => setWidth(e.target.value)}
             required
@@ -162,11 +190,23 @@ const Upload = () => {
             required
           />
           <br />
-          <input type="submit" value="Upload" className="btn3" />
+          <button type="submit" className="btn3" disabled={isLoading || images.length === 0}>
+            {isLoading ? (
+              <>
+                <span className="loading-icon">
+                  <div className="spinner"></div>
+                </span>
+                Uploading...
+              </>
+            ) : (
+              'Upload'
+            )}
+          </button>
         </form>
       </div>
     </>
   );
 };
+
 
 export default Upload;
