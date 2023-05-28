@@ -43,7 +43,7 @@ const WorkHome = () => {
     console.log("ch")
   }
   useEffect(()=>{
-     axios.get("https://azure-hen-cap.cyclic.app//getdata")
+     axios.get("https://azure-hen-cap.cyclic.app/data")
      .then((res)=>setData(res.data))
      .catch((err)=>console.log(err))
   },[model])
