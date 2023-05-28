@@ -84,7 +84,7 @@
     position: relative;
   }
   .product-price-btn button {
-    background-color: #f2b259;
+    /* background-color: #f2b259; */
     font-weight: bold;
     color: white;
     width: 40%;
@@ -95,10 +95,10 @@
     border-radius: 5px;
   }
   .update-btn:hover {
-    background-color: #3dff67d2;
+    background-color: #41a757d2;
   }
   .delete-btn:hover {
-    background-color: #ff2600;
+    background-color: #db3b1f;
   }
 
 
@@ -193,7 +193,7 @@ form select {
 }
 
 form button[type="submit"] {
-  background-color: #4caf50;
+  /* background-color: #4caf50; */
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -202,7 +202,7 @@ form button[type="submit"] {
 }
 
 form button[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: #348f38;
 }
 
 /* Adjust the maximum height and add padding as needed */

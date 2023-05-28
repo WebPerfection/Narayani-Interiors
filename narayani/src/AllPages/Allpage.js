@@ -7,9 +7,9 @@ import Upload from '../Admin/Upload/AddItem/Upload';
 import AllProduct from '../Body/AllCetegory/AllProduct';
 import AdddCarousel from '../Admin/Upload/AddCarousel/AddCarousel';
 import Dummy from '../Body/About/components/Dummy';
-import GetAllUser from '../Admin/GetAllUser/GetAllUser';
 import AddTestimonial from '../Admin/Upload/AddTestimonial/AddTestimonial';
 import GetAllData from '../Admin/Get/GetAllData/GetAllData';
+import GetAllUser from '../Admin/Get/GetAllUser/GetAllUser';
 
 export default function Allpage() {
   return (
