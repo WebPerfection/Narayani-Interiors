@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './GetAllUser.css';
-import AdminNav from '../AdminNav/AdminNav';
+import AdminNav from '../../AdminNav/AdminNav';
+
 
 
 function GetAllUser() {
@@ -103,7 +104,7 @@ function GetAllUser() {
     };
 
     function deleteUser(userId) {
-        fetch(`http://localhost:5000/users/${userId}`, {
+        fetch(`https://azure-hen-cap.cyclic.app/users/${userId}`, {
             method: 'DELETE',
         })
             .then((response) => {
@@ -126,7 +127,7 @@ function GetAllUser() {
                 {userList.length > 0 ? (
                     userList.map((user) => (
                         <div key={user._id} className="wrapper">
-                            <div className="product-info" style={{width:"100%"}}>
+                            <div className="product-info" style={{ width: "100%" }}>
                                 <div className="product-text">
                                     <span>
                                         <h3>Name:-</h3>

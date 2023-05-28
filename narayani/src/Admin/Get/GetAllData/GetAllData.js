@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './GetAllData.css';
-import AdminNav from './AdminNav/AdminNav';
 import axios from 'axios';
 import { Editor } from '@tinymce/tinymce-react';
+import AdminNav from '../../AdminNav/AdminNav';
+
 
 function GetAllData() {
   const [databus, setDatabus] = useState([]);
@@ -20,7 +21,7 @@ function GetAllData() {
   }, []);
 
   function getAll() {
-    fetch('https://azure-hen-cap.cyclic.app/getdata')
+    fetch('https://azure-hen-cap.cyclic.app/data')
       .then((res) => res.json())
       .then((resu) => {
         console.log(resu);
@@ -95,7 +96,7 @@ function GetAllData() {
     };
 
     // Send the updated item data to the API
-    fetch(`https://azure-hen-cap.cyclic.app/update/${itemId}`, {
+    fetch(`https://azure-hen-cap.cyclic.app/data/${itemId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -118,7 +119,7 @@ function GetAllData() {
   }
 
   function deleteItem(itemId) {
-    fetch(`http://localhost:5000/delete/${itemId}`, {
+    fetch(`http://localhost:5000/data/${itemId}`, {
       method: 'DELETE',
     })
       .then((response) => {
