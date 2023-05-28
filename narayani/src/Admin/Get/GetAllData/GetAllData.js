@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './GetAllData.css';
-import AdminNav from './AdminNav/AdminNav';
 import axios from 'axios';
 import { Editor } from '@tinymce/tinymce-react';
+import AdminNav from '../../AdminNav/AdminNav';
+
 
 function GetAllData() {
   const [databus, setDatabus] = useState([]);

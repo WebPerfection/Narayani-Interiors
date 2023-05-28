@@ -25,7 +25,7 @@ body {
     padding: 20px;
     padding-bottom: 80px;
   }
-  .Upload label,.UploadCarousel label{
+  .Upload label,.UploadCarousel label,form label{
     text-align: start;
   }
   
