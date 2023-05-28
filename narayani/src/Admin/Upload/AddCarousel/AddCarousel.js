@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './AddCarousel.css';
-import '../../AdminNav/AdminNav.js';
+// import '../../AdminNav/AdminNav.js';
 import AdminNav from '../../AdminNav/AdminNav.js';
 
 

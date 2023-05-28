@@ -12,11 +12,11 @@ function AdminNav() {
                     <span className="line line3"></span>
                 </div>
                 <ul className="menu-items">
-                    <li><Link to="/admin/Home">Add Item</Link></li>
-                    <li><Link to="/Admin/GetAllData">All items</Link></li>
-                    <li><Link to="/Admin/AddCarousel">Add Carousel</Link></li>
-                    <li><Link to="/Admin/Users">Users</Link></li>
-                    <li><Link to="">Testimonial</Link></li>
+                    <li><Link to="/admin">Add Item</Link></li>
+                    <li><Link to="/admin/GetAllData">All items</Link></li>
+                    <li><Link to="/admin/AddCarousel">Add Carousel</Link></li>
+                    <li><Link to="/admin/Users">Users</Link></li>
+                    <li><Link to="/admin/AdddCarousel">Testimonial</Link></li>
                     <li><Link to="">Contact</Link></li>
                 </ul>
                 <h3 className="logo">Narayni-Interior</h3>
