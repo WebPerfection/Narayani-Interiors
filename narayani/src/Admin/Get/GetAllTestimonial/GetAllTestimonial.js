@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './GetAllTestimonial.css';
 import axios from 'axios';
 import AdminNav from '../../AdminNav/AdminNav';
+import Swal from 'sweetalert2';
+
+
 
 function GetAllTestimonial({ cheak }) {
     const [testimonials, setTestimonials] = useState([]);
@@ -10,6 +13,7 @@ function GetAllTestimonial({ cheak }) {
     const [message, setMessage] = useState('');
     const [image, setImage] = useState(null);
     const [uploadStatus, setUploadStatus] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         getAllTestimonials();
@@ -46,6 +50,7 @@ function GetAllTestimonial({ cheak }) {
 
     const handleUpdateFormSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
         const testimonialId = selectedTestimonial._id;
 
         let imageUrl = selectedTestimonial.image;
@@ -65,6 +70,8 @@ function GetAllTestimonial({ cheak }) {
                 console.log('Image uploaded to Cloudinary:', imageUrl);
             } catch (error) {
                 console.error('Image upload failed:', error);
+                setIsLoading(false); // Set isLoading to false in case of an error
+                return;
             }
         }
 
@@ -83,25 +90,44 @@ function GetAllTestimonial({ cheak }) {
                 console.log(`Testimonial with ID ${testimonialId} updated successfully.`);
                 cancelUpdate();
                 getAllTestimonials();
+                setIsLoading(false);
             })
             .catch((error) => {
                 console.error(`Error while updating testimonial with ID ${testimonialId}:`, error);
                 cancelUpdate();
                 getAllTestimonials();
+                setIsLoading(false);
             });
     };
 
     function deleteTestimonial(testimonialId) {
-        axios
-            .delete(`https://azure-hen-cap.cyclic.app/testimonial/${testimonialId}`)
-            .then((response) => {
-                console.log(`Testimonial with ID ${testimonialId} deleted successfully.`);
-                getAllTestimonials();
-            })
-            .catch((error) => {
-                console.error(`Error while deleting testimonial with ID ${testimonialId}:`, error);
-                getAllTestimonials();
-            });
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'This action cannot be undone.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#ff1403',
+            cancelButtonColor: '#6fe273',
+            confirmButtonText: 'Yes, delete it',
+            cancelButtonText: 'Cancel',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://azure-hen-cap.cyclic.app/testimonial/${testimonialId}`, {
+                    method: 'DELETE',
+                })
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        console.log(`Testimonial with ID ${testimonialId} deleted successfully.`);
+                        getAllTestimonials();
+                    })
+                    .catch((error) => {
+                        console.error(`Error while deleting testimonial with ID ${testimonialId}:`, error);
+                        getAllTestimonials();
+                    });
+            }
+        });
     }
 
     return (
@@ -151,7 +177,7 @@ function GetAllTestimonial({ cheak }) {
 
             {selectedTestimonial && (
                 <div className="popup">
-                    <div className="form-parent">
+                    <div className="formparent">
                         <div className="popup-inner">
                             <button className="close-btn" onClick={cancelUpdate}>
                                 Close
@@ -180,7 +206,18 @@ function GetAllTestimonial({ cheak }) {
                                 <label htmlFor="image">Image:</label>
                                 <input type="file" onChange={handleImageChange} />
                                 <br />
-                                <button type="submit">Update</button>
+                                <button type="submit" className="btn3" disabled={isLoading}>
+                                    {isLoading ? (
+                                        <>
+                                            <span className="loading-icon">
+                                                <div className="spinner"></div>
+                                            </span>
+                                            Uploading...
+                                        </>
+                                    ) : (
+                                        'Upload'
+                                    )}
+                                </button>
                             </form>
                         </div>
                     </div>

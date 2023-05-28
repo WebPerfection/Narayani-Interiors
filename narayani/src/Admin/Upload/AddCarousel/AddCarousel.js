@@ -3,6 +3,8 @@ import axios from 'axios';
 import './AddCarousel.css';
 // import '../../AdminNav/AdminNav.js';
 import AdminNav from '../../AdminNav/AdminNav.js';
+import Swal from 'sweetalert2';
+
 
 
 const AdddCarousel = () => {
@@ -11,6 +13,7 @@ const AdddCarousel = () => {
     const [imageMobile, setImageMobile] = useState(null);
     const [imagePC, setImagePC] = useState(null);
     const [uploadStatus, setUploadStatus] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const deleteImageFromCloudinary = async (imageUrl) => {
         try {
@@ -29,6 +32,7 @@ const AdddCarousel = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        setIsLoading(true);
 
         let imageUrlMobile = null;
         let imageUrlPC = null;
@@ -87,8 +91,12 @@ const AdddCarousel = () => {
                 setText('');
                 setImageMobile(null);
                 setImagePC(null);
+                setIsLoading(false);
+                Swal.fire('Error', 'Upload Failed', 'error');
             } else {
                 console.error('Upload failed');
+                setIsLoading(false);
+                Swal.fire('Error', 'Upload Failed', 'error');
             }
         } catch (error) {
             console.error('Upload request failed:', error);
@@ -99,7 +107,10 @@ const AdddCarousel = () => {
             if (imageUrlPC) {
                 await deleteImageFromCloudinary(imageUrlPC);
             }
+            setIsLoading(false);
         }
+        setIsLoading(false);
+        Swal.fire('Error', 'Upload Failed', 'error'); // Show error message
     };
 
     return (
@@ -147,7 +158,18 @@ const AdddCarousel = () => {
                         required
                     />
                     <br />
-                    <input type="submit" value="Upload" className="btn3" />
+                    <button type="submit" className="btn3" disabled={isLoading}>
+                        {isLoading ? (
+                            <>
+                                <span className="loading-icon">
+                                    <div className="spinner"></div>
+                                </span>
+                                Uploading...
+                            </>
+                        ) : (
+                            'Upload'
+                        )}
+                    </button>
                 </form>
             </div>
         </>
