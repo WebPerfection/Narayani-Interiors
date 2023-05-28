@@ -47,7 +47,7 @@ const ProjectPage = () => {
 
   useEffect(() => {
     axios
-      .get(`https://azure-hen-cap.cyclic.app//getdata`)
+      .get(`https://azure-hen-cap.cyclic.app/data`)
       .then((res) => {
         setData(res.data);
       })
@@ -76,7 +76,7 @@ const ProjectPage = () => {
 
   useEffect(() => {
     axios
-      .get(`https://azure-hen-cap.cyclic.app//getdata/${id}`)
+      .get(`https://azure-hen-cap.cyclic.app/data/${id}`)
       .then((res) => {
         setProjectImages(res.data.images);
         setAllData(res.data);
