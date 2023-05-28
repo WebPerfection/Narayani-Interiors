@@ -82,7 +82,7 @@ const AdddCarousel = () => {
         };
 
         try {
-            const response = await axios.post('https://azure-hen-cap.cyclic.app/upload-carousel', payload);
+            const response = await axios.post('https://azure-hen-cap.cyclic.app/carousel', payload);
             if (response.status === 200) {
                 console.log('Response:', response.data);
                 setUploadStatus('Added Successfully');
