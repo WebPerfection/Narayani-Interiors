@@ -1,125 +1,135 @@
+.pro-main {
+  margin-top: 180px;
+}
+.description-div {
+  height: 50px;
+  /* border: 1px solid black; */
+  overflow: hidden;
+}
+.less {
+  color: rgb(26, 205, 83);
+}
+.more {
+  color: red;
+  top: -12px;
 
-  .pro-main{
-    margin-top: 180px;
-  }
-  .description-div{
-    height: 50px;
-    /* border: 1px solid black; */
-    overflow: hidden;
-  }
-  .less{
-    color: rgb(26, 205, 83);
-  }
-  .more{
-    color: red;
-    top: -12px;
-    
-    position: relative;
-  }
-  .less:hover{
-    cursor: pointer;
-  }
-  .more:hover{
-    cursor: pointer;
-  }
-  .related-images{
-    flex-wrap: wrap;
-    justify-content: left;
-    gap: 10px;
-  }
-  .related-images>img{
-    width: 120px;
-    height: 80px;
-    border-radius: 5px;
-  }
-  .related-images>img:hover{
-    cursor: pointer;
-  }
-  .HeroImages-main-div{
-    display: flex;
-    width: 90%;
-    justify-content: center;
-    gap: 30px;
-  }
-  
-  .HeroImage{
-    width: 60%;
-  
-    display: flex;
-    /* align-items: center; */
-    justify-content: center;
-  }
-  .showHeroImage{
-    width: 100%;
-    border-radius: 10px;
-  }
-  .hideHeroImage{
-    width: 100%;
-    filter: blur(4px);
-    border-radius: 10px;
-  }
- .hide{
-  top: 25%;
-    position: absolute;
-    background-color: var(--text-gold);
-    padding: 15px 80px;
-    border-radius: 5px;  
-  }
-  .showImage{
-    display: none;
-  }
-  .HeroImage-content-div{
-    width: 30%;
-    text-align: left;
-  
-    padding: 20px;
-  }
-  .HeroImage-button{
-    background-color:var(--text-gold);
-    width: 100%;
-    padding: 10px 0px ;
-    border-radius: 5px;
-    color: white;
-    font-weight: 500;
-    margin-bottom: 5px;
-    margin-top: 20px;
-  }
-  /* Carousel css */
+  position: relative;
+}
+.less:hover {
+  cursor: pointer;
+}
+.more:hover {
+  cursor: pointer;
+}
+.related-images {
+  flex-wrap: wrap;
+  justify-content: left;
+  gap: 10px;
+}
+.related-images > img {
+  width: 120px;
+  height: 80px;
+  border-radius: 5px;
+}
+.related-images > img:hover {
+  cursor: pointer;
+}
+.HeroImages-main-div {
+  display: flex;
+  width: 90%;
+  justify-content: center;
+  gap: 30px;
+}
+
+.HeroImage {
+  width: 60%;
+
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+.showHeroImage {
+  width: 100%;
+  border-radius: 10px;
+  height: 450px;
+}
+.hideHeroImage {
+  width: 100%;
+  filter: blur(4px);
+  border-radius: 10px;
+  height: 450px;
+}
+.hide {
+  top: 400px;
+  position: absolute;
+  background-color: var(--text-gold);
+  padding: 15px 80px;
+  border-radius: 5px;
+}
+
+.showImage {
+  display: none;
+}
+.HeroImage-content-div {
+  width: 30%;
+  text-align: left;
+
+  padding: 20px;
+}
+.HeroImage-button {
+  background-color: var(--text-gold);
+  width: 100%;
+  padding: 10px 0px;
+  border-radius: 5px;
+  color: white;
+  font-weight: 500;
+  margin-bottom: 5px;
+  margin-top: 20px;
+}
+.carousel-container .react-multiple-carousel__arrow {
+  z-index: 899;
+}
+/* Carousel css */
 /* Styling for the project image */
 .img-work {
   border-radius: 5px;
   height: 300px !important;
 }
 
-.see-all-link{
-display: flex;
-justify-content: end;
+.see-all-link {
+  display: flex;
+  justify-content: end;
 }
-@media only screen and (max-width:1000px){
-  .HeroImages-main-div{
+@media only screen and (max-width: 1000px) {
+  .HeroImages-main-div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 20px;
   }
- 
-  .HeroImage{
+  .showHeroImage {
+    height: 100%;
+  }
+  .hideHeroImage {
+    height: 100%;
+  }
+
+  .HeroImage {
     width: 100%;
-  
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .HeroImage-content-div {
     width: 100%;
-  
+
     display: flex;
     align-items: center;
     justify-content: center;
   }
 }
-@media only screen and (max-width:530px){
-  .pro-main{
-    margin-top:60px;
+@media only screen and (max-width: 530px) {
+  .pro-main {
+    margin-top: 60px;
   }
 }
