@@ -10,6 +10,7 @@ import MakeApoiment from "../MakeApoiment/MakeApoiment";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import {toggelModel} from "../../Redux/Action"
+import Loading from "../Loading/Loading";
 
 const responsive = {
   superLargeDesktop: {
@@ -44,7 +45,7 @@ const ProjectPage = () => {
   const dispatch=useDispatch()
   const [data, setData] = useState("");
   const [more, setMore] = useState(false);
-
+  const [loading,setLoading]=useState(true)
   useEffect(() => {
     axios
       .get(`https://azure-hen-cap.cyclic.app/data`)
@@ -67,13 +68,13 @@ const ProjectPage = () => {
   const [allData, setAllData] = useState("");
 
   useEffect(() => {
-    if (localStorage.getItem("narayniUser") || heroImage === 0) {
+    if (localStorage.getItem("Narayani-User") || heroImage === 0) {
       setOnaImage(true);
     } else {
       setOnaImage(false);
     }
-  }, [heroImage]);
-
+  }, [heroImage,localStorage.getItem("Narayani-User")]);
+  
   useEffect(() => {
     axios
       .get(`https://azure-hen-cap.cyclic.app/data/${id}`)
@@ -81,16 +82,19 @@ const ProjectPage = () => {
         setProjectImages(res.data.images);
         setAllData(res.data);
         setHeroImage(0);
+        setLoading(false)
       })
       .catch((err) => console.log(err));
   }, [id]);
-
+// if(loading){
+//   return <Loading/>
+// }
   return (
     <>
       <Navbar />
       <div>Hello world</div>
       <div className="pro-main">
-        {projectImages && (
+        {loading ?<Loading/>:projectImages && (
           <div className="Flex">
             <div className="HeroImages-main-div">
               <div className="HeroImage">

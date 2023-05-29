@@ -17,21 +17,21 @@ export default function WorkingProcess() {
       <div className='Flex'><h1 className='working-icon Flex'>01</h1></div>
         <div>
           
-        <h3>Idea & Design</h3>
-        <p>With righteous indignation and works off beguiled demoralized charm.</p>
+        <h3>Flat 10 year warranty</h3>
+        <p>Choose professionally designed interiors crafted with superior quality materials, leaving no room for defects.</p>
         </div>
         <div className='Flex icon-work'><FaBuilding/></div>
       </div>
       <div className='card-work'>
       <div className='Flex'><h1 className='working-icon Flex'>02</h1></div>
-        <div><h3>Specification</h3>
-        <p>Our power of choice is untrammelled and when nothing prevents.</p></div>
+        <div><h3>45-day delivery</h3>
+        <p>Get professional expertise and stunning interiors for your new home in just 45 days—our guaranteed delivery.</p></div>
         <div className='Flex icon-work'><GiStabbedNote/></div>
       </div>
       <div className='card-work'>
       <div className='Flex '><h1 className='working-icon Flex'>03</h1></div>
-      <div><h3>Execution</h3>
-      <p>Wing to the claims of duty the obligations will frequently occur.</p></div>
+      <div><h3>Post-installation service</h3>
+      <p>Get unwavering support from our dedicated care team and complete your design journey with confidence.</p></div>
       <div className='Flex icon-work'><FaReceipt/></div>
       </div>
     </div>

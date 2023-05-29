@@ -70,22 +70,24 @@ export default function Content() {
             <div className='Flex'><h1 className='concept-icon'><AiOutlineAntDesign /></h1></div>
             <div>
 
-              <h3>Concept Designs</h3>
-              <p>"Unlock the Art of Innovation - Embrace Concepts that Inspire, Ignite, and Redefine the Boundaries of Design."</p>
+              <h3>Contactless Experience</h3>
+              <p>No stepping out. Design your home interiors from the safety and comfort of your home.</p>
             </div>
             <div><Link to="/">Read More <BsArrowRight className='arrow' /> </Link></div>
           </div>
           <div>
             <div className='Flex'><h1 className='concept-icon'><RiProjectorLine /></h1></div>
-            <div><h3>Project Designs</h3>
-              <p>"Embark on a Journey of Limitless Possibilities - Unleash the Power of Choice to Create the Best Designs."</p>
+            <div><h3>Live 3D Designs</h3>
+              <p>Explore life-like 3D designs online that are made for your floor plan.</p>
             </div>
             <div><Link to="/admin-page">Read More <BsArrowRight className='arrow' /></Link></div>
           </div>
           <div>
             <div className='Flex'><h1 className='concept-icon'><FaPaintRoller /></h1></div>
-            <div><h3>Make Overs</h3>
-              <p>Transformation Begins Here - Rediscover the Beauty of Spaces with Captivating Makeovers that Transcend Imagination and Create Lasting Impressions."</p></div>
+            <div><h3>Instant Pricing
+
+</h3>
+              <p>Enjoy complete price transparency and stay within budget.</p></div>
             <div><Link>Read More <BsArrowRight className='arrow' /></Link></div>
           </div>
         </div>

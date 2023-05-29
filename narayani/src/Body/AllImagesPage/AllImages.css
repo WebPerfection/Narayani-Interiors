@@ -127,6 +127,9 @@
     align-items: center;
     justify-content: center;
   }
+  .hide{
+    top: auto; 
+    }
 }
 @media only screen and (max-width: 530px) {
   .pro-main {

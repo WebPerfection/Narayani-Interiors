@@ -31,7 +31,7 @@
 }
 .working-card{
     width: 100%;
-    padding: 0px 20px;
+    padding: 0px 10px;
     gap: 40px;
     margin-top: 50px;
 }
@@ -57,6 +57,9 @@
     animation: show_bg 2s;
     
 }
+/* .card-work{
+    height: 400px;
+} */
  .card-work:hover{
     margin-top: 20px;
     box-shadow: var(--inner-shadow);
@@ -135,7 +138,7 @@
     gap: 50px;
     }
     #working-card>div{
-        width: 80%;
+        width: 100%;
         margin-top: 80px;
     }
     #working-card h3{
