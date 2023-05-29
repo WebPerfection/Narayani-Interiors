@@ -4,8 +4,6 @@ import axios from 'axios';
 import AdminNav from '../../AdminNav/AdminNav';
 import Swal from 'sweetalert2';
 
-
-
 function GetAllTestimonial({ cheak }) {
     const [testimonials, setTestimonials] = useState([]);
     const [selectedTestimonial, setSelectedTestimonial] = useState(null);
@@ -18,7 +16,7 @@ function GetAllTestimonial({ cheak }) {
     useEffect(() => {
         getAllTestimonials();
     }, [cheak]);
-    console.log(cheak)
+
     function getAllTestimonials() {
         axios
             .get('https://azure-hen-cap.cyclic.app/testimonial')
@@ -71,6 +69,11 @@ function GetAllTestimonial({ cheak }) {
             } catch (error) {
                 console.error('Image upload failed:', error);
                 setIsLoading(false); // Set isLoading to false in case of an error
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Image upload failed.',
+                });
                 return;
             }
         }
@@ -91,12 +94,24 @@ function GetAllTestimonial({ cheak }) {
                 cancelUpdate();
                 getAllTestimonials();
                 setIsLoading(false);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'Testimonial updated successfully.',
+                    timer: 2000,
+                    showConfirmButton: false,
+                });
             })
             .catch((error) => {
                 console.error(`Error while updating testimonial with ID ${testimonialId}:`, error);
                 cancelUpdate();
                 getAllTestimonials();
                 setIsLoading(false);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error updating testimonial.',
+                });
             });
     };
 
@@ -121,10 +136,22 @@ function GetAllTestimonial({ cheak }) {
                         }
                         console.log(`Testimonial with ID ${testimonialId} deleted successfully.`);
                         getAllTestimonials();
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: 'Testimonial deleted successfully.',
+                            timer: 2000,
+                            showConfirmButton: false,
+                        });
                     })
                     .catch((error) => {
                         console.error(`Error while deleting testimonial with ID ${testimonialId}:`, error);
                         getAllTestimonials();
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Error deleting testimonial.',
+                        });
                     });
             }
         });

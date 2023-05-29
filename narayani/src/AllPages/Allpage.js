@@ -23,7 +23,7 @@ export default function Allpage() {
       <Route path='/admin/AddCarousel' element={<AdddCarousel />}></Route>
       <Route path='/aboutUs' element={<Dummy />}></Route>
       <Route path='/admin/Users' element={<GetAllUser />}></Route>
-      <Route path='/admin/AdddCarousel' element={<AddTestimonial />}></Route>
+      <Route path='/admin/AddTestimonial' element={<AddTestimonial />}></Route>
     </Routes>
   )
 }
