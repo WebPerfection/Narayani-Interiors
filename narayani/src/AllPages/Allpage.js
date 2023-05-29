@@ -10,6 +10,7 @@ import Dummy from '../Body/About/components/Dummy';
 import AddTestimonial from '../Admin/Upload/AddTestimonial/AddTestimonial';
 import GetAllData from '../Admin/Get/GetAllData/GetAllData';
 import GetAllUser from '../Admin/Get/GetAllUser/GetAllUser';
+import AddAchievement from '../Admin/Upload/AddAchievement/AddAchievement';
 
 export default function Allpage() {
   return (
@@ -24,6 +25,7 @@ export default function Allpage() {
       <Route path='/aboutUs' element={<Dummy />}></Route>
       <Route path='/admin/Users' element={<GetAllUser />}></Route>
       <Route path='/admin/AddTestimonial' element={<AddTestimonial />}></Route>
+      <Route path='/admin/Achievement' element={<AddAchievement />}></Route>
     </Routes>
   )
 }

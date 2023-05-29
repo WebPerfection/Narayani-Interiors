@@ -2,11 +2,13 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import './AddTestimonial.css';
+import './AddAchievement.css';
 import AdminNav from '../../AdminNav/AdminNav.js';
-import GetAllTestimonial from '../../Get/GetAllTestimonial/GetAllTestimonial';
+import GetAllAchievement from '../../Get/GetAllAchievement/GetAllAchievement';
 
-const AddTestimonial = () => {
+
+
+const AddAchievement = () => {
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
   const [image, setImage] = useState(null);
@@ -67,17 +69,19 @@ const AddTestimonial = () => {
     }
 
     const payload = {
-      name,
-      image: imageUrl,
-      message,
+      img: imageUrl,
+      text: message,
+      heading: name,
     };
 
     try {
-      const response = await axios.post('https://azure-hen-cap.cyclic.app/testimonial', payload);
-      if (response.status === 200) {
-        console.log('Response:', response.data);
+      await axios.post(
+        'https://azure-hen-cap.cyclic.app/achievement',
+        payload
+      ).then(res => {
+        console.log(res.response)
+        console.log('Achievement created:');
         setUploadStatus('Added Successfully');
-        // Reset the form after successful upload
         setName('');
         setMessage('');
         setImage(null);
@@ -91,18 +95,10 @@ const AddTestimonial = () => {
           showConfirmButton: false,
         });
         resetForm();
-      } else {
-        console.error('Upload failed');
-        setIsLoading(false);
-        MySwal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Upload Failed',
-        });
-      }
+      })
+
     } catch (error) {
-      console.error('Upload request failed:', error);
-      // Delete the uploaded image from Cloudinary if the upload request failed
+      console.error('Error creating achievement:', error);
       if (imageUrl) {
         await deleteImageFromCloudinary(imageUrl);
       }
@@ -121,7 +117,7 @@ const AddTestimonial = () => {
       <div className="UploadCarousel">
         <span style={{ display: 'none' }}>{uploadStatus}</span>
         <form ref={formRef} onSubmit={handleFormSubmit} encType="multipart/form-data">
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name">Heading:</label>
           <input
             type="text"
             id="name"
@@ -131,7 +127,7 @@ const AddTestimonial = () => {
             required
           />
           <br />
-          <label htmlFor="message">Message:</label>
+          <label htmlFor="message">Text:</label>
           <textarea
             id="message"
             name="message"
@@ -164,9 +160,9 @@ const AddTestimonial = () => {
           </button>
         </form>
       </div>
-      <GetAllTestimonial check={next} />
+      <GetAllAchievement cheak={next} />
     </>
   );
 };
 
-export default AddTestimonial;
+export default AddAchievement;
