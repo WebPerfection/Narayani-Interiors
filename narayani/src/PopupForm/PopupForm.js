@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { BsFillShieldLockFill, BsTelephoneFill } from "react-icons/bs";
@@ -12,6 +12,7 @@ import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { toast, Toaster } from "react-hot-toast";
 import "./PopupForm.css"; // import the CSS file
 import { CloseModel, toggelModel } from "../Redux/Action";
+
 export const PopupForm = () => {
   const [otp, setOtp] = useState("");
   const [ph, setPh] = useState("");
@@ -20,19 +21,32 @@ export const PopupForm = () => {
   const [user, setUser] = useState(null);
   const { ModelCheck } = useSelector((store) => store);
   const [show, setShow] = useState(false);
-  const [email,setEmail]=useState("")
-  const [name,setName]=useState("")
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [inputError, setInputError] = useState(false); // State for input validation
   const dispatch = useDispatch();
+
   useEffect(() => {
     setShow(ModelCheck);
   }, [ModelCheck]);
-  useEffect(()=>{
-    setTimeout(()=>{
-      dispatch(toggelModel())
-   },3000)
-  },[])
 
-  const handleClose = () => dispatch(CloseModel());
+  useEffect(() => {
+    if(localStorage.getItem("Narayani-User")===undefined){
+      setTimeout(() => {
+        dispatch(toggelModel());
+      }, 3000);
+    }
+  }, []);
+
+  const handleClose = () => {
+    setShowOTP("")
+    setName("")
+    setEmail("")
+    setPh("")
+    setUser("")
+    dispatch(CloseModel())
+  };
+
   function onCaptchVerify() {
     if (!window.recaptchaVerifier) {
       window.recaptchaVerifier = new RecaptchaVerifier(
@@ -50,7 +64,12 @@ export const PopupForm = () => {
   }
 
   function onSignup() {
+    if (name.trim() === "" || ph.trim() === "") {
+      setInputError(true);
+      return;
+    }
     setLoading(true);
+    setInputError(false);
     onCaptchVerify();
 
     const appVerifier = window.recaptchaVerifier;
@@ -62,7 +81,10 @@ export const PopupForm = () => {
         window.confirmationResult = confirmationResult;
         setLoading(false);
         setShowOTP(true);
-        toast.success("OTP sended successfully!");
+        setName("")
+        setPh("")
+        setEmail("")
+        toast.success("OTP sent successfully!");
       })
       .catch((error) => {
         console.log(error);
@@ -76,25 +98,30 @@ export const PopupForm = () => {
       .confirm(otp)
       .then(async (res) => {
         console.log(res);
-        setUser(res.user);
+        toast.success("Submit successfully!");
         setLoading(false);
-        postUserData()
+        setShowOTP("")
+        postUserData();
+        localStorage.setItem("Narayani-User","Authenticate")
       })
       .catch((err) => {
         console.log(err);
+        toast.error("Wrong Otp!");
         setLoading(false);
       });
   }
-const postUserData=()=>{
-  const payload={
-    name,
-    email,
-    number:"+" + ph
+
+  const postUserData = () => {
+    const payload = {
+      name,
+      email,
+      number: "+" + ph
+    }
+    axios.post("http://localhost:5000/register", payload)
+      .then(res => console.log(res))
+      .catch((err) => console.log(err))
   }
-    axios.post("http://localhost:5000/register",payload)
-    .then(res=>console.log(res))
-    .catch((err)=>console.log(err))
-}
+
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
@@ -106,20 +133,16 @@ const postUserData=()=>{
           <Toaster toastOptions={{ duration: 4000 }} />
           <div id="recaptcha-container"></div>
           {user ? (
-            <h2>👍Login Success</h2>
+            <h2>Submit Success</h2>
           ) : (
-            <div >
+            <div>
               <h4>Welcome to Narayani-Interiors</h4>
               {showOTP ? (
                 <>
                   <div>
                     <BsFillShieldLockFill size={30} />
                   </div>
-                  <label
-                    htmlFor="otp"
-                  >
-                    Enter your OTP
-                  </label>
+                  <label htmlFor="otp">Enter your OTP</label>
                   <OtpInput
                     value={otp}
                     onChange={setOtp}
@@ -127,30 +150,32 @@ const postUserData=()=>{
                     otpType="number"
                     disabled={false}
                     autoFocus
-                    className="opt-container "
+                    className="opt-container"
                   ></OtpInput>
-                  <button onClick={onOTPVerify}>
-                    {loading && (
-                      <CgSpinner size={20} className="mt-1 animate-spin" />
-                    )}
-                    <span>Verify OTP</span>
-                  </button>
                 </>
               ) : (
                 <>
-                  <label htmlFor="" >
-                    Enter Your Full Name
-                  </label>
-                  <input type="text"  onChange={(e)=>setName(e.target.value)} required={true}/>
-                  <label htmlFor="" >
-                    Enter Your Email
-                  </label>
-                  <input type="text" onChange={(e)=>setEmail(e.target.value)} />
-                  <label htmlFor="" >
-                    Verify your phone number
-                  </label>
-                  <PhoneInput  country={"in"} value={ph} onChange={setPh} required={true}/>
-                  
+                  <label htmlFor="">Enter Your Full Name</label>
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required={true}
+                  />
+                  <label htmlFor="">Enter Your Email</label>
+                  <input
+                    type="text"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <label htmlFor="">Verify your phone number</label>
+                  <PhoneInput
+                    country={"in"}
+                    value={ph}
+                    onChange={setPh}
+                    required={true}
+                  />
+                  {inputError && <p className="error-message">Please fill in all the fields</p>}
                 </>
               )}
             </div>
@@ -161,12 +186,18 @@ const postUserData=()=>{
         <Button variant="secondary" onClick={handleClose}>
           Close
         </Button>
-        <Button onClick={onSignup} className="send-bt" variant="primary">
-          Send code via SMS
-        </Button>
+        {
+          loading ?  <Button><CgSpinner size={20} className="mt-1 animate-spin" /></Button>:showOTP ?<Button onClick={onOTPVerify} className="send-bt" variant="primary">
+        
+        Verify OTP
+        </Button>:<Button onClick={onSignup} className="send-bt" variant="primary">
+        
+        Send code via SMS
+      </Button>
+        }
+        
       </Modal.Footer>
     </Modal>
   );
 };
 
-// To show the popup form after 3 seconds

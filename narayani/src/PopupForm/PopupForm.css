@@ -19,6 +19,10 @@ CSS for the modal dialog
   border-radius: 8px;
   padding: 20px;
 }
+.send-bt{
+  display: flex;
+  justify-content: space-around;
+}
 
 .modal-title {
   font-size: 20px;

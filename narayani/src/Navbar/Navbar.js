@@ -107,13 +107,25 @@ export default function Navbar() {
           </div>
 
           <div className="Button-div">
+
             <div
             > 
               <Link to="/"><FaHouseUser/>Home</Link>
 
              
             </div>
+            <div
+            > 
+              <Link to="/"><FaHouseUser/>Room</Link>
 
+             
+            </div>
+            <div
+            > 
+              <Link to="/"><FaHouseUser/>Kitchen</Link>
+
+             
+            </div>
             <div>
               <Link to="/get-In-Touch"><FaHandsHelping/>Get in touch</Link>
              

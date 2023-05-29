@@ -21,6 +21,7 @@ import {
   ModalHeader,
   ModalContent,
 } from "@chakra-ui/react";
+import Loading from "../Loading/Loading";
 
 export default function AllProduct() {
   const [products, setProducts] = useState([]);
@@ -33,7 +34,7 @@ export default function AllProduct() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [showsort,setShowsort]=useState("")
-
+  const [loading,setLoading]=useState(true)
   useEffect(() => {
     fetchData();
   }, [filter, currentPage]);
@@ -47,6 +48,7 @@ export default function AllProduct() {
       .then((res) => {
         setProducts(res.data.uploads)
         setTotalPages(res.data.totalPages)
+        setLoading(false)
       })
       .catch((err) => console.log(err));
   };
@@ -57,7 +59,10 @@ export default function AllProduct() {
       : `https://azure-hen-cap.cyclic.app/data?length=${_length}&width=${_width}&page=${currentPage}`;
     axios
       .get(apiUrl)
-      .then((res) => setProducts(res.data.uploads))
+      .then((res) => {
+        setProducts(res.data.uploads)
+        setLoading(false)
+      })
       .catch((err) => console.log(err));
   };
 
@@ -82,7 +87,11 @@ useEffect(()=>{
             <div>
               <Select
                 placeholder="Filter by Category"
-                onChange={(e) => setFilter(e.target.value)}
+                onChange={(e) => {
+                  setFilter(e.target.value)
+                  setCurrentPage(1)
+                  setLoading(true)
+                }}
               >
                 <option value="Room">Room</option>
                 <option value="Kitchen">Kitchen</option>
@@ -94,10 +103,10 @@ useEffect(()=>{
             </div>
           </div>
         </div>
-        {products.length > 0 ? (
+        { loading ? <Loading/>: products.length > 0 ? (
           <ProductList products={products} />
         ) : (
-          <div>No products found.</div>
+         <h1>Data Not Found</h1> 
         )}
 
        
