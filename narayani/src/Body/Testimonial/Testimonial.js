@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Testimonial.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import axios from "axios";
+import { useSelector } from "react-redux";
 const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 3000, min: 1200 },
@@ -20,43 +22,37 @@ const responsive = {
       items: 1,
     },
   };
-const testimonials = [
-  {
-    id: 1,
-    name: "John Doe",
-    designation: "CEO, ABC Company",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fermentum lacus ac risus cursus, in elementum mi rutrum. Sed faucibus eleifend mi sed condimentum.",
-  },
-  {
-    id: 2,
-    name: "Jane Smith",
-    designation: "CTO, XYZ Corporation",
-    content:
-      "Ut eu augue non enim pellentesque blandit vitae sed magna. Mauris auctor mattis arcu, non sagittis mauris venenatis id. Sed ultrices lorem et arcu interdum aliquam.",
-  },
-  {
-    id: 3,
-    name: "John Doe",
-    designation: "CEO, ABC Company",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fermentum lacus ac risus cursus, in elementum mi rutrum. Sed faucibus eleifend mi sed condimentum.",
-  },
-  {
-    id: 4,
-    name: "Jane Smith",
-    designation: "CTO, XYZ Corporation",
-    content:
-      "Ut eu augue non enim pellentesque blandit vitae sed magna. Mauris auctor mattis arcu, non sagittis mauris venenatis id. Sed ultrices lorem et arcu interdum aliquam.",
-  },
-];
+// const testimonials = [
+//   {
+//     id: 1,
+//     name: "John Doe",
+//     img: "https://avatars.githubusercontent.com/u/107461657?v=4",
+//     content:
+//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam fermentum lacus ac risus cursus, in elementum mi rutrum. Sed faucibus eleifend mi sed condimentum.",
+//   },
+//   {
+//     id: 2,
+//     name: "Jane Smith",
+//     img: "https://avatars.githubusercontent.com/u/107461657?v=4",
+//     content:
+//       "Ut eu augue non enim pellentesque blandit vitae sed magna. Mauris auctor mattis arcu, non sagittis mauris venenatis id. Sed ultrices lorem et arcu interdum aliquam.",
+//   }
+// ];
 
 const Testimonial = () => {
+const [testimonials,setTestimonials]=useState("")
+const model=useSelector(store=>store)
+  useEffect(()=>{
+    axios.get("https://azure-hen-cap.cyclic.app/testimonial")
+    .then((res)=>setTestimonials(res.data))
+    .catch((err)=>console.log(err))
+  },[model])
+console.log(testimonials)
   return (
     // <div className="testimonial-container">
-    <div className='workHome-main-div'>
-        <h6 className='h6'>What Our Clients Say</h6>
-    <Carousel
+    <div className='workHome-main-div Flex'>
+    <div style={{width:"80%"}}>
+    {testimonials && <Carousel
       swipeable={false}
       draggable={true}
       responsive={responsive}
@@ -74,19 +70,17 @@ const Testimonial = () => {
     >
       
         {testimonials.map((testimonial) => (
-          <div className="testimonial-card" key={testimonial.id}>
-            <p className="testimonial-content">{testimonial.content}</p>
-            <div className="testimonial-info">
-              <h3 className="testimonial-name">{testimonial.name}</h3>
-              <p className="testimonial-designation">
-                {testimonial.designation}
-              </p>
-            </div>
-          </div>
+          <div className="testimonial">
+          <img src={testimonial.image} alt={testimonial.name} className="testimonial-image" />
+          <h3 className="testimonial-name">{testimonial.name}</h3>
+          <p className="testimonial-message">{testimonial.message}</p>
+        </div>
         ))}
+        
      
-    </Carousel>
+    </Carousel>}
     </div>
+        </div>
   );
 };
 

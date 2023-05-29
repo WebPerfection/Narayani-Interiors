@@ -98,10 +98,12 @@ export const PopupForm = () => {
       .confirm(otp)
       .then(async (res) => {
         console.log(res);
+        postUserData();
         toast.success("Submit successfully!");
+        
         setLoading(false);
         setShowOTP("")
-        postUserData();
+        
         localStorage.setItem("Narayani-User","Authenticate")
       })
       .catch((err) => {
@@ -117,7 +119,7 @@ export const PopupForm = () => {
       email,
       number: "+" + ph
     }
-    axios.post("http://localhost:5000/register", payload)
+    axios.post("http://localhost:5000/users", payload)
       .then(res => console.log(res))
       .catch((err) => console.log(err))
   }
