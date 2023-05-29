@@ -176,18 +176,6 @@ export default function Navbar() {
             </div>
           </div>
           <div className="Flex" id="icon-div">
-            {/* <h1
-              id="icon-style"
-              onClick={() => {
-                const phoneNumber = "+918604846089"; // replace with your WhatsApp contact's phone number
-                window.open(
-                  `https://api.whatsapp.com/send?phone=${phoneNumber}`,
-                  "_blank"
-                );
-              }}
-            >
-              <ImWhatsapp />
-            </h1> */}
             <button onClick={openModel} className="estimate-bt">Get Estimate</button>
           </div>
         </div>

@@ -25,18 +25,29 @@ function FloatingButtons() {
 
     return (
         <div className="floating-container">
-            <div  className="floating-button">+</div>
+            <div className="floating-button">+</div>
             <div className="element-container">
                 <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">
-                    <span className="float-element tooltip-left">
+                    <span className="float-element tooltip-left" onClick={() => {
+                        const phoneNumber = "+918604846089"; // replace with your desired phone number
+                        window.location.href = `tel:${phoneNumber}`;
+                    }}>
                         <TbPhoneCall />
+
                     </span>
                 </a>
-                <span className="float-element">
+                <span className="float-element" id="icon-style"
+                    onClick={() => {
+                        const phoneNumber = "+918604846089"; // replace with your WhatsApp contact's phone number
+                        window.open(
+                            `https://api.whatsapp.com/send?phone=${phoneNumber}`,
+                            "_blank"
+                        );
+                    }}>
                     <FaWhatsapp />
                 </span>
                 <span onClick={handleScrollTop} className="float-element">
-                    <button  id="return-to-top" title="Go to top">
+                    <button id="return-to-top" title="Go to top">
                         <FaChevronUp />
                     </button>
                 </span>
