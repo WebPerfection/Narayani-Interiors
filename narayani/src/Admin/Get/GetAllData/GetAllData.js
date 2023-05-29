@@ -4,38 +4,41 @@ import axios from 'axios';
 import { Editor } from '@tinymce/tinymce-react';
 import AdminNav from '../../AdminNav/AdminNav';
 import Swal from 'sweetalert2';
+import ReactPaginate from 'react-paginate';
 
 
 
 function GetAllData() {
-  const [databus, setDatabus] = useState([]);
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [title, setTitle] = useState('');
-  const [category, setCategory] = useState('');
-  const [description, setDescription] = useState('');
-  const [_length, setLength] = useState('');
-  const [_width, setWidth] = useState('');
-  const [images, setImages] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
+  const [databus, setDatabus] = useState([]);  // State for storing data
+  const [selectedItem, setSelectedItem] = useState(null);  // State for managing the selected item
+  const [title, setTitle] = useState('');  // State for title
+  const [category, setCategory] = useState('');  // State for category
+  const [description, setDescription] = useState('');  // State for description
+  const [_length, setLength] = useState('');  // State for length
+  const [_width, setWidth] = useState('');  // State for width
+  const [images, setImages] = useState([]);  // State for images
+  const [isLoading, setIsLoading] = useState(false);  // State for loading indicator
+  const [currentPage, setCurrentPage] = useState(1); // State for current page
+  const [totalPages, setTotalPages] = useState(1); // State for total pages
 
   useEffect(() => {
     getAll();
-  }, []);
+  }, [currentPage]);
 
   function getAll() {
-    fetch('https://azure-hen-cap.cyclic.app/data')
-      .then((res) => res.json())
-      .then((resu) => {
-        console.log(resu);
-        setDatabus(resu.uploads);
+    // Fetch data from API and update the state
+    const apiUrl = `https://azure-hen-cap.cyclic.app/data?page=${currentPage}`;
+    axios
+      .get(apiUrl)
+      .then((res) => {
+        setDatabus(res.data.uploads);
+        setTotalPages(res.data.totalPages);
       })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
+      .catch((err) => console.log(err));
   }
 
   function updateItem(item) {
+    // Update the state with selected item's data
     setSelectedItem(item);
     setTitle(item.title);
     setCategory(item.category);
@@ -45,6 +48,7 @@ function GetAllData() {
   }
 
   function cancelUpdate() {
+    // Clear the state values for update form
     setSelectedItem(null);
     setTitle('');
     setCategory('');
@@ -53,6 +57,7 @@ function GetAllData() {
     setWidth('');
   }
   const handleImageChange = (event) => {
+    // Handle image selection and update the state with selected images
     const selectedFiles = Array.from(event.target.files);
     setImages(selectedFiles);
   };
@@ -61,6 +66,7 @@ function GetAllData() {
   // ...
 
   const handleUpdateFormSubmit = async (e) => {
+    // Handle the form submission for updating item
     e.preventDefault();
     setIsLoading(true);
     const itemId = selectedItem._id;
@@ -148,6 +154,7 @@ function GetAllData() {
 
 
   function deleteItem(itemId) {
+    // Confirm deletion and send delete request to the API
     Swal.fire({
       title: 'Are you sure?',
       text: 'This action cannot be undone.',
@@ -186,6 +193,11 @@ function GetAllData() {
       }
     });
   }
+  // Pagination handler
+  const handlePageChange = (data) => {
+    const selectedPage = data.selected + 1;
+    setCurrentPage(selectedPage);
+  };
 
   return (
     <>
@@ -246,7 +258,21 @@ function GetAllData() {
           <p>No data available.</p>
         )}
       </div>
+      <div style={{ paddingBottom: '50px' }}>
+        {totalPages > 1 && (
+          <ReactPaginate
+            previousLabel={'Previous'}
+            nextLabel={'Next'}
+            breakLabel={'...'}
+            pageCount={totalPages}
+            onPageChange={handlePageChange}
+            containerClassName={'pagination'}
+            activeClassName={'active'}
+          />
+        )}
+      </div>
 
+      {/* //Popup form for update the data */}
       {selectedItem && (
         <div className="popup">
           <div className='formparent'>

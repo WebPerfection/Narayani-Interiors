@@ -276,7 +276,7 @@ h5 {
   position: fixed;
   border-radius: 10px;
   top: 10px;
-  background-color: var(--skin-color);
+  background-color:white;
   z-index: 9;
   transition: 1s;
 }

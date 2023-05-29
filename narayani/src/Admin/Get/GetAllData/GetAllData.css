@@ -1,7 +1,7 @@
 .items{
 
   margin-top: 80px;
-  padding: 50px;
+  padding: 50px 50px 0px 50px;
 }
 .items>div{
   margin-bottom: 50px
