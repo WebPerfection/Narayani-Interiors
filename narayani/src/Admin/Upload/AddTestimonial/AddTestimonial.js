@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -13,6 +13,7 @@ const AddTestimonial = () => {
   const [uploadStatus, setUploadStatus] = useState('');
   const [next, setNext] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const formRef = useRef(null);
 
   const MySwal = withReactContent(Swal);
 
@@ -29,6 +30,9 @@ const AddTestimonial = () => {
     } catch (error) {
       console.error('Error deleting image:', error);
     }
+  };
+  const resetForm = () => {
+    formRef.current.reset();
   };
 
   const handleFormSubmit = async (event) => {
@@ -86,6 +90,7 @@ const AddTestimonial = () => {
           timer: 2000,
           showConfirmButton: false,
         });
+        resetForm();
       } else {
         console.error('Upload failed');
         setIsLoading(false);
@@ -115,7 +120,7 @@ const AddTestimonial = () => {
       <AdminNav />
       <div className="UploadCarousel">
         <span style={{ display: 'none' }}>{uploadStatus}</span>
-        <form onSubmit={handleFormSubmit} encType="multipart/form-data">
+        <form ref={formRef} onSubmit={handleFormSubmit} encType="multipart/form-data">
           <label htmlFor="name">Name:</label>
           <input
             type="text"

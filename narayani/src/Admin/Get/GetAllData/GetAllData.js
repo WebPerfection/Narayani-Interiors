@@ -111,27 +111,23 @@ function GetAllData() {
     };
 
     // Send the updated item data to the API
-    fetch(`https://azure-hen-cap.cyclic.app/data/${itemId}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updatedItem),
-    })
+    axios
+      .patch(`https://azure-hen-cap.cyclic.app/data/${itemId}`, updatedItem)
       .then((response) => {
-        if (!response.ok) {
+        if (response.status === 200) {
+          console.log(`Item with ID ${itemId} updated successfully.`);
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Upload Successful',
+            timer: 2000,
+            showConfirmButton: false,
+          });
+          cancelUpdate();
+          getAll();
+        } else {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        console.log(`Item with ID ${itemId} updated successfully.`);
-        Swal.fire({
-          icon: 'success',
-          title: 'Success',
-          text: 'Upload Successful',
-          timer: 2000,
-          showConfirmButton: false,
-        });
-        cancelUpdate();
-        getAll();
       })
       .catch((error) => {
         console.error(`Error while updating Item with ID ${itemId}:`, error);
