@@ -58,6 +58,8 @@ function GetAllData() {
   };
 
 
+  // ...
+
   const handleUpdateFormSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -81,10 +83,19 @@ function GetAllData() {
           imageUrls.push(response.data.secure_url);
         } catch (error) {
           console.error('Image upload failed:', error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Image upload failed',
+          });
+          setIsLoading(false);
+          return;
         }
       }
-    } else {
-      // If no images are selected, assign the previous image links
+    }
+
+    // Include previous image links when new images are selected
+    if (images.length === 0) {
       imageUrls.push(...selectedItem.images);
     }
 
@@ -112,18 +123,33 @@ function GetAllData() {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         console.log(`Item with ID ${itemId} updated successfully.`);
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Upload Successful',
+          timer: 2000,
+          showConfirmButton: false,
+        });
         cancelUpdate();
         getAll();
       })
       .catch((error) => {
         console.error(`Error while updating Item with ID ${itemId}:`, error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Upload Failed',
+        });
         cancelUpdate();
         getAll();
       })
       .finally(() => {
         setIsLoading(false); // Stop the loading state
       });
-  }
+  };
+
+  // ...
+
 
   function deleteItem(itemId) {
     Swal.fire({
@@ -137,7 +163,7 @@ function GetAllData() {
       cancelButtonText: 'Cancel',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/data/${itemId}`, {
+        fetch(`https://azure-hen-cap.cyclic.app/data/${itemId}`, {
           method: 'DELETE',
         })
           .then((response) => {
@@ -145,11 +171,21 @@ function GetAllData() {
               throw new Error(`HTTP error! status: ${response.status}`);
             }
             console.log(`Item with ID ${itemId} deleted successfully.`);
+            Swal.fire({
+              icon: 'success',
+              title: 'Success',
+              text: 'Deleting successfully',
+            });
             getAll();
           })
           .catch((error) => {
             console.error(`Error while deleting Item with ID ${itemId}:`, error);
             getAll();
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Deleting Failed',
+            });
           });
       }
     });
@@ -285,7 +321,7 @@ function GetAllData() {
                 <button
                   type="submit"
                   className="btn3"
-                  disabled={isLoading || images.length === 0}
+                  disabled={isLoading}
                 >
                   {isLoading ? (
                     <>

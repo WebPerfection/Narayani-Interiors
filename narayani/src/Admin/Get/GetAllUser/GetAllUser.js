@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './GetAllUser.css';
 import AdminNav from '../../AdminNav/AdminNav';
-
-
+import Swal from 'sweetalert2';
 
 function GetAllUser() {
     const [userList, setUserList] = useState([]);
@@ -15,6 +14,7 @@ function GetAllUser() {
     const [consultStatus, setConsultStatus] = useState(false);
     const [consulterName, setConsulterName] = useState('Not Consulted');
     const [consultFeedback, setConsultFeedback] = useState('Not Consulted');
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         getAllUsers();
@@ -58,6 +58,7 @@ function GetAllUser() {
 
     const handleUpdateFormSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
         const userId = selectedUser._id;
 
         // Check if the Next Consult Date is in the past
@@ -66,6 +67,7 @@ function GetAllUser() {
         if (selectedDate < currentDate) {
             // Display an error message or prevent form submission
             console.error('Next Consult Date cannot be in the past.');
+            setIsLoading(false);
             return;
         }
 
@@ -73,11 +75,10 @@ function GetAllUser() {
             name,
             email,
             number,
-            last_visit: lastVisit,
             next_consult_date: nextConsultDate,
             consult_status: consultStatus,
             consulter_name: consulterName,
-            consult_feedback: consultFeedback
+            consult_feedback: consultFeedback,
         };
 
         // Send the updated user data to the API
@@ -95,29 +96,68 @@ function GetAllUser() {
                 console.log(`User with ID ${userId} updated successfully.`);
                 cancelUpdate();
                 getAllUsers();
+                setIsLoading(false);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'User updated successfully.',
+                    timer: 2000,
+                    showConfirmButton: false,
+                });
             })
             .catch((error) => {
                 console.error(`Error while updating User with ID ${userId}:`, error);
                 cancelUpdate();
                 getAllUsers();
+                setIsLoading(false);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error updating User.',
+                });
             });
     };
 
     function deleteUser(userId) {
-        fetch(`https://azure-hen-cap.cyclic.app/users/${userId}`, {
-            method: 'DELETE',
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                console.log(`User with ID ${userId} deleted successfully.`);
-                getAllUsers();
-            })
-            .catch((error) => {
-                console.error(`Error while deleting User with ID ${userId}:`, error);
-                getAllUsers();
-            });
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'This action cannot be undone.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#ff1403',
+            cancelButtonColor: '#6fe273',
+            confirmButtonText: 'Yes, delete it',
+            cancelButtonText: 'Cancel',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://azure-hen-cap.cyclic.app/users/${userId}`, {
+                    method: 'DELETE',
+                })
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        console.log(`User with ID ${userId} deleted successfully.`);
+                        getAllUsers();
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: 'User deleted successfully.',
+                            timer: 2000,
+                            showConfirmButton: false,
+                        });
+                    })
+                    .catch((error) => {
+                        console.error(`Error while deleting User with ID ${userId}:`, error);
+                        getAllUsers();
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Error deleting User.',
+                        });
+                    });
+            }
+        });
     }
 
     return (
@@ -127,7 +167,7 @@ function GetAllUser() {
                 {userList.length > 0 ? (
                     userList.map((user) => (
                         <div key={user._id} className="wrapper">
-                            <div className="product-info" style={{ width: "100%" }}>
+                            <div className="product-info" style={{ width: '100%' }}>
                                 <div className="product-text">
                                     <span>
                                         <h3>Name:-</h3>
@@ -151,7 +191,12 @@ function GetAllUser() {
                                     </span>
                                     <span>
                                         <h3>Consult Status:- </h3>
-                                        <p style={{ color: user.consult_status ? 'green' : 'red', fontWeight: 'bold' }}>
+                                        <p
+                                            style={{
+                                                color: user.consult_status ? 'green' : 'red',
+                                                fontWeight: 'bold',
+                                            }}
+                                        >
                                             {user.consult_status ? 'Consulted' : 'Not Consulted'}
                                         </p>
                                     </span>
@@ -190,7 +235,7 @@ function GetAllUser() {
 
             {selectedUser && (
                 <div className="popup">
-                    <div className='formparent'>
+                    <div className="formparent">
                         <div className="popup-inner">
                             <button className="close-btn" onClick={cancelUpdate}>
                                 Close
@@ -223,28 +268,7 @@ function GetAllUser() {
                                     onChange={(e) => setNumber(e.target.value)}
                                     required
                                 />
-                                {/* <label htmlFor="lastVisit">Last Visit:</label>
-                                <input
-                                    type="text"
-                                    id="lastVisit"
-                                    name="lastVisit"
-                                    value={lastVisit}
-                                    onChange={(e) => setLastVisit(e.target.value)}
-                                    required
-                                    disabled
-                                /> */}
                                 <label htmlFor="nextConsultDate">Next Consult Date:</label>
-                                {/* <input
-                                    type="date"
-                                    id="nextConsultDate"
-                                    name="nextConsultDate"
-                                    value={nextConsultDate}
-                                    min={new Date().toISOString().split('T')[0]}
-                                    onChange={(e) => setNextConsultDate(e.target.value)}
-                                    disabled={
-                                        consultStatus && new Date(nextConsultDate) > new Date().setHours(0, 0, 0, 0)
-                                    }
-                                /> */}
                                 <input
                                     type="date"
                                     id="nextConsultDate"
@@ -283,8 +307,17 @@ function GetAllUser() {
                                     required={consultStatus}
                                     disabled={!consultStatus}
                                 ></textarea>
-                                <button type="submit" className="submit-btn">
-                                    Update User
+                                <button type="submit" className="btn3" disabled={isLoading}>
+                                    {isLoading ? (
+                                        <>
+                                            <span className="loading-icon">
+                                                <div className="spinner"></div>
+                                            </span>
+                                            updating...
+                                        </>
+                                    ) : (
+                                        'Update'
+                                    )}
                                 </button>
                             </form>
                         </div>

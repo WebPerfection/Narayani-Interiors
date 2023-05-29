@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { Editor } from '@tinymce/tinymce-react';
 import Swal from 'sweetalert2';
@@ -11,10 +11,11 @@ const Upload = () => {
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [images, setImages] = useState([]);
-  const [length, setLength] = useState(0);
-  const [width, setWidth] = useState(0);
+  const [length, setLength] = useState("");
+  const [width, setWidth] = useState("");
   const [uploadStatus, setUploadStatus] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const formRef = useRef(null);
 
   const deleteImagesFromCloudinary = async (imageUrls) => {
     try {
@@ -33,6 +34,15 @@ const Upload = () => {
     } catch (error) {
       console.error('Error deleting images:', error);
     }
+  };
+  const resetForm = () => {
+    setTitle('');
+    setDescription('');
+    setCategory('');
+    setImages([]);
+    setLength("");
+    setWidth("");
+    formRef.current.reset();
   };
 
   const handleFormSubmit = async (event) => {
@@ -61,14 +71,6 @@ const Upload = () => {
         return;
       }
     }
-
-    if (imageUrls.length === 0) {
-      // Handle the case when there are no uploaded images
-      console.log('No images uploaded');
-      setIsLoading(false);
-      return;
-    }
-
     const payload = {
       title,
       images: imageUrls,
@@ -81,31 +83,28 @@ const Upload = () => {
     };
 
     try {
-      const response = await axios.post('https://azure-hen-cap.cyclic.app/data', payload);
-      if (response.status === 200) {
-        console.log('Response:', response.data);
-        setUploadStatus('Added Successfully');
-        setTitle('');
-        setDescription('');
-        setCategory('');
-        setImages([]);
-        setLength(0);
-        setWidth(0);
-        Swal.fire({
-          icon: 'success',
-          title: 'Success',
-          text: 'Upload Successful',
-          timer: 2000,
-          showConfirmButton: false,
+      const response = await axios.post('https://azure-hen-cap.cyclic.app/data', payload)
+        .then(res => {
+          console.log('Response:', res.data);
+          resetForm();
+          setIsLoading(false);
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Upload Successful',
+            timer: 2000,
+            showConfirmButton: false,
+          });
+        })
+        .catch(error => {
+          console.error('Upload failed');
+          setIsLoading(false);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Upload Failed',
+          });
         });
-      } else {
-        console.error('Upload failed');
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Upload Failed',
-        });
-      }
     } catch (error) {
       console.error('Upload request failed:', error);
       await deleteImagesFromCloudinary(imageUrls);
@@ -114,6 +113,7 @@ const Upload = () => {
         title: 'Oops...',
         text: 'Upload Failed',
       });
+      setIsLoading(false);
     }
 
     setIsLoading(false);
@@ -124,7 +124,7 @@ const Upload = () => {
       <AdminNav />
       <div className="Upload">
         <span style={{ display: 'none' }}>{uploadStatus}</span>
-        <form onSubmit={handleFormSubmit} encType="multipart/form-data">
+        <form ref={formRef} onSubmit={handleFormSubmit} encType="multipart/form-data">
           <label htmlFor="title">Title:</label>
           <input
             type="text"
@@ -190,16 +190,21 @@ const Upload = () => {
             required
           />
           <br />
-          <button type="submit" className="btn3" disabled={isLoading || images.length === 0}>
+          <button
+            type="submit"
+            className="btn3"
+            disabled={isLoading}
+          >
             {isLoading ? (
               <>
                 <span className="loading-icon">
+                  {/* Add your custom spinner component here */}
                   <div className="spinner"></div>
                 </span>
-                Uploading...
+                Updating...
               </>
             ) : (
-              'Upload'
+              'Update'
             )}
           </button>
         </form>

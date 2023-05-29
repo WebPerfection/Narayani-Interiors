@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import './AddCarousel.css';
-// import '../../AdminNav/AdminNav.js';
-import AdminNav from '../../AdminNav/AdminNav.js';
 import Swal from 'sweetalert2';
+import '../../AdminNav/AdminNav.js';
+import AdminNav from '../../AdminNav/AdminNav.js';
 
-
-
-const AdddCarousel = () => {
+const AddCarousel = () => {
     const [heading, setHeading] = useState('');
     const [text, setText] = useState('');
     const [imageMobile, setImageMobile] = useState(null);
     const [imagePC, setImagePC] = useState(null);
-    const [uploadStatus, setUploadStatus] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const formRef = useRef(null);
 
     const deleteImageFromCloudinary = async (imageUrl) => {
         try {
@@ -29,20 +27,27 @@ const AdddCarousel = () => {
             console.error('Error deleting image:', error);
         }
     };
+    const resetForm = () => {
+        setHeading('');
+        setText('');
+        setImageMobile(null);
+        setImagePC(null);
+        formRef.current.reset();
+    };
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+
         setIsLoading(true);
 
         let imageUrlMobile = null;
         let imageUrlPC = null;
-        // Unique timestamp to create dynamic folder names
 
         if (imageMobile) {
             const formDataMobile = new FormData();
             formDataMobile.append('file', imageMobile);
             formDataMobile.append('upload_preset', 'klsr1tbt');
-            formDataMobile.append('folder', `mobile-carousel`); // Folder path for mobile images
+            formDataMobile.append('folder', `mobile-carousel`);
 
             try {
                 const response = await axios.post(
@@ -50,17 +55,27 @@ const AdddCarousel = () => {
                     formDataMobile
                 );
                 imageUrlMobile = response.data.secure_url;
-                console.log("Mobile Image uploaded to Cloudinary:", imageUrlMobile);
+                console.log('Mobile Image uploaded to Cloudinary:', imageUrlMobile);
             } catch (error) {
                 console.error('Mobile Image upload failed:', error);
+                setIsLoading(false);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Mobile Image upload failed',
+                    timer: 2000,
+                    showConfirmButton: false,
+                });
+                return; // Stop further processing if image upload fails
             }
         }
 
+        // Similarly, handle PC image upload failure
         if (imagePC) {
             const formDataPC = new FormData();
             formDataPC.append('file', imagePC);
             formDataPC.append('upload_preset', 'klsr1tbt');
-            formDataPC.append('folder', `pc-carousel`); // Folder path for PC images
+            formDataPC.append('folder', `pc-carousel`);
 
             try {
                 const response = await axios.post(
@@ -68,36 +83,53 @@ const AdddCarousel = () => {
                     formDataPC
                 );
                 imageUrlPC = response.data.secure_url;
-                console.log("PC Image uploaded to Cloudinary:", imageUrlPC);
+                console.log('PC Image uploaded to Cloudinary:', imageUrlPC);
             } catch (error) {
                 console.error('PC Image upload failed:', error);
+                setIsLoading(false);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'PC Image upload failed',
+                    timer: 2000,
+                    showConfirmButton: false,
+                });
+                return; // Stop further processing if image upload fails
             }
         }
 
         const payload = {
             imgMobile: imageUrlMobile,
-            imgPC: imageUrlPC,
+            imgPc: imageUrlPC,
             text,
             heading,
         };
 
         try {
-            const response = await axios.post('https://azure-hen-cap.cyclic.app/carousel', payload);
-            if (response.status === 200) {
-                console.log('Response:', response.data);
-                setUploadStatus('Added Successfully');
+            await axios.post('https://azure-hen-cap.cyclic.app/carousel', payload).then((res) => {
+                console.log('Response:', res.data);
+                // setUploadStatus('Added Successfully');
                 // Reset the form after successful upload
-                setHeading('');
-                setText('');
-                setImageMobile(null);
-                setImagePC(null);
+                resetForm();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'Upload Successful',
+                    timer: 2000,
+                    showConfirmButton: false,
+                });
                 setIsLoading(false);
-                Swal.fire('Error', 'Upload Failed', 'error');
-            } else {
-                console.error('Upload failed');
+            }).catch((error) => {
+                console.error('Upload failed', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Upload Failed',
+                    timer: 2000,
+                    showConfirmButton: false,
+                });
                 setIsLoading(false);
-                Swal.fire('Error', 'Upload Failed', 'error');
-            }
+            });
         } catch (error) {
             console.error('Upload request failed:', error);
             // Delete the uploaded images from Cloudinary if the upload request failed
@@ -108,17 +140,23 @@ const AdddCarousel = () => {
                 await deleteImageFromCloudinary(imageUrlPC);
             }
             setIsLoading(false);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Upload Request Failed',
+                timer: 2000,
+                showConfirmButton: false,
+            });
         }
+
         setIsLoading(false);
-        Swal.fire('Error', 'Upload Failed', 'error'); // Show error message
     };
 
     return (
         <>
             <AdminNav />
             <div className="UploadCarousel">
-                <span style={{ display: 'none' }}>{uploadStatus}</span>
-                <form onSubmit={handleFormSubmit} encType="multipart/form-data">
+                <form  ref={formRef}  onSubmit={handleFormSubmit} encType="multipart/form-data">
                     <label htmlFor="heading">Heading:</label>
                     <input
                         type="text"
@@ -158,16 +196,21 @@ const AdddCarousel = () => {
                         required
                     />
                     <br />
-                    <button type="submit" className="btn3" disabled={isLoading}>
+                    <button
+                        type="submit"
+                        className="btn3"
+                        disabled={isLoading}
+                    >
                         {isLoading ? (
                             <>
                                 <span className="loading-icon">
+                                    {/* Add your custom spinner component here */}
                                     <div className="spinner"></div>
                                 </span>
-                                Uploading...
+                                Updating...
                             </>
                         ) : (
-                            'Upload'
+                            'Update'
                         )}
                     </button>
                 </form>
@@ -176,4 +219,4 @@ const AdddCarousel = () => {
     );
 };
 
-export default AdddCarousel;
+export default AddCarousel;
