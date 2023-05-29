@@ -1,70 +1,70 @@
 import React, { useEffect, useState } from 'react';
-import './GetAllTestimonial.css';
+import './GetAllAchievement.css';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-function GetAllTestimonial({ check }) {
-    const [testimonials, setTestimonials] = useState([]);
-    const [selectedTestimonial, setSelectedTestimonial] = useState(null);
-    const [name, setName] = useState('');
-    const [message, setMessage] = useState('');
-    const [image, setImage] = useState(null);
+function GetAllAchievement({ check }) {
+    const [achievements, setAchievement] = useState([]);
+    const [selectedAchievement, setSelectedAchievement] = useState(null);
+    const [heading, setHeading] = useState('');
+    const [text, setText] = useState('');
+    const [img, setImg] = useState(null);
     const [uploadStatus, setUploadStatus] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        getAllTestimonials();
+        getAllAchievement();
     }, [check]);
 
-    function getAllTestimonials() {
+    function getAllAchievement() {
         axios
-            .get('https://azure-hen-cap.cyclic.app/testimonial')
+            .get('https://azure-hen-cap.cyclic.app/achievement')
             .then((response) => {
                 console.log(response.data);
-                setTestimonials(response.data);
+                setAchievement(response.data);
             })
             .catch((error) => {
-                console.error('Error fetching testimonials:', error);
+                console.error('Error fetching achievement:', error);
             });
     }
 
-    function updateTestimonial(testimonial) {
-        setSelectedTestimonial(testimonial);
-        setName(testimonial.name);
-        setMessage(testimonial.message);
+    function updateAchievement(achievement) {
+        setSelectedAchievement(achievement);
+        setHeading(achievement.heading);
+        setText(achievement.text);
     }
 
     function cancelUpdate() {
-        setSelectedTestimonial(null);
-        setName('');
-        setMessage('');
+        setSelectedAchievement(null);
+        setHeading('');
+        setText('');
     }
 
-    const handleImageChange = (event) => {
-        const selectedImage = event.target.files[0];
-        setImage(selectedImage);
+    const handleImgChange = (event) => {
+        const selectedImg = event.target.files[0];
+        setImg(selectedImg);
     };
 
     const handleUpdateFormSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
-        const testimonialId = selectedTestimonial._id;
+        const achievementId = selectedAchievement._id;
 
-        let imageUrl = selectedTestimonial.image;
+        let imgUrl = selectedAchievement.img;
 
-        if (image) {
+        if (img) {
             const formData = new FormData();
-            formData.append('file', image);
+            formData.append('file', img);
             formData.append('upload_preset', 'klsr1tbt');
-            formData.append('folder', 'testimonials');
+            formData.append('folder', 'achievement');
 
             try {
                 const response = await axios.post(
                     'https://api.cloudinary.com/v1_1/dlcn4rghm/image/upload',
                     formData
                 );
-                imageUrl = response.data.secure_url;
-                console.log('Image uploaded to Cloudinary:', imageUrl);
+                imgUrl = response.data.secure_url;
+                console.log('Image uploaded to Cloudinary:', imgUrl);
             } catch (error) {
                 console.error('Image upload failed:', error);
                 setIsLoading(false); // Set isLoading to false in case of an error
@@ -77,44 +77,44 @@ function GetAllTestimonial({ check }) {
             }
         }
 
-        const updatedTestimonial = {
-            name,
-            image: imageUrl,
-            message,
+        const updatedAchievement = {
+            heading,
+            img: imgUrl,
+            text,
         };
 
         axios
             .patch(
-                `https://azure-hen-cap.cyclic.app/testimonial/${testimonialId}`,
-                updatedTestimonial
+                `https://azure-hen-cap.cyclic.app/achievement/${achievementId}`,
+                updatedAchievement
             )
             .then((response) => {
-                console.log(`Testimonial with ID ${testimonialId} updated successfully.`);
+                console.log(`Achievement with ID ${achievementId} updated successfully.`);
                 cancelUpdate();
-                getAllTestimonials();
+                getAllAchievement();
                 setIsLoading(false);
                 Swal.fire({
                     icon: 'success',
                     title: 'Success',
-                    text: 'Testimonial updated successfully.',
+                    text: 'Achievement updated successfully.',
                     timer: 2000,
                     showConfirmButton: false,
                 });
             })
             .catch((error) => {
-                console.error(`Error while updating testimonial with ID ${testimonialId}:`, error);
+                console.error(`Error while updating achievement with ID ${achievementId}:`, error);
                 cancelUpdate();
-                getAllTestimonials();
+                getAllAchievement();
                 setIsLoading(false);
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'Error updating testimonial.',
+                    text: 'Error updating achievement.',
                 });
             });
     };
 
-    function deleteTestimonial(testimonialId) {
+    function deleteAchievement(achievementId) {
         Swal.fire({
             title: 'Are you sure?',
             text: 'This action cannot be undone.',
@@ -126,30 +126,30 @@ function GetAllTestimonial({ check }) {
             cancelButtonText: 'Cancel',
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://azure-hen-cap.cyclic.app/testimonial/${testimonialId}`, {
+                fetch(`https://azure-hen-cap.cyclic.app/achievement/${achievementId}`, {
                     method: 'DELETE',
                 })
                     .then((response) => {
                         if (!response.ok) {
                             throw new Error(`HTTP error! status: ${response.status}`);
                         }
-                        console.log(`Testimonial with ID ${testimonialId} deleted successfully.`);
-                        getAllTestimonials();
+                        console.log(`Achievement with ID ${achievementId} deleted successfully.`);
+                        getAllAchievement();
                         Swal.fire({
                             icon: 'success',
                             title: 'Success',
-                            text: 'Testimonial deleted successfully.',
+                            text: 'Achievement deleted successfully.',
                             timer: 2000,
                             showConfirmButton: false,
                         });
                     })
                     .catch((error) => {
-                        console.error(`Error while deleting testimonial with ID ${testimonialId}:`, error);
-                        getAllTestimonials();
+                        console.error(`Error while deleting achievement with ID ${achievementId}:`, error);
+                        getAllAchievement();
                         Swal.fire({
                             icon: 'error',
                             title: 'Oops...',
-                            text: 'Error deleting testimonial.',
+                            text: 'Error deleting achievement.',
                         });
                     });
             }
@@ -159,35 +159,35 @@ function GetAllTestimonial({ check }) {
     return (
         <>
             <div className="testimonials">
-                {testimonials.length > 0 ? (
-                    testimonials.map((testimonial) => (
-                        <div key={testimonial._id} className="testimonial-wrapper">
+                {achievements.length > 0 ? (
+                    achievements.map((achievement) => (
+                        <div key={achievement._id} className="testimonial-wrapper">
                             <div className="testimonial-img">
-                                <img src={testimonial.image} alt="Testimonial" />
+                                <img src={achievement.img} alt="Testimonial" />
                             </div>
                             <div className="testimonial-info">
                                 <div className="testimonial-text">
                                     <span>
-                                        <h3>Name:</h3>
-                                        <p>{testimonial.name}</p>
+                                        <h3>heading:</h3>
+                                        <p>{achievement.heading}</p>
                                     </span>
                                     <span>
-                                        <h3>Message:</h3>
-                                        <p>{testimonial.message}</p>
+                                        <h3>text:</h3>
+                                        <p>{achievement.text}</p>
                                     </span>
                                 </div>
                                 <div className="testimonial-actions">
                                     <button
                                         type="button"
                                         className="update-btn"
-                                        onClick={() => updateTestimonial(testimonial)}
+                                        onClick={() => updateAchievement(achievement)}
                                     >
                                         Update
                                     </button>
                                     <button
                                         type="button"
                                         className="delete-btn"
-                                        onClick={() => deleteTestimonial(testimonial._id)}
+                                        onClick={() => deleteAchievement(achievement._id)}
                                     >
                                         Delete
                                     </button>
@@ -196,40 +196,40 @@ function GetAllTestimonial({ check }) {
                         </div>
                     ))
                 ) : (
-                    <p>No testimonials available.</p>
+                    <p>No achievement available.</p>
                 )}
             </div>
 
-            {selectedTestimonial && (
+            {selectedAchievement && (
                 <div className="popup">
                     <div className="formparent">
                         <div className="popup-inner">
                             <button className="close-btn" onClick={cancelUpdate}>
                                 Close
                             </button>
-                            <h2>Update Testimonial</h2>
+                            <h2>Update achievement</h2>
                             <form onSubmit={handleUpdateFormSubmit}>
-                                <label htmlFor="name">Name:</label>
+                                <label htmlFor="name">heading:</label>
                                 <input
                                     type="text"
                                     id="name"
                                     name="name"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
+                                    value={heading}
+                                    onChange={(e) => setHeading(e.target.value)}
                                     required
                                 />
                                 <br />
-                                <label htmlFor="message">Message:</label>
+                                <label htmlFor="text">Text:</label>
                                 <textarea
                                     id="message"
                                     name="message"
-                                    value={message}
-                                    onChange={(e) => setMessage(e.target.value)}
+                                    value={text}
+                                    onChange={(e) => setText(e.target.value)}
                                     required
                                 ></textarea>
                                 <br />
-                                <label htmlFor="image">Image:</label>
-                                <input type="file" onChange={handleImageChange} />
+                                <label htmlFor="image">img:</label>
+                                <input type="file" onChange={handleImgChange} accept="image/*" />
                                 <br />
                                 <button type="submit" className="btn3" disabled={isLoading}>
                                     {isLoading ? (
@@ -252,4 +252,4 @@ function GetAllTestimonial({ check }) {
     );
 }
 
-export default GetAllTestimonial;
+export default GetAllAchievement;
