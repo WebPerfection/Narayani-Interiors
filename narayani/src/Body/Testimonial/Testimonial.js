@@ -49,8 +49,10 @@ const model=useSelector(store=>store)
   },[model])
 console.log(testimonials)
   return (
-    // <div className="testimonial-container">
-    <div className='workHome-main-div Flex'>
+   <>
+    <h1 style={{color:"red"}}>Discover What Our Clients Say</h1>
+    <div className='workHome-main-div Flex' style={{marginTop:"0px"}}>
+     
     <div style={{width:"80%"}}>
     {testimonials && <Carousel
       swipeable={false}
@@ -81,6 +83,7 @@ console.log(testimonials)
     </Carousel>}
     </div>
         </div>
+        </>
   );
 };
 
