@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './GetAllData.css';
 import axios from 'axios';
-import { Editor } from '@tinymce/tinymce-react';
 import AdminNav from '../../AdminNav/AdminNav';
 import Swal from 'sweetalert2';
 import ReactPaginate from 'react-paginate';
+import DataUpdatePopup from './DataUpdatePopup';
+import DataCard from './DataCard';
 
 
 
@@ -178,6 +179,8 @@ function GetAllData() {
               icon: 'success',
               title: 'Success',
               text: 'Deleting successfully',
+              timer: 1500,
+              showConfirmButton: false,
             });
             getAll();
           })
@@ -205,54 +208,12 @@ function GetAllData() {
       <div className="items">
         {databus.length > 0 ? (
           databus.map((item) => (
-            <div key={item._id} className="wrapper">
-              <div className="product-img">
-                <img src={item.images[0]} alt="Product" />
-              </div>
-              <div className="product-info">
-                <div className="product-text">
-                  <span>
-                    <h3>Title:</h3>
-                    <p>{item.title}</p>
-                  </span>
-                  <span>
-                    <h3>Category:</h3>
-                    <p>{item.category}</p>
-                  </span>
-                  <span>
-                    <h3>Description:</h3>
-                    <span
-                      className="description"
-                      dangerouslySetInnerHTML={{ __html: item.description }}
-                    ></span>
-                  </span>
-                  <span>
-                    <h3>Size:</h3>
-                    <p>{`${item.size._length}' X ${item.size._width}'`}</p>
-                  </span>
-                  <span>
-                    <h3>Added Date:</h3>
-                    <p>{item.date}</p>
-                  </span>
-                </div>
-                <div className="product-price-btn">
-                  <button
-                    type="button"
-                    className="update-btn"
-                    onClick={() => updateItem(item)}
-                  >
-                    Update
-                  </button>
-                  <button
-                    type="button"
-                    className="delete-btn"
-                    onClick={() => deleteItem(item._id)}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-            </div>
+            <DataCard
+              key={item._id}
+              item={item}
+              updateItem={updateItem}
+              deleteItem={deleteItem}
+            />
           ))
         ) : (
           <p>No data available.</p>
@@ -274,95 +235,25 @@ function GetAllData() {
 
       {/* //Popup form for update the data */}
       {selectedItem && (
-        <div className="popup">
-          <div className='formparent'>
-            <div className="popup-inner">
-              <button className="close-btn" onClick={cancelUpdate}>
-                Close
-              </button>
-              <h2>Update Item</h2>
-              <form onSubmit={handleUpdateFormSubmit}>
-                <label htmlFor="title">Title:</label>
-                <input
-                  type="text"
-                  id="title"
-                  name="title"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                  required
-                />
-                <br />
-                <label htmlFor="category">Category:</label>
-                <select
-                  id="category"
-                  name="category"
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                  required
-                >
-                  <option value="">Select Category</option>
-                  <option value="Room">Room</option>
-                  <option value="Kitchen">Kitchen</option>
-                  <option value="Balkani">Balkani</option>
-                  <option value="Shop">Shop</option>
-                </select>
-                <br />
-                <label htmlFor="description">Description:</label>
-                <Editor
-                  apiKey="dohoxd2snnst9ajke5u08lqsn12uoj8repac5k01cqg6h8tn"
-                  id="description"
-                  name="description"
-                  value={description}
-                  onEditorChange={(content) => setDescription(content)}
-                />
-                <br />
-                <label htmlFor="length">Length:</label>
-                <input
-                  type="number"
-                  step="any"
-                  id="length"
-                  name="length"
-                  value={_length}
-                  onChange={(e) => setLength(e.target.value)}
-                  required
-                />
-                <br />
-                <label htmlFor="width">Width:</label>
-                <input
-                  type="number"
-                  step="any"
-                  id="width"
-                  name="width"
-                  value={_width}
-                  onChange={(e) => setWidth(e.target.value)}
-                  required
-                />
-                <br />
-                <input type="file" multiple onChange={handleImageChange} />
-                <br />
-                <button
-                  type="submit"
-                  className="btn3"
-                  disabled={isLoading}
-                >
-                  {isLoading ? (
-                    <>
-                      <span className="loading-icon">
-                        {/* Add your custom spinner component here */}
-                        <div className="spinner"></div>
-                      </span>
-                      Updating...
-                    </>
-                  ) : (
-                    'Update'
-                  )}
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
+        <DataUpdatePopup
+          cancelUpdate={cancelUpdate}
+          handleUpdateFormSubmit={handleUpdateFormSubmit}
+          title={title}
+          setTitle={setTitle}
+          category={category}
+          setCategory={setCategory}
+          description={description}
+          setDescription={setDescription}
+          _length={_length}
+          setLength={setLength}
+          _width={_width}
+          setWidth={setWidth}
+          handleImageChange={handleImageChange}
+          isLoading={isLoading}
+        />
       )}
     </>
+
   );
 }
 

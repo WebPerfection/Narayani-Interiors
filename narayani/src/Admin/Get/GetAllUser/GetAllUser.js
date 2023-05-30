@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './GetAllUser.css';
 import AdminNav from '../../AdminNav/AdminNav';
 import Swal from 'sweetalert2';
+import UserUpdatePopup from './UserUpdatePopup';
+import UserCard from './UserCard';
 
 function GetAllUser() {
     const [userList, setUserList] = useState([]);
@@ -166,67 +168,12 @@ function GetAllUser() {
             <div className="items">
                 {userList.length > 0 ? (
                     userList.map((user) => (
-                        <div key={user._id} className="wrapper">
-                            <div className="product-info" style={{ width: '100%' }}>
-                                <div className="product-text">
-                                    <span>
-                                        <h3>Name:-</h3>
-                                        <p>{user.name}</p>
-                                    </span>
-                                    <span>
-                                        <h3>Email:-</h3>
-                                        <p>{user.email}</p>
-                                    </span>
-                                    <span>
-                                        <h3>Number:-</h3>
-                                        <p>{user.number}</p>
-                                    </span>
-                                    <span>
-                                        <h3>Last Visit:- </h3>
-                                        <p>{user.last_visit}</p>
-                                    </span>
-                                    <span>
-                                        <h3>Next Consult Date:- </h3>
-                                        <p>{user.next_consult_date}</p>
-                                    </span>
-                                    <span>
-                                        <h3>Consult Status:- </h3>
-                                        <p
-                                            style={{
-                                                color: user.consult_status ? 'green' : 'red',
-                                                fontWeight: 'bold',
-                                            }}
-                                        >
-                                            {user.consult_status ? 'Consulted' : 'Not Consulted'}
-                                        </p>
-                                    </span>
-                                    <span>
-                                        <h3>Consulter Name:- </h3>
-                                        <p>{user.consulter_name}</p>
-                                    </span>
-                                    <span>
-                                        <h3>Consult Feedback:- </h3>
-                                        <p>{user.consult_feedback}</p>
-                                    </span>
-                                </div>
-                                <div className="product-price-btn">
-                                    <button
-                                        type="button"
-                                        className="update-btn"
-                                        onClick={() => updateUser(user)}
-                                    >
-                                        Update
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className="delete-btn"
-                                        onClick={() => deleteUser(user._id)}
-                                    >
-                                        Delete
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        <UserCard
+                            key={user._id}
+                            user={user}
+                            updateUser={updateUser}
+                            deleteUser={deleteUser}
+                        />
                     ))
                 ) : (
                     <p>No data available.</p>
@@ -234,95 +181,25 @@ function GetAllUser() {
             </div>
 
             {selectedUser && (
-                <div className="popup">
-                    <div className="formparent">
-                        <div className="popup-inner">
-                            <button className="close-btn" onClick={cancelUpdate}>
-                                Close
-                            </button>
-                            <h2>Update User</h2>
-                            <form onSubmit={handleUpdateFormSubmit}>
-                                <label htmlFor="name">Name:</label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    required
-                                />
-                                <label htmlFor="email">Email:</label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                />
-                                <label htmlFor="number">Number:</label>
-                                <input
-                                    type="text"
-                                    id="number"
-                                    name="number"
-                                    value={number}
-                                    onChange={(e) => setNumber(e.target.value)}
-                                    required
-                                />
-                                <label htmlFor="nextConsultDate">Next Consult Date:</label>
-                                <input
-                                    type="date"
-                                    id="nextConsultDate"
-                                    name="nextConsultDate"
-                                    value={nextConsultDate}
-                                    min={new Date().toISOString().split('T')[0]}
-                                    onChange={(e) => setNextConsultDate(e.target.value)}
-                                />
-                                <label htmlFor="consultStatus">Consult Status:</label>
-                                <select
-                                    id="consultStatus"
-                                    name="consultStatus"
-                                    value={consultStatus}
-                                    onChange={(e) => setConsultStatus(e.target.value === 'true')}
-                                    required
-                                >
-                                    <option value={false}>Not Consulted</option>
-                                    <option value={true}>Consulted</option>
-                                </select>
-                                <label htmlFor="consulterName">Consulter Name:</label>
-                                <input
-                                    type="text"
-                                    id="consulterName"
-                                    name="consulterName"
-                                    value={consulterName}
-                                    onChange={(e) => setConsulterName(e.target.value)}
-                                    required={consultStatus}
-                                    disabled={!consultStatus}
-                                />
-                                <label htmlFor="consultFeedback">Consult Feedback:</label>
-                                <textarea
-                                    id="consultFeedback"
-                                    name="consultFeedback"
-                                    value={consultFeedback}
-                                    onChange={(e) => setConsultFeedback(e.target.value)}
-                                    required={consultStatus}
-                                    disabled={!consultStatus}
-                                ></textarea>
-                                <button type="submit" className="btn3" disabled={isLoading}>
-                                    {isLoading ? (
-                                        <>
-                                            <span className="loading-icon">
-                                                <div className="spinner"></div>
-                                            </span>
-                                            updating...
-                                        </>
-                                    ) : (
-                                        'Update'
-                                    )}
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                <UserUpdatePopup
+                    cancelUpdate={cancelUpdate}
+                    handleUpdateFormSubmit={handleUpdateFormSubmit}
+                    name={name}
+                    setName={setName}
+                    email={email}
+                    setEmail={setEmail}
+                    number={number}
+                    setNumber={setNumber}
+                    nextConsultDate={nextConsultDate}
+                    setNextConsultDate={setNextConsultDate}
+                    consultStatus={consultStatus}
+                    setConsultStatus={setConsultStatus}
+                    consulterName={consulterName}
+                    setConsulterName={setConsulterName}
+                    consultFeedback={consultFeedback}
+                    setConsultFeedback={setConsultFeedback}
+                    isLoading={isLoading}
+                />
             )}
         </>
     );

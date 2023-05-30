@@ -9,7 +9,7 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import MakeApoiment from "../MakeApoiment/MakeApoiment";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import {toggelModel} from "../../Redux/Action"
+import { toggelModel } from "../../Redux/Action"
 import Loading from "../Loading/Loading";
 
 const responsive = {
@@ -42,10 +42,10 @@ const ProjectPage = () => {
     window.location.search +
     window.location.hash;
   console.log(currentURL);
-  const dispatch=useDispatch()
+  const dispatch = useDispatch()
   const [data, setData] = useState("");
   const [more, setMore] = useState(false);
-  const [loading,setLoading]=useState(true)
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
     axios
       .get(`https://azure-hen-cap.cyclic.app/data`)
@@ -53,11 +53,11 @@ const ProjectPage = () => {
         setData(res.data.uploads);
       })
       .catch((err) => console.log(err));
-    
-  }, []);
-  
 
-  useEffect(()=>{
+  }, []);
+
+
+  useEffect(() => {
 
   })
 
@@ -73,8 +73,8 @@ const ProjectPage = () => {
     } else {
       setOnaImage(false);
     }
-  }, [heroImage,localStorage.getItem("Narayani-User")]);
-  
+  }, [heroImage, localStorage.getItem("Narayani-User")]);
+
   useEffect(() => {
     axios
       .get(`https://azure-hen-cap.cyclic.app/data/${id}`)
@@ -86,15 +86,15 @@ const ProjectPage = () => {
       })
       .catch((err) => console.log(err));
   }, [id]);
-// if(loading){
-//   return <Loading/>
-// }
+  // if(loading){
+  //   return <Loading/>
+  // }
   return (
     <>
       <Navbar />
       <div>Hello world</div>
       <div className="pro-main">
-        {loading ?<Loading/>:projectImages && (
+        {loading ? <Loading /> : projectImages && (
           <div className="Flex">
             <div className="HeroImages-main-div">
               <div className="HeroImage">
@@ -104,7 +104,7 @@ const ProjectPage = () => {
                 />
                 <button
                   className={onImage ? "showImage" : "hide"}
-                  onClick={()=>dispatch(toggelModel())}
+                  onClick={() => dispatch(toggelModel())}
                 >
                   Unlock
                 </button>
@@ -135,7 +135,7 @@ const ProjectPage = () => {
                   </div>
                   <div className="related-images Flex">
                     {projectImages.map((el, i) => (
-                      <img src={el} onClick={() => setHeroImage(i)} />
+                      <img src={el} onClick={() => setHeroImage(i)} onContextMenu={(e) => e.preventDefault()} draggable="false" />
                     ))}
                   </div>
                 </div>
@@ -169,12 +169,12 @@ const ProjectPage = () => {
                 itemClass="carousel-item-padding-40-px"
               >
                 {data.map((item, index) => (
-                  <Link to={`/Images/${item._id}`}>
+                  <Link to={`/Images/${item._id}`} >
                     <img
                       className="img-work flex"
                       src={item.images[0]}
                       alt={`Image ${index + 1}`}
-                      draggable="false"
+                      onContextMenu={(e) => e.preventDefault()} draggable="false"
                     />
                   </Link>
                 ))}
