@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './GetAllTestimonial.css';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import TestimonialUpdatePopup from './TestimonialUpdatePopup';
+import TestimonialCard from './TestimonialCard';
 
 function GetAllTestimonial({ check }) {
     const [testimonials, setTestimonials] = useState([]);
@@ -161,39 +163,12 @@ function GetAllTestimonial({ check }) {
             <div className="testimonials">
                 {testimonials.length > 0 ? (
                     testimonials.map((testimonial) => (
-                        <div key={testimonial._id} className="testimonial-wrapper">
-                            <div className="testimonial-img">
-                                <img src={testimonial.image} alt="Testimonial" />
-                            </div>
-                            <div className="testimonial-info">
-                                <div className="testimonial-text">
-                                    <span>
-                                        <h3>Name:</h3>
-                                        <p>{testimonial.name}</p>
-                                    </span>
-                                    <span>
-                                        <h3>Message:</h3>
-                                        <p>{testimonial.message}</p>
-                                    </span>
-                                </div>
-                                <div className="testimonial-actions">
-                                    <button
-                                        type="button"
-                                        className="update-btn"
-                                        onClick={() => updateTestimonial(testimonial)}
-                                    >
-                                        Update
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className="delete-btn"
-                                        onClick={() => deleteTestimonial(testimonial._id)}
-                                    >
-                                        Delete
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        <TestimonialCard
+                            key={testimonial._id}
+                            testimonial={testimonial}
+                            updateTestimonial={updateTestimonial}
+                            deleteTestimonial={deleteTestimonial}
+                        />
                     ))
                 ) : (
                     <p>No testimonials available.</p>
@@ -201,54 +176,19 @@ function GetAllTestimonial({ check }) {
             </div>
 
             {selectedTestimonial && (
-                <div className="popup">
-                    <div className="formparent">
-                        <div className="popup-inner">
-                            <button className="close-btn" onClick={cancelUpdate}>
-                                Close
-                            </button>
-                            <h2>Update Testimonial</h2>
-                            <form onSubmit={handleUpdateFormSubmit}>
-                                <label htmlFor="name">Name:</label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    required
-                                />
-                                <br />
-                                <label htmlFor="message">Message:</label>
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    value={message}
-                                    onChange={(e) => setMessage(e.target.value)}
-                                    required
-                                ></textarea>
-                                <br />
-                                <label htmlFor="image">Image:</label>
-                                <input type="file" onChange={handleImageChange} />
-                                <br />
-                                <button type="submit" className="btn3" disabled={isLoading}>
-                                    {isLoading ? (
-                                        <>
-                                            <span className="loading-icon">
-                                                <div className="spinner"></div>
-                                            </span>
-                                            Uploading...
-                                        </>
-                                    ) : (
-                                        'Upload'
-                                    )}
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                <TestimonialUpdatePopup
+                    cancelUpdate={cancelUpdate}
+                    handleUpdateFormSubmit={handleUpdateFormSubmit}
+                    name={name}
+                    setName={setName}
+                    message={message}
+                    setMessage={setMessage}
+                    handleImageChange={handleImageChange}
+                    isLoading={isLoading}
+                />
             )}
         </>
+
     );
 }
 

@@ -52,12 +52,14 @@
   width: 100%;
   border-radius: 10px;
   height: 450px;
+  pointer-events: none;
 }
 .hideHeroImage {
   width: 100%;
   filter: blur(4px);
   border-radius: 10px;
   height: 450px;
+  pointer-events: none; /* Disable interaction with the image */
 }
 .hide {
   top: 400px;
@@ -65,6 +67,7 @@
   background-color: var(--text-gold);
   padding: 15px 80px;
   border-radius: 5px;
+  /* Disable interaction with the image */
 }
 
 .showImage {
@@ -127,9 +130,9 @@
     align-items: center;
     justify-content: center;
   }
-  .hide{
-    top: auto; 
-    }
+  .hide {
+    top: auto;
+  }
 }
 @media only screen and (max-width: 530px) {
   .pro-main {

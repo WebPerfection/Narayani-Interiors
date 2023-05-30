@@ -65,14 +65,14 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div class="column subscribe">
+        {/* <div class="column subscribe">
           <h3 class="footer_h3">Newsletter</h3>
           <div>
             <input className='footer_input' type="email" placeholder="Your email id here" />
             <button className='footer_bt'>Subscribe</button>
           </div>
 
-        </div>
+        </div> */}
       </div>
 
       <div class="row copyright">
