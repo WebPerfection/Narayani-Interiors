@@ -102,6 +102,13 @@
 .see-all-link {
   display: flex;
   justify-content: end;
+  color: red;
+  padding-right: 20px;
+}
+.see-all-link>a{
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 @media only screen and (max-width: 1000px) {
   .HeroImages-main-div {

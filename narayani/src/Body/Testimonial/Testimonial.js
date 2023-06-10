@@ -5,23 +5,23 @@ import "react-multi-carousel/lib/styles.css";
 import axios from "axios";
 import { useSelector } from "react-redux";
 const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 3000, min: 1200 },
-      items: 4,
-    },
-    desktop: {
-      breakpoint: { max: 1199, min: 900 },
-      items: 3,
-    },
-    tablet: {
-      breakpoint: { max: 899, min: 600 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 599, min: 0 },
-      items: 1,
-    },
-  };
+  superLargeDesktop: {
+    breakpoint: { max: 3000, min: 1200 },
+    items: 4,
+  },
+  desktop: {
+    breakpoint: { max: 1199, min: 900 },
+    items: 3,
+  },
+  tablet: {
+    breakpoint: { max: 899, min: 600 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 599, min: 0 },
+    items: 1,
+  },
+};
 // const testimonials = [
 //   {
 //     id: 1,
@@ -40,50 +40,55 @@ const responsive = {
 // ];
 
 const Testimonial = () => {
-const [testimonials,setTestimonials]=useState("")
-const model=useSelector(store=>store)
-  useEffect(()=>{
-    axios.get("https://azure-hen-cap.cyclic.app/testimonial")
-    .then((res)=>setTestimonials(res.data))
-    .catch((err)=>console.log(err))
-  },[model])
-console.log(testimonials)
+  const [testimonials, setTestimonials] = useState("");
+  const model = useSelector((store) => store);
+  useEffect(() => {
+    axios
+      .get("https://azure-hen-cap.cyclic.app/testimonial")
+      .then((res) => setTestimonials(res.data))
+      .catch((err) => console.log(err));
+  }, [model]);
+  console.log(testimonials);
   return (
-   <>
-    <h1 style={{color:"red"}}>Discover What Our Clients Say</h1>
-    <div className='workHome-main-div Flex' style={{marginTop:"0px"}}>
-     
-    <div style={{width:"80%"}}>
-    {testimonials && <Carousel
-      swipeable={false}
-      draggable={true}
-      responsive={responsive}
-      ssr={true}
-      infinite={true}
-      autoPlay={true}
-      autoPlaySpeed={3000}
-      keyBoardControl={true}
-      customTransition="all 2s"
-      transitionDuration={2000}
-      containerClass="carousel-container"
-      removeArrowOnDeviceType={["tablet", "mobile"]}
-      dotListClass="custom-dot-list-style"
-      itemClass="carousel-item-padding-40-px"
-    >
-      
-        {testimonials.map((testimonial) => (
-          <div className="testimonial">
-          <img src={testimonial.image} alt={testimonial.name} className="testimonial-image" />
-          <h3 className="testimonial-name">{testimonial.name}</h3>
-          <p className="testimonial-message">{testimonial.message}</p>
+    <>
+      <h1 style={{ color: "red" }}>Discover What Our Clients Say</h1>
+      <div className="workHome-main-div Flex" >
+        <div className="testimonial-main" style={{ width: "90%"}}>
+          {testimonials && (
+            <Carousel
+              swipeable={false}
+              draggable={true}
+              responsive={responsive}
+              ssr={true}
+              infinite={true}
+              autoPlay={true}
+              autoPlaySpeed={3000}
+              keyBoardControl={true}
+              customTransition="all 2s"
+              transitionDuration={2000}
+              containerClass="carousel-container"
+              removeArrowOnDeviceType={["tablet", "mobile"]}
+              dotListClass="custom-dot-list-style"
+              itemClass="carousel-item-padding-40-px"
+            >
+              {testimonials.map((testimonial) => (
+                <div className="testimonial-1">
+                  <div className="testimonial">
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="testimonial-image"
+                  />
+                  <h3 className="testimonial-name">{testimonial.name}</h3>
+                  <p className="testimonial-message">{testimonial.message}</p>
+                </div>
+                </div>
+              ))}
+            </Carousel>
+          )}
         </div>
-        ))}
-        
-     
-    </Carousel>}
-    </div>
-        </div>
-        </>
+      </div>
+    </>
   );
 };
 

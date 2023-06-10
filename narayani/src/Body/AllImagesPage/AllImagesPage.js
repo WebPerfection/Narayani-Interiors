@@ -11,6 +11,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { toggelModel } from "../../Redux/Action"
 import Loading from "../Loading/Loading";
+import { IoIosArrowForward } from "react-icons/io";
 
 const responsive = {
   superLargeDesktop: {
@@ -121,7 +122,7 @@ const ProjectPage = () => {
                     className={more ? "more" : "less"}
                     onClick={() => setMore(!more)}
                   >
-                    {more ? "less" : "more"}
+                    {more ? "Read less" : "Read more"}
                   </span>
                   <button className="HeroImage-button">
                     BOOK FREE DESIGN SESSION
@@ -149,7 +150,7 @@ const ProjectPage = () => {
             <h6 className="h6">Related Designs</h6>
             <h1>Discover Our Stunning Design Creations</h1>
             <div className="see-all-link">
-              <Link to="/allCategory">See All</Link>
+              <Link to="/allCategory"> See All <IoIosArrowForward/></Link>
             </div>
             {data && (
               <Carousel
