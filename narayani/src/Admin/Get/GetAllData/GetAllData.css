@@ -6,6 +6,9 @@
 .items>div{
   margin-bottom: 50px
 }
+.tox .tox-statusbar__branding svg {
+  display: none;
+}
 .items>p{
   height: 400px;
   align-items: center;
