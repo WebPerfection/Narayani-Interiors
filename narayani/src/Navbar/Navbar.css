@@ -335,33 +335,11 @@ h5 {
 .hideDropdown {
   display: none;
 }
-.ul {
-  position: absolute;
-  top: 70px;
-  width: 150px;
-  text-align: none;
-  margin-left: -27px;
-  animation: show_ul 1s;
-  list-style-type: none;
-  background-color: #ffffffd6;
-  backdrop-filter: blur(8px);
-  box-shadow: 3px 3px 3px #a7a7a7, -3px -3px 3px #a7a7a7;
-  border-radius: 5px;
-}
-.ul > li:hover {
-  box-shadow: inset 3px 3px 3px #d5d3d3, inset -3px -3px 3px #d4d1d1;
-}
 
-.ul > li {
-  padding: 10px 0px;
-  width: 100%;
-  /* margin-bottom: 10px; */
-  /* border: 1px solid black; */
-  /* padding: 10px; */
-}
-.ul > li:last-child {
-  margin-bottom: 0;
-}
+
+
+
+
 .ul > li,
 .hideUl > li {
   color: black;
@@ -454,7 +432,7 @@ h5 {
   top: 60px;
   padding-top: 20px;
   right: 0;
-
+display: none;
   width: 200px;
   height: 100vh;
   background-color: #ffffff9b;
@@ -510,8 +488,7 @@ button {
   }
 
   to {
-    transform: translateX(300px);
-    opacity: 0;
+    display: none;
   }
 }
 @media only screen and (max-width: 900px) {
