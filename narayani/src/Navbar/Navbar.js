@@ -137,14 +137,14 @@ export default function Navbar() {
                 <ParentItem title="Services">
                   <ul id="menu">
                     <ParentItem title="Room">
-                      <ChildItem title="Bed Room" />
+                      {/* <ChildItem title="Bed Room" />
                       <ChildItem title="Guest Room" />
-                      <ChildItem title="Child Room" />
+                      <ChildItem title="Child Room" /> */}
                     </ParentItem>
                     <ParentItem title="Kitchen">
-                    <ChildItem title="Modular Kitchen" />
+                    {/* <ChildItem title="Modular Kitchen" />
                       <ChildItem title="L-Shape Kitchen" />
-                      <ChildItem title="Simple Kitchen" />
+                      <ChildItem title="Simple Kitchen" /> */}
                     </ParentItem>
                     <ParentItem title="Shop" ></ParentItem>
                     <ParentItem title="Office" ></ParentItem>
