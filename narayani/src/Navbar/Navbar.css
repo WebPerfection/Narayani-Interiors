@@ -391,11 +391,20 @@ h5 {
   justify-content: space-between;
   gap: 10px;
 }
-.Button-div>div:hover a{
+.Button-div>div:hover a:not(#menu .parent a){
   cursor: pointer;
   color: var(--text-gold);
   /* text-decoration: underline; */
   transition: 0.8s;
+}
+#menu .parent a{
+  font-size: 1rem;
+  padding-left: .9375rem;
+}
+#menu .parent:hover a{
+  color: var(--text-gold);
+  transition: 0.2s !important
+  
 }
 .Button-div > a:active {
   color: #d2c776;
