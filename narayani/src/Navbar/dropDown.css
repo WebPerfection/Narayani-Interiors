@@ -27,21 +27,22 @@
     /* line-height: 30px; */
     border-bottom: #CCC 1px solid;
     width: 100%;
+    border-radius: 5px;
   }
   
   .child li a {
     color: #000000;
   }
   
-  ul {
+  .main ul {
     list-style: none;
-    margin: 0;
+    margin: 5%;
     padding: 0px;
     min-width: 10em;
   }
   
-  ul ul ul {
-    left: 82%;
+ .main ul  ul  ul {
+    left: 96%;
     top: 0;
     /* margin-left: 1px; */
   }

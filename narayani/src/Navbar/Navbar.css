@@ -18,6 +18,7 @@
   --inner-shadow: inset 3px 3px 3px #d0d0d0, inset -3px -3px 3px #f8f8f8;
   --inner-shadow-gold: inset 3px 3px 3px #beb35b, inset -3px -3px 3px #c2b44d;
 }
+
 .Flex {
   display: flex;
   justify-content: center;
