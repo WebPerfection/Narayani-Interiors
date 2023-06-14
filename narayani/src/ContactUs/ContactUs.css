@@ -1,20 +1,83 @@
 .container-fluid.contactForm {
- padding: 200px 10px 10px 10px;
-}
-
-.bg-secondary {
-  background-color: white;
-}
-
-
-@media only screen and (max-width: 900px) {
-    .container-fluid.contactForm{
-        padding: 140px 10px 10px 10px !important; 
+    padding: 200px 10px 10px 10px;
+  }
+  
+  .bg-secondary {
+    background-color: white;
+  }
+  
+  .col-lg-5.mb-5 iframe {
+    border-radius: 5px;
+  }
+  .mb-2 {
+    display: flex;
+    justify-content: start;
+    margin-top: .625rem;
+    align-items: center;
+  }
+  .mb-2 svg{
+    font-size: 1.875rem;
+    margin-right: 10px;
+  }
+  
+  @media only screen and (max-width: 900px) {
+    .container-fluid.contactForm {
+      padding: 140px 10px 10px 10px !important;
     }
-}
-
-@media only screen and (max-width: 530px) {
-    .container-fluid.contactForm{
-        padding-top: 100px!important; 
+  }
+  
+  @media only screen and (max-width: 530px) {
+    .container-fluid.contactForm {
+      padding-top: 100px !important;
     }
-}
+  }
+  
+  /* Animation styles */
+  .contact-form {
+    animation: fadeIn 1s ease-in;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  input[type='submit'] {
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+  }
+  
+  input[type='submit']:hover {
+    background-color: #45a049;
+  }
+  
+  .help-block {
+    color: red;
+    margin-top: 5px;
+  }
+  
+  .section-title {
+    text-align: center;
+  }
+  
+  .text-uppercase {
+    text-transform: uppercase;
+  }
+  

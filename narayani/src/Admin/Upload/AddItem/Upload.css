@@ -6,7 +6,7 @@ body {
     text-align: center;
   }
   
-  form {
+  .Upload form {
     max-width: 400px;
     margin: 0 auto;
   }
