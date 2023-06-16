@@ -49,8 +49,8 @@ const WorkHome = () => {
   },[model])
   return (
     <div className='workHome-main-div'>
-      <h6 className='h6'>Project Showcase</h6>
-      <h1>Discover Our Latest Interior Design Masterpieces</h1>
+      <h6 className='h6'>PROJECT SHOWCASE </h6>
+      <h1>DISCOVER OUR LATEST DESIGN </h1>
       {
         data && <Carousel
         swipeable={false} // Disable swipe gestures for the Carousel

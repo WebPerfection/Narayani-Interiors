@@ -51,7 +51,7 @@ const Testimonial = () => {
   console.log(testimonials);
   return (
     <div className="body">
-      <h1 style={{ color: "red", margin:"0" }}>Discover What Our Clients Say</h1>
+      <h6 className="h6">WHAT OUR CLIENTS SAY</h6>
       <div className="workHome-main-div Flex" >
         <div className="testimonial-main" style={{ width: "90%"}}>
           {testimonials && (
