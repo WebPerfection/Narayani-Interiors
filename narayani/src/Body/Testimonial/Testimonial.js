@@ -50,8 +50,8 @@ const Testimonial = () => {
   }, [model]);
   console.log(testimonials);
   return (
-    <>
-      <h1 style={{ color: "red" }}>Discover What Our Clients Say</h1>
+    <div className="body">
+      <h1 style={{ color: "red", margin:"0" }}>Discover What Our Clients Say</h1>
       <div className="workHome-main-div Flex" >
         <div className="testimonial-main" style={{ width: "90%"}}>
           {testimonials && (
@@ -88,7 +88,7 @@ const Testimonial = () => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

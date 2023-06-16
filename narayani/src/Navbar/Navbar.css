@@ -281,6 +281,9 @@ h5 {
   z-index: 9;
   transition: 1s;
 }
+.service-mob{
+  border-bottom:1px solid black ;
+}
 .blur {
   display: flex;
   justify-content: space-between;

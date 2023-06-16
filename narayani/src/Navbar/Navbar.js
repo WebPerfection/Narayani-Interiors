@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IoEarthOutline } from "react-icons/io5";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { GoMail } from "react-icons/go";
 import { useDispatch, useSelector } from "react-redux";
 import { toggelModel } from "../Redux/Action";
@@ -24,13 +25,13 @@ const ParentItem = ({ title, children }) => (
   </li>
 );
 
-const ChildItem = ({ title }) => (
-  <li className="children">
-    <a href="#">{title}</a>
-  </li>
-);
+// const ChildItem = ({ title }) => (
+//   <li className="children">
+//     <a href="#">{title}</a>
+//   </li>
+// );
 
-const ExpandIcon = () => <span className="expand">&raquo;</span>;
+// const ExpandIcon = () => <span className="expand">&raquo;</span>;
 
 export default function Navbar() {
   const model = useSelector((store) => store);
@@ -42,6 +43,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [scroll, setScroll] = useState(false);
   const [eStimate, setEStimate] = useState(false);
+  const [up,setUp]=useState(false)
   const [start, setStart] = useState(false);
   if (refrence) {
     setTimeout(() => {
@@ -135,6 +137,7 @@ export default function Navbar() {
               <Link to="/" style={{gap:"0px"}}>
                 <GiAutoRepair/>
                 <ParentItem title="Services">
+                  
                   <ul id="menu">
                     <ParentItem title="Room">
                       {/* <ChildItem title="Bed Room" />
@@ -225,26 +228,34 @@ export default function Navbar() {
               Home
             </Link>
           </div>
-          <div>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}} onClick={()=>setUp(!up)}> 
             <Link to="/">
               <GiAutoRepair />
               Services
             </Link>
+            {up?<IoIosArrowUp />:<IoIosArrowDown/>}
           </div>
-          <div>
+         {up?<> <div className="service-mob">
           <Link to="/">
             Room
           </Link>
+          </div>
+          <div className="service-mob">
           <Link to="/">
             Kitchen
           </Link>
+          </div>
+          <div className="service-mob">
           <Link to="/">
             Shop
           </Link>
+          </div>
+          <div className="service-mob"
+          >
           <Link to="/">
             Office
           </Link>
-          </div>
+          </div></>:""}
           <div>
             <Link to="/">
               <FaExclamationCircle />
