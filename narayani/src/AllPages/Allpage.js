@@ -11,6 +11,7 @@ import AddTestimonial from '../Admin/Upload/AddTestimonial/AddTestimonial';
 import GetAllData from '../Admin/Get/GetAllData/GetAllData';
 import GetAllUser from '../Admin/Get/GetAllUser/GetAllUser';
 import AddAchievement from '../Admin/Upload/AddAchievement/AddAchievement';
+import Kitchen from '../Body/AllCetegory/Kitchen';
 
 export default function Allpage() {
   return (
@@ -21,6 +22,7 @@ export default function Allpage() {
       <Route path='/admin' element={<Upload />}></Route>
       <Route path='/admin/GetAllData' element={<GetAllData />}></Route>
       <Route path='/allCategory' element={<AllProduct />}></Route>
+      <Route path='/allkitchen/:id' element={<Kitchen/>}></Route>
       <Route path='/admin/AddCarousel' element={<AdddCarousel />}></Route>
       <Route path='/aboutUs' element={<Dummy />}></Route>
       <Route path='/admin/Users' element={<GetAllUser />}></Route>
