@@ -19,7 +19,7 @@ export default function Allpage() {
       <Route path='/' element={<Home />}></Route>
       <Route path='/get-In-Touch' element={<ConceptPage />}></Route>
       <Route path='/Images/:id' element={<AllImagesPage />}></Route>
-      <Route path='/admin' element={<Upload />}></Route>
+      <Route path='/6admin' element={<Upload />}></Route>
       <Route path='/admin/GetAllData' element={<GetAllData />}></Route>
       <Route path='/allCategory' element={<AllProduct />}></Route>
       <Route path='/allkitchen/:id' element={<Kitchen/>}></Route>
