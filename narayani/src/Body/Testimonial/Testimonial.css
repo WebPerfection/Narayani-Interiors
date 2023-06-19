@@ -25,6 +25,13 @@
 .testimonial:hover{
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
+.testimonial-main{
+  padding:0px 3.125rem;
+}
+.react-multiple-carousel__arrow--right {
+  /* right: calc(-1% + 0px);
+   */
+}
 .body{
   background-color: #ededed;
 }

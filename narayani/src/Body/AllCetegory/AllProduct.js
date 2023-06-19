@@ -110,7 +110,7 @@ useEffect(()=>{
         )}
 
        
-       <div className="Flex">
+       <div className="Flex" style={{margin:'50px 0px 30px 0px'}}>
        <ReactPaginate
         pageCount={totalPages}
         pageRangeDisplayed={3}

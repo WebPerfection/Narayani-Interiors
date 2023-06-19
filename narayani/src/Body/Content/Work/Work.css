@@ -1,7 +1,6 @@
 .work-main-div{
     background-color: rgba(0, 0, 0, 0.824);
     margin-top: 80px;
-    margin-bottom: 20px;
     padding-bottom: 50px;
 
 }
@@ -22,13 +21,13 @@
     padding-top: 30px;
     box-shadow: var(--inner-shadow);
 }
-.work-text-div{
+.heading-div{
     padding: 30px;
 }
-.work-text-div>h1{
+.heading-div>h1{
     color: white;
 }
-.work-text-div>p{
+.heading-div>p{
     color: white;
 }
 .work-card-div{

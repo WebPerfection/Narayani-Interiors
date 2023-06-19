@@ -6,7 +6,7 @@ import Working3 from "./working-3.jpg"
 export default function Work() {
   return (
     <div className='work-main-div'>
-        <div className='work-text-div'>
+        <div className='heading-div'>
             <h6 className='h6'>WORKING AREAS</h6>
             <h1>COVERED INDUSTRIES</h1>
             <p>We are an Interior Designer, Who believe in excellence, quality and honesty, yes we design beautiful home interiors.</p>

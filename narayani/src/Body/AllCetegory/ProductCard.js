@@ -5,8 +5,8 @@ const ProductCard = ({ product }) => {
     <div className="product-card">
       <img className="product-image" src={product.images[0]} alt={product.name} draggable="false"/>
       <div className="product-details">
-        <h3 className="product-name">{product.category}</h3>
-        <p className="product-description">size: {product.size._length} X {product.size._width}</p>
+        <p className="product-name">{product.title}</p>
+        <p className="product-description"> <b>Size :</b>{product.size._length}X{product.size._width}</p>
       </div>
     </div>
   );
