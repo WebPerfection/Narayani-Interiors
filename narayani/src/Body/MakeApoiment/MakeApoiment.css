@@ -6,10 +6,9 @@
 }
 .appointment-main-div {
   background-color: #f2b259;
-  padding: 30px 0px;
+  padding: 20px 0px;
   align-items: center;
-  color: white;
-  margin-top: 20px;
+  color: rgb(0, 0, 0);
 }
 .appointment-bt {
   background-color: white;
