@@ -9,7 +9,7 @@ import {
   FaHouseUser,
   FaArrowRight,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { IoEarthOutline } from "react-icons/io5";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { GoMail } from "react-icons/go";
@@ -45,6 +45,7 @@ export default function Navbar() {
   const [eStimate, setEStimate] = useState(false);
   const [up,setUp]=useState(false)
   const [start, setStart] = useState(false);
+ 
   if (refrence) {
     setTimeout(() => {
       setHid(!hid);
@@ -144,11 +145,13 @@ export default function Navbar() {
                       <ChildItem title="Guest Room" />
                       <ChildItem title="Child Room" /> */}
                     </ParentItem>
-                    <ParentItem title="Kitchen">
+                    
+                    <ParentItem title="Kitchen"></ParentItem>
+                    
                     {/* <ChildItem title="Modular Kitchen" />
                       <ChildItem title="L-Shape Kitchen" />
                       <ChildItem title="Simple Kitchen" /> */}
-                    </ParentItem>
+                    
                     <ParentItem title="Shop" ></ParentItem>
                     <ParentItem title="Office" ></ParentItem>
                   </ul>
@@ -236,34 +239,34 @@ export default function Navbar() {
             {up?<IoIosArrowUp />:<IoIosArrowDown/>}
           </div>
          {up?<> <div className="service-mob">
-          <Link to="/">
+          <Link to="/allkitchen/Room">
             Room
           </Link>
           </div>
           <div className="service-mob">
-          <Link to="/">
+          <Link to="/allkitchen/Kitchen">
             Kitchen
           </Link>
           </div>
           <div className="service-mob">
-          <Link to="/">
+          <Link to="/allkitchen/Shop">
             Shop
           </Link>
           </div>
           <div className="service-mob"
           >
-          <Link to="/">
+          <Link to="/allkitchen/Office">
             Office
           </Link>
           </div></>:""}
           <div>
-            <Link to="/">
+            <Link to="/aboutUs">
               <FaExclamationCircle />
               About us
             </Link>
           </div>
           <div>
-            <Link to="/">
+            <Link to="/get-In-Touch">
               <FaHandsHelping />
               Get in touch
             </Link>
