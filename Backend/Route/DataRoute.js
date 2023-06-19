@@ -5,11 +5,11 @@ const {UploadModel} =require("../Model/UploadModel")
 
 DataRoute.get("/", async (req, res) => {
   try {
-    const { category, length, width, page } = req.query;
+    const { category, length, width, page, search } = req.query;
     const itemsPerPage = 3;
     const currentPage = page ? parseInt(page) : 1;
     const skipItems = (currentPage - 1) * itemsPerPage;
-    
+ 
     const filterOptions = [];
 
     if (category) {
@@ -24,12 +24,17 @@ DataRoute.get("/", async (req, res) => {
       filterOptions.push({ 'size._width': { $lte: Number(width) } });
     }
 
-    let filter = {};
+    if (search) {
+      filterOptions.push({ "category": { $regex: search, $options: "i" }  });
+    }
 
+    let filter = {}; 
+ 
     if (filterOptions.length > 0) {
       filter = { $and: filterOptions };
     }
 
+    // Assuming you have a model named UploadModel
     const uploads = await UploadModel.find(filter)
       .skip(skipItems)
       .limit(itemsPerPage);
