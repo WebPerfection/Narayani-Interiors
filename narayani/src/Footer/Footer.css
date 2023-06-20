@@ -4,7 +4,7 @@ footer {
   font-size: 16px;
 }
 footer * {
-  width: 100%;
+  /* width: 100%; */
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
   border: none;
@@ -39,9 +39,10 @@ footer > .row {
 .footer_ul {
   list-style: none;
   display: flex;
-  flex-direction: column;
+  flex-direction:column;
   padding: 0;
   margin: 0;
+
   text-align: start;
 }
 .footer_ul li:not(:first-child) {
@@ -84,7 +85,8 @@ footer > .row {
 
 div.social {
   display: flex;
-  justify-content: center;
+  justify-content: left;
+  gap: 10px;
   font-size: 2.4em;
   flex-direction: row;
   margin-top: 0.5em;
@@ -112,6 +114,9 @@ div.social {
 .footer-menu a:hover {
   color:var(--text-gold);
 }
+.row{
+  margin-right:0px;
+}
 .copyright p {
   font-size: 0.9em;
   text-align: right;
@@ -129,5 +134,21 @@ div.social {
   .row * {
     padding-right: 0px;
     padding-left: 0px;
+  }
+}
+@media screen and (max-width:530px){
+  
+  .footer-all-links{
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+  .Explore{
+    margin-top: -65px;
+  }
+  .Social-main{
+    margin-top: 20px;
+  }
+  footer > .row {
+    --bs-gutter-x: 0;
   }
 }
