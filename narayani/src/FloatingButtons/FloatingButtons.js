@@ -29,7 +29,7 @@ function FloatingButtons() {
             <div className="element-container">
                 <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">
                     <span className="float-element tooltip-left" onClick={() => {
-                        const phoneNumber = "+918604846089"; // replace with your desired phone number
+                        const phoneNumber = "+917670834090"; // replace with your desired phone number
                         window.location.href = `tel:${phoneNumber}`;
                     }}>
                         <TbPhoneCall />
@@ -38,7 +38,7 @@ function FloatingButtons() {
                 </a>
                 <span className="float-element" id="icon-style"
                     onClick={() => {
-                        const phoneNumber = "+918604846089"; // replace with your WhatsApp contact's phone number
+                        const phoneNumber = "+917670834090"; // replace with your WhatsApp contact's phone number
                         window.open(
                             `https://api.whatsapp.com/send?phone=${phoneNumber}`,
                             "_blank"

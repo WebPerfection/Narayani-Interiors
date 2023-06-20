@@ -9,6 +9,7 @@
   padding: 20px 0px;
   align-items: center;
   color: rgb(0, 0, 0);
+  margin-top: 20px;
 }
 .appointment-bt {
   background-color: white;
@@ -31,5 +32,10 @@
     width: 80%;
     flex-wrap: wrap;
     justify-content: center;
+  }
+}
+@media only screen and (max-width: 530px){
+  .appointment-div>h4{
+    display: none;
   }
 }

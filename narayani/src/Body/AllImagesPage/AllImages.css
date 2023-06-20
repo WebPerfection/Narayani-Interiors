@@ -1,5 +1,7 @@
 .pro-main {
-  margin-top: 180px;
+  margin-top: 156px;
+  background-color: #2222;
+    padding-top: 20px;
 }
 .description-div {
   height: 50px;
@@ -143,6 +145,10 @@
 }
 @media only screen and (max-width: 530px) {
   .pro-main {
-    margin-top: 60px;
+    margin-top: 40px;
+  }
+  .HeroImage-content-div {
+  
+    padding: 20px 0px ;
   }
 }
