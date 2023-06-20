@@ -57,7 +57,7 @@ export default function Content() {
                 <div className='heading_content'>
                   <h2 className='heading'>{el.heading}</h2>
                   <p className="text">{el.text}</p>
-                  <button className='about_btn'>About Company <FaLongArrowAltRight /></button>
+                  <Link to="/aboutUs"><button className='about_btn'>About Company <FaLongArrowAltRight /></button></Link>
                 </div>
               </div>
             </div>

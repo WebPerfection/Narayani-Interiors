@@ -91,6 +91,7 @@ useEffect(()=>{
           >
             <div>
               <Select
+                style={{backgroundColor:"var(--chakra-colors-gray-100)"}}
                 placeholder="Filter by Category"
                 onChange={(e) => {
                   setFilter(e.target.value)

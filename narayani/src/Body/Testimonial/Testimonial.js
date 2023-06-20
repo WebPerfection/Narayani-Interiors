@@ -51,9 +51,11 @@ const Testimonial = () => {
   console.log(testimonials);
   return (
     <div className="body">
-      <h1 style={{ color: "red", margin:"0" }}>Discover What Our Clients Say</h1>
+      <div className="heading-div">
+        <h6 className="h6">WHAT OUR CLIENTS SAY</h6>
+      </div>
       <div className="workHome-main-div Flex" >
-        <div className="testimonial-main" style={{ width: "90%"}}>
+        <div className="testimonial-main" style={{ width: "100%" }}>
           {testimonials && (
             <Carousel
               swipeable={false}
@@ -74,14 +76,14 @@ const Testimonial = () => {
               {testimonials.map((testimonial) => (
                 <div className="testimonial-1">
                   <div className="testimonial">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="testimonial-image"
-                  />
-                  <h3 className="testimonial-name">{testimonial.name}</h3>
-                  <p className="testimonial-message">{testimonial.message}</p>
-                </div>
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="testimonial-image"
+                    />
+                    <h3 className="testimonial-name">{testimonial.name}</h3>
+                    <p className="testimonial-message">{testimonial.message}</p>
+                  </div>
                 </div>
               ))}
             </Carousel>

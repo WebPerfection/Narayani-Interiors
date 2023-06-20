@@ -8,7 +8,7 @@ const ProductList = ({ products }) => {
     
     <div className="product-list">
       {products.map((product) => (
-        <Link to={`/Images/${product._id}`}>
+        <Link to={`/Images/${product._id}`} className="card-list">
         <ProductCard key={product.id} product={product} />
         </Link>
       ))}

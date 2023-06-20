@@ -20,7 +20,7 @@ import "./dropDown.css";
 
 const ParentItem = ({ title, children }) => (
   <li className="parent">
-    <a href="#">{title}</a>
+    <Link to={`/allkitchen/${title}`}>{title}</Link>
     <ul className="child">{children}</ul>
   </li>
 );
@@ -87,6 +87,7 @@ export default function Navbar() {
       <div className="main">
         {/* NavBar */}
         <div className={isScrolled ? "blur" : "Container"}>
+          <Link to="/">
           <div className="Img-div Flex">
             <img src={web} />
             <h4>
@@ -94,6 +95,7 @@ export default function Navbar() {
               <em>Interior</em>
             </h4>
           </div>
+          </Link>
 
           <div className="Flex" id="hamburger">
             {ham ? (
@@ -210,7 +212,7 @@ export default function Navbar() {
             </h1>
             <div className="Flex">
               <h2>ankitjewrajka1234@gmail.com</h2>
-              <h5>Mon - Friday: 9.00 to 18.00</h5>
+              <h5>Mon - Friday </h5>
             </div>
           </div>
           <div className="Flex" id="icon-div">
@@ -232,7 +234,7 @@ export default function Navbar() {
             </Link>
           </div>
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}} onClick={()=>setUp(!up)}> 
-            <Link to="/">
+            <Link>
               <GiAutoRepair />
               Services
             </Link>

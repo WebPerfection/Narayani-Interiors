@@ -20,8 +20,6 @@ export default function Footer() {
           <div className="social">
             <i className="fa-brands fa-facebook-square"></i>
             <i className="fa-brands fa-instagram-square"></i>
-            <i className="fa-brands fa-twitter-square"></i>
-            <i className="fa-brands fa-youtube-square"></i>
             <i className="fa-brands fa-whatsapp-square"></i>
           </div>
         </div>
@@ -47,13 +45,14 @@ export default function Footer() {
             <h3 className="footer_h3">Connect With Us</h3>
             <ul className='footer_ul'>
               <li>
-                <a href="#faq">Email</a>
+                <a href="#faq">Email: ankitjewrajka1234@gmail.com</a>
               </li>
               <li>
-                <a href="#cookies-policy">Phone</a>
+                <a href="#cookies-policy">Phone: +917670834090</a>
               </li>
               <li>
-                <a href="#terms-of-services">Address</a>
+                <a href="#terms-of-services">Address: <i>Ranchi (834001)
+4A, Virdavan Apartment</i></a>
               </li>
               <li>
                 <a href="#support">Social Media</a>

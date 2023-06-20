@@ -28,6 +28,9 @@
 .arrow {
   margin-top: 3px;
 }
+.react-multiple-carousel__arrow::before {
+    color: var(--text-gold);
+}
 #concept-card a {
   font-size: 20px;
   display: flex;
@@ -101,8 +104,11 @@
     flex-direction: column;
     gap: 50px;
   }
+  .concept-card {
+    padding: 0px 0px;
+  }
   #concept-card > div {
-    width: 80%;
+    width: 95%;
     margin-top: 80px;
   }
   #concept-card h3 {

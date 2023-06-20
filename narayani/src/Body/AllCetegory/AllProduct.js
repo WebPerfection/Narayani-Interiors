@@ -86,6 +86,7 @@ useEffect(()=>{
           >
             <div>
               <Select
+              style={{backgroundColor:"var(--chakra-colors-gray-100)"}}
                 placeholder="Filter by Category"
                 onChange={(e) => {
                   setFilter(e.target.value)
@@ -104,13 +105,13 @@ useEffect(()=>{
           </div>
         </div>
         { loading ? <Loading/>: products.length > 0 ? (
-          <ProductList products={products} />
+          <div className="product-body"><ProductList products={products} /></div>
         ) : (
          <h1>Data Not Found</h1> 
         )}
 
        
-       <div className="Flex">
+       <div className="Flex" style={{margin:'50px 0px 30px 0px'}}>
        <ReactPaginate
         pageCount={totalPages}
         pageRangeDisplayed={3}

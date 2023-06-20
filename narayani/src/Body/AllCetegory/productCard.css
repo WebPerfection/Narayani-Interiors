@@ -6,7 +6,8 @@
     flex-direction: column;
     overflow: hidden;
     transition: box-shadow 0.3s ease-in-out;
-    width: 100%;
+    width: 310px;
+    height: 100%;
   }
   .product-list{
     display: flex;
@@ -30,8 +31,8 @@
   }
   
   .product-name {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 15px;
+    font-weight:500;
     margin-bottom: 8px;
   }
   
@@ -44,4 +45,15 @@
     font-size: 16px;
     font-weight: bold;
   }
-  
+  /* @media only screen and (max-width: 650px){
+    .product-card{
+      width: 100%;
+    }
+    .card-list{
+      width: 90%;
+    }
+    .product-image{
+      width: 100%;
+      height: auto;
+    }
+  } */

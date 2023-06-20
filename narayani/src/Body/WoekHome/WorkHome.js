@@ -34,49 +34,51 @@ const responsive = {
 };
 
 const WorkHome = () => {
-  const [data,setData]=useState("") // Array of image sources
-  const model=useSelector(store=>store)
-  const dispatch=useDispatch()
+  const [data, setData] = useState("") // Array of image sources
+  const model = useSelector(store => store)
+  const dispatch = useDispatch()
 
-  const openModel=()=>{
+  const openModel = () => {
     dispatch(toggelModel())
     console.log("ch")
   }
-  useEffect(()=>{
-     axios.get("https://azure-hen-cap.cyclic.app/data")
-     .then((res)=>setData(res.data.uploads))
-     .catch((err)=>console.log(err))
-  },[model])
+  useEffect(() => {
+    axios.get("https://azure-hen-cap.cyclic.app/data")
+      .then((res) => setData(res.data.uploads))
+      .catch((err) => console.log(err))
+  }, [model])
   return (
     <div className='workHome-main-div'>
-      <h6 className='h6'>Project Showcase</h6>
-      <h1>Discover Our Latest Interior Design Masterpieces</h1>
+      <div className='heading-div'>
+        <h6 className='h6'>PROJECT SHOWCASE </h6>
+        <h1 style={{color:'black'}}>DISCOVER OUR LATEST DESIGN </h1>
+      </div>
       {
         data && <Carousel
-        swipeable={false} // Disable swipe gestures for the Carousel
-        draggable={true} // Enable dragging of Carousel items
-        showDots={false} // Show navigation dots
-        responsive={responsive} // Apply responsive configuration
-        ssr={true} // Enable server-side rendering
-        infinite={true} // Enable infinite looping of Carousel items
-        autoPlay={true} // Enable automatic playback
-        autoPlaySpeed={3000} // Set autoplay speed to 3 seconds
-        keyBoardControl={true} // Enable keyboard navigation
-        customTransition='all 2s' // Set custom transition for Carousel animations
-        transitionDuration={2000} // Set transition duration to 2 seconds
-        containerClass='carousel-container' // Set CSS class for the Carousel container
-        removeArrowOnDeviceType={['tablet', 'mobile']} // Remove navigation arrows on specific device types
-        dotListClass='custom-dot-list-style' // Set CSS class for the navigation dots
-        itemClass='carousel-item-padding-40-px' // Set CSS class for Carousel items
-      >
-        { data.map((item, index) => (
-          <Link to={`Images/${item._id}`}>
-          <div onClick={openModel} className='project-img-parent' key={index}>
-            <img className='img-work flex' src={item.images[0]} alt={`Image ${index + 1}`} draggable="false" /> 
-          </div>
-          </Link>
-        ))}
-      </Carousel>
+          swipeable={false} // Disable swipe gestures for the Carousel
+          draggable={true} // Enable dragging of Carousel items
+          showDots={false} // Show navigation dots
+          responsive={responsive} // Apply responsive configuration
+          ssr={true} // Enable server-side rendering
+          infinite={true} // Enable infinite looping of Carousel items
+          autoPlay={true} // Enable automatic playback
+          autoPlaySpeed={3000} // Set autoplay speed to 3 seconds
+          keyBoardControl={true} // Enable keyboard navigation
+          customTransition='all 2s' // Set custom transition for Carousel animations
+          transitionDuration={2000} // Set transition duration to 2 seconds
+          containerClass='carousel-container' // Set CSS class for the Carousel container
+          removeArrowOnDeviceType={['tablet', 'mobile']} // Remove navigation arrows on specific device types
+          dotListClass='custom-dot-list-style' // Set CSS class for the navigation dots
+          itemClass='carousel-item-padding-40-px' // Set CSS class for Carousel items
+        >
+          {data.map((item, index) => (
+            <Link to={`Images/${item._id}`}>
+              <div onClick={openModel} className='project-img-parent' key={index}>
+                <img className='img-work flex' src={item.images[0]} alt={`Image ${index + 1}`} draggable="false" />
+              </div>
+            </Link>
+          ))}
+        </Carousel>
       }
     </div>
   );

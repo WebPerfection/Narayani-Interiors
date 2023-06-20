@@ -64,8 +64,9 @@
 .about-main-div{
     flex-direction: column;
 }
-.companyTitel{
-    align-items: center;
+.company-text{
+    text-align: center;
+    padding-left: 0px;
 }
 .companyTitel>h1{
     font-size: 4vw;
@@ -73,15 +74,25 @@
 .companyTitel>p{
     font-size: 3vw;
 }
+.companyImag{
+    max-width: 100%;
+    padding: 2px;
+}
+.companyTitel{
+    padding: 2px;
+}
+.about-main-div{
+    width: 100%;
+}
 .companyTitel{
     width: 100%;
     margin: auto;
-    margin-left: 12%;
     /* border: 1px solid black; */
 }
-.about-main{
-    justify-content: left;
-    
+
+.companyImag >img{
+    position: static;
+   width: 100%;
 }
 .about-main-div{
     gap: 50px;
@@ -96,6 +107,7 @@
     .companyTitel>p{
         font-size: 1.6vw;
     }
+    
     .companyTitel{
         width: 60%;
     }
