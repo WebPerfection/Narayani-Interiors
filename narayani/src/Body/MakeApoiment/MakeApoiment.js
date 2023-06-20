@@ -13,7 +13,7 @@ export default function MakeApoiment() {
   return (
     <div className='appointment-main-div Flex'>
        <div className='appointment-div Flex'>
-        <h4>Looking to Join Our Professional Team? Schedule an Appointment Today!</h4>
+        <h4>Looking to Join Our Professional Team? <span>Schedule an Appointment Today!</span></h4>
         <button onClick={openModel} className='appointment-bt'>Make An Appointment</button>
        </div>
     </div>
