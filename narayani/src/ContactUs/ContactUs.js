@@ -9,7 +9,7 @@ import { useLocation } from 'react-router-dom';
 
 export default function ContactUs() {
     const { pathname } = useLocation();
-
+    window.scrollTo(0, 0);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);

@@ -3,9 +3,8 @@ footer {
   color: #a7a7a7;
   font-size: 16px;
 }
-footer * {
-  /* width: 100%; */
-  font-family: "Poppins", sans-serif;
+footer *:not(i) {
+  width: 100%;
   box-sizing: border-box;
   border: none;
   outline: none;

@@ -27,15 +27,13 @@ function FloatingButtons() {
         <div className="floating-container">
             <div className="floating-button">+</div>
             <div className="element-container">
-                <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">
-                    <span className="float-element tooltip-left" onClick={() => {
-                        const phoneNumber = "+917670834090"; // replace with your desired phone number
-                        window.location.href = `tel:${phoneNumber}`;
-                    }}>
-                        <TbPhoneCall />
+                <span className="float-element tooltip-left" onClick={() => {
+                    const phoneNumber = "+917670834090"; // replace with your desired phone number
+                    window.location.href = `tel:${phoneNumber}`;
+                }}>
+                    <TbPhoneCall />
 
-                    </span>
-                </a>
+                </span>
                 <span className="float-element" id="icon-style"
                     onClick={() => {
                         const phoneNumber = "+917670834090"; // replace with your WhatsApp contact's phone number

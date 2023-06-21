@@ -8,6 +8,7 @@ import CustomImages from "../../Pages/CustomImages";
 import { useSelector } from "react-redux";
 import store from "../../Redux/store";
 export default function Home() {
+ 
     const data=useSelector(store=>store)
     console.log("data",data)
   return (
@@ -17,7 +18,6 @@ export default function Home() {
       
       <Footer />
       <Designed_by />
-      <FloatingButtons />
       {/* <CustomImages /> */}
     </>
   );

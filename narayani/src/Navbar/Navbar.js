@@ -91,15 +91,14 @@ export default function Navbar() {
           <div className="Img-div Flex">
             <img src={web} />
             <h4>
-              <em>Narayni-</em>
-              <em>Interior</em>
+              Narayni-Interior
             </h4>
           </div>
           </Link>
 
           <div className="Flex" id="hamburger">
             {ham ? (
-              <div className="h21">
+              <div className="h21" style={{margin:'auto'}}>
                 <button
                   disabled={scroll ? false : true}
                   onClick={() => {
@@ -112,7 +111,7 @@ export default function Navbar() {
                 </button>
               </div>
             ) : (
-              <div className="h2">
+              <div className="h2" style={{margin:'auto'}}>
                 <button
                   disabled={scroll ? true : false}
                   onClick={() => {

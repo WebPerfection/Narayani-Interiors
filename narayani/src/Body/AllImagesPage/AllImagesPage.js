@@ -33,6 +33,7 @@ const responsive = {
 };
 
 const ProjectPage = () => {
+  window.scrollTo(0, 0);
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -47,15 +48,16 @@ const ProjectPage = () => {
   const [data, setData] = useState("");
   const [more, setMore] = useState(false);
   const [loading, setLoading] = useState(true)
+  const [cetegory, setCetegory] = useState("")
   useEffect(() => {
-    axios
-      .get(`https://azure-hen-cap.cyclic.app/data`)
+    cetegory && axios
+      .get(`https://azure-hen-cap.cyclic.app/data?category=${cetegory}`)
       .then((res) => {
         setData(res.data.uploads);
       })
       .catch((err) => console.log(err));
 
-  }, []);
+  }, [cetegory]);
 
 
   useEffect(() => {
@@ -83,6 +85,7 @@ const ProjectPage = () => {
         setProjectImages(res.data.images);
         setAllData(res.data);
         setHeroImage(0);
+        setCetegory(res.data.category)
         setLoading(false)
       })
       .catch((err) => console.log(err));
@@ -147,10 +150,12 @@ const ProjectPage = () => {
         )}
         <div className="related-item">
           <div className="workHome-main-div">
-            <h6 className="h6">Related Designs</h6>
-            <h1>Discover Our Stunning Design Creations</h1>
+            <div className="heading-div">
+              <h6 className="h6">Related Designs</h6>
+              <h1 style={{ color: 'black' }}>Discover Our Stunning Design Creations</h1>
+            </div>
             <div className="see-all-link">
-              <Link to="/allCategory"> See All <IoIosArrowForward/></Link>
+              <Link to="/allCategory"> See All <IoIosArrowForward /></Link>
             </div>
             {data && (
               <Carousel

@@ -1,10 +1,6 @@
 import React from 'react'
-import { RiProjectorLine } from "react-icons/ri";
 import { GiStabbedNote } from "react-icons/gi";
-import { BsArrowRight } from "react-icons/bs";
 import { FaBuilding, FaReceipt } from "react-icons/fa";
-import { Link } from 'react-router-dom';
-
 import "./Working.css"
 export default function WorkingProcess() {
   return (
@@ -37,7 +33,6 @@ export default function WorkingProcess() {
           <div className='Flex icon-work'><FaReceipt /></div>
         </div>
       </div>
-
     </div>
   )
 }

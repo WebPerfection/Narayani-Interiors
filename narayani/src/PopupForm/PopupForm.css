@@ -171,3 +171,10 @@ CSS for the modal dialog
   background-color: #ccc;
   cursor: not-allowed;
 }
+.react-tel-input .form-control{
+  margin-left: 2.1875rem;
+  width: 90%;
+}
+#tel{
+  width: 80%;
+}

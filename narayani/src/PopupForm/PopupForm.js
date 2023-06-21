@@ -25,7 +25,7 @@ export const PopupForm = () => {
   const [name, setName] = useState("");
   const [inputError, setInputError] = useState(false); // State for input validation
   const dispatch = useDispatch();
-
+console.log(name)
   useEffect(() => {
     setShow(ModelCheck);
   }, [ModelCheck]);
@@ -81,9 +81,7 @@ export const PopupForm = () => {
         window.confirmationResult = confirmationResult;
         setLoading(false);
         setShowOTP(true);
-        setName("")
-        setPh("")
-        setEmail("")
+        
         toast.success("OTP sent successfully!");
       })
       .catch((error) => {
@@ -92,7 +90,8 @@ export const PopupForm = () => {
       });
   }
 
-  function onOTPVerify() {
+  function onOTPVerify(e) {
+    e.preventDefault()
     setLoading(true);
     window.confirmationResult
       .confirm(otp)
@@ -119,7 +118,8 @@ export const PopupForm = () => {
       email,
       number: "+" + ph
     }
-    axios.post("http://localhost:5000/users", payload)
+    console.log(payload)
+    axios.post("https://azure-hen-cap.cyclic.app/users/register", payload)
       .then(res => console.log(res))
       .catch((err) => console.log(err))
   }
@@ -176,6 +176,8 @@ export const PopupForm = () => {
                     value={ph}
                     onChange={setPh}
                     required={true}
+                    style={{width:'90%'}}
+                    
                   />
                   {inputError && <p className="error-message">Please fill in all the fields</p>}
                 </>

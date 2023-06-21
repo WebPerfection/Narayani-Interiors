@@ -1,61 +1,74 @@
 .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    gap: 20px;
-  }
-  
-  .pagination ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-  }
-  
-  .pagination li {
-    margin: 0 5px;
-  }
-  
-  .pagination a {
-    padding: 8px 12px;
-    text-decoration: none;
-    color: #333;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    /* border: 1px solid black; */
-    background-color: var(--text-gold);
-  }
-  
-  .pagination a:hover {
-    background: linear-gradient(
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.pagination ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+}
+#size-btn{
+font-weight: 100;
+}
+.pagination li {
+  margin: 0 5px;
+}
+
+.pagination a {
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  /* border: 1px solid black; */
+  background-color: var(--text-gold);
+}
+
+.pagination a:hover {
+  background: linear-gradient(
     to right,
     var(--text-gold) 10%,
     rgb(218, 216, 216) 90%
   );
-  
+}
+
+.pagination .active a {
+  background: rgba(82, 82, 82, 0.439);
+  color: rgb(12, 10, 10);
+}
+
+@media (max-width: 768px) {
+  .pagination {
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
   }
-  
-  .pagination .active a {
-    background:
-      rgba(82, 82, 82, 0.439);
-    color: rgb(12, 10, 10);
+
+  .pagination ul {
+    justify-content: center;
   }
-  
-  @media (max-width: 768px) {
-    .pagination {
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-    }
-  
-    .pagination ul {
-      justify-content: center;
-    }
-  
-    .pagination li {
-      margin: 5px;
-    }
+
+  .pagination li {
+    margin: 5px;
   }
-  
+}
+#size-btn:hover {
+  background: linear-gradient(
+    to right,
+    var(--text-gold) 10%,
+    rgb(218, 216, 216) 90%
+  );
+}
+#size-btn:focus {
+  outline: none;
+  border: none;
+}
+#size-btn option:hover {
+  background-color:var(--text-gold); /* Set the desired background color for the option on hover */
+}
 /* .pagination>.active{
     border: 1px solid red;
     width: 50px;

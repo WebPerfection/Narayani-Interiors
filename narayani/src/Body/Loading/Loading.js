@@ -29,8 +29,8 @@ const Loading = () => {
   return (
     <div className="loading" style={{height:"400px",display:"flex",alignItems:"center"}}>
       <div style={{margin:"auto"}}>
-      <BeatLoader color="#36D7B7" size={30} css={override} />
-      <h2>Loading...</h2>
+      <BeatLoader color="var(--text-gold)" size={30} css={override} />
+      <p>Narayni-Interior</p>
       </div>
     </div>
   );

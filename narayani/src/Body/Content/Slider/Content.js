@@ -23,9 +23,9 @@ import Testimonial from '../../Testimonial/Testimonial';
 export default function Content() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [data, setData] = useState([
-    isMobile ? {img:mobileImage1,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Transform Your Interior Spaces"} : {img:desktopImage1,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Transform Your Interior Spaces"},
-    isMobile ? {img:mobileImage2,text:"Discover the perfect blend of style and functionality for your home. Our expert interior designers will create a space that reflects your unique taste and enhances your daily living experience.",heading:"Elevate Your Home Design"} : {img:desktopImage2,text:"Discover the perfect blend of style and functionality for your home. Our expert interior designers will create a space that reflects your unique taste and enhances your daily living experience.",heading:"Elevate Your Home Design"},
-    isMobile ? {img:mobileImage3,text:"Experience the art of interior design like never before. Our team of professionals will curate a personalized space that showcases your individuality and creates a lasting impression..",heading:"Create Your Dream Space"} : {img:desktopImage3,text:"Experience the art of interior design like never before. Our team of professionals will curate a personalized space that showcases your individuality and creates a lasting impression.",heading:"Create Your Dream Space"},
+    isMobile ? { img: mobileImage1, text: "Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.", heading: "Transform Your Interior Spaces" } : { img: desktopImage1, text: "Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.", heading: "Transform Your Interior Spaces" },
+    isMobile ? { img: mobileImage2, text: "Discover the perfect blend of style and functionality for your home. Our expert interior designers will create a space that reflects your unique taste and enhances your daily living experience.", heading: "Elevate Your Home Design" } : { img: desktopImage2, text: "Discover the perfect blend of style and functionality for your home. Our expert interior designers will create a space that reflects your unique taste and enhances your daily living experience.", heading: "Elevate Your Home Design" },
+    isMobile ? { img: mobileImage3, text: "Experience the art of interior design like never before. Our team of professionals will curate a personalized space that showcases your individuality and creates a lasting impression..", heading: "Create Your Dream Space" } : { img: desktopImage3, text: "Experience the art of interior design like never before. Our team of professionals will curate a personalized space that showcases your individuality and creates a lasting impression.", heading: "Create Your Dream Space" },
   ]);
 
   useEffect(() => {
@@ -38,9 +38,9 @@ export default function Content() {
 
   useEffect(() => {
     setData([
-      isMobile ? {img:mobileImage1,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Transform Your Interior Spaces"} : {img:desktopImage1,text:"Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.",heading:"Transform Your Interior Spaces"},
-      isMobile ? {img:mobileImage2,text:"Discover the perfect blend of style and functionality for your home. Our expert interior designers will create a space that reflects your unique taste and enhances your daily living experience.",heading:"Elevate Your Home Design"} : {img:desktopImage2,text:"Discover the perfect blend of style and functionality for your home. Our expert interior designers will create a space that reflects your unique taste and enhances your daily living experience.",heading:"Elevate Your Home Design"},
-      isMobile ? {img:mobileImage3,text:"Experience the art of interior design like never before. Our team of professionals will curate a personalized space that showcases your individuality and creates a lasting impression..",heading:"Create Your Dream Space"} : {img:desktopImage3,text:"Experience the art of interior design like never before. Our team of professionals will curate a personalized space that showcases your individuality and creates a lasting impression.",heading:"Create Your Dream Space"},
+      isMobile ? { img: mobileImage1, text: "Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.", heading: "Transform Your Interior Spaces" } : { img: desktopImage1, text: "Unleash your creativity and bring your dream space to life. With our wide range of design options, there are no limits to what you can achieve.", heading: "Transform Your Interior Spaces" },
+      isMobile ? { img: mobileImage2, text: "Discover the perfect blend of style and functionality for your home. Our expert interior designers will create a space that reflects your unique taste and enhances your daily living experience.", heading: "Elevate Your Home Design" } : { img: desktopImage2, text: "Discover the perfect blend of style and functionality for your home. Our expert interior designers will create a space that reflects your unique taste and enhances your daily living experience.", heading: "Elevate Your Home Design" },
+      isMobile ? { img: mobileImage3, text: "Experience the art of interior design like never before. Our team of professionals will curate a personalized space that showcases your individuality and creates a lasting impression..", heading: "Create Your Dream Space" } : { img: desktopImage3, text: "Experience the art of interior design like never before. Our team of professionals will curate a personalized space that showcases your individuality and creates a lasting impression.", heading: "Create Your Dream Space" },
     ]);
   }, [isMobile]);
 
@@ -86,7 +86,7 @@ export default function Content() {
             <div className='Flex'><h1 className='concept-icon'><FaPaintRoller /></h1></div>
             <div><h3>Instant Pricing
 
-</h3>
+            </h3>
               <p>Enjoy complete price transparency and stay within budget.</p></div>
             <div><Link>Read More <BsArrowRight className='arrow' /></Link></div>
           </div>
@@ -97,7 +97,7 @@ export default function Content() {
       <Work />
       <WorkHome />
       <WorkingProcess />
-      <Testimonial/>
+      <Testimonial />
       <MakeApoiment />
     </>
   )

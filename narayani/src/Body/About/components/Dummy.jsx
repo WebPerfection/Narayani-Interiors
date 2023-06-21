@@ -21,6 +21,7 @@ import Footer from "../../../Footer/Footer";
 import { TbPhoneCall, TbMap } from "react-icons/tb";
 import { GoMail } from "react-icons/go";
 const Dummy = () => {
+  window.scrollTo(0, 0);
   return (
     <>
       <Navbar />

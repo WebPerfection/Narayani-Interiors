@@ -36,6 +36,7 @@ export default function Kitchen() {
   const [totalPages, setTotalPages] = useState(0);
   const [showsort,setShowsort]=useState("")
   const [loading,setLoading]=useState(true)
+  window.scrollTo(0, 0);
   useEffect(() => {
     fetchData();
   }, [filter, currentPage]);
@@ -87,45 +88,56 @@ useEffect(()=>{
         <div className="Flex">
           <div
             className="Flex"
-            style={{ width: "80%", justifyContent: "space-between" }}
+            style={{ width: "80%", justifyContent: "space-between", gap: '10px',padding:'20px 0px' }}
           >
             <div>
               <Select
-                style={{backgroundColor:"var(--chakra-colors-gray-100)"}}
+                id="size-btn"
+                style={{
+                  backgroundColor: "var(--text-gold)",
+                  outline: "none",
+                  boxShadow: "none",
+                   // Hides the focus outline
+                }}
                 placeholder="Filter by Category"
                 onChange={(e) => {
-                  setFilter(e.target.value)
-                  setCurrentPage(1)
-                  setLoading(true)
+                  setFilter(e.target.value);
+                  setCurrentPage(1);
+                  setLoading(true);
+                }}
+                optionStyles={{
+                  color: "gold",
+                  backgroundColor:'var(--text-gold)'// Change this color value to your desired option color
                 }}
               >
                 <option value="Room">Room</option>
                 <option value="Kitchen">Kitchen</option>
                 <option value="Shop">Shop</option>
               </Select>
+
             </div>
             <div className="sort-bt">
-              <Button onClick={onOpen}>{showsort?showsort:"Sort by size"}</Button>
+              <Button id="size-btn" bg='var(--text-gold)' onClick={onOpen}>{showsort ? showsort : "Sort by size"}</Button>
             </div>
           </div>
         </div>
-        { loading ? <Loading/>: products.length > 0 ? (
-          <ProductList products={products} />
+        {loading ? <Loading /> : products.length > 0 ? (
+          <div className="product-body"><ProductList products={products} /></div>
         ) : (
-         <h1>Data Not Found</h1> 
+          <h1>Data Not Found</h1>
         )}
 
-       
-       <div className="Flex">
-       <ReactPaginate
-        pageCount={totalPages}
-        pageRangeDisplayed={3}
-        marginPagesDisplayed={2}
-        onPageChange={handlePageChange}
-        containerClassName="pagination"
-        activeClassName="active"
-      />
-       </div>
+
+        <div className="Flex" style={{ padding: '30px 0px' }}>
+          <ReactPaginate
+            pageCount={totalPages}
+            pageRangeDisplayed={3}
+            marginPagesDisplayed={2}
+            onPageChange={handlePageChange}
+            containerClassName="pagination"
+            activeClassName="active"
+          />
+        </div>
       </div>
 
       <Modal

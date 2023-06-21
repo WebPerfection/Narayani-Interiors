@@ -115,7 +115,7 @@
 #icon-style {
   font-size: 30px;
 }
-#icon-style:not(:last-child){
+#icon-style:not(:last-child,.float-element){
     margin-right: 20px;
 }
 #email-div {
@@ -143,7 +143,7 @@
       /* display: none; */
     }
     .Img-div>h4{
-      display: none;
+      font-size: 1.25rem;
     }
     
   }
@@ -297,7 +297,7 @@ h5 {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   position: fixed;
   width: 100%;
-  padding: 12px 0px;
+  padding: 12px 20px;
   /* border-radius: 10px; */
   top: 0px;
   background-color: #ffffffd6;
@@ -490,6 +490,10 @@ button {
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   z-index: 900;
+  padding-left: 20px;
+}
+.vis .service-mob a{
+  font-size: 15px;
 }
 @keyframes fade_in_show {
   from {
@@ -516,9 +520,13 @@ button {
     display: flex;
     animation: show 1s;
   }
+  .Img-div {
+    margin-left: 0px;
+}
   .Img-div > img {
     width: 40px;
   }
+  
   .main {
     padding: -10px 0px;
   }

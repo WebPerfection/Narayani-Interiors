@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
 import './WorkHome.css'; // Importing CSS file for styling
-import Src1 from './HomePicData/05d1df601345c1f4cb568b2d73fd11fb.jpg'; // Importing image source files
-import Src2 from './HomePicData/080b869d63bf3a9e43cbd100708d289c.jpg';
-import Src3 from './HomePicData/098e1e070536917c681d7fd559f954f3.jpg';
-import Src4 from './HomePicData/104f9416fc868523e4e63258402cd661.jpg';
-import Src5 from './HomePicData/12cba461df45c94a46be11ce96d3d438.jpg';
 import axios from "axios"
 import Carousel from 'react-multi-carousel'; // Importing Carousel component
 import 'react-multi-carousel/lib/styles.css'; // Importing Carousel styles
 import { useDispatch, useSelector } from 'react-redux';
 import { toggelModel } from '../../Redux/Action';
 import { Link } from 'react-router-dom';
-
+import { IoIosArrowForward } from "react-icons/io";
 // Define responsive configuration for the Carousel component
 const responsive = {
   superLargeDesktop: {
@@ -53,6 +48,9 @@ const WorkHome = () => {
         <h6 className='h6'>PROJECT SHOWCASE </h6>
         <h1 style={{color:'black'}}>DISCOVER OUR LATEST DESIGN </h1>
       </div>
+      <div className="see-all-link">
+              <Link to="/allCategory"> See All <IoIosArrowForward/></Link>
+            </div>
       {
         data && <Carousel
           swipeable={false} // Disable swipe gestures for the Carousel
