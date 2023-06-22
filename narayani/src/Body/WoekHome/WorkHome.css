@@ -29,6 +29,9 @@
 .workHome-main-div{
     /* margin-top: 80px; */
 }
+.react-multi-carousel-list{
+padding-bottom: 20px;
+}
 
 /* Overlay on the project image when hovered */
 .img-work:hover::before {
