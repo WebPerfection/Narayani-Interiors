@@ -7,6 +7,7 @@
   padding: 0px 20px;
   gap: 40px;
 }
+
 .concept-icon {
   border-bottom: 4px solid var(--text-gold);
   padding: 20px;
@@ -94,15 +95,28 @@
     padding: 0.5rem 1rem !important;
     transition: 0.5s !important;
     }
+    .image_wrapper{
+    margin-top: 60px;
+    
+    }
+  
     .heading_container {
         top: 50% !important;
       }
   }
-  
+  @media only screen and (max-width: 350px){
+    .text {
+      display: none;
+    }
+  }
 @media only screen and (max-width: 900px) {
   #concept-card {
     flex-direction: column;
     gap: 50px;
+    margin-top: -80px;
+  }
+  .carousel-indicators{
+    display: none;
   }
   .concept-card {
     padding: 0px 0px;
@@ -120,6 +134,7 @@
   #concept-card a {
     font-size: 20px;
   }
+  
 }
 .main_container {
     position: relative;
@@ -128,8 +143,11 @@
   .image_wrapper {
     position: relative;
     width: 100%;
+
   }
-  
+  .d-block{
+    filter: brightness(50%);
+  }
   .image_wrapper::before {
     content: "";
     position: absolute;
@@ -155,6 +173,7 @@
   .heading_content {
     padding: 20px;
     /* background-color: rgba(255, 255, 255, 0.9); */
+    border-radius: 10px;
   }
   .heading_content>*{
     color: white;
@@ -168,7 +187,7 @@
   
   .text {
     font-size: 1.2rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.726);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
     color: white;
   }
   .about_btn {

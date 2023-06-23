@@ -14,13 +14,16 @@
 
 .span,.companyTitel>h6{
     color: red;
+    padding: 0px 10px;
 }
 .companyTitel>h1{
     font-size: 2vw;
     text-align: left;
+    padding: 0px 10px;
 }
 .companyTitel>p{
     font-size: 1.2vw;
+    padding: 0px 10px;
 }
 .about-main-div>div:first-child{
    
