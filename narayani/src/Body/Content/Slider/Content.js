@@ -46,7 +46,7 @@ export default function Content() {
 
   return (
     <>
-      <Carousel fade>
+      <Carousel id="carouselExampleControls" fade>
         {data.map((el) => (
           <Carousel.Item interval={1500} key={el}>
             <div className='main_container'>
