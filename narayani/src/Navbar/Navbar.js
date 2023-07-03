@@ -175,7 +175,7 @@ export default function Navbar() {
           </div>
         </div>
         {/* Contact Navbar */}
-        <div className="sec-Nav Flex">
+        <div className="sec-Nav Flex" data-aos="flip-down">
           <div>
             <h1>
               <IoEarthOutline />

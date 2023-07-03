@@ -5,16 +5,16 @@ export default function AbotCompany() {
   return (
     <div className="about-main Flex">
       <div className="about-main-div Flex">
-        <div className="companyImag">
-          <img src={CompImag} />
+        <div className="companyImag" data-aos="zoom-in-up" data-aos-offset="100">
+          <img src={CompImag} loading="lazy" />
           <br></br>
-          <div className="company-text">
+          <div className="company-text" data-aos="zoom-in-up" data-aos-offset="100">
 
             <h5>Experiencd & Well knowledgeable Interior designers.</h5>
             <div><h6>Ankit Agarwal, <span className="span">CEO & Founder</span></h6></div>
           </div>
         </div>
-        <div className="companyTitel">
+        <div className="companyTitel" data-aos="zoom-in-up"  data-aos-offset="100">
           <h6 className="h6">About Us</h6>
           <h1>Experience the Essence of Exceptional Interior Design</h1>
           <p>

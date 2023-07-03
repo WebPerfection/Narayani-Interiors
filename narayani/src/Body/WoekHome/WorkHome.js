@@ -72,7 +72,7 @@ const WorkHome = () => {
           {data.map((item, index) => (
             <Link to={`Images/${item._id}`}>
               <div onClick={openModel} className='project-img-parent' key={index}>
-                <img className='img-work flex' src={item.images[0]} alt={`Image ${index + 1}`} draggable="false" />
+                <img className='img-work flex' loading="lazy" src={item.images[0]} alt={`Image ${index + 1}`} draggable="false" />
               </div>
             </Link>
           ))}

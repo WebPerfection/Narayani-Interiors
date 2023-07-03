@@ -97,12 +97,12 @@ const ProjectPage = () => {
     <>
       <Navbar />
       <div>Hello world</div>
-      <div className="pro-main">
+      <div className="pro-main" id="hero-main" >
         {loading ? <Loading /> : projectImages && (
-          <div className="Flex">
+          <div className="Flex" data-aos="zoom-in-up"  data-aos-offset="100">
             <div className="HeroImages-main-div">
               <div className="HeroImage">
-                <img
+                <img loading="lazy"
                   className={onImage ? "showHeroImage" : "hideHeroImage"}
                   src={projectImages[heroImage]}
                 />
@@ -139,7 +139,7 @@ const ProjectPage = () => {
                   </div>
                   <div className="related-images Flex">
                     {projectImages.map((el, i) => (
-                      <img src={el} onClick={() => setHeroImage(i)} onContextMenu={(e) => e.preventDefault()} draggable="false" />
+                      <img src={el} loading="lazy" onClick={() => setHeroImage(i)} onContextMenu={(e) => e.preventDefault()} draggable="false" />
                     ))}
                   </div>
                 </div>
@@ -177,6 +177,7 @@ const ProjectPage = () => {
                 {data.map((item, index) => (
                   <Link to={`/Images/${item._id}`} >
                     <img
+                    loading="lazy"
                       className="img-work flex"
                       src={item.images[0]}
                       alt={`Image ${index + 1}`}

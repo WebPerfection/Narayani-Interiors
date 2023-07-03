@@ -4,15 +4,15 @@ import { FaBuilding, FaReceipt } from "react-icons/fa";
 import "./Working.css"
 export default function WorkingProcess() {
   return (
-    <div className='working_main_div'>
+    <div className='working_main_div' >
       <div className='heading-div'>
-        <h6 className='h6'>TO DO GOOD DESIGN</h6>
+        <h6 className='h6' >TO DO GOOD DESIGN</h6>
         <h1 style={{color:'black'}}>OUR WORKING PROCESS</h1>
       </div>
       <div className='Flex working-card' id="working-card">
 
         <div className='card-work'>
-          <div className='Flex'><h1 className='working-icon Flex'>01</h1></div>
+          <div className='Flex' ><h1 className='working-icon Flex' >01</h1></div>
           <div>
 
             <h3>Flat 10 year warranty</h3>

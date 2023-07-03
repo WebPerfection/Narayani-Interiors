@@ -70,7 +70,7 @@
   position: relative;
   top: 40px;
   width: 80%;
-  transition: 1s;
+  transition: all 1s;
 }
 
 .sec-Nav > div {

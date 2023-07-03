@@ -22,6 +22,7 @@ import {
   ModalContent,
 } from "@chakra-ui/react";
 import Loading from "../Loading/Loading";
+import Content from "../Content/Slider/Content";
 
 export default function AllProduct() {
   const [products, setProducts] = useState([]);
@@ -78,7 +79,7 @@ export default function AllProduct() {
   return (
     <>
       <Navbar />
-      <div>Hello world</div>
+      <Content />
       <div className="pro-main">
         <div className="Flex">
           <div
