@@ -43,9 +43,9 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [scroll, setScroll] = useState(false);
   const [eStimate, setEStimate] = useState(false);
-  const [up,setUp]=useState(false)
+  const [up, setUp] = useState(false)
   const [start, setStart] = useState(false);
- 
+
   if (refrence) {
     setTimeout(() => {
       setHid(!hid);
@@ -72,7 +72,7 @@ export default function Navbar() {
     }
   };
 
- 
+
   const openModel = () => {
     dispatch(toggelModel());
   };
@@ -88,17 +88,17 @@ export default function Navbar() {
         {/* NavBar */}
         <div className={isScrolled ? "blur" : "Container"}>
           <Link to="/">
-          <div className="Img-div Flex">
-            <img src={web} />
-            <h4>
-              Narayni-Interior
-            </h4>
-          </div>
+            <div className="Img-div Flex">
+              <img src={web} />
+              <h4>
+                Narayni-Interior
+              </h4>
+            </div>
           </Link>
 
           <div className="Flex" id="hamburger">
             {ham ? (
-              <div className="h21" style={{margin:'auto'}}>
+              <div className="h21" style={{ margin: 'auto' }}>
                 <button
                   disabled={scroll ? false : true}
                   onClick={() => {
@@ -111,7 +111,7 @@ export default function Navbar() {
                 </button>
               </div>
             ) : (
-              <div className="h2" style={{margin:'auto'}}>
+              <div className="h2" style={{ margin: 'auto' }}>
                 <button
                   disabled={scroll ? true : false}
                   onClick={() => {
@@ -136,23 +136,26 @@ export default function Navbar() {
             </div>
             <div
             >
-              <Link to="/" style={{gap:"0px"}}>
-                <GiAutoRepair/>
+              <Link to="/" style={{ gap: "0px" }}>
+                <GiAutoRepair />
                 <ParentItem title="Services">
-                  
+
                   <ul id="menu">
+                    <li className="parent"  id="hide">
+                      
+                    </li>
                     <ParentItem title="Room">
                       {/* <ChildItem title="Bed Room" />
                       <ChildItem title="Guest Room" />
                       <ChildItem title="Child Room" /> */}
                     </ParentItem>
-                    
+
                     <ParentItem title="Kitchen"></ParentItem>
-                    
+
                     {/* <ChildItem title="Modular Kitchen" />
                       <ChildItem title="L-Shape Kitchen" />
                       <ChildItem title="Simple Kitchen" /> */}
-                    
+
                     <ParentItem title="Shop" ></ParentItem>
                     <ParentItem title="Office" ></ParentItem>
                   </ul>
@@ -236,34 +239,34 @@ export default function Navbar() {
               Home
             </Link>
           </div>
-          <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}} onClick={()=>setUp(!up)}> 
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }} onClick={() => setUp(!up)}>
             <Link>
               <GiAutoRepair />
               Services
             </Link>
-            {up?<IoIosArrowUp />:<IoIosArrowDown/>}
+            {up ? <IoIosArrowUp /> : <IoIosArrowDown />}
           </div>
-         {up?<> <div className="service-mob">
-          <Link to="/allkitchen/Room">
-            Room
-          </Link>
+          {up ? <> <div className="service-mob">
+            <Link to="/allkitchen/Room">
+              Room
+            </Link>
           </div>
-          <div className="service-mob">
-          <Link to="/allkitchen/Kitchen">
-            Kitchen
-          </Link>
-          </div>
-          <div className="service-mob">
-          <Link to="/allkitchen/Shop">
-            Shop
-          </Link>
-          </div>
-          <div className="service-mob"
-          >
-          <Link to="/allkitchen/Office">
-            Office
-          </Link>
-          </div></>:""}
+            <div className="service-mob">
+              <Link to="/allkitchen/Kitchen">
+                Kitchen
+              </Link>
+            </div>
+            <div className="service-mob">
+              <Link to="/allkitchen/Shop">
+                Shop
+              </Link>
+            </div>
+            <div className="service-mob"
+            >
+              <Link to="/allkitchen/Office">
+                Office
+              </Link>
+            </div></> : ""}
           <div>
             <Link to="/aboutUs">
               <FaExclamationCircle />
