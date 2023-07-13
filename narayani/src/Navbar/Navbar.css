@@ -485,6 +485,7 @@ button {
 }
 #hide{
   height: 40px;
+  visibility: hidden;
 }
 @keyframes fade_in_show {
   from {
