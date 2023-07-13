@@ -12,6 +12,7 @@
   width: 50%;
 }
 
+
 .span,
 .companyTitel > h6 {
   color: red;
@@ -24,6 +25,7 @@
   font-size: 18px;
   font-weight: 500;
 }
+
 .about-main-div > div:first-child {
   /* width:50%; */
 }
