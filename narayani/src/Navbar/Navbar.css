@@ -36,25 +36,25 @@
   -webkit-backdrop-filter: blur(8px);
   z-index: 900;
 }
-.name{
-    font-size: 5vw;
+.name {
+  font-size: 5vw;
 }
-.estimate-bt{
-    padding: 7px 13px;
-    background-color: var(--text-gold);
-    margin-left: 30px;
-    font-size: 1.2vw;
-    transition: 1s;
-    border-radius: 5px;
+.estimate-bt {
+  padding: 7px 13px;
+  background-color: var(--text-gold);
+  margin-left: 30px;
+  font-size: 1.2vw;
+  transition: 1s;
+  border-radius: 5px;
 }
-.estimate-bt:hover{
+.estimate-bt:hover {
   background: linear-gradient(
     to right,
     var(--text-gold) 10%,
     rgb(218, 216, 216) 90%
   );
-    /* color:rgb(102, 98, 98); */
-    /* box-shadow: var(--inner-shadow-gold); */
+  /* color:rgb(102, 98, 98); */
+  /* box-shadow: var(--inner-shadow-gold); */
 }
 .Img-div {
   display: flex;
@@ -62,7 +62,7 @@
   margin-left: 25px;
 }
 /* Contact Nav */
-.Img-div>h4{
+.Img-div > h4 {
   margin-top: 6px;
   margin-left: 5px;
 }
@@ -84,9 +84,9 @@
   cursor: pointer;
   opacity: 0.8;
 }
-#hamburger{
-    gap: 20px;
-    display: flex;
+#hamburger {
+  gap: 20px;
+  display: flex;
 }
 .sec-Nav > div:not(:last-child) {
   border-right: 1px solid var(--text-black-700);
@@ -100,23 +100,23 @@
   transition: 0.8s;
   left: 10px;
 }
-#Estimate{
-    font-size: 15px;
+#Estimate {
+  font-size: 15px;
 }
 
 .sec-Nav > div:not(:last-child):hover h1 {
   color: var(--text-gold);
   transition: 0.8s;
 }
-.sec-Nav > div h1:hover{
-    color: var(--text-gold);
+.sec-Nav > div h1:hover {
+  color: var(--text-gold);
 }
 
 #icon-style {
   font-size: 30px;
 }
-#icon-style:not(:last-child,.float-element){
-    margin-right: 20px;
+#icon-style:not(:last-child, .float-element) {
+  margin-right: 20px;
 }
 #email-div {
   gap: 10px;
@@ -127,26 +127,24 @@
   font-size: 1vw;
   height: fit-content;
 }
-.main{
-    overflow: hidden;
+.main {
+  overflow: hidden;
 }
 
-@media only screen and (max-width: 530px){
-  
-    .sec-Nav {
-      top: -2px;
-      width: 100%;
-      display: none;
-    }
-    .main{
-      height: 0px;
-      /* display: none; */
-    }
-    .Img-div>h4{
-      font-size: 1.25rem;
-    }
-    
+@media only screen and (max-width: 530px) {
+  .sec-Nav {
+    top: -2px;
+    width: 100%;
+    display: none;
   }
+  .main {
+    height: 0px;
+    /* display: none; */
+  }
+  .Img-div > h4 {
+    font-size: 1.25rem;
+  }
+}
 @media only screen and (max-width: 1100px) {
   #icon-div {
     display: none;
@@ -169,13 +167,12 @@
   .sec-Nav {
     transition: 1s;
     justify-content: center;
-
   }
-  
-  .sec-Nav > div h1{
+
+  .sec-Nav > div h1 {
     font-size: 5vw;
   }
-  
+
   .sec-Nav > div h2 {
     color: var(--text-black-900);
     font-weight: 500;
@@ -190,20 +187,18 @@
   .sec-Nav > div {
     width: 100%;
   }
-  
 }
-@media screen and (max-width: 650px) and (min-width: 531px){
-    .main {
-        height: 100px;
-        transition: 1s;
-      }
-      .sec-Nav {
-        top: 33px;
-        width: 100%;
-      }
+@media screen and (max-width: 650px) and (min-width: 531px) {
+  .main {
+    height: 100px;
+    transition: 1s;
+  }
+  .sec-Nav {
+    top: 33px;
+    width: 100%;
+  }
 }
 @media screen and (max-width: 900px) and (min-width: 651px) {
-    
   .sec-Nav {
     top: 32px;
     width: 100%;
@@ -217,10 +212,10 @@
     transition: 1s;
   }
 }
-@media screen and (max-width: 1100px) and (min-width: 900px){
-    .small-screen{
-        display: none;
-    }
+@media screen and (max-width: 1100px) and (min-width: 900px) {
+  .small-screen {
+    display: none;
+  }
 }
 .sec-Nav h1,
 h2,
@@ -234,8 +229,6 @@ h5 {
   /* border: 1px solid black; */
   flex-direction: column;
 }
-
-
 
 /* .Img-div>div{
     margin-left: -10px;
@@ -284,12 +277,12 @@ h5 {
   position: fixed;
   border-radius: 10px;
   top: 10px;
-  background-color:white;
+  background-color: white;
   z-index: 9;
   transition: 1s;
 }
-.service-mob{
-  border-bottom:1px solid black ;
+.service-mob {
+  border-bottom: 1px solid black;
 }
 .blur {
   display: flex;
@@ -347,10 +340,6 @@ h5 {
   display: none;
 }
 
-
-
-
-
 .ul > li,
 .hideUl > li {
   color: black;
@@ -395,26 +384,25 @@ h5 {
   list-style-type: none;
   animation: hide_ul 1s;
 }
-.Button-div>div a{
+.Button-div > div a {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
 }
-.Button-div>div:hover a:not(#menu .parent a){
+.Button-div > div:hover a:not(#menu .parent a) {
   cursor: pointer;
   color: var(--text-gold);
   /* text-decoration: underline; */
   transition: 0.8s;
 }
-#menu .parent a{
+#menu .parent a {
   font-size: 1rem;
-  padding-left: .9375rem;
+  padding-left: 0.9375rem;
 }
-#menu .parent:hover a{
+#menu .parent:hover a {
   color: var(--text-gold);
-  transition: 0.2s !important
-  
+  transition: 0.2s !important;
 }
 .Button-div > a:active {
   color: #d2c776;
@@ -452,12 +440,12 @@ h5 {
   top: 60px;
   padding-top: 20px;
   right: 0;
-display: none;
+  display: none;
   width: 200px;
   height: 100vh;
   background-color: #ffffff9b;
   animation: fade_out_hide 2s;
-   z-index: 900;
+  z-index: 900;
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
@@ -492,8 +480,11 @@ button {
   z-index: 900;
   padding-left: 20px;
 }
-.vis .service-mob a{
+.vis .service-mob a {
   font-size: 15px;
+}
+#hide{
+  height: 40px;
 }
 @keyframes fade_in_show {
   from {
@@ -522,11 +513,11 @@ button {
   }
   .Img-div {
     margin-left: 0px;
-}
+  }
   .Img-div > img {
     width: 40px;
   }
-  
+
   .main {
     padding: -10px 0px;
   }
@@ -569,15 +560,17 @@ button {
     height: 60px;
   }
 }
-
+.parent.Div {
+  padding: 40px 30px 0px 0px;
+}
 @media only screen and (min-width: 901px) {
   .vis {
     display: none;
   }
-  
 }
-@media only screen and (min-width:1101px){
-    .small-screen,.mid-screen{
-        display: none;
-      }
+@media only screen and (min-width: 1101px) {
+  .small-screen,
+  .mid-screen {
+    display: none;
+  }
 }
