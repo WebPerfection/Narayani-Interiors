@@ -47,7 +47,7 @@
   width: 60%;
 
   display: flex;
-  align-items: start;
+  align-items: center;
   justify-content: center;
 }
 .showHeroImage {
@@ -64,7 +64,7 @@
   pointer-events: none; /* Disable interaction with the image */
 }
 .hide {
-  top: 400px;
+  
   position: absolute;
   background-color: var(--text-gold);
   padding: 15px 80px;

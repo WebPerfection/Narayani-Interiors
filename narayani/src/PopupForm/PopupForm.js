@@ -6,33 +6,43 @@ import { toast, Toaster } from "react-hot-toast";
 import "./PopupForm.css"; // import the CSS file
 import { CloseModel, toggelModel } from "../Redux/Action";
 
-
 export const PopupForm = () => {
   const [ph, setPh] = useState("");
   const { ModelCheck } = useSelector((store) => store);
   const [show, setShow] = useState(false);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [inputError, setInputError] = useState(false); // State for input validation
-  const [admin,setAdmin]=useState(false)
-  const [password,setPassword]=useState("")
+  const [admin, setAdmin] = useState(false);
+  const [password, setPassword] = useState("");
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if(localStorage.getItem("adminAuthenticate")){
+  const isValidEmail = (email) => {
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    return emailRegex.test(email);
+  };
 
-    }
-    else{
+  const isValidPhone = (phone) => {
+    const phoneRegex = /^\d{10}$/;
+    return phoneRegex.test(phone);
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem("adminAuthenticate")) {
+      // Check if admin is authenticated
+      // Do something if admin is authenticated
+    } else {
       setShow(ModelCheck);
     }
-    
-  }, [ModelCheck]);
+  }, [ModelCheck, show]);
 
   useEffect(() => {
-    if(localStorage.getItem("adminAuthenticate")){
-      console.log(localStorage.getItem("adminAuthenticate"))
-    }
-    else if (!localStorage.getItem("Narayani-User")) {
+    if (localStorage.getItem("adminAuthenticate")) {
+      console.log(localStorage.getItem("adminAuthenticate"));
+      // Do something if admin is authenticated
+    } else if (!localStorage.getItem("Narayani-User")) {
       setTimeout(() => {
         dispatch(toggelModel());
       }, 3000);
@@ -43,21 +53,51 @@ export const PopupForm = () => {
     setName("");
     setEmail("");
     setPh("");
-    setAdmin(false)
-    setPassword("")
-    setInputError(false)
+    setAdmin(false);
+    setPassword("");
+    setNameError("");
+    setEmailError("");
+    setPhoneError("");
     dispatch(CloseModel());
   };
 
   const validateInputs = () => {
-    if (!name || !ph) {
-      setInputError(true);
-      return false;
-    }
-    setInputError(false);
-    return true;
-  };
+    let isValid = true;
 
+    if (!name) {
+      setNameError("Please enter your name");
+      isValid = false;
+    } else {
+      setNameError("");
+    }
+
+    if (!email) {
+      setEmailError("Please enter your email");
+      isValid = false;
+    } else if (!isValidEmail(email)) {
+      setEmailError("Please enter a valid email");
+      isValid = false;
+    } else {
+      setEmailError("");
+    }
+
+    if (!ph) {
+      setPhoneError("Please enter your phone number");
+      isValid = false;
+    } else if (!isValidPhone(ph)) {
+      setPhoneError("Please enter a valid phone number");
+      isValid = false;
+    } else {
+      setPhoneError("");
+    }
+
+    return isValid;
+  };
+  // if(show==false){
+  //   setTimeout(()=>{
+  //     dispatch(CloseModel());
+  //   },3000)
+  // }
   const postUserData = () => {
     if (!validateInputs()) {
       return;
@@ -68,40 +108,54 @@ export const PopupForm = () => {
       email,
       number: "+91" + ph,
     };
-   if(email==="moashiq2018@gmail.com"){
-     setAdmin(true)
-     return;
-   }
+
+    if (email === "moashiq2018@gmail.com") {
+      setAdmin(true);
+      return;
+    }
+  
     axios
       .post("https://azure-hen-cap.cyclic.app/users/register", payload)
       .then((res) => {
         setName("");
         setEmail("");
         setPh("");
-        
-        toast.success("Form submitted successfully!"); // Set the user state or update as per your requirement
+        localStorage.setItem("Narayani-User", true);
+        toast.promise(
+          new Promise((resolve) => {
+            setTimeout(() => {
+              resolve();
+              setShow(false)
+            }, 3000); // Adjust the duration of the toast here (in milliseconds)
+          }),
+          {
+            loading: "Submitting...",
+            success: "Form submitted successfully!",
+            error: "Error submitting the form. Please try again.",
+          }
+          
+        );
       })
       .catch((err) => {
         console.log(err);
         toast.error("Error submitting the form. Please try again.");
       });
   };
-const adminClick=()=>{
- 
-  if(password==="Admin@123" && email==="moashiq2018@gmail.com" && name==="Ashiq"){
-    setAdmin(false)
-    setName("");
-    setEmail("");
-    setPh("");
-    
-    localStorage.setItem("adminAuthenticate",true)
-    setShow(false)
-    toast.success("Login Admin SuccessFull!");
-  }
-  else{
-     toast.error("Something Went wrong");
-  }
-}
+
+  const adminClick = () => {
+    if (password === "Admin@123" && email === "ankitjewrajka1234@gmail.com") {
+      setAdmin(false);
+      setName("");
+      setEmail("");
+      setPh("");
+      localStorage.setItem("adminAuthenticate", true);
+      setShow(false);
+      toast.success("Login Admin Successful!");
+    } else {
+      toast.error("Something went wrong");
+    }
+  };
+
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
@@ -112,7 +166,8 @@ const adminClick=()=>{
         <div className="welcome-container">
           <Toaster toastOptions={{ duration: 4000 }} />
           <div id="recaptcha-container"></div>
-          {admin?<div>
+          {admin ? (
+            <div>
               <h4>Welcome to Narayani-Interiors</h4>
 
               <label htmlFor="">Enter Admin Password</label>
@@ -122,8 +177,9 @@ const adminClick=()=>{
                 required
                 onChange={(e) => setPassword(e.target.value)}
               />
-             
-            </div>:<div>
+            </div>
+          ) : (
+            <div>
               <h4>Welcome to Narayani-Interiors</h4>
 
               <label htmlFor="">Enter Your Full Name</label>
@@ -134,6 +190,8 @@ const adminClick=()=>{
                 required
                 onChange={(e) => setName(e.target.value)}
               />
+              {nameError && <p className="error-message">{nameError}</p>}
+
               <label htmlFor="">Enter Your Email</label>
               <input
                 type="email"
@@ -141,27 +199,31 @@ const adminClick=()=>{
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
+              {emailError && <p className="error-message">{emailError}</p>}
+
               <label htmlFor="">Enter your phone number</label>
               <input
                 type="tel"
                 placeholder="Enter Phone Number"
-                alue={ph}
+                value={ph}
                 onChange={(e) => setPh(e.target.value)}
                 required
               />
-              {inputError && (
-                <p className="error-message" style={{color:"red"}}>Please fill in all the fields</p>
-              )}
-            </div>}
+              {phoneError && <p className="error-message">{phoneError}</p>}
+            </div>
+          )}
         </div>
       </section>
       <Modal.Footer>
-        {admin?<Button variant="secondary" onClick={adminClick}>
-          Submit
-        </Button>:<Button variant="secondary" onClick={postUserData}>
-          Submit
-        </Button> }
-        
+        {admin ? (
+          <Button variant="secondary" onClick={adminClick}>
+            Submit
+          </Button>
+        ) : (
+          <Button variant="secondary" onClick={postUserData}>
+            Submit
+          </Button>
+        )}
       </Modal.Footer>
     </Modal>
   );

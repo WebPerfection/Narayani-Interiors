@@ -4,7 +4,7 @@ import axios from "axios";
 import Footer from "../../Footer/Footer";
 import Navbar from "../../Navbar/Navbar";
 import ReactPaginate from 'react-paginate';
-
+import Content from "../Content/Slider/Content";
 import "./Allproduct.css"
 import {
   Select,
@@ -83,7 +83,8 @@ useEffect(()=>{
   return (
     <>
       <Navbar />
-      <div>Hello world</div>
+      <Content />
+      {/* <div>.</div> */}
       <div className="pro-main">
         <div className="Flex">
           <div

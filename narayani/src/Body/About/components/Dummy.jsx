@@ -28,7 +28,7 @@ const Dummy = () => {
       <div>Hello world</div>
       <div className="dummy-container">
         <div className="founder-container">
-          <Heading as="h1" size="xl" textDecoration="underline">
+          <Heading  size="xl" >
             Meet our Founder
           </Heading>
           <Box className="card">
@@ -38,7 +38,7 @@ const Dummy = () => {
                 Ankit Agarwal
               </Heading>
               <Divider />
-              <Text>
+              <Text fontSize="18px" fontWeight="500">
                 Ankit Agarwal is the passionate founder and lead designer of
                 Narayani Interiors, a renowned interior design firm. With over
                 10 years of experience in the industry, Ankit has established
@@ -54,7 +54,7 @@ const Dummy = () => {
         </div>
 
         <div className="organization-container">
-          <Heading as="h1" size="xl" textDecoration="underline">
+          <Heading  size="xl" >
             Organization We are connected
           </Heading>
           <Box className="card">
@@ -63,7 +63,7 @@ const Dummy = () => {
                 BNI RANCHI
               </Heading>
               <Divider />
-              <Text>
+              <Text fontSize="18px" fontWeight="500">
                 BNI is an organization that helps their members increase their
                 business through a structured, positive, and professional
                 "word-of-mouth" program that enables them to develop long-term,
@@ -75,7 +75,7 @@ const Dummy = () => {
         </div>
 
         <div className="services-container">
-          <Heading as="h1" size="xl" textDecoration="underline">
+          <Heading  size="xl" >
             Area of Services
           </Heading>
           <Grid
@@ -86,12 +86,14 @@ const Dummy = () => {
             <GridItem>
               <Box className="card">
                 <Image
-                  src="https://res.cloudinary.com/dlcn4rghm/image/upload/v1685288241/Kitchen/fdosxlbkd8m07uj0z9hl.jpg"
+                  src="https://www.home-designing.com/wp-content/uploads/2014/08/indoor-garden.jpg"
                   alt="Living Area"
                   borderRadius="md"
+                  width="380px"
+                  height="280px"
                 />
                 <Stack spacing={4} mt={6}>
-                  <Heading as="h2" size="lg">
+                  <Heading  size="lg">
                     Living Area Designing
                   </Heading>
                   {/* <Text>
@@ -108,9 +110,11 @@ const Dummy = () => {
             <GridItem>
               <Box className="card">
                 <Image
-                  src="https://res.cloudinary.com/dlcn4rghm/image/upload/v1686478753/Room/modhml1gxua0111clnam.webp"
+                  src="https://images.livspace-cdn.com/plain/https://jumanji.livspace-cdn.com/magazine/wp-content/uploads/sites/2/2022/07/22171430/Cover-31.jpg"
                   alt="Modular Kitchen"
                   borderRadius="md"
+                  width="380px"
+                  height="280px"
                 />
                 <Stack spacing={4} mt={6}>
                   <Heading as="h2" size="lg">
@@ -130,9 +134,11 @@ const Dummy = () => {
             <GridItem>
               <Box className="card">
                 <Image
-                  src="http://localhost:3000/static/media/working-2.ad8982ef9a46c2181a14.jpg"
+                  src="https://www.2020spaces.com/wp-content/uploads/2021/08/Blog_1200x630_Commercial-InteriorDesign_00_Main.jpg"
                   alt="Commercial Space"
                   borderRadius="md"
+                  width="380px"
+                  height="280px"
                 />
                 <Stack spacing={4} mt={6}>
                   <Heading as="h2" size="lg">
@@ -153,7 +159,7 @@ const Dummy = () => {
         </div>
 
         <div className="map-container">
-          <Heading as="h1" size="xl" textDecoration="underline">
+          <Heading  size="xl" >
             Map Location
           </Heading>
           <div>
