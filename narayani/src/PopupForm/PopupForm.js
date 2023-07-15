@@ -109,7 +109,7 @@ export const PopupForm = () => {
       number: "+91" + ph,
     };
 
-    if (email === "moashiq2018@gmail.com") {
+    if (email === "ankitjewrajka1234@gmail.com") {
       setAdmin(true);
       return;
     }

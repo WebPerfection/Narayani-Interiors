@@ -37,27 +37,25 @@ export default function Navbar() {
   const model = useSelector((store) => store);
   const dispatch = useDispatch();
   console.log(model);
-  const [ham, setHam] = useState(false);
+
   const [hid, setHid] = useState(false);
   const [refrence, setRefrence] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [scroll, setScroll] = useState(false);
   const [eStimate, setEStimate] = useState(false);
-  const [up, setUp] = useState(false)
-  const [start, setStart] = useState(false);
+ 
+  const [isChildOpen, setIsChildOpen] = useState(false);
 
+  const toggleChild = () => {
+    setIsChildOpen(prevState => !prevState);
+  };
   if (refrence) {
     setTimeout(() => {
       setHid(!hid);
       setRefrence(false);
     }, 800);
   }
-  const move = () => {
-    setTimeout(() => {
-      setScroll(!scroll);
-      console.log("cheak");
-    }, 800);
-  };
+ 
   console.log(scroll);
   const handleScroll = () => {
     if (window.scrollY > 0) {
@@ -72,7 +70,6 @@ export default function Navbar() {
     }
   };
 
-
   const openModel = () => {
     dispatch(toggelModel());
   };
@@ -83,49 +80,16 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
-    <>
+    <div>
       <div className="main">
         {/* NavBar */}
         <div className={isScrolled ? "blur" : "Container"}>
           <Link to="/">
             <div className="Img-div Flex">
               <img src={web} />
-              <h4>
-                Narayni-Interior
-              </h4>
+              <h4>Narayni-Interior</h4>
             </div>
           </Link>
-
-          <div className="Flex" id="hamburger">
-            {ham ? (
-              <div className="h21" style={{ margin: 'auto' }}>
-                <button
-                  disabled={scroll ? false : true}
-                  onClick={() => {
-                    setHam(false);
-                    setRefrence(true);
-                    move();
-                  }}
-                >
-                  <FaArrowRight className="bg" />
-                </button>
-              </div>
-            ) : (
-              <div className="h2" style={{ margin: 'auto' }}>
-                <button
-                  disabled={scroll ? true : false}
-                  onClick={() => {
-                    setHam(true);
-                    setHid(!hid);
-                    setStart(true);
-                    move();
-                  }}
-                >
-                  <GiHamburgerMenu className="bg" />
-                </button>
-              </div>
-            )}
-          </div>
 
           <div className="Button-div">
             <div>
@@ -134,16 +98,12 @@ export default function Navbar() {
                 Home
               </Link>
             </div>
-            <div
-            >
+            <div>
               <Link to="/" style={{ gap: "0px" }}>
                 <GiAutoRepair />
                 <ParentItem title="Services">
-
                   <ul id="menu">
-                    <li className="parent"  id="hide">
-                      
-                    </li>
+                    <li className="parent" id="hide"></li>
                     <ParentItem title="Room">
                       {/* <ChildItem title="Bed Room" />
                       <ChildItem title="Guest Room" />
@@ -156,8 +116,8 @@ export default function Navbar() {
                       <ChildItem title="L-Shape Kitchen" />
                       <ChildItem title="Simple Kitchen" /> */}
 
-                    <ParentItem title="Shop" ></ParentItem>
-                    <ParentItem title="Office" ></ParentItem>
+                    <ParentItem title="Shop"></ParentItem>
+                    <ParentItem title="Office"></ParentItem>
                   </ul>
                 </ParentItem>
               </Link>
@@ -218,69 +178,88 @@ export default function Navbar() {
             </div>
           </div>
           <div className="Flex" id="icon-div">
-            {localStorage.getItem("adminAuthenticate")?<a href="/admin" target="_blank" rel="noopener noreferrer">
-            <button  className="estimate-bt">
-              Admin
-            </button></a>:<button onClick={openModel} className="estimate-bt">
-              Get Estimate
-            </button>}
-            
+            {localStorage.getItem("adminAuthenticate") ? (
+              <a href="/admin" target="_blank" rel="noopener noreferrer">
+                <button className="estimate-bt">Admin</button>
+              </a>
+            ) : (
+              <button onClick={openModel} className="estimate-bt">
+                Get Estimate
+              </button>
+            )}
           </div>
         </div>
       </div>
-      {start && (
-        <div
-          className={ham ? "vis" : "smallscreen"}
-          style={{ display: hid ? "none" : "" }}
-        >
-          <div>
-            <Link to="/">
-              <FaHouseUser />
-              Home
-            </Link>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }} onClick={() => setUp(!up)}>
-            <Link>
-              <GiAutoRepair />
-              Services
-            </Link>
-            {up ? <IoIosArrowUp /> : <IoIosArrowDown />}
-          </div>
-          {up ? <> <div className="service-mob">
-            <Link to="/allkitchen/Room">
-              Room
-            </Link>
-          </div>
-            <div className="service-mob">
-              <Link to="/allkitchen/Kitchen">
-                Kitchen
-              </Link>
+
+      <div className="navbar" id="main2">
+        <nav>
+          <div className="navbar-container container">
+            <input type="checkbox" name="" id="" />
+            <div className="hamburger-lines">
+              <span className="line line1"></span>
+              <span className="line line2"></span>
+              <span className="line line3"></span>
             </div>
-            <div className="service-mob">
-              <Link to="/allkitchen/Shop">
-                Shop
-              </Link>
-            </div>
-            <div className="service-mob"
-            >
-              <Link to="/allkitchen/Office">
-                Office
-              </Link>
-            </div></> : ""}
-          <div>
-            <Link to="/aboutUs">
-              <FaExclamationCircle />
-              About us
-            </Link>
+            <ul className="menu-items">
+              <li>
+                <Link
+                  to="/"
+                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                >
+                  <FaHouseUser />
+                  Home
+                </Link>
+              </li>
+
+              <li
+               
+              >
+                {" "}
+                <span onClick={toggleChild}  style={{ display: "flex", alignItems: "center", gap: "10px" }}><GiAutoRepair />
+                Services {isChildOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}</span>
+                
+                 <ul className={isChildOpen ? 'open' : 'ulService'}>
+                 <li style={{marginBottom:"0px",marginTop:"5px",marginLeft:"25px",textAlign:"start",borderBottom:"1px solid black",paddingBottom:"5px"}}><Link to="/allkitchen/Room"> Room</Link></li>
+                 <li style={{marginBottom:"0px",marginTop:"5px",marginLeft:"25px",textAlign:"start",borderBottom:"1px solid black",paddingBottom:"5px"}}><Link to="/allkitchen/Kitchen"> Kitchen</Link></li>
+                 <li style={{marginBottom:"0px",marginTop:"5px",marginLeft:"25px",textAlign:"start",borderBottom:"1px solid black",paddingBottom:"5px"}}><Link to="/allkitchen/Shop"> Shop</Link></li>
+                 <li style={{marginBottom:"0px",marginTop:"5px",marginLeft:"25px",textAlign:"start",borderBottom:"1px solid black",paddingBottom:"5px"}}><Link to="/allkitchen/Office"> Office</Link></li>
+                 </ul>
+                
+              </li>
+              <li>
+                <Link
+                  to="/get-In-Touch"
+                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                >
+                  <FaHandsHelping />
+                  Get in touch
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/aboutUs"
+                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                >
+                  <FaExclamationCircle />
+                  About us
+                </Link>
+              </li>
+             
+                {localStorage.getItem("adminAuthenticate") ? (
+                  <a href="/admin" target="_blank" rel="noopener noreferrer" style={{fontSize:"17px",width:"100%"}}>
+                    <button className="estimate-bt" style={{fontSize:"17px",width:"100%"}}>Admin</button>
+                  </a>
+                ) : (
+                  <button onClick={openModel} className="estimate-bt" style={{fontSize:"17px"}}>
+                    Get Estimate
+                  </button>
+                )}
+             
+            </ul>
+            <h1 className="logo">Narayni-Interior</h1>
           </div>
-          <div>
-            <Link to="/get-In-Touch">
-              <FaHandsHelping />
-              Get in touch
-            </Link>
-          </div>
-        </div>
-      )}
-    </>
+        </nav>
+      </div>
+    </div>
   );
 }
