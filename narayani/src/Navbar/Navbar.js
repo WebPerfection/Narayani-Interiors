@@ -218,9 +218,13 @@ export default function Navbar() {
             </div>
           </div>
           <div className="Flex" id="icon-div">
-            <button onClick={openModel} className="estimate-bt">
+            {localStorage.getItem("adminAuthenticate")?<a href="/admin" target="_blank" rel="noopener noreferrer">
+            <button  className="estimate-bt">
+              Admin
+            </button></a>:<button onClick={openModel} className="estimate-bt">
               Get Estimate
-            </button>
+            </button>}
+            
           </div>
         </div>
       </div>

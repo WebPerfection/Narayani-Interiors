@@ -119,6 +119,7 @@
   display: flex;
   gap: 20px;
   width: 80%;
+  justify-content: center;
   margin: auto;
   margin-top: 50px;
 }

@@ -71,7 +71,10 @@ const ProjectPage = () => {
   const [allData, setAllData] = useState("");
 
   useEffect(() => {
-    if (localStorage.getItem("Narayani-User") || heroImage === 0) {
+    if(localStorage.getItem("adminAuthenticate")){
+      setOnaImage(true);
+    }
+    else if (localStorage.getItem("Narayani-User") || heroImage === 0) {
       setOnaImage(true);
     } else {
       setOnaImage(false);
