@@ -13,11 +13,10 @@ function AdminNav() {
                 </div>
                 <ul className="menu-items">
                     <li><Link to="/admin">Add Item</Link></li>
-                    <li><Link to="/admin/GetAllData">All items</Link></li>
-                    <li><Link to="/admin/AddCarousel">Carousel</Link></li>
+                    <li><Link to="/admin/GetAllData">items</Link></li>
                     <li><Link to="/admin/Users">Users</Link></li>
                     <li><Link to="/admin/AddTestimonial">Testimonial</Link></li>
-                    <li><Link to="/admin/Achievement">Achievement</Link></li>
+                    {/* <li><Link to="/admin/Achievement">Achievement</Link></li> */}
                 </ul>
                 <h3 className="logo">Narayni-Interior</h3>
             </div>
