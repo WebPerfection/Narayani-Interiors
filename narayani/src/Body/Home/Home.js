@@ -14,6 +14,7 @@ import WorkingProcess from "../WorkingProcess/WorkingProcess";
 import Testimonial from "../Testimonial/Testimonial";
 import MakeApoiment from "../MakeApoiment/MakeApoiment";
 import ContentPart from "../Content/Slider/ContentPart";
+import BlogCategories from "../BlogCategories/BlogCategories";
 export default function Home() {
  
     const data=useSelector(store=>store)
@@ -21,9 +22,9 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <Content />
-      
+      <Content /> 
       <ContentPart/>
+      <BlogCategories/>
       <AbotCompany />
       <Work />
       <WorkHome />
