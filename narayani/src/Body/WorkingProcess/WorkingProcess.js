@@ -14,6 +14,7 @@ import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
 import { StyledEngineProvider } from '@mui/material/styles';
+import './Working.css'
 
 const QontoConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {

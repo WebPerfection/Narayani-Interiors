@@ -152,3 +152,20 @@
         font-size: 20px;
     }
 }
+@media only screen and (max-width: 768px){
+    .css-10mg1vw-MuiStepper-root {
+        display: flow-root;
+    }
+    .css-rvbye1-MuiStepConnector-root.MuiStepConnector-alternativeLabel{
+        transform: rotate(90deg);
+        height: 150px;
+    }
+    /* .css-z7uhs0-MuiStepConnector-line{
+        transform: rotate(90deg);
+        height: 50px;
+    } */
+    .css-ascpo7-MuiStepLabel-root{
+        height: 180px;
+    }
+
+}
