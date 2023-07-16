@@ -4,6 +4,7 @@ import AdminNav from '../../AdminNav/AdminNav';
 import Swal from 'sweetalert2';
 import UserUpdatePopup from './UserUpdatePopup';
 import UserCard from './UserCard';
+import { ChakraProvider } from '@chakra-ui/react';
 
 function GetAllUser() {
     const [userList, setUserList] = useState([]);
@@ -163,9 +164,9 @@ function GetAllUser() {
     }
 
     return (
-        <>
+        <ChakraProvider>
             <AdminNav />
-            <div className="items" style={{display:"flex",flexWrap:"wrap",justifyContent:"center",gap:"20px"}}>
+            <div className="items" style={{display:"flex",flexWrap:"wrap",justifyContent:"center",gap:"20px",paddingTop:"10px"}} >
                 {userList.length > 0 ? (
                     userList.map((user) => (
                         <UserCard
@@ -201,7 +202,7 @@ function GetAllUser() {
                     isLoading={isLoading}
                 />
             )}
-        </>
+        </ChakraProvider>
     );
 }
 
