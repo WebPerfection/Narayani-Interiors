@@ -94,13 +94,13 @@ const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.active}`]: {
     [`& .${stepConnectorClasses.line}`]: {
       backgroundImage:
-        ' linear-gradient(to right top, #9f5c07, #b87207, #d18906, #e8a104, #ffba00);',
+        ' linear-gradient(to right top, #eac593, #f0be77, #f6b65a, #fbae3a, #ffa503)',
     },
   },
   [`&.${stepConnectorClasses.completed}`]: {
     [`& .${stepConnectorClasses.line}`]: {
       backgroundImage:
-        'linear-gradient(to right top, #9f5c07, #b87207, #d18906, #e8a104, #ffba00)',
+        'linear-gradient(to right top, #eac593, #f0be77, #f6b65a, #fbae3a, #ffa503)',
     },
   },
   [`& .${stepConnectorClasses.line}`]: {
@@ -124,12 +124,11 @@ const ColorlibStepIconRoot = styled('div')(({ theme, ownerState }) => ({
   alignItems: 'center',
   ...(ownerState.active && {
     backgroundImage:
-      ' linear-gradient(to right top, #9f5c07, #b87207, #d18906, #e8a104, #ffba00)',
-    boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
+      ' linear-gradient(to right top, #eac593, #f0be77, #f6b65a, #fbae3a, #ffa503)',
   }),
   ...(ownerState.completed && {
     backgroundImage:
-      'linear-gradient(to right top, #9f5c07, #b87207, #d18906, #e8a104, #ffba00)',
+      'linear-gradient(to right top, #eac593, #f0be77, #f6b65a, #fbae3a, #ffa503)',
   }),
 }));
 
