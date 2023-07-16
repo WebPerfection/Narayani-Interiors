@@ -50,6 +50,10 @@
   align-items: center;
   justify-content: center;
 }
+.HeroImages-main-div .HeroImage {
+  align-items: start;
+
+}
 .showHeroImage {
   width: 100%;
   border-radius: 10px;
