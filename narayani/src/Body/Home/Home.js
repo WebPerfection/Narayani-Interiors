@@ -15,12 +15,15 @@ import Testimonial from "../Testimonial/Testimonial";
 import MakeApoiment from "../MakeApoiment/MakeApoiment";
 import ContentPart from "../Content/Slider/ContentPart";
 import BlogCategories from "../BlogCategories/BlogCategories";
+import { ChakraProvider } from "@chakra-ui/react";
+
 export default function Home() {
  
     const data=useSelector(store=>store)
     console.log("data",data)
   return (
     <>
+    <ChakraProvider>
       <Navbar />
       <Content /> 
       <ContentPart/>
@@ -28,11 +31,18 @@ export default function Home() {
       <AbotCompany />
       <Work />
       <WorkHome />
+      </ChakraProvider>
+
+
       <WorkingProcess />
+
+      
+      <ChakraProvider>
       <Testimonial />
       <MakeApoiment />
       <Footer />
       <Designed_by />
+      </ChakraProvider>
       {/* <CustomImages /> */}
     </>
   );

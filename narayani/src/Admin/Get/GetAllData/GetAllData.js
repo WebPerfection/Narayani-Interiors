@@ -28,16 +28,16 @@ function GetAllData() {
 
   function getAll() {
     // Fetch data from API and update the state
-    const apiUrl = `https://azure-hen-cap.cyclic.app/data?page=${currentPage}`;
+    const apiUrl = `https://azure-hen-cap.cyclic.app/sub`;
     axios
       .get(apiUrl)
       .then((res) => {
-        setDatabus(res.data.uploads);
-        setTotalPages(res.data.totalPages);
+        setDatabus(res.data);
       })
       .catch((err) => console.log(err));
   }
 
+  
   function updateItem(item) {
     // Update the state with selected item's data
     setSelectedItem(item);
@@ -119,7 +119,7 @@ function GetAllData() {
 
     // Send the updated item data to the API
     axios
-      .patch(`https://azure-hen-cap.cyclic.app/data/${itemId}`, updatedItem)
+      .patch(`https://azure-hen-cap.cyclic.app/sub/${itemId}`, updatedItem)
       .then((response) => {
         if (response.status === 200) {
           console.log(`Item with ID ${itemId} updated successfully.`);
@@ -167,7 +167,7 @@ function GetAllData() {
       cancelButtonText: 'Cancel',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://azure-hen-cap.cyclic.app/data/${itemId}`, {
+        fetch(`https://azure-hen-cap.cyclic.app/sub/${itemId}`, {
           method: 'DELETE',
         })
           .then((response) => {
@@ -205,7 +205,7 @@ function GetAllData() {
   return (
     <>
       <AdminNav />
-      <div className="items">
+      <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center",gap:"20px"}} className='items' >
         {databus.length > 0 ? (
           databus.map((item) => (
             <DataCard
