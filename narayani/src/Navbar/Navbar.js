@@ -219,10 +219,10 @@ export default function Navbar() {
                 Services {isChildOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}</span>
                 
                  <ul className={isChildOpen ? 'open' : 'ulService'}>
-                 <li style={{marginBottom:"0px",marginTop:"5px",marginLeft:"25px",textAlign:"start",borderBottom:"1px solid black",paddingBottom:"5px"}}><Link to="/allkitchen/Room"> Room</Link></li>
-                 <li style={{marginBottom:"0px",marginTop:"5px",marginLeft:"25px",textAlign:"start",borderBottom:"1px solid black",paddingBottom:"5px"}}><Link to="/allkitchen/Kitchen"> Kitchen</Link></li>
-                 <li style={{marginBottom:"0px",marginTop:"5px",marginLeft:"25px",textAlign:"start",borderBottom:"1px solid black",paddingBottom:"5px"}}><Link to="/allkitchen/Shop"> Shop</Link></li>
-                 <li style={{marginBottom:"0px",marginTop:"5px",marginLeft:"25px",textAlign:"start",borderBottom:"1px solid black",paddingBottom:"5px"}}><Link to="/allkitchen/Office"> Office</Link></li>
+                 <li style={{marginBottom:"0px",marginTop:"5px",textAlign:"start",borderBottom:"1px solid black",paddingBottom:"5px"}}><Link to="/allkitchen/Room"> Room</Link></li>
+                 <li style={{marginBottom:"0px",marginTop:"5px",textAlign:"start",borderBottom:"1px solid black",paddingBottom:"5px"}}><Link to="/allkitchen/Kitchen"> Kitchen</Link></li>
+                 <li style={{marginBottom:"0px",marginTop:"5px",textAlign:"start",borderBottom:"1px solid black",paddingBottom:"5px"}}><Link to="/allkitchen/Shop"> Shop</Link></li>
+                 <li style={{marginBottom:"0px",marginTop:"5px",textAlign:"start",paddingBottom:"5px"}}><Link to="/allkitchen/Office"> Office</Link></li>
                  </ul>
                 
               </li>
@@ -256,7 +256,12 @@ export default function Navbar() {
                 )}
              
             </ul>
-            <h1 className="logo">Narayni-Interior</h1>
+            <div style={{top:"10px"}} className="logo"><Link to="/">
+            <div className="Img-div Flex">
+              
+              <h4>Narayni-Interior</h4><img src={web} />
+            </div>
+          </Link></div>
           </div>
         </nav>
       </div>

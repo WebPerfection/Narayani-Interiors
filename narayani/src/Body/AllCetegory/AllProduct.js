@@ -20,6 +20,8 @@ import {
   ModalCloseButton,
   ModalHeader,
   ModalContent,
+  ChakraBaseProvider,
+  ChakraProvider,
 } from "@chakra-ui/react";
 import Loading from "../Loading/Loading";
 import Content from "../Content/Slider/Content";
@@ -80,6 +82,7 @@ export default function AllProduct() {
     <>
       <Navbar />
       <Content />
+      <ChakraProvider>
       <div className="pro-main">
         <div className="Flex">
           <div
@@ -180,7 +183,7 @@ export default function AllProduct() {
           </ModalFooter>
         </ModalContent>
       </Modal>
-
+      </ChakraProvider>
       <Footer />
     </>
   );

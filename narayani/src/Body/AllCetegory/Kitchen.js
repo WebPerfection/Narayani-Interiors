@@ -20,6 +20,7 @@ import {
   ModalCloseButton,
   ModalHeader,
   ModalContent,
+  ChakraProvider,
 } from "@chakra-ui/react";
 import Loading from "../Loading/Loading";
 import { useParams } from "react-router-dom";
@@ -82,9 +83,11 @@ useEffect(()=>{
 },[_length,_width])
   return (
     <>
+     <ChakraProvider>
       <Navbar />
       <Content />
       {/* <div>.</div> */}
+     
       <div className="pro-main">
         <div className="Flex">
           <div
@@ -185,8 +188,9 @@ useEffect(()=>{
           </ModalFooter>
         </ModalContent>
       </Modal>
-
+      
       <Footer />
-    </>
+      </ChakraProvider>
+      </>
   );
 }

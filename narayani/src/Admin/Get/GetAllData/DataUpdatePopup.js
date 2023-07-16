@@ -33,7 +33,7 @@ const DataUpdatePopup = ({
                             name="title"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
-                            required
+                            // required
                         />
                         <br />
                         <label htmlFor="category">Category:</label>
@@ -42,7 +42,7 @@ const DataUpdatePopup = ({
                             name="category"
                             value={category}
                             onChange={(e) => setCategory(e.target.value)}
-                            required
+                            // required
                         >
                             <option value="">Select Category</option>
                             <option value="Room">Room</option>
@@ -68,7 +68,7 @@ const DataUpdatePopup = ({
                             name="length"
                             value={_length}
                             onChange={(e) => setLength(e.target.value)}
-                            required
+                            
                         />
                         <br />
                         <label htmlFor="width">Width:</label>
@@ -79,7 +79,7 @@ const DataUpdatePopup = ({
                             name="width"
                             value={_width}
                             onChange={(e) => setWidth(e.target.value)}
-                            required
+                            
                         />
                         <br />
                         <input type="file" multiple onChange={handleImageChange} />

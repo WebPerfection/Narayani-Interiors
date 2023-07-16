@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './GetAllUser.css';
+// import './GetAllUser.css';
 import AdminNav from '../../AdminNav/AdminNav';
 import Swal from 'sweetalert2';
 import UserUpdatePopup from './UserUpdatePopup';
@@ -165,7 +165,7 @@ function GetAllUser() {
     return (
         <>
             <AdminNav />
-            <div className="items">
+            <div className="items" style={{display:"flex",flexWrap:"wrap",justifyContent:"center",gap:"20px"}}>
                 {userList.length > 0 ? (
                     userList.map((user) => (
                         <UserCard
