@@ -3,10 +3,10 @@ import './GetAllData.css';
 import axios from 'axios';
 import AdminNav from '../../AdminNav/AdminNav';
 import Swal from 'sweetalert2';
-import ReactPaginate from 'react-paginate';
 import DataUpdatePopup from './DataUpdatePopup';
 import DataCard from './DataCard';
-
+import { Box, Button, ChakraProvider, HStack, IconButton, Select, VStack } from '@chakra-ui/react';
+import { BsSearch } from "react-icons/bs";
 
 
 function GetAllData() {
@@ -19,16 +19,16 @@ function GetAllData() {
   const [_width, setWidth] = useState('');  // State for width
   const [images, setImages] = useState([]);  // State for images
   const [isLoading, setIsLoading] = useState(false);  // State for loading indicator
-  const [currentPage, setCurrentPage] = useState(1); // State for current page
-  const [totalPages, setTotalPages] = useState(1); // State for total pages
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [eventsPerPage] = useState(9); // State for total pages
+const [search, setSearch] = useState("");
   useEffect(() => {
     getAll();
-  }, [currentPage]);
+  }, [currentPage,search]);
 
   function getAll() {
     // Fetch data from API and update the state
-    const apiUrl = `https://azure-hen-cap.cyclic.app/sub`;
+    const apiUrl = `https://azure-hen-cap.cyclic.app/sub?query=${search}`;
     axios
       .get(apiUrl)
       .then((res) => {
@@ -197,17 +197,66 @@ function GetAllData() {
     });
   }
   // Pagination handler
-  const handlePageChange = (data) => {
-    const selectedPage = data.selected + 1;
-    setCurrentPage(selectedPage);
+  // const handlePageChange = (data) => {
+  //   const selectedPage = data.selected + 1;
+  //   setCurrentPage(selectedPage);
+  // };
+
+ const indexOfLastEvent = currentPage * eventsPerPage;
+  const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
+  const currentEvents = databus.slice(indexOfFirstEvent, indexOfLastEvent);
+
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const goToPreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
+  const goToNextPage = () => {
+    if (currentPage < Math.ceil(databus.length / eventsPerPage)) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
   };
 
+
   return (
-    <>
+    <ChakraProvider>
       <AdminNav />
-      <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center",gap:"20px"}} className='items' >
+      <div className='items'>
+        <Box display="flex" justifyContent="space-between">
+      <Box
+        borderBottom="1px solid black"
+        width="fit-content"
+        minWidth="100px"
+        margin="auto"
+        marginTop="20px"
+        display="flex"
+        alignItems="center"
+      >
+        <input
+          onChange={(e) => setSearch(e.target.value)}
+          style={{
+            height: "100%",
+            border: "none",
+            width:"100%",
+            borderColor: "transparent",
+            outline: "none",
+            fontSize: "20px",
+            marginLeft: "10px",
+          }}
+          placeholder="Search"
+          type="search"
+        />
+        <IconButton aria-label="Search database" bg="none" icon={<BsSearch />} />
+      </Box>
+     
+      </Box>
+
+      </div>
+      <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center",gap:"20px"}}  >
         {databus.length > 0 ? (
-          databus.map((item) => (
+          currentEvents.map((item) => (
             <DataCard
               key={item._id}
               item={item}
@@ -219,19 +268,42 @@ function GetAllData() {
           <p>No data available.</p>
         )}
       </div>
-      <div style={{ paddingBottom: '50px' }}>
-        {totalPages > 1 && (
-          <ReactPaginate
-            previousLabel={'Previous'}
-            nextLabel={'Next'}
-            breakLabel={'...'}
-            pageCount={totalPages}
-            onPageChange={handlePageChange}
-            containerClassName={'pagination'}
-            activeClassName={'active'}
-          />
-        )}
-      </div>
+     
+
+      <VStack mt="4" spacing="2">
+        <HStack>
+          <Button
+            onClick={goToPreviousPage}
+            isDisabled={currentPage === 1}
+            variant="outline"
+          >
+            Previous
+          </Button>
+          {Array.from(
+            { length: Math.ceil(databus.length / eventsPerPage) },
+            (_, index) => (
+              <Button
+                key={index}
+                onClick={() => paginate(index + 1)}
+                className={currentPage === index + 1 ? "active" : ""}
+                variant={currentPage === index + 1 ? "solid" : "outline"}
+              >
+                {index + 1}
+              </Button>
+            )
+          )}
+          <Button
+            onClick={goToNextPage}
+            isDisabled={
+              currentPage === Math.ceil(databus.length / eventsPerPage)
+            }
+            variant="outline"
+          >
+            Next
+          </Button>
+        </HStack>
+      </VStack>
+      <br></br>
 
       {/* //Popup form for update the data */}
       {selectedItem && (
@@ -252,7 +324,7 @@ function GetAllData() {
           isLoading={isLoading}
         />
       )}
-    </>
+    </ChakraProvider>
 
   );
 }

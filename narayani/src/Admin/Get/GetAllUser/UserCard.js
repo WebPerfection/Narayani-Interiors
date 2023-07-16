@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios"
 import {
   Card,
   CardHeader,
@@ -9,8 +10,17 @@ import {
   StackDivider,
   Box,
   Text,
+  Button,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 const UserCard = ({ user, updateUser, deleteUser }) => {
+  const [totalAppointment,setTotalAppointment]=useState(0)
+
+  useEffect(()=>{
+       axios.get(`https://azure-hen-cap.cyclic.app/appointment/${user._id}`)
+       .then((res)=>setTotalAppointment(res.data.length))
+       .catch((err)=>console.log(err))
+  },[])
   return (
     // <div key={user._id} className="wrapper">
     //     <div className="product-info" style={{ width: '100%' }}>
@@ -73,60 +83,81 @@ const UserCard = ({ user, updateUser, deleteUser }) => {
     //         </div>
     //     </div>
     // </div>
+    <Card boxShadow="dark-lg" rounded="md" bg="white">
+    <CardHeader
+      display="flex"
+      alignItems="baseline"
+      justifyContent="space-between"
+    >
+      <Heading size="md">User Details</Heading>
+      {/* <Box
+        gap="2"
+        display="flex"
+        alignItems="baseline"
+        justifyContent="space-between"
+      >
+        <Button onClick={onOpen} p={2} backgroundColor="#92d592" fontSize="10px">
+          Edit
+        </Button>
+        <Button
+          onClick={() => setIsDeleteAlertOpen(true)}
+          p={2}
+          backgroundColor="red"
+          color="white"
+          fontSize="10px"
+        >
+          Delete
+        </Button>
+      </Box> */}
+    </CardHeader>
 
-    <Card textAlign="start" width="50%">
-      <CardHeader textAlign="start">
-        <Heading size="lg">Client Report</Heading>
-      </CardHeader>
+    <CardBody>
+      <Box gap={2} display="flex" alignItems="baseline">
+        <span>
+          <strong style={{ marginRight: "10px" }}>Name:</strong> {user.name} 
+        </span>
+      </Box>
+      {user.email?<Box gap={2} display="flex" alignItems="baseline">
+        <span>
+          <strong style={{ marginRight: "10px" }}>Email:</strong> {user.email}
+        </span>
+      </Box>:""}
+      <Box gap={2} display="flex" alignItems="baseline">
+        <span>
+          <strong style={{ marginRight: "10px" }}>Mobile:</strong>{" "}
+          {user.number}
+        </span>
+      </Box>
+     
+      <Box gap={2} display="flex" alignItems="baseline">
+        <span>
+          <strong style={{ marginRight: "10px" }}> Last Visit: </strong>{" "}
+          {user.last_visit}
+        </span>
+      </Box>
+      <Box gap={2} display="flex" alignItems="baseline">
+        <span>
+          <strong style={{ marginRight: "10px" }}> Total Appointment: </strong>{" "}
+          {totalAppointment}
+        </span>
+      </Box>
+      
+      
+    </CardBody>
 
-      <CardBody display="flex" flexWrap="wrap">
-        <Stack divider={<StackDivider />} spacing="4">
-          <Box>
-            <Heading size="md" textTransform="uppercase">
-              Client Details
-            </Heading>
-            <Text pt="2" fontSize="sl" fontWeight="600">
-              Name: {user.name}
-            </Text>
-            <Text pt="2" fontSize="sl" fontWeight="600">
-              Email: {user.email}
-            </Text>
-            <Text pt="2" fontSize="sl" fontWeight="600">
-              Last Visit: {user.last_visit}
-            </Text>
-          </Box>
-          <Box>
-            <Heading size="md" textTransform="uppercase">
-              Consult Details
-            </Heading>
-            <Text pt="2" fontSize="sl" fontWeight="600">
-              Next Consult Date: {user.next_consult_date}
-            </Text>
-            <Text pt="2" fontSize="sl" fontWeight="600">
-              Consult Status:{" "}
-              <span
-                style={{
-                  color: user.consult_status ? "green" : "red",
-                  fontWeight: "bold",
-                }}
-              >
-                {user.consult_status ? "Consulted" : "Not Consulted"}
-              </span>
-            </Text>
-          </Box>
-          <Box>
-            <Heading size="xs" textTransform="uppercase">
-              Consulter Details
-            </Heading>
-            <Text pt='2' fontSize='sl' fontWeight="600">
-            Consulter Name:  {user.consulter_name}
-        </Text>
-        <Text pt='2' fontSize='sl' fontWeight="600">
-        Consult Feedback:  {user.consult_feedback}
-        </Text>
-          </Box>
-        </Stack>
-      </CardBody>
+    <CardFooter spacing={5} justifyContent="center">
+      <Link to={`/admin/Users/`}>
+      <Button color="black" backgroundColor="gold" fontSize="13px"
+      _hover={{color:"orange",bg:'none'}}>
+        View Details
+      </Button>
+      </Link>
+      {/* <Link to={`/admin/userEvent/${User._id}`}>
+        <Button color="white" backgroundColor="#803a00" fontSize="13px">
+          View Events
+        </Button>
+      </Link> */}
+    </CardFooter>
     </Card>
   );
 };
