@@ -194,9 +194,9 @@ export default function WorkingProcess() {
 
   return (
     <StyledEngineProvider injectFirst>
-       <div className='heading-div'>
+      <div className='heading-div'>
         <h6 className='h6' >TO DO GOOD DESIGN</h6>
-        <h1 style={{color:'black'}}>OUR WORKING PROCESS</h1>
+        <h1 style={{ color: 'black' }}>OUR WORKING PROCESS</h1>
       </div>
       <Stack sx={{ width: '100%' }} spacing={4}>
         <Stepper
