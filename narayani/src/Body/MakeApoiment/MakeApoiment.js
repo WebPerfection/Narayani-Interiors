@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "./MakeApoiment.css";
 import { useDispatch, useSelector } from "react-redux";
 import { toggelModel } from "../../Redux/Action";
+import Consult from "../../Consult/Consult";
 export default function MakeApoiment() {
   const model = useSelector((store) => store);
   const dispatch = useDispatch();
-
+  const [consult,setConsult]=useState(false)
+  const consultClick=()=>{
+    setConsult(false)
+  }
   const openModel = () => {
-    dispatch(toggelModel());
+    // dispatch(toggelModel());
+    setConsult(true)
   };
 
   return (
@@ -23,6 +28,7 @@ export default function MakeApoiment() {
           Make An Appointment
         </button>
       </div>
+      <Consult consult={consult} consultClick={consultClick}/>
     </div>
   );
 }

@@ -28,7 +28,7 @@ export default function Allpage() {
       <Route path='/aboutUs' element={<Dummy />}></Route>
       <Route path='/admin/Users' element={<GetAllUser />}></Route>
       <Route path='/admin/AddTestimonial' element={<AddTestimonial />}></Route>
-      <Route path="/admin/appointment/" element={<Appointment/>}></Route>
+      <Route path="/admin/appointment/:id" element={<Appointment/>}></Route>
       <Route path='/admin/Achievement' element={<AddAchievement />}></Route>
     </Routes>
   )

@@ -174,8 +174,8 @@ const steps = [
   'Understand the requirement in detail',
   'Provide designs at lightning fast speed',
   'Estimate cost suitable to your budget',
-  'Close 3D designs',
   'Manage seamless execution of the project',
+  'Close 3D designs',
   'On-Time delivery',
 ];
 
@@ -193,20 +193,22 @@ export default function WorkingProcess() {
   }, []);
 
   return (
-    <StyledEngineProvider injectFirst>
+    <div style={{paddingBottom:"50px"}}>
+      <StyledEngineProvider injectFirst>
        <div className='heading-div'>
         <h6 className='h6' >TO DO GOOD DESIGN</h6>
         <h1 style={{color:'black'}}>OUR WORKING PROCESS</h1>
       </div>
-      <Stack sx={{ width: '100%' }} spacing={4}>
+      <Stack sx={{ width: '100%' ,overflow:"hidden"}} spacing={4}>
         <Stepper
           alternativeLabel
           activeStep={activeStep}
           connector={<ColorlibConnector />}
+          style={{ marginBottom: '20px' }}
         >
           {steps && steps.map((label, index) => (
-            <Step key={label}>
-              <StepLabel StepIconComponent={ColorlibStepIcon} icon={index}>
+            <Step key={label} >
+              <StepLabel StepIconComponent={ColorlibStepIcon} icon={index} >
                 {label}
               </StepLabel>
             </Step>
@@ -214,5 +216,6 @@ export default function WorkingProcess() {
         </Stepper>
       </Stack>
     </StyledEngineProvider>
+    </div>
   );
 }

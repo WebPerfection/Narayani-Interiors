@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { toggelModel } from "../../Redux/Action"
 import Loading from "../Loading/Loading";
 import { IoIosArrowForward } from "react-icons/io";
+import Consult from "../../Consult/Consult";
 
 const responsive = {
   superLargeDesktop: {
@@ -93,9 +94,14 @@ const ProjectPage = () => {
       })
       .catch((err) => console.log(err));
   }, [id]);
-  // if(loading){
-  //   return <Loading/>
-  // }
+  const [consult,setConsult]=useState(false)
+  const consultClick=()=>{
+    setConsult(false)
+  }
+  const openModel = () => {
+    // dispatch(toggelModel());
+    setConsult(true)
+  };
   return (
     <>
       <Navbar />
@@ -130,7 +136,7 @@ const ProjectPage = () => {
                   >
                     {more ? "Read less" : "Read more"}
                   </span>
-                  <button className="HeroImage-button">
+                  <button className="HeroImage-button" onClick={openModel}>
                     BOOK FREE DESIGN SESSION
                   </button>
                   <div>
@@ -195,6 +201,7 @@ const ProjectPage = () => {
       </div>
       <MakeApoiment />
       <Footer />
+      <Consult consult={consult} consultClick={consultClick}/>
     </>
   );
 };

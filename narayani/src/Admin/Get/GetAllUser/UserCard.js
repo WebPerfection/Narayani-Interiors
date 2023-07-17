@@ -146,7 +146,7 @@ const UserCard = ({ user, updateUser, deleteUser }) => {
     </CardBody>
 
     <CardFooter spacing={5} justifyContent="center">
-      <Link to={`/admin/Users/`}>
+      <Link to={`/admin/appointment/${user._id}`}>
       <Button color="black" backgroundColor="gold" fontSize="13px"
       _hover={{color:"orange",bg:'none'}}>
         View Details

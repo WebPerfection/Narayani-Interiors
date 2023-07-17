@@ -1,0 +1,9 @@
+.chakra-table.css-5605sr thead tr{
+    background-image: linear-gradient(315deg, #f5d020 0%, #f53803 74%);
+    }
+    .chakra-table.css-5605sr tbody tr{
+        background-image: linear-gradient(315deg, #dac974 0%, #ec9e88 74%);
+    }
+    .chakra-table.css-5605sr tbody tr:nth-child(odd){
+        background-image: linear-gradient(315deg, #cec59b 0%, #d3afa5 74%);
+    }
