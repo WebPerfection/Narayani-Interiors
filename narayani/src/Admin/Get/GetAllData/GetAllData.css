@@ -9,6 +9,13 @@
 .tox .tox-statusbar__branding svg {
   display: none;
 }
+.items + div .react-multiple-carousel__arrow{
+  z-index: 99;
+}
+.items + div .css-1vnrcez {
+  height: 250px;
+  width: 350px;
+}
 .items>p{
   height: 400px;
   align-items: center;

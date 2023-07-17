@@ -2,21 +2,20 @@
 import './BlogCategories.css';
 
 // Import your custom SVG icons
-import UtensilsIcon from './Image/New_folder/modular-Kitchen.svg';
-import BedIcon from './Image/New_folder/master-bedroom.svg';
-import TvIcon from './Image/New_folder/tv-units.svg';
-import CouchIcon from './Image/New_folder/living-room.svg';
-import BathIcon from './Image/New_folder/bathroom.svg';
+import UtensilsIcon from './Image/modular-Kitchen.svg';
+import BedIcon from './Image/master-bedroom.svg';
+import TvIcon from './Image/tv-units.svg';
+import CouchIcon from './Image/living-room.svg';
+import BathIcon from './Image/bathroomv2.svg';
 
-
-import ChildIcon from './Image/New_folder/kids-room.svg';
-import PaintRollerIcon from './Image/New_folder/kitchen-wall-tiles.svg';
-import HomeIcon from './Image/New_folder/balcony.svg';
-import Wardrobes from './Image/New_folder/wardrobes.svg';
-import False_Ceiling from './Image/New_folder/false-ceiling.svg';
 import Consult from '../../Consult/Consult';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ChildIcon from './Image/kids-room.svg';
+import PaintRollerIcon from './Image/kitchen-wall-tilesv2.svg';
+import HomeIcon from './Image/balcony.svg';
+import Wardrobes from './Image/wardrobes.svg';
+import False_Ceiling from './Image/false-ceilingv2.svg';
 const BlogCategories = () => {
     const [consult,setConsult]=useState(false)
     const categories = [
@@ -38,7 +37,7 @@ const BlogCategories = () => {
     return (
         <div className="_container">
             <h6 className="h6">All Your Interior Design Solutions in One Place</h6>
-            <p className="subheading">From ideation to execution, we offer functional design solutions for your home.</p>
+            <p className="subheading">We offer functional design solutions for your home, office, and shop, from ideation to execution.</p>
             <div className="content_container">
                 {categories.map((category, index) => (
                     <a key={index} >

@@ -14,8 +14,15 @@
   text-align: center;
   height: 164px;
 }
-._solutionItem:hover{
-    background-image: linear-gradient( to right, #ffdeace1 10%, rgb(255, 255, 255) 90% )
+.css-jib6w6-MuiStack-root {
+  margin: 20px 0px 40px 0px;
+}
+._solutionItem:hover {
+  background-image: linear-gradient(
+    to right,
+    #ffdeace1 10%,
+    rgb(255, 255, 255) 90%
+  );
 }
 .content_container {
   display: grid;
@@ -25,6 +32,11 @@
 }
 ._figImg {
   margin-bottom: 15px;
+}
+._figImg img {
+  width: 50px;
+  height: 50px;
+  filter: drop-shadow(10px 10px 100px #FF9900);
 }
 .catName {
   margin-bottom: 0;
