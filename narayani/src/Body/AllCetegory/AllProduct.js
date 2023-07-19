@@ -81,7 +81,7 @@ export default function AllProduct() {
   return (
     <>
       <Navbar />
-      <Content />
+      <div>j</div>
       <ChakraProvider>
       <div className="pro-main">
         <div className="Flex">

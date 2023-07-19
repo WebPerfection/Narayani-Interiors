@@ -24,184 +24,180 @@
     display: flex;
 } */
 
-
-.working_main_div{
-    margin-top: 50px;
-    background-color: #ededed;
+working_main_div {
+    margin-top: 50px !important;
+    background-color: #ededed !important;
     /* padding: 80px 0px; */
-    padding: 0px 10px;
+    padding: 0px 10px !important;
 }
-.working_main_div>h5{
-    color: red;
+working_main_div > h5 {
+    color: red !important;
 }
-.working-main-div>img{
-    width: 100%;
+working-main-div > img {
+    width: 100% !important;
 }
-.working-card{
-    width: 100%;
-    padding: 0px 10px;
-    gap: 40px;
+working-card {
+    width: 100% !important;
+    padding: 0px 10px !important;
+    gap: 40px !important;
     /* margin-top: 50px; */
 }
-.working-icon{
-    border: 4px solid var(--text-gold);
+working-icon {
+    border: 4px solid var(--text-gold) !important;
     /* padding: 20px; */
-    width: 100px;
-    height: 100px;
-    vertical-align: middle;
-    font-size: 45px;
-    transition: 1.5s;
-    text-align: center;
-    border-radius: 50%;
-    margin-top: -50px;
-    background-color: white;
+    width: 100px !important;
+    height: 100px !important;
+    vertical-align: middle !important;
+    font-size: 45px !important;
+    transition: 1.5s !important;
+    text-align: center !important;
+    border-radius: 50% !important;
+    margin-top: -50px !important;
+    background-color: white !important;
 }
-.working-card>div:hover .working-icon{
-    cursor: pointer;
-    color: rgba(255, 255, 255, 0.868);
-    border: 4px solid var(--text-gold);
-    background-color: #f2b259;
-    transition: 1.5s;
-    animation: show_bg 2s;
-    
+working-card > div:hover .working-icon {
+    cursor: pointer !important;
+    color: rgba(255, 255, 255, 0.868) !important;
+    border: 4px solid var(--text-gold) !important;
+    background-color: #f2b259 !important;
+    transition: 1.5s !important;
+    animation: show_bg 2s !important;
 }
 /* .card-work{
     height: 400px;
 } */
- .card-work:hover{
-    margin-top: 20px;
-    box-shadow: var(--inner-shadow);
-    transition: 1s;
+.card-work:hover {
+    margin-top: 20px !important;
+    box-shadow: var(--inner-shadow) !important;
+    transition: 1s !important;
 }
-.working-card>div:hover .icon-work{
-    color:#f2b259 ;
-    transition: 1s;
+.working-card > div:hover .icon-work {
+    color:#f2b259 !important;
+    transition: 1s !important;
 }
-@keyframes show_bg
-{
-    from{
-        background-color: white;
+@keyframes show_bg {
+    from {
+        background-color: white !important;
         /* transform: scaleX(0); */
     }
-    to{
-        background-color: #f2b259;
+    to {
+        background-color: #f2b259 !important;
         /* transform: scaleX(1); */
     }
 }
-.arrow{
-    margin-top: 3px;
+.arrow {
+    margin-top: 3px !important;
 }
-#working-card a{
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    font-weight: 500;
-}
-
-.working-card>div{
-   
-    width: 28%;
-    position: relative;
-    border-top: 4px solid var(--text-gold);
-    margin-top: 50px;
-    box-shadow: var(--outer-shadow);
-    z-index: 9;
-    border-radius: 0px 0px 10px 10px;
-    background-color: white;
-   transition: 1s;
-}
-.working-card>div>div>p{
-    font-size: 1.1vw;
+#working-card a {
+    font-size: 20px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px !important;
+    font-weight: 500 !important;
 }
 
-.working-card>div>div:nth-child(2){
-    padding: 30px;
+.working-card > div {
+    width: 28% !important;
+    position: relative !important;
+    border-top: 4px solid var(--text-gold) !important;
+    margin-top: 50px !important;
+    box-shadow: var(--outer-shadow) !important;
+    z-index: 9 !important;
+    border-radius: 0px 0px 10px 10px !important;
+    background-color: white !important;
+    transition: 1s !important;
+}
+.working-card > div > div > p {
+    font-size: 1.1vw !important;
 }
 
-.working-card>div>div:last-child{
-    padding: 13px;
-    border-radius: 0px 0px 10px 10px;
-    font-size: 80px;
-    padding-bottom: 20px;
-    text-align: center;
-    color: var(--text-black-300);
-    transition: 1s;
+.working-card > div > div:nth-child(2) {
+    padding: 30px !important;
 }
-.working-card>div>div{
 
-    margin: 0px;
-    width: 100%;
+.working-card > div > div:last-child {
+    padding: 13px !important;
+    border-radius: 0px 0px 10px 10px !important;
+    font-size: 80px !important;
+    padding-bottom: 20px !important;
+    text-align: center !important;
+    color: var(--text-black-300) !important;
+    transition: 1s !important;
 }
-@media only screen and (max-width: 530px){
-    .working-main-div{
-        margin-top: 60px;
+.working-card > div > div {
+
+    margin: 0px !important;
+    width: 100% !important;
+}
+@media only screen and (max-width: 530px) {
+    working-main-div {
+        margin-top: 60px !important;
     }
 
 }
-@media only screen and (max-width: 900px){
-    #working-card{
-        flex-direction: column;
-    gap: 50px;
+@media only screen and (max-width: 900px) {
+    #working-card {
+        flex-direction: column !important;
+        gap: 50px !important;
     }
-    #working-card>div{
-        width: 100%;
-        margin-top: 80px;
+    #working-card > div {
+        width: 100% !important;
+        margin-top: 80px !important;
     }
-    #working-card h3{
-        font-size: 27px;
+    #working-card h3 {
+        font-size: 27px !important;
     }
-    #working-card p{
-        font-size: 18px;
+    #working-card p {
+        font-size: 18px !important;
     }
-    #working-card a{
-        font-size: 20px;
+    #working-card a {
+        font-size: 20px !important;
     }
 }
-@media screen and (min-width: 363px) and (max-width: 768px){
+@media screen and (min-width: 363px) and (max-width: 768px) {
     .css-10mg1vw-MuiStepper-root {
-        display: flow-root;
-     height: 605px;
+        display: flow-root !important;
+        height: 605px !important;
     }
-    .css-rvbye1-MuiStepConnector-root.MuiStepConnector-alternativeLabel{
-        transform: rotate(90deg);
-        height: 150px;
+    .css-rvbye1-MuiStepConnector-root.MuiStepConnector-alternativeLabel {
+        transform: rotate(90deg) !important;
+        height: 150px !important;
     }
-  
-    .css-ascpo7-MuiStepLabel-root{
-        height: 180px;
+
+    .css-ascpo7-MuiStepLabel-root {
+        height: 180px !important;
     }
     .css-ascpo7-MuiStepLabel-root.MuiStepLabel-alternativeLabel {
-        -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-        flex-direction: row;
-        gap: 20px;
-        margin-left: 37px;
-        margin-top: -65px;
+        -webkit-flex-direction: column !important;
+        -ms-flex-direction: column !important;
+        flex-direction: row !important;
+        gap: 20px !important;
+        margin-left: 37px !important;
+        margin-top: -65px !important;
     }
 }
-@media only screen and (max-width: 362px){
+@media only screen and (max-width: 362px) {
     .css-10mg1vw-MuiStepper-root {
-        display: flow-root;
-     height: 520px;
+        display: flow-root !important;
+        height: 520px !important;
     }
-    .css-rvbye1-MuiStepConnector-root.MuiStepConnector-alternativeLabel{
-        transform: rotate(90deg);
-        height: 150px;
+    .css-rvbye1-MuiStepConnector-root.MuiStepConnector-alternativeLabel {
+        transform: rotate(90deg) !important;
+        height: 150px !important;
     }
-  
-    .css-ascpo7-MuiStepLabel-root{
-        height: 180px;
+
+    .css-ascpo7-MuiStepLabel-root {
+        height: 180px !important;
     }
     .css-ascpo7-MuiStepLabel-root.MuiStepLabel-alternativeLabel {
-        -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-        flex-direction: row;
-        gap: 20px;
-        margin-left: 37px;
-        margin-top: -60px;
-        margin-bottom: -23px;
+        -webkit-flex-direction: column !important;
+        -ms-flex-direction: column !important;
+        flex-direction: row !important;
+        gap: 20px !important;
+        margin-left: 37px !important;
+        margin-top: -60px !important;
+        margin-bottom: -23px !important;
     }
 
 }

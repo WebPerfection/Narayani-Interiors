@@ -85,7 +85,7 @@ useEffect(()=>{
     <>
      <ChakraProvider>
       <Navbar />
-      <Content />
+      {/* <Content /> */}
       {/* <div>.</div> */}
      
       <div className="pro-main">
