@@ -67,12 +67,12 @@
 /* date */
 .workingProcess ul li .date {
   --dateH: 3rem;
-  height: var(--dateH);
+  /* height: var(--dateH); */
   margin-inline: calc(var(--inlineP) * -1);
 
   text-align: center;
   background-color: #FFB23F;
-
+padding: 20px 10px;
   color: white;
   font-size: 1.25rem;
   font-weight: 700;

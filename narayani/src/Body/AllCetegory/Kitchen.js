@@ -24,6 +24,7 @@ import {
 } from "@chakra-ui/react";
 import Loading from "../Loading/Loading";
 import { useParams } from "react-router-dom";
+import TopImage from "../TopImage/TopImage";
 
 export default function Kitchen() {
   const [products, setProducts] = useState([]);
@@ -85,6 +86,7 @@ useEffect(()=>{
     <>
      <ChakraProvider>
       <Navbar />
+      <TopImage/>
       {/* <Content /> */}
       {/* <div>.</div> */}
      
@@ -114,7 +116,6 @@ useEffect(()=>{
                   backgroundColor:'var(--text-gold)'// Change this color value to your desired option color
                 }}
               >
-                <option value="Room">Room</option>
                 <option value="Kitchen">Kitchen</option>
                 <option value="Shop">Shop</option>
               </Select>

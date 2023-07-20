@@ -25,6 +25,7 @@ import {
 } from "@chakra-ui/react";
 import Loading from "../Loading/Loading";
 import Content from "../Content/Slider/Content";
+import TopImage from "../TopImage/TopImage";
 
 export default function AllProduct() {
   const [products, setProducts] = useState([]);
@@ -81,7 +82,7 @@ export default function AllProduct() {
   return (
     <>
       <Navbar />
-      <div>j</div>
+      <TopImage/>
       <ChakraProvider>
       <div className="pro-main">
         <div className="Flex">
