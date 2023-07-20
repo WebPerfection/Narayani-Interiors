@@ -1,221 +1,43 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import { styled } from '@mui/material/styles';
-import Stack from '@mui/material/Stack';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
-import Check from '@mui/icons-material/Check';
-import SettingsIcon from '@mui/icons-material/Settings';
-import FastForwardIcon from '@mui/icons-material/FastForward';
-import BuildIcon from '@mui/icons-material/Build';
-import MoneyIcon from '@mui/icons-material/Money';
-import DesignServicesIcon from '@mui/icons-material/DesignServices';
-import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
-import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
-import { StyledEngineProvider } from '@mui/material/styles';
-import './Working.css'
-
-const QontoConnector = styled(StepConnector)(({ theme }) => ({
-  [`&.${stepConnectorClasses.alternativeLabel}`]: {
-    top: 10,
-    left: 'calc(-50% + 16px)',
-    right: 'calc(50% + 16px)',
-  },
-  [`&.${stepConnectorClasses.active}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      borderColor: '#784af4',
-    },
-  },
-  [`&.${stepConnectorClasses.completed}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      borderColor: '#784af4',
-    },
-  },
-  [`& .${stepConnectorClasses.line}`]: {
-    borderColor: theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#eaeaf0',
-    borderTopWidth: 3,
-    borderRadius: 1,
-  },
-}));
-
-const QontoStepIconRoot = styled('div')(({ theme, ownerState }) => ({
-  color: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#eaeaf0',
-  display: 'flex',
-  height: 22,
-  alignItems: 'center',
-  ...(ownerState.active && {
-    color: '#784af4',
-  }),
-  '& .QontoStepIcon-completedIcon': {
-    color: '#784af4',
-    zIndex: 1,
-    fontSize: 18,
-  },
-  '& .QontoStepIcon-circle': {
-    width: 8,
-    height: 8,
-    borderRadius: '50%',
-    backgroundColor: 'currentColor',
-  },
-}));
-
-function QontoStepIcon(props) {
-  const { active, completed, className } = props;
-
+import React from 'react';
+import "./Working.css"
+const WorkingProcess = () => {
   return (
-    <QontoStepIconRoot ownerState={{ active }} className={className}>
-      {completed ? (
-        <Check className="QontoStepIcon-completedIcon" />
-      ) : (
-        <div className="QontoStepIcon-circle" />
-      )}
-    </QontoStepIconRoot>
-  );
-}
-
-QontoStepIcon.propTypes = {
-  /**
-   * Whether this step is active.
-   * @default false
-   */
-  active: PropTypes.bool,
-  className: PropTypes.string,
-  /**
-   * Mark the step as completed. Is passed to child components.
-   * @default false
-   */
-  completed: PropTypes.bool,
-};
-
-const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
-  [`&.${stepConnectorClasses.alternativeLabel}`]: {
-    top: 22,
-  },
-  [`&.${stepConnectorClasses.active}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      backgroundImage:
-        ' linear-gradient(to right top, #eac593, #f0be77, #f6b65a, #fbae3a, #ffa503)',
-    },
-  },
-  [`&.${stepConnectorClasses.completed}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      backgroundImage:
-        'linear-gradient(to right top, #eac593, #f0be77, #f6b65a, #fbae3a, #ffa503)',
-    },
-  },
-  [`& .${stepConnectorClasses.line}`]: {
-    height: 3,
-    border: 0,
-    backgroundColor:
-      theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#eaeaf0',
-    borderRadius: 1,
-  },
-}));
-
-const ColorlibStepIconRoot = styled('div')(({ theme, ownerState }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#ccc',
-  zIndex: 1,
-  color: '#fff',
-  width: 50,
-  height: 50,
-  display: 'flex',
-  borderRadius: '50%',
-  justifyContent: 'center',
-  alignItems: 'center',
-  ...(ownerState.active && {
-    backgroundImage:
-      ' linear-gradient(to right top, #eac593, #f0be77, #f6b65a, #fbae3a, #ffa503)',
-  }),
-  ...(ownerState.completed && {
-    backgroundImage:
-      'linear-gradient(to right top, #eac593, #f0be77, #f6b65a, #fbae3a, #ffa503)',
-  }),
-}));
-
-function ColorlibStepIcon(props) {
-  const { active, completed, className } = props;
-
-  const icons = {
-    0: <SettingsIcon />,
-    1: <FastForwardIcon />,
-    2: <MoneyIcon />,
-    3: <BuildIcon />,
-    4: <DesignServicesIcon />,
-    5: <AssignmentTurnedInIcon />,
-  };
-
-  return (
-    <ColorlibStepIconRoot ownerState={{ completed, active }} className={className}>
-      {icons[String(props.icon)]}
-    </ColorlibStepIconRoot>
-  );
-}
-
-ColorlibStepIcon.propTypes = {
-  /**
-   * Whether this step is active.
-   * @default false
-   */
-  active: PropTypes.bool,
-  className: PropTypes.string,
-  /**
-   * Mark the step as completed. Is passed to child components.
-   * @default false
-   */
-  completed: PropTypes.bool,
-  /**
-   * The label displayed in the step icon.
-   */
-  icon: PropTypes.node,
-};
-
-const steps = [
-  'Understand the requirement in detail',
-  'Provide designs at lightning fast speed',
-  'Estimate cost suitable to your budget',
-  'Manage seamless execution of the project',
-  'Close 3D designs',
-  'On-Time delivery',
-];
-
-export default function WorkingProcess() {
-  const [activeStep, setActiveStep] = React.useState(0);
-
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveStep((prevActiveStep) => (prevActiveStep + 1) % steps.length);
-    }, 1000);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
-  return (
-    <div style={{paddingBottom:"50px"}}>
-    <StyledEngineProvider injectFirst>
+    <div className='workingProcess'>
       <div className='heading-div'>
         <h6 className='h6' >TO DO GOOD DESIGN</h6>
         <h1 style={{ color: 'black' }}>OUR WORKING PROCESS</h1>
       </div>
-      <Stack sx={{ width: '100%' ,overflow:"hidden"}} spacing={4}>
-        <Stepper
-          alternativeLabel
-          activeStep={activeStep}
-          connector={<ColorlibConnector />}
-          style={{ marginBottom: '20px' }}
-        >
-          {steps && steps.map((label, index) => (
-            <Step key={label} >
-              <StepLabel StepIconComponent={ColorlibStepIcon} icon={index} >
-                {label}
-              </StepLabel>
-            </Step>
-          ))}
-        </Stepper>
-      </Stack>
-    </StyledEngineProvider>
+      {/* <h1>UL timeline cards</h1> */}
+      <ul>
+        <li style={{ '--accent-color': '#41516C' }}>
+          <div className="date">2002</div>
+          <div className="title">Title 1</div>
+          <div className="descr">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas itaque hic quibusdam fugiat est numquam harum, accusamus suscipit consequatur laboriosam!</div>
+        </li>
+        <li style={{ '--accent-color': '#FBCA3E' }}>
+          <div className="date">2007</div>
+          <div className="title">Title 2</div>
+          <div className="descr">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos adipisci nobis nostrum vero nihil veniam.</div>
+        </li>
+        <li style={{ '--accent-color': '#E24A68' }}>
+          <div className="date">2012</div>
+          <div className="title">Title 3</div>
+          <div className="descr">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga minima consequuntur soluta placeat iure totam commodi repellendus ea delectus, libero fugit quod reprehenderit, sequi quo, et dolorum saepe nulla hic.</div>
+        </li>
+        <li style={{ '--accent-color': '#1B5F8C' }}>
+          <div className="date">2017</div>
+          <div className="title">Title 4</div>
+          <div className="descr">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit, cumque.</div>
+        </li>
+        <li style={{ '--accent-color': '#4CADAD' }}>
+          <div className="date">2022</div>
+          <div className="title">Title 5</div>
+          <div className="descr">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit, non.</div>
+        </li>
+      </ul>
+      <div className="credits"><a target="_blank" href="https://www.freepik.com/free-vector/infographic-template-with-yearly-info_1252895.htm">inspired by</a></div>
     </div>
   );
-}
+};
+
+export default WorkingProcess;
