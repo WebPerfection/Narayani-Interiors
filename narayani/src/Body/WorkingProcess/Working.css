@@ -71,12 +71,10 @@
   margin-inline: calc(var(--inlineP) * -1);
 
   text-align: center;
-  background-color: #FFB23F;
-padding: 20px 10px;
+  background-color: #ffb23f;
+  padding: 20px 10px;
   color: white;
-  font-size: 1.25rem;
-  font-weight: 700;
-
+  font-size: 1rem;
   display: grid;
   place-content: center;
   position: relative;
@@ -104,8 +102,8 @@ padding: 20px 10px;
   position: absolute;
   width: 2rem;
   aspect-ratio: 1;
-  background: #FFFFFF;
-  border: 0.3rem solid #FFB23F;
+  background: #ffffff;
+  border: 0.3rem solid #ffb23f;
   border-radius: 50%;
   top: 50%;
 
@@ -154,7 +152,7 @@ padding: 20px 10px;
 }
 
 @media (min-width: 40rem) {
-    .workingProcess ul {
+  .workingProcess ul {
     grid-template-columns: 1fr var(--line-w) 1fr;
   }
   .workingProcess ul::before {
