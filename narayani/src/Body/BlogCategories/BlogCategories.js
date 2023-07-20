@@ -6,7 +6,7 @@ import UtensilsIcon from './Image/modular-Kitchen.svg';
 import BedIcon from './Image/master-bedroom.svg';
 import TvIcon from './Image/tv-units.svg';
 import CouchIcon from './Image/living-room.svg';
-import BathIcon from './Image/bathroomv2.svg';
+import BathIcon from './Image/New_folder/bathroomv2.svg';
 
 import Consult from '../../Consult/Consult';
 import { useState } from 'react';

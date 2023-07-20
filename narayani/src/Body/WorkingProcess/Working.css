@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap");
 
-/* *,
+*,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-} */
+}
 
 /* body {
   --color: rgba(30, 30, 30);
@@ -89,7 +89,7 @@
   content: "";
   width: var(--inlineP);
   aspect-ratio: 1;
-  background: #d19334;
+  background: #cb8e33;
   background-image: linear-gradient(rgba(0, 0, 0, 0.2) 100%, transparent);
   position: absolute;
   top: 100%;
