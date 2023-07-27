@@ -87,7 +87,7 @@ export default function Navbar() {
           <Link to="/">
             <div className="Img-div Flex">
               <img src={web} />
-              <h4>Narayni-Interior</h4>
+             
             </div>
           </Link>
 
@@ -259,7 +259,7 @@ export default function Navbar() {
             <div style={{top:"10px"}} className="logo"><Link to="/">
             <div className="Img-div Flex">
               
-              <h4>Narayni-Interior</h4><img src={web} />
+              <img src={web} />
             </div>
           </Link></div>
           </div>
