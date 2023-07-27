@@ -4,6 +4,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import Review from './Review';
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 3000, min: 1200 },
@@ -50,47 +51,56 @@ const Testimonial = () => {
   }, [model]);
   console.log(testimonials);
   return (
-    <div className="body">
-      <div className="heading-div">
-        <h6 className="h6">WHAT OUR CLIENTS SAY</h6>
-      </div>
-      <div className="workHome-main-div Flex" >
-        <div className="testimonial-main" style={{ width: "100%" }}>
-          {testimonials && (
-            <Carousel
-              swipeable={false}
-              draggable={true}
-              responsive={responsive}
-              ssr={true}
-              infinite={true}
-              autoPlay={true}
-              autoPlaySpeed={3000}
-              keyBoardControl={true}
-              customTransition="all 2s"
-              transitionDuration={2000}
-              containerClass="carousel-container"
-              removeArrowOnDeviceType={["tablet", "mobile"]}
-              dotListClass="custom-dot-list-style"
-              itemClass="carousel-item-padding-40-px"
-            >
-              {testimonials.map((testimonial) => (
-                <div className="testimonial-1">
-                  <div className="testimonial">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="testimonial-image"
-                    />
-                    <h3 className="testimonial-name">{testimonial.name}</h3>
-                    <p className="testimonial-message">{testimonial.message}</p>
-                  </div>
-                </div>
-              ))}
-            </Carousel>
-          )}
+    // <div className="body">
+    //   <div className="heading-div">
+    //     <h6 className="h6">WHAT OUR CLIENTS SAY</h6>
+    //   </div>
+    //   <div className="workHome-main-div Flex" >
+    //     <div className="testimonial-main" style={{ width: "100%" }}>
+    //       {testimonials && (
+    //         <Carousel
+    //           swipeable={false}
+    //           draggable={true}
+    //           responsive={responsive}
+    //           ssr={true}
+    //           infinite={true}
+    //           autoPlay={true}
+    //           autoPlaySpeed={3000}
+    //           keyBoardControl={true}
+    //           customTransition="all 2s"
+    //           transitionDuration={2000}
+    //           containerClass="carousel-container"
+    //           removeArrowOnDeviceType={["tablet", "mobile"]}
+    //           dotListClass="custom-dot-list-style"
+    //           itemClass="carousel-item-padding-40-px"
+    //         >
+    //           {testimonials.map((testimonial) => (
+    //             <div className="testimonial-1">
+    //               <div className="testimonial">
+    //                 <img
+    //                   src={testimonial.image}
+    //                   alt={testimonial.name}
+    //                   className="testimonial-image"
+    //                 />
+    //                 <h3 className="testimonial-name">{testimonial.name}</h3>
+    //                 <p className="testimonial-message">{testimonial.message}</p>
+    //               </div>
+    //             </div>
+    //           ))}
+    //         </Carousel>
+    //       )}
+    //     </div>
+    //   </div>
+    // </div>
+    <main className="clinet-reviews">
+      <section className="container">
+        <div className="title">
+          <h2>Our Reviews</h2>
+          <div className="underline"></div>
         </div>
-      </div>
-    </div>
+        <Review />
+      </section>
+    </main>
   );
 };
 
