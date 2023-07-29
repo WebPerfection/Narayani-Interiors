@@ -1,19 +1,17 @@
-
-a{
+a {
   text-decoration: none;
   color: black;
-
 }
-a:hover{
+a:hover {
   color: goldenrod;
 }
-.about_main{
-  width: 70%;
+.about_main {
+  width: 95%;
 }
-.about_div{
+.about_div {
   display: flex;
 }
-.Image_about_1{
+.Image_about_1 {
   background-image: url("https://hommes.studio/wp-content/uploads/2022/01/handmade-1.jpg");
   background-repeat: no-repeat;
   background-position: center;
@@ -21,7 +19,7 @@ a:hover{
   width: 100%;
   height: 100%;
 }
-.Image_about_2{
+.Image_about_2 {
   background-image: url("https://hommes.studio/wp-content/uploads/2022/01/customization-2.jpg");
   background-repeat: no-repeat;
   background-position: center;
@@ -29,7 +27,7 @@ a:hover{
   width: 100%;
   height: 100%;
 }
-.Image_about_3{
+.Image_about_3 {
   background-image: url("https://hommes.studio/wp-content/uploads/2022/01/bespoke-3.jpg");
   background-repeat: no-repeat;
   background-position: center;
@@ -37,7 +35,7 @@ a:hover{
   width: 100%;
   height: 100%;
 }
-.about_contact{
+.about_contact {
   background-image: url("AboutContact.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -49,69 +47,84 @@ a:hover{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
-.about_contact>button{
+.about_contact > button {
   color: white;
   border: 1px solid white;
   padding: 10px 20px;
 }
-.founder{
+.about_main .h6{
+  margin-top: 15px;
+}
+/* .founder{
   background-color: #bab4b4;
-}
-.bni{
+} */
+/* .bni{
   background-color: #bab4b4;
+} */
+.founder > div,
+.bni > div {
+  color: rgb(0, 0, 0);
 }
-.founder>div,.bni>div{
-  color: white;
-}
-.Image_about_4{
-
+.Image_about_4 {
   width: 100%;
   height: 100%;
   padding: 10px;
-  
-
 }
-.Image_about_5{
-
+.Image_about_5 {
   width: 100%;
   height: 100%;
   padding: 10px;
-  
-
 }
-@media only screen and (max-width: 1000px){
-  #about_first{
+.about_contact p{
+width: 50%;
+}
+.get_in_touch{
+  background-color: rgba(255, 153, 0, 0.753);
+  padding: 10px 30px;
+  transition: 0.5s;
+  margin: 15px;
+
+}@media only screen and (max-width: 900px){
+  .about_contact p{
+    width: 90%;
+    }
+}
+@media only screen and (max-width: 1000px) {
+  #about_first {
     flex-direction: column-reverse;
   }
-  .Image_about_4{
+  .Image_about_4 {
     background-image: url("founder.jpeg");
     background-repeat: no-repeat;
     /* background-position: center; */
     background-size: cover;
     padding: 0px;
-  
   }
-  .Image_about_5{
+  .Image_about_5 {
     background-image: url("bni.jpeg");
     background-repeat: no-repeat;
     /* background-position: center; */
     background-size: cover;
     padding: 0px;
-  
   }
-  .about_main{
-    width: 100%;
-  }
-  .about_div{
-    flex-direction: column;
-  }
-  .Image_about{
-    height: 300px;
-  }
-  .Image_about>img{
-   display: none;
+  .about_main {
+    width: 95%;
   }
 
+  .about_main p {
+    padding: 0px 20px 20px;
+    word-wrap: break-word; /* This property ensures words wrap to fill the line */
+    text-align: justify;
+    hyphens: auto;
+  }
+  .about_div {
+    flex-direction: column;
+  }
+  .Image_about {
+    height: 300px;
+  }
+  .Image_about > img {
+    display: none;
+  }
 }
