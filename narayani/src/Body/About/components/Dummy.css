@@ -76,6 +76,11 @@ a:hover {
   height: 100%;
   padding: 10px;
 }
+.Image_about_6 {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
 .about_contact p{
 width: 50%;
 }
@@ -103,6 +108,14 @@ width: 50%;
   }
   .Image_about_5 {
     background-image: url("bni.jpeg");
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: cover;
+    padding: 0px;
+  }
+
+  .Image_about_6 {
+    background-image: url("teem.jpeg");
     background-repeat: no-repeat;
     /* background-position: center; */
     background-size: cover;

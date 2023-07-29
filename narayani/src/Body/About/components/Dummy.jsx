@@ -7,6 +7,7 @@ import "./Dummy.css";
 import founder from "./founder.jpeg";
 import bni from "./bni.jpeg";
 import Consult from "../../../Consult/Consult";
+import teem from "./teem.jpeg"
 export default function Dummy() {
   const [consult, setConsult] = useState(false);
   const consultClick = () => {
@@ -171,9 +172,54 @@ export default function Dummy() {
             </Box>
           </Box>
           <br></br>
-          <h6 className="h6">Organization We are connected</h6>
+
+
+
+
+          <h6 className="h6">Our Teem Member</h6>
           <br></br>
           <Box className="about_div  bni" id="about_first">
+          
+            <Box
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <h3 style={{ padding: "20px 0px 0px 0px" }}>Pulkit Agarwal</h3>
+              <p style={{ textAlign: "start", padding: "0px 20px 20px 20px" }}>
+                {/* Exclusivity: By presenting a unique design concept, Narayani Interrior offers its clients a unique design furniture collection.
+                <br></br>
+                <br></br> */}
+                As an aspiring designer, I believe that designing increases our
+                knowledge and helps our holistic development. It makes us more
+                courteous, kind, and humble. It also refines us and our
+                environment.
+                <br></br><br></br>
+                I have always had a social personality and love
+                traveling and exploring new places.
+                <br></br><br></br>
+                Designing has helped broaden my understanding of the world.
+                Every building has a story, whose narrative of beauty keeps
+                changing. I am passionate about designing, experimenting with
+                materials, and coming up with original concepts.
+              </p>
+            </Box>
+            <Box className="Image_about Image_about_6" >
+              <img src={teem}></img>
+            </Box>
+            </Box>
+            <br></br>
+
+
+
+
+          <h6 className="h6">Organization We are connected</h6>
+          <br></br>
+          <Box className="about_div  bni" >
+          <Box className="Image_about Image_about_5">
+              <img src={bni}></img>
+            </Box>
             <Box
               display="flex"
               flexDirection="column"
@@ -191,9 +237,7 @@ export default function Dummy() {
                 meaningful relationships with quality business professionals.
               </p>
             </Box>
-            <Box className="Image_about Image_about_5">
-              <img src={bni}></img>
-            </Box>
+          
           </Box>
         </Box>
         <br></br>
