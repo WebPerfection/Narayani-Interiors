@@ -19,14 +19,14 @@ export default function ContentPart() {
            
           </div>
           <div className='second_div'>
-            <div className='Flex' data-aos="fade-down" data-aos-offset="100"><h1 className='concept-icon'><RiProjectorLine /></h1></div>
+            <div className='Flex' data-aos="fade-down" data-aos-offset="100"><h1 className='concept-icon'><FaPaintRoller /></h1></div>
             <div data-aos="fade-down" data-aos-offset="100"><h3>Live 3D Designs</h3>
               <p>Explore life-like 3D designs online that are made for your floor plan.</p>
             </div>
             {/* <div data-aos="fade-down" data-aos-offset="100"><Link  ></Link></div> */}
           </div>
           <div className='Third_3'>
-            <div className='Flex' data-aos="fade-down" data-aos-offset="100"><h1 className='concept-icon'><FaPaintRoller /></h1></div>
+            <div className='Flex' data-aos="fade-down" data-aos-offset="100"><h1 className='concept-icon'><RiProjectorLine /> </h1></div>
             <div data-aos="fade-down" data-aos-offset="100"><h3>Instant Pricing
 
             </h3>

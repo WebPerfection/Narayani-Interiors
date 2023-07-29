@@ -8,6 +8,10 @@ a:hover {
 .about_main {
   width: 95%;
 }
+/* .Image_about > img {
+  height: 400PX;
+  width: 500PX;
+} */
 .about_div {
   display: flex;
 }

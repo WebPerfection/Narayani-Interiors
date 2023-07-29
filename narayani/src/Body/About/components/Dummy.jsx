@@ -24,8 +24,8 @@ export default function Dummy() {
         <TopImage heading={"About Narayani"} />
         <Box className="about_main" margin="auto">
           <br></br>
-          <h6 className="h6">Welcome to Narayani Interiors</h6>
-          <h1> Where Visionary Luxury Design Takes Center Stage</h1>
+          <h6 className="h6" >Welcome to Narayani Interiors</h6>
+          <h1 style={{width:"80%",margin:"auto"}}> Where Visionary Luxury Design Takes Center Stage</h1>
           <p
             style={{
               margin: "auto",
