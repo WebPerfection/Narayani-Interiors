@@ -169,7 +169,7 @@ Reviews
 ===============
 */
 .clinet-reviews {
-  min-height: 100vh;
+  padding: 20px 0px;
   display: grid;
   place-items: center;
 }
