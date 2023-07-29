@@ -5,19 +5,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Content.css"
 import {  FaLongArrowAltRight } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import AbotCompany from '../AboutCompany/AbotCompany';
-import Work from '../Work/Work';
-import WorkHome from '../../WoekHome/WorkHome';
-import WorkingProcess from '../../WorkingProcess/WorkingProcess';
 import desktopImage1 from '../../../ImageData/v1-1.jpg';
 import desktopImage2 from '../../../ImageData/v1-2.jpg';
 import desktopImage3 from '../../../ImageData/v1-3.jpg';
-import mobileImage1 from '../../../ImageData/mobile-v1-1.jpg';
-import mobileImage2 from '../../../ImageData/mobile-v1-2.jpg';
-import mobileImage3 from '../../../ImageData/mobile-v1-3.jpg';
-import MakeApoiment from '../../MakeApoiment/MakeApoiment';
-import Testimonial from '../../Testimonial/Testimonial';
-import ContentPart from './ContentPart';
+import mobileImage1 from '../../../ImageData/insta-profile-picture-v1-1.jpg';
+import mobileImage2 from '../../../ImageData/insta-profile-picture-v1-2.jpg';
+import mobileImage3 from '../../../ImageData/insta-profile-picture-v1-3.jpg';
 
 export default function Content() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);

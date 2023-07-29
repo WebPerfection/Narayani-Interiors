@@ -1,8 +1,4 @@
 import React from "react";
-import Image1 from "../ImageData/footer-img/gallery-2.jpg";
-import Image2 from "../ImageData/footer-img/gallery-3.jpg";
-import Image3 from "../ImageData/footer-img/gallery-4.jpg";
-import logo from "../Navbar/web.png";
 import "./Footer.css";
 import "../Navbar/Navbar.css";
 

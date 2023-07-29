@@ -22,7 +22,6 @@
 }
 .companyTitel > p {
   font-size: 18px;
-  font-weight: 500;
 }
 
 .about-main-div > div:first-child {
@@ -72,9 +71,12 @@
   .companyTitel > h1 {
     font-size: 4vw;
   }
+  .h6+h1{
+    font-size: 4vw;
+  }
 
   .companyTitel > p {
-    font-size: 18px;
+    font-size: 15px;
   }
   .companyImag {
     max-width: 100%;
