@@ -27,9 +27,9 @@ const FooterLink = styled.a`
 function Footer() {
   return (
     <FooterContainer>
-      <FooterText>
+      {/* <FooterText>
         © 2023 Web Perfection. All rights reserved.
-      </FooterText>
+      </FooterText> */}
     </FooterContainer>
   );
 }

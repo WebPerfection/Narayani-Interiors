@@ -14,7 +14,7 @@ export default function AbotCompany() {
             <div><h6>Ankit Agarwal, <span className="span">CEO & Founder</span></h6></div>
           </div>
         </div>
-        <div className="companyTitel" data-aos="zoom-in-up"  data-aos-offset="100">
+        <div className="companyTitel" data-aos="zoom-in-up" data-aos-offset="100">
           <h6 className="h6">About Us</h6>
           <h1>Experience the Essence of Exceptional Interior Design</h1>
           <p>

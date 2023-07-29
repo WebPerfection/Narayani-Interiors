@@ -126,7 +126,9 @@
 }
 .workingProcess ul li .descr {
   padding-block-end: 1.5rem;
-  font-weight: 300;
+  word-wrap: break-word; /* This property ensures words wrap to fill the line */
+  text-align: justify;
+  hyphens: auto;
 }
 
 /* shadows */
@@ -136,7 +138,7 @@
   position: absolute;
   width: 90%;
   height: 0.5rem;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.308);
   left: 50%;
   border-radius: 50%;
   filter: blur(4px);

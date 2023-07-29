@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import web from "./web.png";
+import web from "./web2.png";
 import "./Navbar.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { TbPhoneCall } from "react-icons/tb";
@@ -43,7 +43,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [scroll, setScroll] = useState(false);
   const [eStimate, setEStimate] = useState(false);
- 
+
   const [isChildOpen, setIsChildOpen] = useState(false);
 
   const toggleChild = () => {
@@ -55,7 +55,7 @@ export default function Navbar() {
       setRefrence(false);
     }, 800);
   }
- 
+
   console.log(scroll);
   const handleScroll = () => {
     if (window.scrollY > 0) {
@@ -87,7 +87,7 @@ export default function Navbar() {
           <Link to="/">
             <div className="Img-div Flex">
               <img src={web} />
-             
+
             </div>
           </Link>
 
@@ -212,19 +212,19 @@ export default function Navbar() {
               </li>
 
               <li
-               
+
               >
                 {" "}
-                <span onClick={toggleChild}  style={{ display: "flex", alignItems: "center", gap: "10px" }}><GiAutoRepair />
-                Services {isChildOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}</span>
-                
-                 <ul className={isChildOpen ? 'open' : 'ulService'}>
-                 <li style={{marginBottom:"0px",marginTop:"5px",textAlign:"start",borderBottom:"1px solid black",paddingBottom:"5px"}}><Link to="/allkitchen/Room"> Room</Link></li>
-                 <li style={{marginBottom:"0px",marginTop:"5px",textAlign:"start",borderBottom:"1px solid black",paddingBottom:"5px"}}><Link to="/allkitchen/Kitchen"> Kitchen</Link></li>
-                 <li style={{marginBottom:"0px",marginTop:"5px",textAlign:"start",borderBottom:"1px solid black",paddingBottom:"5px"}}><Link to="/allkitchen/Shop"> Shop</Link></li>
-                 <li style={{marginBottom:"0px",marginTop:"5px",textAlign:"start",paddingBottom:"5px"}}><Link to="/allkitchen/Office"> Office</Link></li>
-                 </ul>
-                
+                <span onClick={toggleChild} style={{ display: "flex", alignItems: "center", gap: "10px" }}><GiAutoRepair />
+                  Services {isChildOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}</span>
+
+                <ul className={isChildOpen ? 'open' : 'ulService'}>
+                  <li style={{ marginBottom: "0px", marginTop: "5px", textAlign: "start", borderBottom: "1px solid black", paddingBottom: "5px" }}><Link to="/allkitchen/Room"> Room</Link></li>
+                  <li style={{ marginBottom: "0px", marginTop: "5px", textAlign: "start", borderBottom: "1px solid black", paddingBottom: "5px" }}><Link to="/allkitchen/Kitchen"> Kitchen</Link></li>
+                  <li style={{ marginBottom: "0px", marginTop: "5px", textAlign: "start", borderBottom: "1px solid black", paddingBottom: "5px" }}><Link to="/allkitchen/Shop"> Shop</Link></li>
+                  <li style={{ marginBottom: "0px", marginTop: "5px", textAlign: "start", paddingBottom: "5px" }}><Link to="/allkitchen/Office"> Office</Link></li>
+                </ul>
+
               </li>
               <li>
                 <Link
@@ -244,24 +244,24 @@ export default function Navbar() {
                   About us
                 </Link>
               </li>
-             
-                {localStorage.getItem("adminAuthenticate") ? (
-                  <a href="/admin" target="_blank" rel="noopener noreferrer" style={{fontSize:"17px",width:"100%"}}>
-                    <button className="estimate-bt" style={{fontSize:"17px",width:"100%"}}>Admin</button>
-                  </a>
-                ) : (
-                  <button onClick={openModel} className="estimate-bt" style={{fontSize:"17px"}}>
-                    Get Estimate
-                  </button>
-                )}
-             
+
+              {localStorage.getItem("adminAuthenticate") ? (
+                <a href="/admin" target="_blank" rel="noopener noreferrer" style={{ fontSize: "17px", width: "100%" }}>
+                  <button className="estimate-bt" style={{ fontSize: "17px", width: "100%" }}>Admin</button>
+                </a>
+              ) : (
+                <button onClick={openModel} className="estimate-bt" style={{ fontSize: "17px" }}>
+                  Get Estimate
+                </button>
+              )}
+
             </ul>
-            <div style={{top:"10px"}} className="logo"><Link to="/">
-            <div className="Img-div Flex">
-              
-              <img src={web} />
-            </div>
-          </Link></div>
+            <div style={{ top: "10px" }} className="logo"><Link to="/">
+              <div className="Img-div Flex">
+
+                <img src={web} />
+              </div>
+            </Link></div>
           </div>
         </nav>
       </div>

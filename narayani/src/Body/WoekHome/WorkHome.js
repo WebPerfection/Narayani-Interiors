@@ -45,12 +45,13 @@ const WorkHome = () => {
   return (
     <div className='workHome-main-div'>
       <div className='heading-div'>
-        <h6 className='h6'>PROJECT SHOWCASE </h6>
-        <h1 style={{color:'black'}}>DISCOVER OUR LATEST DESIGN </h1>
+        <h6 className='h6'>Project Showcase</h6>
+        <h1 style={{ color: 'black' }}>Discover Our Latest Design</h1>
+
       </div>
       <div className="see-all-link">
-              <Link to="/allCategory"> See All <IoIosArrowForward/></Link>
-            </div>
+        <Link to="/allCategory"> See All <IoIosArrowForward /></Link>
+      </div>
       {
         data && <Carousel
           swipeable={false} // Disable swipe gestures for the Carousel

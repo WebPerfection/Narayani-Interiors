@@ -41,7 +41,7 @@ export default function Home() {
       <Testimonial />
       <MakeApoiment />
       <Footer />
-      <Designed_by />
+      {/* <Designed_by /> */}
       </ChakraProvider>
       {/* <CustomImages /> */}
     </>

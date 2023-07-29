@@ -1,38 +1,33 @@
-/* .carousel-container {
-  position: relative;
-} */
+
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-/* .carousel-item {
-  padding: 20px;
-  text-align: center;
-} */
-.testimonial-1{
+
+.testimonial-1 {
   padding: 10px;
   height: 100%;
 }
-.testimonial{
- 
+.testimonial {
   height: 100%;
   padding: 30px 20px;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   background-color: white;
 }
-.testimonial:hover{
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+.testimonial:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
-.testimonial-main{
-  padding:0px 3.125rem;
+.testimonial-main {
+  padding: 0px 3.125rem;
 }
 .react-multiple-carousel__arrow--right {
   /* right: calc(-1% + 0px);
    */
 }
-.body{
+.body {
   background-color: #ededed;
 }
 .testimonial-image {
@@ -42,7 +37,6 @@
   object-fit: cover;
   margin: 0 auto 10px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 4px;
-  
 }
 
 .testimonial-name {
@@ -55,8 +49,6 @@
   color: #777;
   margin-bottom: 10px;
 }
-
-
 
 :root {
   /* dark shades of primary color*/
@@ -111,21 +103,12 @@ Global Styles
   padding: 0;
   box-sizing: border-box;
 }
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background: var(--clr-grey-10);
-  color: var(--clr-grey-1);
-  line-height: 1.5;
-  font-size: 0.875rem;
-}
 .clinet-reviews ul {
   list-style-type: none;
 }
 .clinet-reviews a {
   text-decoration: none;
 }
-.clinet-reviews h1,
 .clinet-reviews h2,
 .clinet-reviews h3,
 .clinet-reviews h4 {
@@ -134,9 +117,7 @@ body {
   line-height: 1.25;
   margin-bottom: 0.75rem;
 }
-.clinet-reviews h1 {
-  font-size: 3rem;
-}
+
 .clinet-reviews h2 {
   font-size: 2rem;
 }
@@ -151,9 +132,7 @@ body {
   color: var(--clr-grey-5);
 }
 @media screen and (min-width: 800px) {
-  .clinet-reviews h1 {
-    font-size: 4rem;
-  }
+
   .clinet-reviews h2 {
     font-size: 2.5rem;
   }
@@ -163,8 +142,7 @@ body {
   .clinet-reviews h4 {
     font-size: 1rem;
   }
-  .clinet-reviews  h1,
-  .clinet-reviews  h2,
+  .clinet-reviews h2,
   .clinet-reviews h3,
   .clinet-reviews h4 {
     line-height: 1;
@@ -214,13 +192,14 @@ Reviews
   background: var(--clr-white);
   padding: 1.5rem 2rem;
   border-radius: var(--radius);
-  box-shadow: var(--light-shadow);
+  box-shadow: #ffb23f 0px 0px 10px 0px,
+    rgba(255, 255, 255, 0.8) 0px 0px 10px 0px;
   transition: var(--transition);
   text-align: center;
 }
-.clinet-reviews .review:hover {
+/* .clinet-reviews .review:hover {
   box-shadow: var(--dark-shadow);
-}
+} */
 .clinet-reviews .img-container {
   position: relative;
   width: 150px;
@@ -247,11 +226,11 @@ Reviews
   place-items: center;
   border-radius: 50%;
   transform: translateY(25%);
-  background:rgba(255, 153, 0, 0.959);
-  color:white;
+  background: rgba(255, 153, 0, 0.959);
+  color: white;
 }
 .clinet-reviews .img-container::before {
-  content: '';
+  content: "";
   width: 100%;
   height: 100%;
   background: rgba(255, 153, 0, 0.753);
@@ -289,7 +268,7 @@ Reviews
 .clinet-reviews .random-btn {
   margin-top: 0.5rem;
   background: rgba(255, 153, 0, 0.753);
-  color:white;
+  color: white;
   padding: 0.25rem 0.5rem;
   text-transform: capitalize;
   border-radius: var(--radius);
@@ -298,11 +277,11 @@ Reviews
   cursor: pointer;
 }
 .clinet-reviews .random-btn:hover {
-  background:white;
+  background: white;
   color: rgba(255, 153, 0, 0.753);
 }
 
-.clinet-reviews .icon{
-font-size: 4rem;
-color:red;
+.clinet-reviews .icon {
+  font-size: 4rem;
+  color: red;
 }

@@ -26,15 +26,29 @@
   /* background-color: var(--text-gold); */
   transition: 1.5s;
 }
+/* Add a dark black overlay to the background image */
 .first_div {
+  position: relative;
   background-image: url("./Content_1.jpeg");
-   background-repeat: no-repeat;
-   background-size: cover;
-   background-position: center;
-   /* filter: brightness(50%); */
-   color: white;
-   border-top: 5px solid var(--text-gold);
-  }
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  border-top: 5px solid var(--text-gold);
+}
+
+.first_div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.671); 
+  z-index: -1;/* Adjust the last value (0.5) for the darkness intensity */
+  border-radius: 0px 0px 10px 10px;
+}
+
   .second_div{
     background-image: url("./Contect_2.jpg");
     background-repeat: no-repeat;
@@ -43,6 +57,17 @@
    /* filter: brightness(50%); */
    color: white;
    border-top: 5px solid var(--text-gold);
+  }
+  .second_div::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.671); 
+    z-index: -1;/* Adjust the last value (0.5) for the darkness intensity */
+    border-radius: 0px 0px 10px 10px;
   }
   .concept-icon{
     color: black;
@@ -55,6 +80,17 @@
    /* filter: brightness(50%); */
    color: white;
    border-top: 5px solid var(--text-gold);
+  }
+  .Third_3::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.671); 
+    z-index: -1;/* Adjust the last value (0.5) for the darkness intensity */
+    border-radius: 0px 0px 10px 10px;
   }
 .arrow {
   margin-top: 3px;

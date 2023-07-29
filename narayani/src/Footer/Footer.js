@@ -1,13 +1,14 @@
 import React from "react";
 import "./Footer.css";
 import "../Navbar/Navbar.css";
-
+import log from '../Navbar/web1.png'
 export default function Footer() {
   return (
     <footer>
       <div className="row primary">
         <div className="column about">
-          <h3 className="footer_h3">Narayni- Interior</h3>
+          {/* <h3 className="footer_h3">Narayni- Interior</h3> */}
+          <img style={{width:'50%'}} src={log}/>
           <p>
             Welcome to Narayni-Interior, your premier destination for exquisite
             interior design solutions. We strive to create spaces that inspire,
@@ -56,11 +57,11 @@ export default function Footer() {
                 <a href="#faq">Email: ankitjewrajka1234@gmail.com</a>
               </li>
               <li>
-                <a href="#cookies-policy">Phone: +917670834090</a>
+                <a href="#cookies-policy">Phone: +91 7670834090</a>
               </li>
               <li>
                 <a href="#terms-of-services">
-                  Address: <i>Ranchi (834001) 4A, Virdavan Apartment</i>
+                  Address: <i>Ranchi (834001), 4A Virdavan Apartment.</i>
                 </a>
               </li>
             </ul>

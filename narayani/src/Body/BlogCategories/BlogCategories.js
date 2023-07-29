@@ -20,7 +20,7 @@ const BlogCategories = () => {
     const [consult,setConsult]=useState(false)
     const categories = [
         { name: 'Modular Kitchen', icon: <img src={UtensilsIcon} alt="Utensils Icon" />,maincetegory:"Kitchen" },
-        { name: 'Wardrobes', icon: <img src={Wardrobes} alt="Wardrobes" />,maincetegory:"Room"  },
+        { name: 'Wardrobe', icon: <img src={Wardrobes} alt="Wardrobes" />,maincetegory:"Room"  },
         { name: 'Master Bedroom', icon: <img src={BedIcon} alt="Bed Icon" />,maincetegory:"Room" },
         { name: 'TV Unit', icon: <img src={TvIcon} alt="TV Icon" /> },
         { name: 'Living Room', icon: <img src={CouchIcon} alt="Couch Icon" />,maincetegory:"Room"  },

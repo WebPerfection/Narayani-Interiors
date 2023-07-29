@@ -775,6 +775,8 @@ button {
   }
   #main2{
     display: block;
+    padding: 4px;
+    box-shadow: 0px 0px 0px white;
   }
 }
 

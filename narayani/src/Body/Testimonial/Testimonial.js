@@ -95,7 +95,8 @@ const Testimonial = () => {
     <main className="clinet-reviews">
       <section className="container">
         <div className="title">
-          <h6 className="h6">Our Reviews</h6>
+          <h6 className="h6">Client Testimonials</h6>
+          <h1 style={{ color: 'black' }}>What Our Clients Have to Say</h1>
           <div className="underline"></div>
         </div>
         <Review />
