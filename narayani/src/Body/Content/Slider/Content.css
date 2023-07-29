@@ -1,4 +1,3 @@
-
 .content-main-div > img {
   width: 100%;
 }
@@ -17,6 +16,7 @@
   border-radius: 50%;
   margin-top: -50px;
   background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
 }
 .concept-card > div:hover .concept-icon {
   cursor: pointer;
@@ -26,11 +26,41 @@
   /* background-color: var(--text-gold); */
   transition: 1.5s;
 }
+.first_div {
+  background-image: url("./Content_1.jpeg");
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center;
+   /* filter: brightness(50%); */
+   color: white;
+   border-top: 5px solid var(--text-gold);
+  }
+  .second_div{
+    background-image: url("./Contect_2.jpg");
+    background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center;
+   /* filter: brightness(50%); */
+   color: white;
+   border-top: 5px solid var(--text-gold);
+  }
+  .concept-icon{
+    color: black;
+  }
+  .Third_3{
+    background-image: url("./Content_3.jpg");
+    background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center;
+   /* filter: brightness(50%); */
+   color: white;
+   border-top: 5px solid var(--text-gold);
+  }
 .arrow {
   margin-top: 3px;
 }
 .react-multiple-carousel__arrow::before {
-    color: var(--text-gold);
+  color: var(--text-gold);
 }
 #concept-card a {
   font-size: 20px;
@@ -44,8 +74,8 @@
 .concept-card > div {
   width: 28%;
   position: relative;
-
-  margin-top: -30px;
+  min-height: 250px;
+  /* margin-top: -5px; */
   /* margin-bottom: 20px; */
   z-index: 9;
   border-radius: 0px 0px 10px 10px;
@@ -65,7 +95,7 @@
 .concept-card > div > div:last-child {
   padding: 13px;
   border-radius: 0px 0px 10px 10px;
-  background-color: #ededed;
+
 }
 .concept-card > div > div {
   margin: 0px;
@@ -76,46 +106,47 @@
     margin-top: 60px;
   }
 }
-.carousel-control-next, .carousel-control-prev{
-    top: 50%;
-    height: fit-content;
+.carousel-control-next,
+.carousel-control-prev {
+  top: 50%;
+  height: fit-content;
 }
 @media only screen and (max-width: 600px) {
-    .heading {
-      font-size: 1.5rem !important;
-    }
-  
-    .text {
-      font-size: 0.9rem !important;
-    }
-    .heading_container{
-        width: 80% !important;
-    }
-    .about_btn{
+  .heading {
+    font-size: 1.5rem !important;
+  }
+
+  .text {
+    font-size: 0.9rem !important;
+  }
+  .heading_container {
+    width: 80% !important;
+  }
+  .about_btn {
     padding: 0.5rem 1rem !important;
     transition: 0.5s !important;
-    }
-    .image_wrapper{
+  }
+  .image_wrapper {
     margin-top: 60px;
-    
-    }
-  
-    .heading_container {
-        top: 50% !important;
-      }
   }
-  @media only screen and (max-width: 350px){
-    .text {
-      display: none;
-    }
+
+  .heading_container {
+    top: 50% !important;
   }
+}
+@media only screen and (max-width: 350px) {
+  .text {
+    display: none;
+  }
+}
 @media only screen and (max-width: 900px) {
   #concept-card {
     flex-direction: column;
-    gap: 50px;
+    gap: 0px;
     margin-top: -80px;
+    background-color: #dee2e6;
   }
-  .carousel-indicators{
+  .carousel-indicators {
     display: none;
   }
   .concept-card {
@@ -123,6 +154,7 @@
   }
   #concept-card > div {
     width: 95%;
+    min-height: 238px;
     margin-top: 80px;
   }
   #concept-card h3 {
@@ -134,79 +166,80 @@
   #concept-card a {
     font-size: 20px;
   }
-  
 }
 .main_container {
-    position: relative;
-  }
-  
-  .image_wrapper {
-    position: relative;
-    width: 100%;
+  position: relative;
+}
 
-  }
-  .d-block{
-    filter: brightness(50%);
-  }
-  .image_wrapper::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* background-image: url('closure-image.jpg'); Replace 'closure-image.jpg' with the path to your closure image */
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity: 0.5;
-  }
-  
-  .heading_container {
-    position: absolute;
-    top: 60%;
-    left: 10%;
-    transform: translateY(-50%);
-    z-index: 10;
-    width: 50%;
-  }
-  
-  .heading_content {
-    padding: 20px;
-    /* background-color: rgba(255, 255, 255, 0.9); */
-    border-radius: 10px;
-  }
-  .heading_content>*{
-    color: white;
-    text-align: left;
-  }
-  .heading {
-    font-size: 2.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.726);
-    color: white;
-  }
-  
-  .text {
-    font-size: 1.2rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-    color: white;
-  }
-  .about_btn {
-    display: flex;
-    background-color: var(--text-gold);
-    align-items: center;
-    gap: .630rem;
-    border: 1px solid white;
-    padding: .625rem 1.875rem;
-    transition: 0.5s;
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  
-  .about_btn:hover {
-    background: linear-gradient(to right, #ff99009f 10%, rgba(218, 216, 216, 0.753) 90%);
-    border: 1px solid #de9c40;
-  }
-  
-  /* Add any additional styles you need */
-  
+.image_wrapper {
+  position: relative;
+  width: 100%;
+}
+.d-block {
+  filter: brightness(50%);
+}
+.image_wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-image: url('closure-image.jpg'); Replace 'closure-image.jpg' with the path to your closure image */
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.5;
+}
+
+.heading_container {
+  position: absolute;
+  top: 60%;
+  left: 10%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 50%;
+}
+
+.heading_content {
+  padding: 20px;
+  /* background-color: rgba(255, 255, 255, 0.9); */
+  border-radius: 10px;
+}
+.heading_content > * {
+  color: white;
+  text-align: left;
+}
+.heading {
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.726);
+  color: white;
+}
+
+.text {
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  color: white;
+}
+.about_btn {
+  display: flex;
+  background-color: var(--text-gold);
+  align-items: center;
+  gap: 0.63rem;
+  border: 1px solid white;
+  padding: 0.625rem 1.875rem;
+  transition: 0.5s;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.about_btn:hover {
+  background: linear-gradient(
+    to right,
+    #ff99009f 10%,
+    rgba(218, 216, 216, 0.753) 90%
+  );
+  border: 1px solid #de9c40;
+}
+
+/* Add any additional styles you need */

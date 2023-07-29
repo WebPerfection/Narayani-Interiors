@@ -19,9 +19,15 @@ export default function Footer() {
           <div className="Social-main">
             <h3 className="footer_h3">Social Media</h3>
             <div className="social">
-              <i className="fa-brands fa-facebook-square"></i>
-              <i className="fa-brands fa-instagram-square"></i>
-              <i className="fa-brands fa-whatsapp-square"></i>
+              <a href="https://www.instagram.com/narayani.interiors/?igshid=YmM0MjE2YWMzOA%3D%3D" target="_blank"><i className="fa-brands fa-facebook-square"></i></a>
+             <a href="https://www.instagram.com/narayani.interiors/?igshid=YmM0MjE2YWMzOA%3D%3D" target="_blank"> <i className="fa-brands fa-instagram-square"></i></a>
+             <a onClick={() => {
+                        const phoneNumber = "+917670834090"; // replace with your WhatsApp contact's phone number
+                        window.open(
+                            `https://api.whatsapp.com/send?phone=${phoneNumber}`,
+                            "_blank"
+                        );
+                    }}> <i className="fa-brands fa-whatsapp-square"></i></a>
             </div>
           </div>
         </div>
@@ -69,16 +75,7 @@ export default function Footer() {
         </div> */}
       </div>
 
-      <div className="row copyright">
-        <div className="footer-menu">
-          <a href="">Home</a>
-          <a href="">About</a>
-          <a href="">Contact</a>
-          <a href="">Blog</a>
-          <a href="">Social</a>
-        </div>
-        {/* <p>© 2023 Narayni-Interior. All rights reserved.</p> */}
-      </div>
+     
     </footer>
   );
 }
