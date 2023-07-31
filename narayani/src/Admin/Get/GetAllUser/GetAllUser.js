@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { SimpleGrid, ChakraProvider, Button } from "@chakra-ui/react";
+import { SimpleGrid, ChakraProvider, Button, Modal } from "@chakra-ui/react";
 
 import { BsSearch } from "react-icons/bs";
 import { IconButton, HStack, VStack, Box } from "@chakra-ui/react";
@@ -11,7 +11,15 @@ import AllusersCard from "./UserCard";
 import { useDispatch } from "react-redux";
 import { toggelModel } from "../../../Redux/Action";
 import { useNavigate } from "react-router-dom";
+import { Toaster, toast } from "react-hot-toast";
 function Allusers() {
+
+
+
+
+
+
+
   const [appointments, setAppointments] = useState([]);
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
@@ -20,11 +28,10 @@ function Allusers() {
   const [totalusers, setTotalUsers] = useState(0);
   const [update, setUpdate] = useState(false);
 const navigate=useNavigate()
- 
-  const openModel = () => {
-    dispatch(toggelModel());
-    
-  };
+const openModel = () => {
+  dispatch(toggelModel());
+};
+  
   useEffect(() => {
     axios
       .get(`https://dull-lime-wombat-veil.cyclic.app/users/`)
@@ -163,6 +170,7 @@ const navigate=useNavigate()
         </HStack>
       </VStack>
       <br></br>
+
     </ChakraProvider>
   );
 }

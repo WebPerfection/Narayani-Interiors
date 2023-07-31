@@ -33,6 +33,7 @@ export const PopupForm = () => {
     if (localStorage.getItem("adminAuthenticate")) {
       // Check if admin is authenticated
       // Do something if admin is authenticated
+      setShow(ModelCheck);
     } else {
       setShow(ModelCheck);
     }
