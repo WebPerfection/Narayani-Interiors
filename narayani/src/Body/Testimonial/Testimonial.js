@@ -45,7 +45,7 @@ const Testimonial = () => {
   const model = useSelector((store) => store);
   useEffect(() => {
     axios
-      .get("https://azure-hen-cap.cyclic.app/testimonial")
+      .get("https://dull-lime-wombat-veil.cyclic.app/testimonial")
       .then((res) => setTestimonials(res.data))
       .catch((err) => console.log(err));
   }, [model]);

@@ -28,7 +28,7 @@ const [search, setSearch] = useState("");
 
   function getAll() {
     // Fetch data from API and update the state
-    const apiUrl = `https://azure-hen-cap.cyclic.app/sub?query=${search}`;
+    const apiUrl = `https://dull-lime-wombat-veil.cyclic.app/sub?query=${search}`;
     axios
       .get(apiUrl)
       .then((res) => {
@@ -119,7 +119,7 @@ const [search, setSearch] = useState("");
 
     // Send the updated item data to the API
     axios
-      .patch(`https://azure-hen-cap.cyclic.app/sub/${itemId}`, updatedItem)
+      .patch(`https://dull-lime-wombat-veil.cyclic.app/sub/${itemId}`, updatedItem)
       .then((response) => {
         if (response.status === 200) {
           console.log(`Item with ID ${itemId} updated successfully.`);
@@ -167,7 +167,7 @@ const [search, setSearch] = useState("");
       cancelButtonText: 'Cancel',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://azure-hen-cap.cyclic.app/sub/${itemId}`, {
+        fetch(`https://dull-lime-wombat-veil.cyclic.app/sub/${itemId}`, {
           method: 'DELETE',
         })
           .then((response) => {

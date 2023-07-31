@@ -4,6 +4,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import TestimonialUpdatePopup from './TestimonialUpdatePopup';
 import TestimonialCard from './TestimonialCard';
+import { useNavigate } from 'react-router-dom';
 
 function GetAllTestimonial({ check }) {
     const [testimonials, setTestimonials] = useState([]);
@@ -13,14 +14,14 @@ function GetAllTestimonial({ check }) {
     const [image, setImage] = useState(null);
     const [uploadStatus, setUploadStatus] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-
+    const navigate=useNavigate()
     useEffect(() => {
         getAllTestimonials();
     }, [check]);
 
     function getAllTestimonials() {
         axios
-            .get('https://azure-hen-cap.cyclic.app/testimonial')
+            .get('https://dull-lime-wombat-veil.cyclic.app/testimonial')
             .then((response) => {
                 console.log(response.data);
                 setTestimonials(response.data);
@@ -87,7 +88,7 @@ function GetAllTestimonial({ check }) {
 
         axios
             .patch(
-                `https://azure-hen-cap.cyclic.app/testimonial/${testimonialId}`,
+                `https://dull-lime-wombat-veil.cyclic.app/testimonial/${testimonialId}`,
                 updatedTestimonial
             )
             .then((response) => {
@@ -128,7 +129,7 @@ function GetAllTestimonial({ check }) {
             cancelButtonText: 'Cancel',
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://azure-hen-cap.cyclic.app/testimonial/${testimonialId}`, {
+                fetch(`https://dull-lime-wombat-veil.cyclic.app/testimonial/${testimonialId}`, {
                     method: 'DELETE',
                 })
                     .then((response) => {
@@ -157,7 +158,9 @@ function GetAllTestimonial({ check }) {
             }
         });
     }
-
+    if(!localStorage.getItem("adminAuthenticate")){
+        return navigate("/")
+    }
     return (
         <>
             <div className="testimonials">

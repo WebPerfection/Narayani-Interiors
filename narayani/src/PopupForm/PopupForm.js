@@ -115,7 +115,7 @@ export const PopupForm = () => {
     }
   
     axios
-      .post("https://azure-hen-cap.cyclic.app/users/register", payload)
+      .post("https://dull-lime-wombat-veil.cyclic.app/users", payload)
       .then((res) => {
         setName("");
         setEmail("");

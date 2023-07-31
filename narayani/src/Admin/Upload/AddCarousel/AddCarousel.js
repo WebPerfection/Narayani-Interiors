@@ -106,7 +106,7 @@ const AddCarousel = () => {
         };
 
         try {
-            await axios.post('https://azure-hen-cap.cyclic.app/carousel', payload).then((res) => {
+            await axios.post('https://dull-lime-wombat-veil.cyclic.app/carousel', payload).then((res) => {
                 console.log('Response:', res.data);
                 // setUploadStatus('Added Successfully');
                 // Reset the form after successful upload

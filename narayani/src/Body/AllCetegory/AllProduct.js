@@ -46,8 +46,8 @@ export default function AllProduct() {
 
   const fetchData = () => {
     const apiUrl = filter
-      ? `https://azure-hen-cap.cyclic.app/data?category=${filter}&page=${currentPage}`
-      : `https://azure-hen-cap.cyclic.app/data?page=${currentPage}`;
+      ? `https://dull-lime-wombat-veil.cyclic.app/data?category=${filter}&page=${currentPage}`
+      : `https://dull-lime-wombat-veil.cyclic.app/data?page=${currentPage}`;
     axios
       .get(apiUrl)
       .then((res) => {
@@ -60,8 +60,8 @@ export default function AllProduct() {
 
   const sortFunction = () => {
     const apiUrl = filter
-      ? `https://azure-hen-cap.cyclic.app/data?category=${filter}&length=${_length}&width=${_width}&page=${currentPage}`
-      : `https://azure-hen-cap.cyclic.app/data?length=${_length}&width=${_width}&page=${currentPage}`;
+      ? `https://dull-lime-wombat-veil.cyclic.app/data?category=${filter}&length=${_length}&width=${_width}&page=${currentPage}`
+      : `https://dull-lime-wombat-veil.cyclic.app/data?length=${_length}&width=${_width}&page=${currentPage}`;
     axios
       .get(apiUrl)
       .then((res) => {

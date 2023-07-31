@@ -5,6 +5,7 @@ import withReactContent from 'sweetalert2-react-content';
 import './AddTestimonial.css';
 import AdminNav from '../../AdminNav/AdminNav.js';
 import GetAllTestimonial from '../../Get/GetAllTestimonial/GetAllTestimonial';
+import { useNavigate } from 'react-router-dom';
 
 const AddTestimonial = () => {
   const [name, setName] = useState('');
@@ -14,7 +15,7 @@ const AddTestimonial = () => {
   const [next, setNext] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const formRef = useRef(null);
-
+  const navigate=useNavigate()
   const MySwal = withReactContent(Swal);
 
   const deleteImageFromCloudinary = async (imageUrl) => {
@@ -73,7 +74,7 @@ const AddTestimonial = () => {
     };
 
     try {
-      const response = await axios.post('https://azure-hen-cap.cyclic.app/testimonial', payload);
+      const response = await axios.post('https://dull-lime-wombat-veil.cyclic.app/testimonial', payload);
       if (response.status === 200) {
         console.log('Response:', response.data);
         setUploadStatus('Added Successfully');
@@ -114,7 +115,9 @@ const AddTestimonial = () => {
       });
     }
   };
-
+  if(!localStorage.getItem("adminAuthenticate")){
+    return navigate("/")
+}
   return (
     <>
       <AdminNav />

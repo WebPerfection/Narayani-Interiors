@@ -52,7 +52,7 @@ const ProjectPage = () => {
   const [cetegory, setCetegory] = useState("")
   useEffect(() => {
     cetegory && axios
-      .get(`https://azure-hen-cap.cyclic.app/data?category=${cetegory}`)
+      .get(`https://dull-lime-wombat-veil.cyclic.app/data?category=${cetegory}`)
       .then((res) => {
         setData(res.data.uploads);
       })
@@ -84,7 +84,7 @@ const ProjectPage = () => {
 
   useEffect(() => {
     axios
-      .get(`https://azure-hen-cap.cyclic.app/data/${id}`)
+      .get(`https://dull-lime-wombat-veil.cyclic.app/data/${id}`)
       .then((res) => {
         setProjectImages(res.data.images);
         setAllData(res.data);

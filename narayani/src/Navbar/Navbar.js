@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggelModel } from "../Redux/Action";
 import { GiAutoRepair } from "react-icons/gi";
 import "./dropDown.css";
+import axios from "axios";
 
 const ParentItem = ({ title, children }) => (
   <li className="parent">
@@ -45,9 +46,15 @@ export default function Navbar() {
   const [eStimate, setEStimate] = useState(false);
 
   const [isChildOpen, setIsChildOpen] = useState(false);
-
+  const [mainService, setMainService] = useState("");
+  useEffect(() => {
+    axios
+      .get("https://dull-lime-wombat-veil.cyclic.app/main")
+      .then((res) => setMainService(res.data))
+      .catch((err) => console.log(err));
+  }, []);
   const toggleChild = () => {
-    setIsChildOpen(prevState => !prevState);
+    setIsChildOpen((prevState) => !prevState);
   };
   if (refrence) {
     setTimeout(() => {
@@ -87,7 +94,6 @@ export default function Navbar() {
           <Link to="/">
             <div className="Img-div Flex">
               <img src={web} />
-
             </div>
           </Link>
 
@@ -104,20 +110,8 @@ export default function Navbar() {
                 <ParentItem title="Services">
                   <ul id="menu">
                     <li className="parent" id="hide"></li>
-                    <ParentItem title="Room">
-                      {/* <ChildItem title="Bed Room" />
-                      <ChildItem title="Guest Room" />
-                      <ChildItem title="Child Room" /> */}
-                    </ParentItem>
-
-                    <ParentItem title="Kitchen"></ParentItem>
-
-                    {/* <ChildItem title="Modular Kitchen" />
-                      <ChildItem title="L-Shape Kitchen" />
-                      <ChildItem title="Simple Kitchen" /> */}
-
-                    <ParentItem title="Shop"></ParentItem>
-                    <ParentItem title="Office"></ParentItem>
+                    {mainService && mainService.map(el=><ParentItem key={el._id} title={el.smname}/>)}
+                   
                   </ul>
                 </ParentItem>
               </Link>
@@ -211,20 +205,60 @@ export default function Navbar() {
                 </Link>
               </li>
 
-              <li
-
-              >
+              <li>
                 {" "}
-                <span onClick={toggleChild} style={{ display: "flex", alignItems: "center", gap: "10px" }}><GiAutoRepair />
-                  Services {isChildOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}</span>
-
-                <ul className={isChildOpen ? 'open' : 'ulService'}>
-                  <li style={{ marginBottom: "0px", marginTop: "5px", textAlign: "start", borderBottom: "1px solid black", paddingBottom: "5px" }}><Link to="/allkitchen/Room"> Room</Link></li>
-                  <li style={{ marginBottom: "0px", marginTop: "5px", textAlign: "start", borderBottom: "1px solid black", paddingBottom: "5px" }}><Link to="/allkitchen/Kitchen"> Kitchen</Link></li>
-                  <li style={{ marginBottom: "0px", marginTop: "5px", textAlign: "start", borderBottom: "1px solid black", paddingBottom: "5px" }}><Link to="/allkitchen/Shop"> Shop</Link></li>
-                  <li style={{ marginBottom: "0px", marginTop: "5px", textAlign: "start", paddingBottom: "5px" }}><Link to="/allkitchen/Office"> Office</Link></li>
+                <span
+                  onClick={toggleChild}
+                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                >
+                  <GiAutoRepair />
+                  Services {isChildOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                </span>
+                <ul className={isChildOpen ? "open" : "ulService"}>
+                 {mainService && mainService.map(el=> <li
+                    style={{
+                      marginBottom: "0px",
+                      marginTop: "5px",
+                      textAlign: "start",
+                      borderBottom: "1px solid black",
+                      paddingBottom: "5px",
+                    }}
+                  >
+                    <Link to={`/allkitchen/${el.smname}`}> {el.smname}</Link>
+                  </li>)}
+                  {/* <li
+                    style={{
+                      marginBottom: "0px",
+                      marginTop: "5px",
+                      textAlign: "start",
+                      borderBottom: "1px solid black",
+                      paddingBottom: "5px",
+                    }}
+                  >
+                    <Link to="/allkitchen/Kitchen"> Kitchen</Link>
+                  </li>
+                  <li
+                    style={{
+                      marginBottom: "0px",
+                      marginTop: "5px",
+                      textAlign: "start",
+                      borderBottom: "1px solid black",
+                      paddingBottom: "5px",
+                    }}
+                  >
+                    <Link to="/allkitchen/Shop"> Shop</Link>
+                  </li>
+                  <li
+                    style={{
+                      marginBottom: "0px",
+                      marginTop: "5px",
+                      textAlign: "start",
+                      paddingBottom: "5px",
+                    }}
+                  >
+                    <Link to="/allkitchen/Office"> Office</Link>
+                  </li> */}
                 </ul>
-
               </li>
               <li>
                 <Link
@@ -246,22 +280,36 @@ export default function Navbar() {
               </li>
 
               {localStorage.getItem("adminAuthenticate") ? (
-                <a href="/admin" target="_blank" rel="noopener noreferrer" style={{ fontSize: "17px", width: "100%" }}>
-                  <button className="estimate-bt" style={{ fontSize: "17px", width: "100%" }}>Admin</button>
+                <a
+                  href="/admin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontSize: "17px", width: "100%" }}
+                >
+                  <button
+                    className="estimate-bt"
+                    style={{ fontSize: "17px", width: "100%" }}
+                  >
+                    Admin
+                  </button>
                 </a>
               ) : (
-                <button onClick={openModel} className="estimate-bt" style={{ fontSize: "17px" }}>
+                <button
+                  onClick={openModel}
+                  className="estimate-bt"
+                  style={{ fontSize: "17px" }}
+                >
                   Get Estimate
                 </button>
               )}
-
             </ul>
-            <div style={{ top: "10px" }} className="logo"><Link to="/">
-              <div className="Img-div Flex">
-
-                <img src={web} />
-              </div>
-            </Link></div>
+            <div style={{ top: "10px" }} className="logo">
+              <Link to="/">
+                <div className="Img-div Flex">
+                  <img src={web} />
+                </div>
+              </Link>
+            </div>
           </div>
         </nav>
       </div>

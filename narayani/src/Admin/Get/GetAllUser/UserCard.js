@@ -1,165 +1,251 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios"
 import {
   Card,
+  Box,
+  useToast,
+  Heading,
+  Button,
   CardHeader,
   CardBody,
   CardFooter,
-  Heading,
-  Stack,
-  StackDivider,
-  Box,
-  Text,
-  Button,
+  Flex,
+  useDisclosure,
+  Modal,
+  ModalContent,
+  ModalOverlay,
+  ModalCloseButton,
+  ModalHeader,
+  ModalBody,
+  FormControl,
+  FormLabel,
+  Input,
+  ModalFooter,
+  Select,
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogContent,
+  AlertDialogOverlay,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-const UserCard = ({ user, updateUser, deleteUser }) => {
-  const [totalAppointment,setTotalAppointment]=useState(0)
+import axios from "axios";
 
-  useEffect(()=>{
-       axios.get(`https://azure-hen-cap.cyclic.app/appointment/${user._id}`)
-       .then((res)=>setTotalAppointment(res.data.length))
-       .catch((err)=>console.log(err))
-  },[])
+function AllusersCard({ User, updateClick }) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const initialRef = React.useRef(null);
+  const finalRef = React.useRef(null);
+  const [formData, setFormData] = useState({});
+  const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
+  const [totalAppointmetn, setTotalAppointment] = useState(0);
+  const [totalEvent, setTotalEvent] = useState(0);
+  const [totalAstro, setTotalAstro] = useState(0);
+  const toast = useToast();
+  // const updateClick = () => {
+  //   axios
+  //     .patch(
+  //       `https://testing-j8ci.onrender.com/users/`,
+  //       { appointmentStatus }
+  //     )
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err));
+  // };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    if (name === "DOB") {
+      // Reformat the date value to "dd/mm/yyyy"
+      const [year, month, day] = value.split("-");
+      const formattedDate = `${day}/${month}/${year}`;
+      //   console.log(value)
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: formattedDate,
+      }));
+    } else {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: value,
+      }));
+    }
+  };
+  useEffect(() => {
+    axios
+      .get(`https://dull-lime-wombat-veil.cyclic.app/appointment/${User._id}`)
+      .then((res) => setTotalAppointment(res.data.length))
+      .catch((err) => console.log(err));
+
+   
+  }, []);
+
+  const onDeleteConfirm = () => {
+    setIsDeleteAlertOpen(false);
+    // Perform delete logic here
+    axios
+      .delete(`https://testing-j8ci.onrender.com/users/${User._id}`)
+      .then((res) => {
+        console.log(res);
+        toast({
+          title: "User Deleted",
+          description: "User deleted successfully.",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        });
+        // Perform any necessary actions after successful deletion
+      })
+      .catch((err) => {
+        toast({
+          title: "Error",
+          description:
+            "An error occurred while submitting the form. Please try again later.",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+      });
+  };
+
   return (
-    // <div key={user._id} className="wrapper">
-    //     <div className="product-info" style={{ width: '100%' }}>
-    //         <div className="product-text">
-    //             <span>
-    //                 <h3>Name:-</h3>
-    //                 <p>{user.name}</p>
-    //             </span>
-    //             <span>
-    //                 <h3>Email:-</h3>
-    //                 <p>{user.email}</p>
-    //             </span>
-    //             <span>
-    //                 <h3>Number:-</h3>
-    //                 <p>{user.number}</p>
-    //             </span>
-    //             <span>
-    //                 <h3>Last Visit:- </h3>
-    //                 <p>{user.last_visit}</p>
-    //             </span>
-    //             <span>
-    //                 <h3>Next Consult Date:- </h3>
-    //                 <p>{user.next_consult_date}</p>
-    //             </span>
-    //             <span>
-    //                 <h3>Consult Status:- </h3>
-    //                 <p
-    //                     style={{
-    //                         color: user.consult_status ? 'green' : 'red',
-    //                         fontWeight: 'bold',
-    //                     }}
-    //                 >
-    //                     {user.consult_status ? 'Consulted' : 'Not Consulted'}
-    //                 </p>
-    //             </span>
-    //             <span>
-    //                 <h3>Consulter Name:- </h3>
-    //                 <p>{user.consulter_name}</p>
-    //             </span>
-    //             <span>
-    //                 <h3>Consult Feedback:- </h3>
-    //                 <p>{user.consult_feedback}</p>
-    //             </span>
-    //         </div>
-    //         <div className="product-price-btn">
-    //             <button
-    //                 type="button"
-    //                 className="update-btn"
-    //                 onClick={() => updateUser(user)}
-    //             >
-    //                 Update
-    //             </button>
-    //             <button
-    //                 type="button"
-    //                 className="delete-btn"
-    //                 onClick={() => deleteUser(user._id)}
-    //             >
-    //                 Delete
-    //             </button>
-    //         </div>
-    //     </div>
-    // </div>
     <Card boxShadow="dark-lg" rounded="md" bg="white">
-    <CardHeader
-      display="flex"
-      alignItems="baseline"
-      justifyContent="space-between"
-    >
-      <Heading size="md">User Details</Heading>
-      {/* <Box
-        gap="2"
+      <CardHeader
         display="flex"
         alignItems="baseline"
         justifyContent="space-between"
       >
-        <Button onClick={onOpen} p={2} backgroundColor="#92d592" fontSize="10px">
-          Edit
-        </Button>
-        <Button
-          onClick={() => setIsDeleteAlertOpen(true)}
-          p={2}
-          backgroundColor="red"
-          color="white"
-          fontSize="10px"
-        >
-          Delete
-        </Button>
-      </Box> */}
-    </CardHeader>
+        <Heading size="md">User Details</Heading>
+       
+      </CardHeader>
 
-    <CardBody>
-      <Box gap={2} display="flex" alignItems="baseline">
-        <span>
-          <strong style={{ marginRight: "10px" }}>Name:</strong> {user.name} 
-        </span>
-      </Box>
-      {user.email?<Box gap={2} display="flex" alignItems="baseline">
-        <span>
-          <strong style={{ marginRight: "10px" }}>Email:</strong> {user.email}
-        </span>
-      </Box>:""}
-      <Box gap={2} display="flex" alignItems="baseline">
-        <span>
-          <strong style={{ marginRight: "10px" }}>Mobile:</strong>{" "}
-          {user.number}
-        </span>
-      </Box>
-     
-      <Box gap={2} display="flex" alignItems="baseline">
-        <span>
-          <strong style={{ marginRight: "10px" }}> Last Visit: </strong>{" "}
-          {user.last_visit}
-        </span>
-      </Box>
-      <Box gap={2} display="flex" alignItems="baseline">
-        <span>
-          <strong style={{ marginRight: "10px" }}> Total Appointment: </strong>{" "}
-          {totalAppointment}
-        </span>
-      </Box>
-      
-      
-    </CardBody>
+      <CardBody>
+        <Box gap={2} display="flex" alignItems="baseline">
+          <span>
+            <strong style={{ marginRight: "10px" }}>Name:</strong> {User.name}
+          </span>
+        </Box>
+        {User.email ? (
+          <Box gap={2} display="flex" alignItems="baseline">
+            <span>
+              <strong style={{ marginRight: "10px" }}>Email:</strong>{" "}
+              {User.email}
+            </span>
+          </Box>
+        ) : (
+          ""
+        )}
+        <Box gap={2} display="flex" alignItems="baseline">
+          <span>
+            <strong style={{ marginRight: "10px" }}>Mobile:</strong>{" "}
+            {User.number}
+          </span>
+        </Box>
 
-    <CardFooter spacing={5} justifyContent="center">
-      <Link to={`/admin/appointment/${user._id}`}>
-      <Button color="black" backgroundColor="gold" fontSize="13px"
-      _hover={{color:"orange",bg:'none'}}>
-        View Details
-      </Button>
-      </Link>
-      {/* <Link to={`/admin/userEvent/${User._id}`}>
-        <Button color="white" backgroundColor="#803a00" fontSize="13px">
-          View Events
-        </Button>
-      </Link> */}
-    </CardFooter>
+        <Box gap={2} display="flex" alignItems="baseline">
+          <span>
+            <strong style={{ marginRight: "10px" }}>
+              {" "}
+              Total Appointments:{" "}
+            </strong>{" "}
+            {totalAppointmetn}
+          </span>
+        </Box>
+        
+      </CardBody>
+
+      <CardFooter spacing={5} justifyContent="center">
+        <Link to={`/admin/appointment/${User._id}`}>
+          <Button
+            color="black"
+            backgroundColor="gold"
+            fontSize="13px"
+            _hover={{ color: "orange", bg: "none" }}
+          >
+            View Details
+          </Button>
+        </Link>
+        {/* <Link to={`/admin/userEvent/${User._id}`}>
+          <Button color="white" backgroundColor="#803a00" fontSize="13px">
+            View Events
+          </Button>
+        </Link> */}
+      </CardFooter>
+
+      <Modal
+        initialFocusRef={initialRef}
+        finalFocusRef={finalRef}
+        isOpen={isOpen}
+        onClose={onClose}
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Update Users Details</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pb={6}>
+            <FormControl>
+              <FormLabel>Full Name</FormLabel>
+              <Input
+                type="text"
+                ref={initialRef}
+                onChange={handleInputChange}
+                placeholder="Full Name"
+              />
+            </FormControl>
+            <FormControl>
+              <FormLabel>Mobile</FormLabel>
+              <Input
+                type="text"
+                ref={initialRef}
+                onChange={handleInputChange}
+                placeholder="Mobile Number"
+              />
+            </FormControl>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button
+              colorScheme="blue"
+              mr={3}
+              onClick={() => updateClick(formData, User._id)}
+            >
+              Save
+            </Button>
+            <Button onClick={onClose}>Cancel</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
+      <AlertDialog
+        isOpen={isDeleteAlertOpen}
+        leastDestructiveRef={finalRef}
+        onClose={() => setIsDeleteAlertOpen(false)}
+      >
+        <AlertDialogOverlay>
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+              Delete Confirmation
+            </AlertDialogHeader>
+
+            <AlertDialogBody>
+              Are you sure you want to delete this user?
+            </AlertDialogBody>
+
+            <AlertDialogFooter>
+              <Button
+                ref={finalRef}
+                onClick={() => setIsDeleteAlertOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button colorScheme="red" onClick={onDeleteConfirm} ml={3}>
+                Delete
+              </Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
     </Card>
   );
-};
+}
 
-export default UserCard;
+export default AllusersCard;

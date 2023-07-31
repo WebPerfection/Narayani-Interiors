@@ -9,7 +9,7 @@ const Review = () => {
 
   useEffect(() => {
     axios
-      .get("https://azure-hen-cap.cyclic.app/testimonial")
+      .get("https://dull-lime-wombat-veil.cyclic.app/testimonial")
       .then((res) => setReviews(res.data))
       .catch((err) => console.log(err));
   }, []);

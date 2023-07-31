@@ -76,7 +76,7 @@ const AddAchievement = () => {
 
     try {
       await axios.post(
-        'https://azure-hen-cap.cyclic.app/achievement',
+        'https://dull-lime-wombat-veil.cyclic.app/achievement',
         payload
       ).then(res => {
         console.log(res.response)

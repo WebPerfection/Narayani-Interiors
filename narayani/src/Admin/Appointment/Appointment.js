@@ -106,7 +106,7 @@ export default function Appointment() {
   const hendelUserData=()=>{
     axios
     .patch(
-      `https://azure-hen-cap.cyclic.app/users/${selectedEvent._id}`,
+      `https://dull-lime-wombat-veil.cyclic.app/users/${selectedEvent._id}`,
       formData
     )
     .then((res) => {
@@ -122,7 +122,7 @@ export default function Appointment() {
     // to send it to your backend or perform any necessary actions
     axios
       .patch(
-        `https://azure-hen-cap.cyclic.app/appointment/${selectedEvent._id}`,
+        `https://dull-lime-wombat-veil.cyclic.app/appointment/${selectedEvent._id}`,
         formData
       )
       .then((res) => {
@@ -132,7 +132,21 @@ export default function Appointment() {
       })
       .catch((err) => console.log(err));
   };
-
+const AddSubmit=()=>{
+  
+  axios
+      .post(
+        `https://dull-lime-wombat-veil.cyclic.app/appointment`,
+        {...formData,name:selectedEvent.name,number:selectedEvent.number}
+      )
+      .then((res) => {
+        console.log(res)
+        setUpdate(!update);
+        onCloseAddApoi1();
+        setFormData({});
+      })
+      .catch((err) => console.log(err));
+}
   const openUser=()=>{
     setSelectedEvent(userData[0]);
     onOpenUser();
@@ -147,6 +161,12 @@ export default function Appointment() {
     onOpen: onOpenEditApoi1,
     onClose: onCloseEditApoi1,
   } = useDisclosure();
+
+  const {
+    isOpen: isOpenAddApoi1,
+    onOpen: onOpenAddApoi1,
+    onClose: onCloseAddApoi1,
+  } = useDisclosure();
   const {
     isOpen: isOpenUser,
     onOpen: onOpenUser,
@@ -154,12 +174,12 @@ export default function Appointment() {
   } = useDisclosure();
   useEffect(() => {
     axios
-      .get(`https://azure-hen-cap.cyclic.app/users/${id}`)
+      .get(`https://dull-lime-wombat-veil.cyclic.app/users/${id}`)
       .then((res) => setUserData(res.data))
       .catch((err) => console.log(err));
 
     axios
-      .get(`https://azure-hen-cap.cyclic.app/appointment/${id}`)
+      .get(`https://dull-lime-wombat-veil.cyclic.app/appointment/${id}`)
       .then((res) => setAppointmentData(res.data))
       .catch((err) => console.log(err));
   }, [update]);
@@ -183,7 +203,7 @@ export default function Appointment() {
       const onDeleteConfirmUser=()=>{
         axios
         .delete(
-          `https://azure-hen-cap.cyclic.app/users/${userData[0]._id}`
+          `https://dull-lime-wombat-veil.cyclic.app/users/${userData[0]._id}`
         )
         .then((res) => {
           setUpdate(!update);
@@ -199,7 +219,7 @@ export default function Appointment() {
         // Perform delete logic here
         axios
           .delete(
-            `https://azure-hen-cap.cyclic.app/appointment/${selectedEvent._id}`
+            `https://dull-lime-wombat-veil.cyclic.app/appointment/${selectedEvent._id}`
           )
           .then((res) => {
             setUpdate(!update);
@@ -207,6 +227,7 @@ export default function Appointment() {
           })
           .catch((err) => console.log(err));
       };
+     
   return (
     <>
       <AdminNav />
@@ -260,7 +281,7 @@ export default function Appointment() {
                   >
                     Client Details
                   </Heading>
-                  <Box display="flex" flexWrap="wrap">
+                  <Box >
                     <TableContainer>
                       <Table variant="simple">
                         <Tbody>
@@ -272,6 +293,17 @@ export default function Appointment() {
                               <Td>{value}</Td>
                             </Tr>
                           ))}
+                          <Tr>
+                              <Th>
+                                Add Appointment
+                              </Th>
+                              <Td>
+                                <Button onClick={() => {
+                                  setSelectedEvent(userData[0])
+                                      onOpenAddApoi1();
+                                    }}>Add</Button>
+                              </Td>
+                            </Tr>
                         </Tbody>
                       </Table>
                     </TableContainer>
@@ -757,7 +789,7 @@ export default function Appointment() {
                   />
                 </FormControl>
                 <FormControl gridColumn={{ base: "1 / span 2", md: "auto" }}>
-                  <FormLabel>Consul Status</FormLabel>
+                  <FormLabel>Consult Status</FormLabel>
                   <Select
                     name="consult_status"
                     value={
@@ -797,6 +829,144 @@ export default function Appointment() {
         </Modal>
       )}
 
+{/* Add Appointment */}
+
+{selectedEvent && <Modal
+          initialFocusRef={initialRef}
+          finalFocusRef={finalRef}
+          isOpen={isOpenAddApoi1}
+          onClose={onCloseAddApoi1}
+        >
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader
+              style={{
+                background: "linear-gradient(315deg, #f5d020 0%, #f53803 74%)",
+                color: "white",
+                textAlign: "center",
+                borderRadius: '5px 5px 0 0'
+              }}
+            >
+              Add Appointment
+            </ModalHeader>
+            <ModalCloseButton />
+            <ModalBody pb={6}>
+              <Grid
+                templateColumns={{ base: "1fr", md: "1fr 1fr", sm: "1fr" }}
+                gap={4}
+              >
+                {/* <FormControl gridColumn={{ base: "1 / span 2", md: "auto" }}>
+                  <FormLabel>Name</FormLabel>
+                  <Input
+                    name="name"
+                    ref={initialRef}
+                    defaultValue={selectedEvent.name}
+                    onChange={handleInputChange}
+                    value={formData.name}
+                  />
+                </FormControl>
+
+                <FormControl gridColumn={{ base: "1 / span 2", md: "auto" }}>
+                  <FormLabel>Phone</FormLabel>
+                  <Input
+                    name="number"
+                    defaultValue={selectedEvent.number}
+                    onChange={handleInputChange}
+                    value={formData.number}
+                  />
+                </FormControl> */}
+                <FormControl gridColumn={{ base: "1 / span 2", md: "auto" }}>
+                  <FormLabel>Email</FormLabel>
+                  <Input
+                    name="email"
+                    placeholder="Enter Email"
+                    onChange={handleInputChange}
+                    value={formData.email}
+                  />
+                </FormControl>
+
+
+
+                <FormControl gridColumn={{ base: "1 / span 2", md: "auto" }}>
+                  <FormLabel>Consult Date</FormLabel>
+                  <Input
+                    type="date"
+                    name="next_consult_date"
+                    placeholder="Enter Consult Date"
+                    onChange={handleInputChange}
+                    
+                    
+                    min={new Date().toISOString().slice(0, 10)}
+                  />
+                </FormControl>
+
+                <FormControl gridColumn={{ base: "1 / span 2", md: "auto" }}>
+                  <FormLabel>Full address</FormLabel>
+                  <Input
+                    name="address"
+                    placeholder="Enter Full address"
+                    onChange={handleInputChange}
+                    value={formData.address}
+                  />
+                </FormControl>
+
+                <FormControl gridColumn={{ base: "1 / span 2", md: "auto" }}>
+                  <FormLabel>Consulter Name</FormLabel>
+                  <Input
+                    name="consulter_name"
+                    placeholder="Enter Consulter Name"
+                    onChange={handleInputChange}
+                    value={formData.consulter_name}
+                  />
+                </FormControl>
+
+                <FormControl gridColumn={{ base: "1 / span 2", md: "auto" }}>
+                  <FormLabel>Consult Feedback</FormLabel>
+                  <Input
+                    placeholder="Author Message"
+                    name="consult_feedback"
+                    onChange={handleInputChange}
+                    value={formData.consult_feedback}
+                  />
+                </FormControl>
+                <FormControl gridColumn={{ base: "1 / span 2", md: "auto" }}>
+                  <FormLabel>Consult Status</FormLabel>
+                  <Select
+                    name="consult_status"
+                    value={
+                      formData.consult_status
+                    }
+                    onChange={handleInputChange}
+                  >
+                    <option value="false">Pending</option>
+                    <option value="true">Completed</option>
+                  </Select>
+                </FormControl>
+              </Grid>
+            </ModalBody>
+
+            <ModalFooter>
+              <Button   _hover={{
+
+            color: "orange",
+            bg:'transparent'
+          }}
+                color="white"
+                gb="brown"
+                mr={3}
+                onClick={() => AddSubmit()}
+                backgroundColor="gold"
+              >
+                Save
+              </Button>
+              <Button   _hover={{
+
+            color: "orange",
+            bg:'transparent'
+          }} onClick={onCloseAddApoi1}>Cancel</Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>}
 
 <AlertDialog
         isOpen={isDeleteUserOpen}

@@ -18,7 +18,7 @@ function GetAllAchievement({ check }) {
 
     function getAllAchievement() {
         axios
-            .get('https://azure-hen-cap.cyclic.app/achievement')
+            .get('https://dull-lime-wombat-veil.cyclic.app/achievement')
             .then((response) => {
                 console.log(response.data);
                 setAchievement(response.data);
@@ -85,7 +85,7 @@ function GetAllAchievement({ check }) {
 
         axios
             .patch(
-                `https://azure-hen-cap.cyclic.app/achievement/${achievementId}`,
+                `https://dull-lime-wombat-veil.cyclic.app/achievement/${achievementId}`,
                 updatedAchievement
             )
             .then((response) => {
@@ -126,7 +126,7 @@ function GetAllAchievement({ check }) {
             cancelButtonText: 'Cancel',
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://azure-hen-cap.cyclic.app/achievement/${achievementId}`, {
+                fetch(`https://dull-lime-wombat-veil.cyclic.app/achievement/${achievementId}`, {
                     method: 'DELETE',
                 })
                     .then((response) => {

@@ -1,10 +1,11 @@
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { Editor } from '@tinymce/tinymce-react';
 import Swal from 'sweetalert2';
 import AdminNav from '../../AdminNav/AdminNav';
 import './Upload.css';
+import { useNavigate } from 'react-router-dom';
 
 const Upload = () => {
   const [title, setTitle] = useState('');
@@ -16,7 +17,13 @@ const Upload = () => {
   const [uploadStatus, setUploadStatus] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const formRef = useRef(null);
-
+  const navigate=useNavigate()
+const [mainService,setMainService]=useState("")
+useEffect(()=>{
+  axios.get("https://dull-lime-wombat-veil.cyclic.app/main")
+  .then((res)=>setMainService(res.data))
+  .catch((err)=>console.log(err))
+},[])
   const deleteImagesFromCloudinary = async (imageUrls) => {
     try {
       const deleteRequests = imageUrls.map((imageUrl) =>
@@ -83,7 +90,7 @@ const Upload = () => {
     };
 
     try {
-      const response = await axios.post('https://azure-hen-cap.cyclic.app/data', payload)
+      const response = await axios.post('https://dull-lime-wombat-veil.cyclic.app/data', payload)
         .then(res => {
           console.log('Response:', res.data);
           resetForm();
@@ -118,7 +125,9 @@ const Upload = () => {
 
     setIsLoading(false);
   };
-
+  if(!localStorage.getItem("adminAuthenticate")){
+    return navigate("/")
+}
   return (
     <>
       <AdminNav />
@@ -137,15 +146,17 @@ const Upload = () => {
           />
           <br />
           <label htmlFor="category">Category:</label>
-          <input
-            type="text"
+          <select
             id="category"
             name="category"
             value={category}
-            placeholder="Category"
+           
             onChange={(e) => setCategory(e.target.value)}
             required
-          />
+          >
+             <option value="" disabled selected>Select a category</option>
+       {mainService && mainService.map((el)=><option key={el._id} value={el.smname} >{el.smname}</option>)}
+          </select>
           <br />
           <label htmlFor="description">Description:</label>
           <Editor

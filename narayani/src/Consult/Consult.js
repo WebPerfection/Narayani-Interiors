@@ -117,7 +117,7 @@ export default function Consult({ consult, consultClick }) {
       // Here, you can use the formData object as the payload
       // to send it to your backend or perform any necessary actions
       axios
-        .post(`https://azure-hen-cap.cyclic.app/appointment/`, formData)
+        .post(`https://dull-lime-wombat-veil.cyclic.app/appointment/`, formData)
         .then((res) => {
           onClose();
           setFormData({});
