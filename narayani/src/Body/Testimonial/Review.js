@@ -59,7 +59,7 @@ const Review = () => {
     return <div>Loading...</div>;
   }
 
-  const { id, name, job, image, text } = reviews[index];
+  const { id, name, image,message } = reviews[index];
 
   return (
     <article className="review">
@@ -70,8 +70,7 @@ const Review = () => {
         </span>
       </div>
       <h4 className="author">{name}</h4>
-      <p className="job">{job}</p>
-      <p className="info">{text}</p>
+      <p className="info">{message}</p>
       <div className="button-container">
         <button className="prev-btn" onClick={prevPerson}>
           <FaChevronLeft />
