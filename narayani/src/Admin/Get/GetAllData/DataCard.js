@@ -55,7 +55,7 @@ const DataCard = ({ item, updateItem, deleteItem }) => {
         </Carousel>
         <Stack mt="6" spacing="3">
           <Heading size="md" textAlign="start">
-            Category: {item.mainname}
+            Category: {item.category}
           </Heading>
           <Text color="blue.600" fontSize="xl" textAlign="start">
             Title: {item.title}

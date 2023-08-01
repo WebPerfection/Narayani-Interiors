@@ -153,7 +153,7 @@ export default function Navbar() {
             </h1>
             <div className="Flex">
               <h2> +91 7670834090</h2>
-              <h5>Mon - Friday: 9.00 to 18.00</h5>
+              <h5>Mon - Sat: 9.00 to 18.00</h5>
             </div>
           </div>
           <div
@@ -168,7 +168,7 @@ export default function Navbar() {
             </h1>
             <div className="Flex">
               <h2>ankitjewrajka1234@gmail.com</h2>
-              <h5>Mon - Friday </h5>
+              <h5>Mon - Sat </h5>
             </div>
           </div>
           <div className="Flex" id="icon-div">

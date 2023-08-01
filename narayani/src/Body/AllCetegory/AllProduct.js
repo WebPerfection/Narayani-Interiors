@@ -38,6 +38,7 @@ export default function AllProduct() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [showsort, setShowsort] = useState("")
+  const [main,setMain]=useState("")
   const [loading, setLoading] = useState(true);
   window.scrollTo(0, 0);
   useEffect(() => {
@@ -57,7 +58,11 @@ export default function AllProduct() {
       })
       .catch((err) => console.log(err));
   };
-
+  useEffect(()=>{
+    axios.get("https://dull-lime-wombat-veil.cyclic.app/main")
+    .then((res)=>setMain(res.data))
+    .catch(err=>console.log(err))
+  },[])
   const sortFunction = () => {
     const apiUrl = filter
       ? `https://dull-lime-wombat-veil.cyclic.app/data?category=${filter}&length=${_length}&width=${_width}&page=${currentPage}`
@@ -99,7 +104,6 @@ export default function AllProduct() {
                   boxShadow: "none",
                    // Hides the focus outline
                 }}
-                placeholder="Filter by Category"
                 onChange={(e) => {
                   setFilter(e.target.value);
                   setCurrentPage(1);
@@ -110,9 +114,10 @@ export default function AllProduct() {
                   backgroundColor:'var(--text-gold)'// Change this color value to your desired option color
                 }}
               >
-                <option value="Room">Room</option>
-                <option value="Kitchen">Kitchen</option>
-                <option value="Shop">Shop</option>
+                 <option value="" disabled selected>Select a category</option>
+                {main && main.map((el)=><option key={el._id} value={el.smname}>{el.smname}</option>)}
+                
+                
               </Select>
 
             </div>

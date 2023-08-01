@@ -1,7 +1,13 @@
 import React from 'react';
 import './AdminNav.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 function AdminNav() {
+    const navigate=useNavigate()
+    const logOut=()=>{
+    localStorage.removeItem("adminAuthenticate")
+    return navigate("/")
+    }
     return (
         <><nav className="navbar">
             <div className="navbar-container container">
@@ -18,7 +24,7 @@ function AdminNav() {
                     <li><Link to="/admin/AddTestimonial">Testimonial</Link></li>
                     {/* <li><Link to="/admin/Achievement">Achievement</Link></li> */}
                 </ul>
-                <h3 className="logo">Narayni-Interior</h3>
+                <Button onClick={logOut} >Log Out</Button>
             </div>
         </nav>
         </>

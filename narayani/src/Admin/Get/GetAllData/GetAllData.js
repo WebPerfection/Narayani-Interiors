@@ -28,13 +28,24 @@ const [search, setSearch] = useState("");
 
   function getAll() {
     // Fetch data from API and update the state
-    const apiUrl = `https://dull-lime-wombat-veil.cyclic.app/sub?query=${search}`;
+    if(search){
+      const apiUrl = `https://dull-lime-wombat-veil.cyclic.app/data?query=${search}`;
     axios
       .get(apiUrl)
       .then((res) => {
         setDatabus(res.data);
       })
       .catch((err) => console.log(err));
+    }
+    else{
+      const apiUrl = `https://dull-lime-wombat-veil.cyclic.app/data`;
+    axios
+      .get(apiUrl)
+      .then((res) => {
+        setDatabus(res.data.uploads);
+      })
+      .catch((err) => console.log(err));
+    }
   }
 
   
@@ -119,7 +130,7 @@ const [search, setSearch] = useState("");
 
     // Send the updated item data to the API
     axios
-      .patch(`https://dull-lime-wombat-veil.cyclic.app/sub/${itemId}`, updatedItem)
+      .patch(`https://dull-lime-wombat-veil.cyclic.app/data/${itemId}`, updatedItem)
       .then((response) => {
         if (response.status === 200) {
           console.log(`Item with ID ${itemId} updated successfully.`);
@@ -167,7 +178,7 @@ const [search, setSearch] = useState("");
       cancelButtonText: 'Cancel',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://dull-lime-wombat-veil.cyclic.app/sub/${itemId}`, {
+        fetch(`https://dull-lime-wombat-veil.cyclic.app/data/${itemId}`, {
           method: 'DELETE',
         })
           .then((response) => {

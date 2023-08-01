@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
+import axios from 'axios';
 
 const DataUpdatePopup = ({
     cancelUpdate,
@@ -17,6 +18,12 @@ const DataUpdatePopup = ({
     handleImageChange,
     isLoading
 }) => {
+    const [main,setMain]=useState("")
+    useEffect(()=>{
+        axios.get("https://dull-lime-wombat-veil.cyclic.app/main")
+        .then((res)=>setMain(res.data))
+        .catch(err=>console.log(err))
+      },[])
     return (
         <div className="popup">
             <div className='formparent'>
@@ -40,15 +47,13 @@ const DataUpdatePopup = ({
                         <select
                             id="category"
                             name="category"
-                            value={category}
                             onChange={(e) => setCategory(e.target.value)}
                             // required
                         >
-                            <option value="">Select Category</option>
-                            <option value="Room">Room</option>
-                            <option value="Kitchen">Kitchen</option>
-                            <option value="Balkani">Balkani</option>
-                            <option value="Shop">Shop</option>
+                             <option value="" disabled selected>Select a category</option>
+                {main && main.map((el)=><option key={el._id} value={el.smname}>{el.smname}</option>)}
+                
+                
                         </select>
                         <br />
                         <label htmlFor="description">Description:</label>
